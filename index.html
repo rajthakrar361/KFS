@@ -374,6 +374,114 @@
 
   footer strong { color: var(--orange); }
 
+  /* ── page navigation ── */
+  .page-nav {
+    display: flex;
+    gap: 6px;
+    margin: 0 0 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 5px;
+  }
+
+  .page-nav .tab {
+    flex: 1;
+    padding: 9px;
+    border-radius: 7px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .page-nav .tab.active {
+    background: var(--orange);
+    color: white;
+  }
+
+  /* ── historical leaderboard ── */
+  .hist-view { display: none; }
+  .hist-view.active { display: block; }
+  .curr-view { display: block; }
+  .curr-view.hidden { display: none; }
+
+  .hist-week-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+
+  .hist-week-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+  }
+
+  .hist-week-header:hover { background: #1c1c1c; }
+
+  .hist-week-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    color: var(--text);
+    letter-spacing: 1px;
+  }
+
+  .hist-week-meta {
+    display: flex;
+    gap: 14px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .hist-week-meta strong { color: var(--orange); }
+
+  .hist-chevron {
+    font-size: 12px;
+    color: var(--muted);
+    transition: transform 0.2s;
+  }
+
+  .hist-week-card.open .hist-chevron { transform: rotate(180deg); }
+
+  .hist-week-body { display: none; border-top: 1px solid var(--border); }
+  .hist-week-card.open .hist-week-body { display: block; }
+
+  .hist-tabs {
+    display: flex;
+    gap: 6px;
+    padding: 10px 14px 0;
+    background: var(--card);
+  }
+
+  .hist-tabs .tab {
+    padding: 7px 14px;
+    border-radius: 7px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .hist-tabs .tab.active {
+    background: var(--orange);
+    color: white;
+  }
+
   @media (max-width: 500px) {
     .board-header, .runner-row {
       grid-template-columns: 40px 1fr 70px 60px;
@@ -381,6 +489,7 @@
     .col-elev { display: none; }
     h1 { font-size: 3rem; }
     .group-photo-wrap img { height: 240px; }
+    .hist-week-meta { gap: 8px; }
   }
 </style>
 </head>
@@ -395,6 +504,49 @@
     <p class="tagline">Run Club - Weekly Leaderboard</p>
     <div class="week-badge">Week of <span>Apr 7, 2026</span></div>
   </header>
+
+  <!-- page navigation -->
+  <div class="page-nav">
+    <button class="tab active" id="nav-current" onclick="showPage('current')">🏃 This Week</button>
+    <button class="tab" id="nav-history" onclick="showPage('history')">📅 Historical</button>
+  </div>
+
+  <!-- historical leaderboard view -->
+  <div class="hist-view" id="hist-view">
+    <div class="hist-week-card" id="hist-week-apr1">
+      <div class="hist-week-header" onclick="toggleHistWeek('hist-week-apr1')">
+        <div>
+          <div class="hist-week-title">Week of Apr 1, 2026</div>
+          <div class="hist-week-meta">
+            <span><strong>9</strong> runners</span>
+            <span><strong>102.4</strong> km total</span>
+            <span><strong>19</strong> runs</span>
+          </div>
+        </div>
+        <span class="hist-chevron">▼</span>
+      </div>
+      <div class="hist-week-body">
+        <div class="hist-tabs">
+          <button class="tab active" onclick="setHistSort('hist-week-apr1','distance',this)">Distance</button>
+          <button class="tab" onclick="setHistSort('hist-week-apr1','pace',this)">Best Pace</button>
+          <button class="tab" onclick="setHistSort('hist-week-apr1','runs',this)">Most Runs</button>
+        </div>
+        <div class="board" style="border:none;border-radius:0">
+          <div class="board-header">
+            <span></span>
+            <span>Athlete</span>
+            <span>Distance</span>
+            <span>Pace</span>
+            <span class="col-elev">Elev.</span>
+          </div>
+          <div id="hist-body-apr1"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- current week view -->
+  <div class="curr-view" id="curr-view">
 
   <div class="group-photo-wrap">
     <img src="https://github.com/user-attachments/assets/1ad6ab01-41c3-4ac3-8b93-d60dc85ade84" alt="Knees For Speed crew" onerror="this.parentElement.style.display='none'">
@@ -437,6 +589,8 @@
     <div id="board-body"></div>
   </div>
 
+  </div><!-- /curr-view -->
+
   <footer>
     <p>Powered by <strong>Knees For Speed</strong> - Data from Strava</p>
   </footer>
@@ -468,7 +622,7 @@ let sortKey = "distance";
 
 function setSort(key, btn) {
   sortKey = key;
-  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  document.querySelectorAll(".curr-view .tab").forEach(t => t.classList.remove("active"));
   btn.classList.add("active");
   render();
 }
@@ -517,6 +671,92 @@ function render() {
 }
 
 render();
+
+// ── Historical data ───────────────────────────────────────────────
+const historicalWeeks = {
+  "hist-week-apr1": {
+    sortKey: "distance",
+    athletes: [
+      { name: "Rishendra Chauhan",  distance: 30.1, runs: 3, longest: 10.1, pace: "5:50",  paceVal: 350, elev: "111m" },
+      { name: "Akash Jannu",        distance: 26.5, runs: 2, longest: 16.5, pace: "6:32",  paceVal: 392, elev: "225m" },
+      { name: "Sourabh M",          distance: 19.6, runs: 6, longest:  5.0, pace: "12:26", paceVal: 746, elev: "132m" },
+      { name: "Sujal Pruthi",       distance: 13.0, runs: 2, longest:  7.0, pace: "5:40",  paceVal: 340, elev: "39m"  },
+      { name: "Utsav Wadhwa",       distance:  3.7, runs: 1, longest:  3.7, pace: "6:54",  paceVal: 414, elev: "--"   },
+      { name: "Anurup De",          distance:  3.1, runs: 2, longest:  2.0, pace: "6:30",  paceVal: 390, elev: "--"   },
+      { name: "Angad Singh Pental", distance:  3.0, runs: 2, longest:  1.5, pace: "7:48",  paceVal: 468, elev: "--"   },
+      { name: "Sidharth Nair",      distance:  3.0, runs: 1, longest:  3.0, pace: "4:41",  paceVal: 281, elev: "8m"   },
+      { name: "Nischay Vij",        distance:  0.4, runs: 1, longest:  0.4, pace: "1:52",  paceVal: 112, elev: "--"   },
+    ]
+  }
+};
+
+// ── Page navigation ───────────────────────────────────────────────
+function showPage(page) {
+  const currView = document.getElementById("curr-view");
+  const histView = document.getElementById("hist-view");
+  const navCurr  = document.getElementById("nav-current");
+  const navHist  = document.getElementById("nav-history");
+  if (page === "history") {
+    currView.classList.add("hidden");
+    histView.classList.add("active");
+    navCurr.classList.remove("active");
+    navHist.classList.add("active");
+  } else {
+    histView.classList.remove("active");
+    currView.classList.remove("hidden");
+    navHist.classList.remove("active");
+    navCurr.classList.add("active");
+  }
+}
+
+// ── Historical week accordion ─────────────────────────────────────
+function toggleHistWeek(id) {
+  const card   = document.getElementById(id);
+  const isOpen = card.classList.contains("open");
+  card.classList.toggle("open", !isOpen);
+  if (!isOpen) renderHistWeek(id);
+}
+
+function setHistSort(weekId, key, btn) {
+  historicalWeeks[weekId].sortKey = key;
+  btn.closest(".hist-tabs").querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  btn.classList.add("active");
+  renderHistWeek(weekId);
+}
+
+function getSortedHistAthletes(weekId) {
+  const week = historicalWeeks[weekId];
+  const arr  = [...week.athletes];
+  if (week.sortKey === "distance") return arr.sort((a,b) => b.distance - a.distance);
+  if (week.sortKey === "pace")     return arr.sort((a,b) => a.paceVal - b.paceVal);
+  if (week.sortKey === "runs")     return arr.sort((a,b) => b.runs - a.runs);
+  return arr;
+}
+
+function renderHistWeek(weekId) {
+  const sorted = getSortedHistAthletes(weekId);
+  const bodyId = "hist-body-" + weekId.replace("hist-week-", "");
+  const body   = document.getElementById(bodyId);
+  body.innerHTML = sorted.map((a, i) => `
+    <div class="runner-row rank${i+1}" style="animation-delay:${i*0.05}s">
+      <div class="pos-wrap">
+        ${i < 3 ? `<span class="medal">${medals[i]}</span>` : `<span class="pos">${i+1}</span>`}
+      </div>
+      <div class="runner-info">
+        <div class="avatar" style="background:${avatarColors[i % avatarColors.length]}22; color:${avatarColors[i % avatarColors.length]}; border-color:${avatarColors[i % avatarColors.length]}44">
+          ${initials(a.name)}
+        </div>
+        <div>
+          <div class="runner-name">${a.name}</div>
+          <div class="runner-sub">${a.runs} run${a.runs>1?"s":""} · longest ${a.longest}km</div>
+        </div>
+      </div>
+      <div class="val">${a.distance}<span class="val-unit">km</span></div>
+      <div class="val-secondary">${a.pace}/km</div>
+      <div class="val-secondary col-elev">${a.elev}</div>
+    </div>
+  `).join("");
+}
 </script>
 </body>
 </html>
