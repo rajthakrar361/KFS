@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knees For Speed - Leaderboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #FC4C02;
+    --black: #0a0a0a;
+    --card: #141414;
+    --border: #2a2a2a;
+    --text: #f0f0f0;
+    --muted: #888;
+    --gold: #FFD700;
+    --silver: #C0C0C0;
+    --bronze: #CD7F32;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(252,76,2,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(252,76,2,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 4rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2.5rem 0 2rem;
+    position: relative;
+  }
+
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 0.5rem;
+  }
+
+  .logo-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--orange);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    color: #fff;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.8rem, 8vw, 5rem);
+    color: var(--orange);
+    letter-spacing: 2px;
+    line-height: 1;
+    text-shadow: 0 0 40px rgba(252,76,2,0.4);
+  }
+
+  .tagline {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .week-badge {
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 16px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .week-badge span { color: var(--orange); font-weight: 600; }
+
+  .group-photo-wrap {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .group-photo-wrap img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+    opacity: 0.9;
+  }
+
+  .photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 60%);
+    display: flex;
+    align-items: flex-end;
+    padding: 1.25rem;
+  }
+
+  .photo-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    color: white;
+    letter-spacing: 1px;
+  }
+
+  .photo-label em {
+    color: var(--orange);
+    font-style: normal;
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+
+  .stat-card:hover { border-color: var(--orange); }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--orange);
+    line-height: 1;
+  }
+
+  .stat-lbl {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 4px;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 5px;
+  }
+
+  .tab {
+    flex: 1;
+    padding: 8px;
+    border-radius: 7px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .tab.active {
+    background: var(--orange);
+    color: white;
+  }
+
+  .board {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .board-header {
+    display: grid;
+    grid-template-columns: 48px 1fr 80px 72px 80px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .board-header span {
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  .runner-row {
+    display: grid;
+    grid-template-columns: 48px 1fr 80px 72px 80px;
+    align-items: center;
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+    animation: slideIn 0.4s ease both;
+  }
+
+  .runner-row:last-child { border-bottom: none; }
+  .runner-row:hover { background: #1c1c1c; }
+
+  .runner-row.rank1 { background: rgba(255,215,0,0.05); }
+  .runner-row.rank2 { background: rgba(192,192,192,0.04); }
+  .runner-row.rank3 { background: rgba(205,127,50,0.04); }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-12px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .pos-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pos {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    color: var(--muted);
+  }
+
+  .medal { font-size: 1.4rem; }
+
+  .runner-info { display: flex; align-items: center; gap: 10px; }
+
+  .avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    flex-shrink: 0;
+    border: 1.5px solid var(--border);
+  }
+
+  .runner-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .runner-sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 1px;
+  }
+
+  .val {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .val-unit {
+    font-size: 11px;
+    color: var(--muted);
+    margin-left: 2px;
+  }
+
+  .val-secondary {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .podium {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+    padding: 1rem 0 0;
+  }
+
+  .podium-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 12px;
+    text-align: center;
+    flex: 1;
+    max-width: 160px;
+    transition: transform 0.2s;
+  }
+
+  .podium-card:hover { transform: translateY(-4px); }
+
+  .podium-card.p1 {
+    border-color: var(--gold);
+    box-shadow: 0 0 20px rgba(255,215,0,0.12);
+    order: 2;
+    padding-bottom: 20px;
+  }
+
+  .podium-card.p2 { order: 1; }
+  .podium-card.p3 { order: 3; }
+
+  .podium-medal { font-size: 1.8rem; margin-bottom: 6px; }
+
+  .podium-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .podium-dist {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    color: var(--orange);
+  }
+
+  .podium-pace {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  footer strong { color: var(--orange); }
+
+  @media (max-width: 500px) {
+    .board-header, .runner-row {
+      grid-template-columns: 40px 1fr 70px 60px;
+    }
+    .col-elev { display: none; }
+    h1 { font-size: 3rem; }
+    .group-photo-wrap img { height: 240px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo-wrap">
+      <div class="logo-icon">KFS</div>
+    </div>
+    <h1>Knees For Speed</h1>
+    <p class="tagline">Run Club - Weekly Leaderboard</p>
+    <div class="week-badge">Week of <span>Apr 7, 2026</span></div>
+  </header>
+
+  <div class="group-photo-wrap">
+    <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1600&q=80" alt="Knees For Speed crew" onerror="this.parentElement.style.display='none'">
+    <div class="photo-overlay">
+      <div class="photo-label">The <em>Knees For Speed</em> crew</div>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num" id="stat-runners">10</div>
+      <div class="stat-lbl">Runners</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="stat-km">60.5</div>
+      <div class="stat-lbl">Total km</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="stat-runs">19</div>
+      <div class="stat-lbl">Total runs</div>
+    </div>
+  </div>
+
+  <div class="podium" id="podium"></div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="setSort('distance', this)">Distance</button>
+    <button class="tab" onclick="setSort('pace', this)">Best Pace</button>
+    <button class="tab" onclick="setSort('runs', this)">Most Runs</button>
+  </div>
+
+  <div class="board">
+    <div class="board-header">
+      <span></span>
+      <span>Athlete</span>
+      <span>Distance</span>
+      <span>Pace</span>
+      <span class="col-elev">Elev.</span>
+    </div>
+    <div id="board-body"></div>
+  </div>
+
+  <footer>
+    <p>Powered by <strong>Knees For Speed</strong> - Data from Strava</p>
+  </footer>
+
+</div>
+
+<script>
+const athletes = [
+  { name: "Bhargav Kumare", distance: 10.0, runs: 1, longest: 10.0, pace: "5:59", paceVal: 359, elev: "22m", color: "#FC4C02" },
+  { name: "Raj Thakrar",    distance: 8.0,  runs: 2, longest: 7.2,  pace: "8:08", paceVal: 488, elev: "4m",  color: "#e05c00" },
+  { name: "Swadit Chandan", distance: 7.8,  runs: 2, longest: 5.0,  pace: "6:35", paceVal: 395, elev: "65m", color: "#d45a00" },
+  { name: "Niranjan N.",    distance: 7.6,  runs: 2, longest: 4.5,  pace: "6:00", paceVal: 360, elev: "33m", color: "#c85500" },
+  { name: "Aryaman Agrawal",distance: 7.2,  runs: 1, longest: 7.2,  pace: "8:29", paceVal: 509, elev: "4m",  color: "#bc5000" },
+  { name: "Gururaj M",      distance: 6.2,  runs: 3, longest: 2.1,  pace: "5:14", paceVal: 314, elev: "39m", color: "#b04b00" },
+  { name: "Nachiket Pethe", distance: 5.0,  runs: 1, longest: 5.0,  pace: "6:23", paceVal: 383, elev: "--",  color: "#a44600" },
+  { name: "Ayaan K. Pathan",distance: 4.9,  runs: 1, longest: 4.9,  pace: "7:11", paceVal: 431, elev: "31m", color: "#984100" },
+  { name: "Sourabh M",      distance: 2.8,  runs: 1, longest: 2.8,  pace: "7:10", paceVal: 430, elev: "--",  color: "#8c3c00" },
+  { name: "Swati Negi",     distance: 1.0,  runs: 1, longest: 1.0,  pace: "9:50", paceVal: 590, elev: "6m",  color: "#803700" },
+];
+
+const medals = ["🥇","🥈","🥉"];
+const avatarColors = ["#FC4C02","#e05c00","#d45a00","#c85500","#bc5000","#b04b00","#a44600","#984100","#8c3c00","#803700"];
+
+function initials(name) {
+  return name.split(" ").slice(0,2).map(w => w[0]).join("").toUpperCase();
+}
+
+let sortKey = "distance";
+
+function setSort(key, btn) {
+  sortKey = key;
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  btn.classList.add("active");
+  render();
+}
+
+function getSortedAthletes() {
+  const arr = [...athletes];
+  if (sortKey === "distance") return arr.sort((a,b) => b.distance - a.distance);
+  if (sortKey === "pace") return arr.sort((a,b) => a.paceVal - b.paceVal);
+  if (sortKey === "runs") return arr.sort((a,b) => b.runs - a.runs);
+  return arr;
+}
+
+function render() {
+  const sorted = getSortedAthletes();
+
+  const podium = document.getElementById("podium");
+  podium.innerHTML = sorted.slice(0,3).map((a,i) => `
+    <div class="podium-card p${i+1}">
+      <div class="podium-medal">${medals[i]}</div>
+      <div class="podium-name">${a.name.split(" ")[0]}</div>
+      <div class="podium-dist">${sortKey === "pace" ? a.pace : sortKey === "runs" ? a.runs : a.distance + "km"}</div>
+      <div class="podium-pace">${sortKey === "pace" ? "per km" : sortKey === "runs" ? "runs" : a.pace + "/km"}</div>
+    </div>
+  `).join("");
+
+  const body = document.getElementById("board-body");
+  body.innerHTML = sorted.map((a,i) => `
+    <div class="runner-row rank${i+1}" style="animation-delay:${i*0.05}s">
+      <div class="pos-wrap">
+        ${i < 3 ? `<span class="medal">${medals[i]}</span>` : `<span class="pos">${i+1}</span>`}
+      </div>
+      <div class="runner-info">
+        <div class="avatar" style="background:${avatarColors[athletes.indexOf(a)]}22; color:${avatarColors[athletes.indexOf(a)]}; border-color:${avatarColors[athletes.indexOf(a)]}44">
+          ${initials(a.name)}
+        </div>
+        <div>
+          <div class="runner-name">${a.name}</div>
+          <div class="runner-sub">${a.runs} run${a.runs>1?"s":""} - longest ${a.longest}km</div>
+        </div>
+      </div>
+      <div class="val">${a.distance}<span class="val-unit">km</span></div>
+      <div class="val-secondary">${a.pace}/km</div>
+      <div class="val-secondary col-elev">${a.elev}</div>
+    </div>
+  `).join("");
+}
+
+render();
+</script>
+</body>
+</html>
