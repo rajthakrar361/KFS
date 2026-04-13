@@ -502,7 +502,7 @@
     </div>
     <h1>Knees For Speed</h1>
     <p class="tagline">Run Club - Weekly Leaderboard</p>
-    <div class="week-badge">Week of <span>Apr 7, 2026</span></div>
+    <div class="week-badge">Week of <span>Apr 6, 2026</span></div>
   </header>
 
   <!-- page navigation -->
@@ -513,10 +513,44 @@
 
   <!-- historical leaderboard view -->
   <div class="hist-view" id="hist-view">
+
+    <!-- Week of Mar 30 -->
+    <div class="hist-week-card" id="hist-week-mar30">
+      <div class="hist-week-header" onclick="toggleHistWeek('hist-week-mar30')">
+        <div>
+          <div class="hist-week-title">Week of Mar 30, 2026</div>
+          <div class="hist-week-meta">
+            <span><strong>10</strong> runners</span>
+            <span><strong>60.5</strong> km total</span>
+            <span><strong>15</strong> runs</span>
+          </div>
+        </div>
+        <span class="hist-chevron">▼</span>
+      </div>
+      <div class="hist-week-body">
+        <div class="hist-tabs">
+          <button class="tab active" onclick="setHistSort('hist-week-mar30','distance',this)">Distance</button>
+          <button class="tab" onclick="setHistSort('hist-week-mar30','pace',this)">Best Pace</button>
+          <button class="tab" onclick="setHistSort('hist-week-mar30','runs',this)">Most Runs</button>
+        </div>
+        <div class="board" style="border:none;border-radius:0">
+          <div class="board-header">
+            <span></span>
+            <span>Athlete</span>
+            <span>Distance</span>
+            <span>Pace</span>
+            <span class="col-elev">Elev.</span>
+          </div>
+          <div id="hist-body-mar30"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week of Mar 23 -->
     <div class="hist-week-card" id="hist-week-apr1">
       <div class="hist-week-header" onclick="toggleHistWeek('hist-week-apr1')">
         <div>
-          <div class="hist-week-title">Week of Apr 1, 2026</div>
+          <div class="hist-week-title">Week of Mar 23, 2026</div>
           <div class="hist-week-meta">
             <span><strong>9</strong> runners</span>
             <span><strong>102.4</strong> km total</span>
@@ -557,15 +591,15 @@
 
   <div class="stats-row">
     <div class="stat-card">
-      <div class="stat-num" id="stat-runners">10</div>
+      <div class="stat-num" id="stat-runners">16</div>
       <div class="stat-lbl">Runners</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num" id="stat-km">60.5</div>
+      <div class="stat-num" id="stat-km">199.8</div>
       <div class="stat-lbl">Total km</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num" id="stat-runs">19</div>
+      <div class="stat-num" id="stat-runs">42</div>
       <div class="stat-lbl">Total runs</div>
     </div>
   </div>
@@ -599,16 +633,22 @@
 
 <script>
 const athletes = [
-  { name: "Bhargav Kumare", distance: 10.0, runs: 1, longest: 10.0, pace: "5:59", paceVal: 359, elev: "22m", color: "#FC4C02" },
-  { name: "Raj Thakrar",    distance: 8.0,  runs: 2, longest: 7.2,  pace: "8:08", paceVal: 488, elev: "4m",  color: "#e05c00" },
-  { name: "Swadit Chandan", distance: 7.8,  runs: 2, longest: 5.0,  pace: "6:35", paceVal: 395, elev: "65m", color: "#d45a00" },
-  { name: "Niranjan N.",    distance: 7.6,  runs: 2, longest: 4.5,  pace: "6:00", paceVal: 360, elev: "33m", color: "#c85500" },
-  { name: "Aryaman Agrawal",distance: 7.2,  runs: 1, longest: 7.2,  pace: "8:29", paceVal: 509, elev: "4m",  color: "#bc5000" },
-  { name: "Gururaj M",      distance: 6.2,  runs: 3, longest: 2.1,  pace: "5:14", paceVal: 314, elev: "39m", color: "#b04b00" },
-  { name: "Nachiket Pethe", distance: 5.0,  runs: 1, longest: 5.0,  pace: "6:23", paceVal: 383, elev: "--",  color: "#a44600" },
-  { name: "Ayaan K. Pathan",distance: 4.9,  runs: 1, longest: 4.9,  pace: "7:11", paceVal: 431, elev: "31m", color: "#984100" },
-  { name: "Sourabh M",      distance: 2.8,  runs: 1, longest: 2.8,  pace: "7:10", paceVal: 430, elev: "--",  color: "#8c3c00" },
-  { name: "Swati Negi",     distance: 1.0,  runs: 1, longest: 1.0,  pace: "9:50", paceVal: 590, elev: "6m",  color: "#803700" },
+  { name: "Bhargav Kumare",      distance: 50.3, runs: 5, longest: 10.2, pace: "5:43", paceVal: 343, elev: "249m", color: "#FC4C02" },
+  { name: "Rishendra Chauhan",   distance: 18.5, runs: 2, longest: 10.0, pace: "6:16", paceVal: 376, elev: "101m", color: "#e05c00" },
+  { name: "Niranjan Neelakantan",distance: 17.1, runs: 3, longest:  7.5, pace: "6:25", paceVal: 385, elev: "291m", color: "#d45a00" },
+  { name: "Sakha Ghotekar",      distance: 17.0, runs: 2, longest: 11.1, pace: "7:22", paceVal: 442, elev: "133m", color: "#c85500" },
+  { name: "Raj Thakrar",         distance: 14.4, runs: 3, longest:  8.1, pace: "6:52", paceVal: 412, elev: "83m",  color: "#bc5000" },
+  { name: "death queen",         distance: 14.0, runs: 5, longest:  5.0, pace: "8:23", paceVal: 503, elev: "62m",  color: "#b04b00" },
+  { name: "Nachiket Pethe",      distance: 12.9, runs: 2, longest: 10.0, pace: "7:10", paceVal: 430, elev: "38m",  color: "#a44600" },
+  { name: "Mihir Pandit",        distance: 10.7, runs: 1, longest: 10.7, pace: "6:40", paceVal: 400, elev: "69m",  color: "#984100" },
+  { name: "Nischay Vij",         distance:  7.9, runs: 4, longest:  3.1, pace: "7:37", paceVal: 457, elev: "--",   color: "#8c3c00" },
+  { name: "Swati Negi",          distance:  7.1, runs: 4, longest:  2.0, pace: "6:39", paceVal: 399, elev: "23m",  color: "#803700" },
+  { name: "Angad Singh Pental",  distance:  6.1, runs: 2, longest:  3.0, pace: "6:45", paceVal: 405, elev: "--",   color: "#7a3200" },
+  { name: "Gururaj M",           distance:  6.0, runs: 3, longest:  2.3, pace: "5:16", paceVal: 316, elev: "36m",  color: "#742d00" },
+  { name: "Akash Jannu",         distance:  5.1, runs: 1, longest:  5.1, pace: "5:56", paceVal: 356, elev: "42m",  color: "#6e2800" },
+  { name: "Ayaan Khan Pathan",   distance:  5.0, runs: 1, longest:  5.0, pace: "7:46", paceVal: 466, elev: "21m",  color: "#682300" },
+  { name: "Vibhor Gupta",        distance:  4.4, runs: 3, longest:  1.9, pace: "6:36", paceVal: 396, elev: "47m",  color: "#621e00" },
+  { name: "Anurup De",           distance:  3.3, runs: 1, longest:  3.3, pace: "5:54", paceVal: 354, elev: "--",   color: "#5c1900" },
 ];
 
 const medals = ["🥇","🥈","🥉"];
@@ -674,6 +714,21 @@ render();
 
 // ── Historical data ───────────────────────────────────────────────
 const historicalWeeks = {
+  "hist-week-mar30": {
+    sortKey: "distance",
+    athletes: [
+      { name: "Bhargav Kumare",   distance: 10.0, runs: 1, longest: 10.0, pace: "5:59", paceVal: 359, elev: "22m"  },
+      { name: "Raj Thakrar",      distance:  8.0, runs: 2, longest:  7.2, pace: "8:08", paceVal: 488, elev: "4m"   },
+      { name: "Swadit Chandan",   distance:  7.8, runs: 2, longest:  5.0, pace: "6:35", paceVal: 395, elev: "65m"  },
+      { name: "Niranjan N.",      distance:  7.6, runs: 2, longest:  4.5, pace: "6:00", paceVal: 360, elev: "33m"  },
+      { name: "Aryaman Agrawal",  distance:  7.2, runs: 1, longest:  7.2, pace: "8:29", paceVal: 509, elev: "4m"   },
+      { name: "Gururaj M",        distance:  6.2, runs: 3, longest:  2.1, pace: "5:14", paceVal: 314, elev: "39m"  },
+      { name: "Nachiket Pethe",   distance:  5.0, runs: 1, longest:  5.0, pace: "6:23", paceVal: 383, elev: "--"   },
+      { name: "Ayaan K. Pathan",  distance:  4.9, runs: 1, longest:  4.9, pace: "7:11", paceVal: 431, elev: "31m"  },
+      { name: "Sourabh M",        distance:  2.8, runs: 1, longest:  2.8, pace: "7:10", paceVal: 430, elev: "--"   },
+      { name: "Swati Negi",       distance:  1.0, runs: 1, longest:  1.0, pace: "9:50", paceVal: 590, elev: "6m"   },
+    ]
+  },
   "hist-week-apr1": {
     sortKey: "distance",
     athletes: [
