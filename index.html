@@ -409,6 +409,32 @@
   .hist-view.active { display: block; }
   .curr-view { display: block; }
   .curr-view.hidden { display: none; }
+  .cumul-view { display: none; }
+  .cumul-view.active { display: block; }
+
+  /* ── cumulative header ── */
+  .cumul-header {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cumul-header-icon {
+    font-size: 1.5rem;
+  }
+  .cumul-header-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+  .cumul-header-text span {
+    color: var(--orange);
+  }
 
   .hist-week-card {
     background: var(--card);
@@ -509,6 +535,7 @@
   <div class="page-nav">
     <button class="tab active" id="nav-current" onclick="showPage('current')">🏃 This Week</button>
     <button class="tab" id="nav-history" onclick="showPage('history')">📅 Historical</button>
+    <button class="tab" id="nav-cumulative" onclick="showPage('cumulative')">📊 Cumulative</button>
   </div>
 
   <!-- historical leaderboard view -->
@@ -578,6 +605,48 @@
       </div>
     </div>
   </div>
+
+  <!-- cumulative leaderboard view -->
+  <div class="cumul-view" id="cumul-view">
+
+    <div class="cumul-header">
+      <div class="cumul-header-icon">📊</div>
+      <div class="cumul-header-text">All-time totals across <span>3 weeks</span></div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num" id="cumul-stat-runners">--</div>
+        <div class="stat-lbl">Runners</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="cumul-stat-km">--</div>
+        <div class="stat-lbl">Total km</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="cumul-stat-runs">--</div>
+        <div class="stat-lbl">Total runs</div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" onclick="setCumulSort('distance', this)">Distance</button>
+      <button class="tab" onclick="setCumulSort('pace', this)">Best Pace</button>
+      <button class="tab" onclick="setCumulSort('runs', this)">Most Runs</button>
+    </div>
+
+    <div class="board">
+      <div class="board-header">
+        <span></span>
+        <span>Athlete</span>
+        <span>Distance</span>
+        <span>Best Pace</span>
+        <span class="col-elev">Weeks</span>
+      </div>
+      <div id="cumul-body"></div>
+    </div>
+
+  </div><!-- /cumul-view -->
 
   <!-- current week view -->
   <div class="curr-view" id="curr-view">
@@ -747,21 +816,122 @@ const historicalWeeks = {
 
 // ── Page navigation ───────────────────────────────────────────────
 function showPage(page) {
-  const currView = document.getElementById("curr-view");
-  const histView = document.getElementById("hist-view");
-  const navCurr  = document.getElementById("nav-current");
-  const navHist  = document.getElementById("nav-history");
+  const currView  = document.getElementById("curr-view");
+  const histView  = document.getElementById("hist-view");
+  const cumulView = document.getElementById("cumul-view");
+  const navCurr   = document.getElementById("nav-current");
+  const navHist   = document.getElementById("nav-history");
+  const navCumul  = document.getElementById("nav-cumulative");
+
+  // hide everything
+  currView.classList.add("hidden");
+  histView.classList.remove("active");
+  cumulView.classList.remove("active");
+  navCurr.classList.remove("active");
+  navHist.classList.remove("active");
+  navCumul.classList.remove("active");
+
   if (page === "history") {
-    currView.classList.add("hidden");
     histView.classList.add("active");
-    navCurr.classList.remove("active");
     navHist.classList.add("active");
+  } else if (page === "cumulative") {
+    cumulView.classList.add("active");
+    navCumul.classList.add("active");
+    renderCumulative();
   } else {
-    histView.classList.remove("active");
     currView.classList.remove("hidden");
-    navHist.classList.remove("active");
     navCurr.classList.add("active");
   }
+}
+
+// ── Cumulative leaderboard ───────────────────────────────────────
+const nameAliases = {
+  "Niranjan N.":    "Niranjan Neelakantan",
+  "Ayaan K. Pathan": "Ayaan Khan Pathan",
+};
+
+function normalizeName(name) { return nameAliases[name] || name; }
+
+const histOnlyColors = ["#4a1500","#3e1200","#2d0e00","#220a00","#170700","#0c0400"];
+
+function buildCumulativeData() {
+  const map = {};
+  let histColorIdx = 0;
+
+  function addEntry(a) {
+    const name = normalizeName(a.name);
+    if (!map[name]) {
+      const main = athletes.find(x => x.name === name);
+      map[name] = {
+        name,
+        totalDistance: 0,
+        totalRuns: 0,
+        weeksParticipated: 0,
+        bestPaceVal: Infinity,
+        bestPace: "--",
+        color: main ? main.color : histOnlyColors[histColorIdx++ % histOnlyColors.length]
+      };
+    }
+    map[name].totalDistance = Math.round((map[name].totalDistance + a.distance) * 10) / 10;
+    map[name].totalRuns      += a.runs;
+    map[name].weeksParticipated += 1;
+    if (a.paceVal < map[name].bestPaceVal) {
+      map[name].bestPaceVal = a.paceVal;
+      map[name].bestPace    = a.pace;
+    }
+  }
+
+  athletes.forEach(a => addEntry(a));
+  Object.values(historicalWeeks).forEach(week => week.athletes.forEach(a => addEntry(a)));
+  return Object.values(map);
+}
+
+let cumulSortKey = "distance";
+
+function setCumulSort(key, btn) {
+  cumulSortKey = key;
+  document.querySelectorAll(".cumul-view .tab").forEach(t => t.classList.remove("active"));
+  btn.classList.add("active");
+  renderCumulative();
+}
+
+function getSortedCumulAthletes() {
+  const arr = buildCumulativeData();
+  if (cumulSortKey === "distance") return arr.sort((a,b) => b.totalDistance - a.totalDistance);
+  if (cumulSortKey === "pace")     return arr.sort((a,b) => a.bestPaceVal - b.bestPaceVal);
+  if (cumulSortKey === "runs")     return arr.sort((a,b) => b.totalRuns - a.totalRuns);
+  return arr;
+}
+
+function renderCumulative() {
+  const sorted = getSortedCumulAthletes();
+
+  const grandKm   = Math.round(sorted.reduce((s,a) => s + a.totalDistance, 0) * 10) / 10;
+  const grandRuns = sorted.reduce((s,a) => s + a.totalRuns, 0);
+  document.getElementById("cumul-stat-runners").textContent = sorted.length;
+  document.getElementById("cumul-stat-km").textContent      = grandKm;
+  document.getElementById("cumul-stat-runs").textContent    = grandRuns;
+
+  const body = document.getElementById("cumul-body");
+  body.innerHTML = sorted.map((a,i) => `
+    <div class="runner-row rank${i+1}" style="animation-delay:${i*0.05}s">
+      <div class="pos-wrap">
+        ${i < 3 ? `<span class="medal">${medals[i]}</span>` : `<span class="pos">${i+1}</span>`}
+      </div>
+      <div class="runner-info">
+        <div class="avatar" style="background:${a.color}22; color:${a.color}; border-color:${a.color}44">
+          ${initials(a.name)}
+        </div>
+        <div>
+          <div class="runner-name">${a.name}</div>
+          <div class="runner-sub">${a.weeksParticipated} week${a.weeksParticipated>1?"s":""} · ${a.totalRuns} run${a.totalRuns>1?"s":""}</div>
+        </div>
+      </div>
+      <div class="val">${a.totalDistance}<span class="val-unit">km</span></div>
+      <div class="val-secondary">${a.bestPace}/km</div>
+      <div class="val-secondary col-elev">${a.weeksParticipated}w</div>
+    </div>
+  `).join("");
 }
 
 // ── Historical week accordion ─────────────────────────────────────
