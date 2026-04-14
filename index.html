@@ -582,8 +582,8 @@
     </div>
 
     <!-- Week of Mar 23 -->
-    <div class="hist-week-card" id="hist-week-apr1">
-      <div class="hist-week-header" onclick="toggleHistWeek('hist-week-apr1')">
+    <div class="hist-week-card" id="hist-week-mar23">
+      <div class="hist-week-header" onclick="toggleHistWeek('hist-week-mar23')">
         <div>
           <div class="hist-week-title">Week of Mar 23, 2026</div>
           <div class="hist-week-meta">
@@ -596,9 +596,9 @@
       </div>
       <div class="hist-week-body">
         <div class="hist-tabs">
-          <button class="tab active" onclick="setHistSort('hist-week-apr1','distance',this)">Distance</button>
-          <button class="tab" onclick="setHistSort('hist-week-apr1','pace',this)">Best Pace</button>
-          <button class="tab" onclick="setHistSort('hist-week-apr1','runs',this)">Most Runs</button>
+          <button class="tab active" onclick="setHistSort('hist-week-mar23','distance',this)">Distance</button>
+          <button class="tab" onclick="setHistSort('hist-week-mar23','pace',this)">Best Pace</button>
+          <button class="tab" onclick="setHistSort('hist-week-mar23','runs',this)">Most Runs</button>
         </div>
         <div class="board" style="border:none;border-radius:0">
           <div class="board-header">
@@ -608,7 +608,7 @@
             <span>Pace</span>
             <span class="col-elev">Elev.</span>
           </div>
-          <div id="hist-body-apr1"></div>
+          <div id="hist-body-mar23"></div>
         </div>
       </div>
     </div>
@@ -619,7 +619,7 @@
 
     <div class="cumul-header">
       <div class="cumul-header-icon">📊</div>
-      <div class="cumul-header-text">All-time totals across <span>3 weeks</span></div>
+      <div class="cumul-header-text">All-time totals across <span id="cumul-week-count">--</span> weeks</div>
     </div>
 
     <div class="stats-row">
@@ -668,15 +668,15 @@
 
   <div class="stats-row">
     <div class="stat-card">
-      <div class="stat-num" id="stat-runners">16</div>
+      <div class="stat-num" id="stat-runners">--</div>
       <div class="stat-lbl">Runners</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num" id="stat-km">199.8</div>
+      <div class="stat-num" id="stat-km">--</div>
       <div class="stat-lbl">Total km</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num" id="stat-runs">42</div>
+      <div class="stat-num" id="stat-runs">--</div>
       <div class="stat-lbl">Total runs</div>
     </div>
   </div>
@@ -753,6 +753,12 @@ function getSortedAthletes() {
 }
 
 function render() {
+  const totalKm   = Math.round(athletes.reduce((s,a) => s + a.distance, 0) * 10) / 10;
+  const totalRuns = athletes.reduce((s,a) => s + a.runs, 0);
+  document.getElementById("stat-runners").textContent = athletes.length;
+  document.getElementById("stat-km").textContent      = totalKm;
+  document.getElementById("stat-runs").textContent    = totalRuns;
+
   const sorted = getSortedAthletes();
 
   const podium = document.getElementById("podium");
@@ -806,7 +812,7 @@ const historicalWeeks = {
       { name: "Swati Negi",       distance:  1.0, runs: 1, longest:  1.0, pace: "9:50", paceVal: 590, elev: "6m"   },
     ]
   },
-  "hist-week-apr1": {
+  "hist-week-mar23": {
     sortKey: "distance",
     athletes: [
       { name: "Rishendra Chauhan",  distance: 30.1, runs: 3, longest: 10.1, pace: "5:50",  paceVal: 350, elev: "111m" },
@@ -817,7 +823,7 @@ const historicalWeeks = {
       { name: "Anurup De",          distance:  3.1, runs: 2, longest:  2.0, pace: "6:30",  paceVal: 390, elev: "--"   },
       { name: "Angad Singh Pental", distance:  3.0, runs: 2, longest:  1.5, pace: "7:48",  paceVal: 468, elev: "--"   },
       { name: "Sidharth Nair",      distance:  3.0, runs: 1, longest:  3.0, pace: "4:41",  paceVal: 281, elev: "8m"   },
-      { name: "Nischay Vij",        distance:  0.4, runs: 1, longest:  0.4, pace: "1:52",  paceVal: 112, elev: "--"   },
+      { name: "Nischay Vij",        distance:  0.4, runs: 1, longest:  0.4, pace: "11:52", paceVal: 712, elev: "--"   },
     ]
   }
 };
@@ -914,11 +920,13 @@ function getSortedCumulAthletes() {
 function renderCumulative() {
   const sorted = getSortedCumulAthletes();
 
-  const grandKm   = Math.round(sorted.reduce((s,a) => s + a.totalDistance, 0) * 10) / 10;
-  const grandRuns = sorted.reduce((s,a) => s + a.totalRuns, 0);
+  const grandKm    = Math.round(sorted.reduce((s,a) => s + a.totalDistance, 0) * 10) / 10;
+  const grandRuns  = sorted.reduce((s,a) => s + a.totalRuns, 0);
+  const weekCount  = Object.keys(historicalWeeks).length + 1; // historical + current
   document.getElementById("cumul-stat-runners").textContent = sorted.length;
   document.getElementById("cumul-stat-km").textContent      = grandKm;
   document.getElementById("cumul-stat-runs").textContent    = grandRuns;
+  document.getElementById("cumul-week-count").textContent   = weekCount;
 
   const body = document.getElementById("cumul-body");
   body.innerHTML = sorted.map((a,i) => `
