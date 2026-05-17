@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
 """
-Auto-updates KFS leaderboard from Strava club activities.
-Runs every Monday via GitHub Actions.
-
-Usage:
-  python update_leaderboard.py          # normal weekly update
-  python update_leaderboard.py --init   # first-time setup: mark all current activities as seen
+Nightly KFS leaderboard updater.
+- Every night: fetch new club activities, add to current week, update index.html
+- Monday night: also archive last week first, then start fresh
 """
-import os, re, sys, json, requests
+import os, re, json, requests
 from datetime import datetime, timedelta, timezone
 from collections import defaultdict
 
@@ -21,6 +18,7 @@ HTML_FILE = os.path.join(ROOT, 'index.html')
 SCRIPTS   = os.path.dirname(os.path.abspath(__file__))
 NAME_MAP  = os.path.join(SCRIPTS, 'name_map.json')
 SEEN_FILE = os.path.join(SCRIPTS, 'seen_activities.json')
+WEEK_FILE = os.path.join(SCRIPTS, 'current_week_activities.json')
 
 COLORS = [
     "#FC4C02","#e05c00","#d45a00","#c85500","#bc5000","#b04b00","#a44600","#984100",
@@ -54,28 +52,22 @@ def fetch_club_activities(token):
             break
     return all_acts
 
-# ── State (seen fingerprints) ─────────────────────────────────────────────────
+# ── State files ───────────────────────────────────────────────────────────────
 
 def fingerprint(a):
     return f"{a['athlete']['firstname']}|{a['athlete']['lastname']}|{a['distance']}|{a['moving_time']}"
 
-def load_seen():
-    if os.path.exists(SEEN_FILE):
-        return set(json.load(open(SEEN_FILE)))
-    return set()
+def load_json(path, default):
+    if os.path.exists(path):
+        return json.load(open(path))
+    return default
 
-def save_seen(seen):
-    json.dump(sorted(seen), open(SEEN_FILE, 'w'), indent=2)
+def save_json(path, data):
+    json.dump(data, open(path, 'w'), indent=2)
 
 # ── Name resolution ───────────────────────────────────────────────────────────
 
-def load_name_map():
-    if os.path.exists(NAME_MAP):
-        return json.load(open(NAME_MAP))
-    return {}
-
 def resolve_name(firstname, lastname, name_map):
-    # lastname from API is already truncated e.g. "C." — build the key as "Firstname L."
     key = f"{firstname} {lastname}"
     return name_map.get(key, key)
 
@@ -126,14 +118,12 @@ def aggregate(activities, name_map):
 
 # ── Date helpers ──────────────────────────────────────────────────────────────
 
-def last_week_range():
-    """Return (monday, sunday) for the week that just ended."""
-    today = datetime.now(timezone.utc)
-    # weekday(): Mon=0 … Sun=6
-    days_back_to_monday = today.weekday() + 7   # go back to last Mon
-    monday = (today - timedelta(days=days_back_to_monday)).replace(
-        hour=0, minute=0, second=0, microsecond=0)
-    sunday = monday + timedelta(days=6)
+def current_week_range():
+    """Mon 00:00 UTC → Sun 23:59 UTC for the current week."""
+    today   = datetime.now(timezone.utc)
+    monday  = (today - timedelta(days=today.weekday())).replace(
+                  hour=0, minute=0, second=0, microsecond=0)
+    sunday  = monday + timedelta(days=6)
     return monday, sunday
 
 def badge_text(monday, sunday):
@@ -147,7 +137,10 @@ def week_html_id(monday):
               7:'jul',8:'aug',9:'sep',10:'oct',11:'nov',12:'dec'}
     return f"{months[monday.month]}{monday.day}"
 
-# ── HTML update ───────────────────────────────────────────────────────────────
+def is_monday():
+    return datetime.now(timezone.utc).weekday() == 0
+
+# ── HTML helpers ──────────────────────────────────────────────────────────────
 
 def athletes_to_js(athletes, with_color=True):
     lines = []
@@ -168,13 +161,12 @@ def athletes_to_js(athletes, with_color=True):
 
 def parse_current_athletes(html):
     m = re.search(r'const athletes = \[(.*?)\];', html, re.DOTALL)
-    if not m:
-        return []
+    if not m: return []
     result = []
     for obj in re.finditer(r'\{([^}]+)\}', m.group(1)):
         s = obj.group(1)
-        def get(field):
-            fm = re.search(rf'{field}:\s*("([^"]*)"|([\d.]+))', s)
+        def get(field, src=s):
+            fm = re.search(rf'{field}:\s*("([^"]*)"|([\d.]+))', src)
             if not fm: return ''
             return fm.group(2) if fm.group(2) is not None else fm.group(3)
         try:
@@ -244,102 +236,110 @@ def make_hist_js_entry(wid, athletes):
     ath_js = athletes_to_js(athletes, with_color=False)
     return f'  "hist-week-{wid}": {{\n    sortKey: "distance",\n    athletes: [\n{ath_js},\n    ]\n  }},\n'
 
-def update_html(html, new_athletes, new_badge, prev_badge, prev_wid, prev_athletes):
-    # 1. Update week badge
+def update_html(html, new_athletes, new_badge,
+                prev_badge=None, prev_wid=None, prev_athletes=None):
+    # Update week badge
+    old_badge = parse_current_badge(html)
     html = html.replace(
-        f'<div class="week-badge"><span>{prev_badge}</span></div>',
+        f'<div class="week-badge"><span>{old_badge}</span></div>',
         f'<div class="week-badge"><span>{new_badge}</span></div>',
     )
 
-    # 2. Replace athletes array
+    # Replace athletes array
     html = re.sub(
         r'const athletes = \[.*?\];',
         f'const athletes = [\n{athletes_to_js(new_athletes)},\n];',
         html, flags=re.DOTALL
     )
 
-    # 3. Prepend new historical HTML card (before the first hist-week-card div)
-    hist_card = make_hist_html_card(prev_wid, prev_badge, prev_athletes)
-    html = html.replace(
-        '    <div class="hist-week-card"',
-        hist_card + '    <div class="hist-week-card"',
-        1
-    )
+    # On Monday: archive previous week into history
+    if prev_badge and prev_wid and prev_athletes:
+        hist_card  = make_hist_html_card(prev_wid, prev_badge, prev_athletes)
+        hist_entry = make_hist_js_entry(prev_wid, prev_athletes)
 
-    # 4. Prepend new historical JS entry
-    hist_entry = make_hist_js_entry(prev_wid, prev_athletes)
-    html = html.replace(
-        'const historicalWeeks = {\n',
-        f'const historicalWeeks = {{\n{hist_entry}',
-        1
-    )
+        html = html.replace(
+            '    <div class="hist-week-card"',
+            hist_card + '    <div class="hist-week-card"',
+            1
+        )
+        html = html.replace(
+            'const historicalWeeks = {\n',
+            f'const historicalWeeks = {{\n{hist_entry}',
+            1
+        )
 
     return html
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
-    init_mode = '--init' in sys.argv
-
     print("Getting Strava access token...")
     token = get_access_token()
 
     print("Fetching club activities...")
     activities = fetch_club_activities(token)
-    print(f"  {len(activities)} activities returned by API")
+    print(f"  {len(activities)} activities from API")
 
-    seen     = load_seen()
-    name_map = load_name_map()
+    seen     = set(load_json(SEEN_FILE, []))
+    name_map = load_json(NAME_MAP, {})
 
-    if init_mode:
-        # Just mark everything as seen — don't touch index.html
-        fps = {fingerprint(a) for a in activities}
-        seen.update(fps)
-        save_seen(seen)
-        print(f"Init complete. Marked {len(fps)} activities as seen. Run without --init next Monday.")
-        return
-
+    # Find activities we haven't seen before
     new_acts = [a for a in activities if fingerprint(a) not in seen]
-    print(f"  {len(new_acts)} new activities this week")
+    print(f"  {len(new_acts)} new since last run")
 
-    if not new_acts:
-        print("No new activities — skipping HTML update.")
-        return
-
-    # Save all current fingerprints so next week only truly new runs are counted
+    # Update seen set
     seen.update(fingerprint(a) for a in activities)
-    save_seen(seen)
+    save_json(SEEN_FILE, sorted(seen))
 
-    # Aggregate new activities into this week's leaderboard
-    new_athletes = aggregate(new_acts, name_map)
-    if not new_athletes:
-        print("No running activities found — skipping HTML update.")
+    monday = is_monday()
+
+    # Load this week's accumulated activities
+    week_acts = load_json(WEEK_FILE, [])
+
+    if monday:
+        print("It's Monday — archiving last week and starting fresh.")
+        # Read HTML now to capture last week before reset
+        with open(HTML_FILE) as f:
+            html = f.read()
+        prev_badge    = parse_current_badge(html)
+        prev_athletes = parse_current_athletes(html)
+        prev_wid      = badge_to_week_id(prev_badge)
+        print(f"  Archiving: {prev_badge} ({len(prev_athletes)} athletes)")
+        # Reset week accumulator to only this Monday's new activities
+        week_acts = new_acts
+    else:
+        # Mid-week: append new activities to this week's accumulator
+        week_acts = week_acts + new_acts
+
+    save_json(WEEK_FILE, week_acts)
+
+    if not week_acts:
+        print("No activities this week yet — skipping HTML update.")
         return
 
-    monday, sunday = last_week_range()
-    new_badge = badge_text(monday, sunday)
+    # Aggregate all of this week's activities
+    new_athletes = aggregate(week_acts, name_map)
 
-    print(f"\nNew week badge: {new_badge}")
-    print("Athletes this week:")
-    for a in new_athletes:
-        print(f"  {a['name']:30s} {a['distance']} km  {a['runs']} runs")
+    mon, sun   = current_week_range()
+    new_badge  = badge_text(mon, sun)
 
-    # Read, update, write HTML
+    print(f"\nWeek: {new_badge}  |  {len(new_athletes)} athletes")
+    for a in new_athletes[:5]:
+        print(f"  {a['name']:30s} {a['distance']} km")
+
     with open(HTML_FILE) as f:
         html = f.read()
 
-    prev_badge    = parse_current_badge(html)
-    prev_athletes = parse_current_athletes(html)
-    prev_wid      = badge_to_week_id(prev_badge)
-
-    print(f"\nArchiving: {prev_badge} ({len(prev_athletes)} athletes)")
-
-    html = update_html(html, new_athletes, new_badge, prev_badge, prev_wid, prev_athletes)
+    if monday:
+        html = update_html(html, new_athletes, new_badge,
+                           prev_badge, prev_wid, prev_athletes)
+    else:
+        html = update_html(html, new_athletes, new_badge)
 
     with open(HTML_FILE, 'w') as f:
         f.write(html)
 
-    print("\nindex.html updated successfully!")
+    print("\nindex.html updated.")
 
 if __name__ == '__main__':
     main()

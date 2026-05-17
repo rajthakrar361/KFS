@@ -2,9 +2,9 @@ name: Update KFS Leaderboard
 
 on:
   schedule:
-    # Every Monday at 02:00 UTC (all Sunday runs logged by then across timezones)
-    - cron: '0 2 * * 1'
-  workflow_dispatch:   # allow manual trigger from GitHub UI
+    # Every night at 22:30 UTC (late enough to catch all timezones' evening runs)
+    - cron: '30 22 * * *'
+  workflow_dispatch:   # manual trigger from GitHub UI
 
 jobs:
   update:
@@ -36,6 +36,6 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.html scripts/seen_activities.json
-          git diff --cached --quiet || git commit -m "auto: update leaderboard $(date +'%Y-%m-%d')"
+          git add index.html scripts/seen_activities.json scripts/current_week_activities.json
+          git diff --cached --quiet || git commit -m "auto: leaderboard update $(date +'%Y-%m-%d')"
           git push
