@@ -605,6 +605,35 @@
       ⏳ <span style="color:var(--text);">More weeks being added.</span> Previous leaderboards will be published here soon.
     </div>
 
+    <!-- Week of May 4 -->
+    <div class="hist-week-card" id="hist-week-may4">
+      <div class="hist-week-header" onclick="toggleHistWeek('hist-week-may4')">
+        <div>
+          <div class="hist-week-title">May 4 – 10, 2026</div>
+          <div class="hist-week-meta">
+            <span><strong>19</strong> runners</span>
+            <span><strong>195.6</strong> km total</span>
+            <span><strong>53</strong> runs</span>
+          </div>
+        </div>
+        <span class="hist-chevron">▼</span>
+      </div>
+      <div class="hist-week-body">
+        <div class="hist-tabs">
+          <button class="tab active" onclick="setHistSort('hist-week-may4','distance',this)">Distance</button>
+          <button class="tab" onclick="setHistSort('hist-week-may4','pace',this)">Best Pace</button>
+          <button class="tab" onclick="setHistSort('hist-week-may4','runs',this)">Most Runs</button>
+        </div>
+        <div class="board" style="border:none;border-radius:0">
+          <div class="board-header">
+            <span></span><span>Athlete</span><span>Distance</span>
+            <span>Pace</span><span class="col-elev">Elev.</span>
+          </div>
+          <div id="hist-body-may4"></div>
+        </div>
+      </div>
+    </div>
+
     <!-- Week of Apr 27 -->
     <div class="hist-week-card" id="hist-week-apr27">
       <div class="hist-week-header" onclick="toggleHistWeek('hist-week-apr27')">
@@ -985,6 +1014,30 @@ render();
 
 // ── Historical data ───────────────────────────────────────────────
 const historicalWeeks = {
+  "hist-week-may4": {
+    sortKey: "distance",
+    athletes: [
+      { name: "Ankit Singh",          distance: 28.9, runs: 6, longest:  5.2, pace: "7:01", paceVal: 421, elev: "540m" },
+      { name: "Niranjan Neelakantan", distance: 26.3, runs: 6, longest:  5.7, pace: "5:41", paceVal: 341, elev: "179m" },
+      { name: "Rishendra Chauhan",    distance: 24.9, runs: 4, longest: 10.0, pace: "6:19", paceVal: 379, elev: "90m"  },
+      { name: "Amol Jain",            distance: 17.0, runs: 6, longest:  4.3, pace: "7:30", paceVal: 450, elev: "82m"  },
+      { name: "Sourabh M",            distance: 13.0, runs: 3, longest:  6.5, pace: "8:04", paceVal: 484, elev: "13m"  },
+      { name: "Swadit Chandan",       distance: 12.9, runs: 4, longest:  5.0, pace: "6:02", paceVal: 362, elev: "39m"  },
+      { name: "Mihir Pandit",         distance: 10.0, runs: 1, longest: 10.0, pace: "5:56", paceVal: 356, elev: "61m"  },
+      { name: "Samaksh Dhingra",      distance: 10.0, runs: 2, longest:  5.0, pace: "6:45", paceVal: 405, elev: "--"   },
+      { name: "Parv Vijayvargiya",    distance:  8.5, runs: 4, longest:  3.4, pace: "9:56", paceVal: 596, elev: "107m" },
+      { name: "Akash Jannu",          distance:  7.1, runs: 2, longest:  5.0, pace: "6:51", paceVal: 411, elev: "49m"  },
+      { name: "Gururaj M",            distance:  6.0, runs: 2, longest:  3.4, pace: "5:32", paceVal: 332, elev: "42m"  },
+      { name: "Utkarsh Pandey",       distance:  6.0, runs: 1, longest:  6.0, pace: "6:14", paceVal: 374, elev: "42m"  },
+      { name: "Ashok Kumar",          distance:  5.0, runs: 1, longest:  5.0, pace: "6:08", paceVal: 368, elev: "4m"   },
+      { name: "Aniket Roy",           distance:  5.0, runs: 1, longest:  5.0, pace: "5:39", paceVal: 339, elev: "2m"   },
+      { name: "Akshat Bansal",        distance:  4.9, runs: 5, longest:  1.4, pace: "6:52", paceVal: 412, elev: "72m"  },
+      { name: "Saksham G",            distance:  3.1, runs: 2, longest:  1.6, pace: "8:30", paceVal: 510, elev: "24m"  },
+      { name: "Awdhesh Gairola",      distance:  2.9, runs: 1, longest:  2.9, pace: "7:41", paceVal: 461, elev: "137m" },
+      { name: "Swati Negi",           distance:  2.1, runs: 1, longest:  2.1, pace: "5:55", paceVal: 355, elev: "2m"   },
+      { name: "Anurup De",            distance:  2.0, runs: 1, longest:  2.0, pace: "6:09", paceVal: 369, elev: "--"   },
+    ]
+  },
   "hist-week-apr27": {
     sortKey: "distance",
     athletes: [
