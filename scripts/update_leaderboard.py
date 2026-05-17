@@ -119,11 +119,12 @@ def aggregate(activities, name_map):
 # ── Date helpers ──────────────────────────────────────────────────────────────
 
 def current_week_range():
-    """Mon 00:00 UTC → Sun 23:59 UTC for the current week."""
-    today   = datetime.now(timezone.utc)
-    monday  = (today - timedelta(days=today.weekday())).replace(
-                  hour=0, minute=0, second=0, microsecond=0)
-    sunday  = monday + timedelta(days=6)
+    """Mon → Sun for the current week in IST."""
+    ist    = timezone(timedelta(hours=5, minutes=30))
+    today  = datetime.now(ist)
+    monday = (today - timedelta(days=today.weekday())).replace(
+                 hour=0, minute=0, second=0, microsecond=0)
+    sunday = monday + timedelta(days=6)
     return monday, sunday
 
 def badge_text(monday, sunday):
