@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -227,7 +227,7 @@
     display: block;
     position: relative;
     overflow: hidden;
-    padding: 12px 16px 10px 13px;
+    padding: 10px 14px 8px 13px;
     border-bottom: 1px solid var(--border);
     border-left: 3px solid transparent;
     transition: background 0.15s;
@@ -264,10 +264,16 @@
     pointer-events: none;
   }
 
-  /* Stick figure track */
-  .rr-track { position: relative; height: 28px; margin: 3px 8px 0 48px; }
-  .rr-track-line { position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: rgba(252,76,2,0.12); }
-  .rr-fig { position: absolute; bottom: 0; left: 0; width: 16px; transition: left 2.4s cubic-bezier(0.22,1,0.36,1); }
+  /* Stick figure track — dark pill lane */
+  .rr-track {
+    position: relative; height: 28px;
+    margin: 4px 4px 0 4px;
+    background: rgba(12,12,12,0.88);
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .rr-track-line { display: none; }
+  .rr-fig { position: absolute; bottom: 2px; left: 4px; width: 16px; transition: left 2.4s cubic-bezier(0.22,1,0.36,1); }
   .rr-fig svg { width: 16px; height: 24px; display: block; }
 
   @keyframes leg-run { from { transform: rotate(-28deg); } to { transform: rotate(28deg); } }
@@ -278,6 +284,29 @@
   .rr-fig .arm-r { transform-origin: 9px 9px; animation: arm-run 0.58s ease-in-out infinite alternate; }
   .rr-fig.arrived .leg-l, .rr-fig.arrived .leg-r,
   .rr-fig.arrived .arm-l, .rr-fig.arrived .arm-r { animation-play-state: paused; }
+
+  /* #1 — arms shoot up, bounces on podium */
+  .rr-fig.arrived.pos-1 .arm-l { transform-origin: 9px 9px; animation: arm-up-l 0.35s 0.1s ease forwards; }
+  .rr-fig.arrived.pos-1 .arm-r { transform-origin: 9px 9px; animation: arm-up-r 0.35s 0.1s ease forwards; }
+  .rr-fig.arrived.pos-1 .leg-l, .rr-fig.arrived.pos-1 .leg-r { animation-play-state: paused; }
+  .rr-fig.arrived.pos-1 {
+    animation: podium-jump 0.45s 0.05s cubic-bezier(0.4,0,0.2,1) forwards,
+               podium-bounce 0.52s 0.6s ease-in-out infinite;
+  }
+  @keyframes arm-up-l { to { transform: rotate(-118deg); } }
+  @keyframes arm-up-r { to { transform: rotate(118deg); } }
+  @keyframes podium-jump { 0% { bottom: 2px; } 45% { bottom: 14px; } 100% { bottom: 7px; } }
+  @keyframes podium-bounce { 0%,100% { bottom: 7px; } 50% { bottom: 12px; } }
+
+  /* last — tips over and fades */
+  .rr-fig.arrived.pos-last { transform-origin: 50% 100%; animation: fig-fall 0.65s 0.2s ease-in forwards; }
+  .rr-fig.arrived.pos-last .leg-l, .rr-fig.arrived.pos-last .leg-r,
+  .rr-fig.arrived.pos-last .arm-l, .rr-fig.arrived.pos-last .arm-r { animation-play-state: paused; }
+  @keyframes fig-fall {
+    0%   { transform: rotate(0deg);  opacity: 1; }
+    15%  { transform: rotate(-8deg); }
+    100% { transform: rotate(88deg); opacity: 0.25; }
+  }
 
   @keyframes slideIn {
     from { opacity: 0; transform: translateX(-12px); }
@@ -810,11 +839,6 @@
       </div>
     </div>
     <div class="podium" id="lastweek-podium"></div>
-    <div class="tabs">
-      <button class="tab active" onclick="setLastWeekSort('distance', this)">Distance</button>
-      <button class="tab" onclick="setLastWeekSort('pace', this)">Best Pace</button>
-      <button class="tab" onclick="setLastWeekSort('runs', this)">Most Runs</button>
-    </div>
     <div class="board">
       <div class="board-header">
         <span></span><span>Athlete</span><span>Distance</span>
@@ -845,11 +869,6 @@
         <span class="hist-chevron">▼</span>
       </div>
       <div class="hist-week-body">
-        <div class="hist-tabs">
-          <button class="tab active" onclick="setHistSort('hist-week-may11','distance',this)">Distance</button>
-          <button class="tab" onclick="setHistSort('hist-week-may11','pace',this)">Best Pace</button>
-          <button class="tab" onclick="setHistSort('hist-week-may11','runs',this)">Most Runs</button>
-        </div>
         <div class="board" style="border:none;border-radius:0">
           <div class="board-header">
             <span></span><span>Athlete</span><span>Distance</span>
@@ -873,11 +892,6 @@
         <span class="hist-chevron">▼</span>
       </div>
       <div class="hist-week-body">
-        <div class="hist-tabs">
-          <button class="tab active" onclick="setHistSort('hist-week-may4','distance',this)">Distance</button>
-          <button class="tab" onclick="setHistSort('hist-week-may4','pace',this)">Best Pace</button>
-          <button class="tab" onclick="setHistSort('hist-week-may4','runs',this)">Most Runs</button>
-        </div>
         <div class="board" style="border:none;border-radius:0">
           <div class="board-header">
             <span></span><span>Athlete</span><span>Distance</span>
@@ -902,11 +916,6 @@
         <span class="hist-chevron">▼</span>
       </div>
       <div class="hist-week-body">
-        <div class="hist-tabs">
-          <button class="tab active" onclick="setHistSort('hist-week-apr27','distance',this)">Distance</button>
-          <button class="tab" onclick="setHistSort('hist-week-apr27','pace',this)">Best Pace</button>
-          <button class="tab" onclick="setHistSort('hist-week-apr27','runs',this)">Most Runs</button>
-        </div>
         <div class="board" style="border:none;border-radius:0">
           <div class="board-header">
             <span></span>
@@ -934,11 +943,6 @@
         <span class="hist-chevron">▼</span>
       </div>
       <div class="hist-week-body">
-        <div class="hist-tabs">
-          <button class="tab active" onclick="setHistSort('hist-week-apr20','distance',this)">Distance</button>
-          <button class="tab" onclick="setHistSort('hist-week-apr20','pace',this)">Best Pace</button>
-          <button class="tab" onclick="setHistSort('hist-week-apr20','runs',this)">Most Runs</button>
-        </div>
         <div class="board" style="border:none;border-radius:0">
           <div class="board-header">
             <span></span>
@@ -966,11 +970,6 @@
         <span class="hist-chevron">▼</span>
       </div>
       <div class="hist-week-body">
-        <div class="hist-tabs">
-          <button class="tab active" onclick="setHistSort('hist-week-apr13','distance',this)">Distance</button>
-          <button class="tab" onclick="setHistSort('hist-week-apr13','pace',this)">Best Pace</button>
-          <button class="tab" onclick="setHistSort('hist-week-apr13','runs',this)">Most Runs</button>
-        </div>
         <div class="board" style="border:none;border-radius:0">
           <div class="board-header">
             <span></span>
@@ -998,11 +997,6 @@
         <span class="hist-chevron">▼</span>
       </div>
       <div class="hist-week-body">
-        <div class="hist-tabs">
-          <button class="tab active" onclick="setHistSort('hist-week-apr6','distance',this)">Distance</button>
-          <button class="tab" onclick="setHistSort('hist-week-apr6','pace',this)">Best Pace</button>
-          <button class="tab" onclick="setHistSort('hist-week-apr6','runs',this)">Most Runs</button>
-        </div>
         <div class="board" style="border:none;border-radius:0">
           <div class="board-header">
             <span></span>
@@ -1030,11 +1024,6 @@
         <span class="hist-chevron">▼</span>
       </div>
       <div class="hist-week-body">
-        <div class="hist-tabs">
-          <button class="tab active" onclick="setHistSort('hist-week-mar30','distance',this)">Distance</button>
-          <button class="tab" onclick="setHistSort('hist-week-mar30','pace',this)">Best Pace</button>
-          <button class="tab" onclick="setHistSort('hist-week-mar30','runs',this)">Most Runs</button>
-        </div>
         <div class="board" style="border:none;border-radius:0">
           <div class="board-header">
             <span></span>
@@ -1062,11 +1051,6 @@
         <span class="hist-chevron">▼</span>
       </div>
       <div class="hist-week-body">
-        <div class="hist-tabs">
-          <button class="tab active" onclick="setHistSort('hist-week-mar23','distance',this)">Distance</button>
-          <button class="tab" onclick="setHistSort('hist-week-mar23','pace',this)">Best Pace</button>
-          <button class="tab" onclick="setHistSort('hist-week-mar23','runs',this)">Most Runs</button>
-        </div>
         <div class="board" style="border:none;border-radius:0">
           <div class="board-header">
             <span></span>
@@ -1104,11 +1088,6 @@
       </div>
     </div>
 
-    <div class="tabs">
-      <button class="tab active" onclick="setCumulSort('distance', this)">Distance</button>
-      <button class="tab" onclick="setCumulSort('pace', this)">Best Pace</button>
-      <button class="tab" onclick="setCumulSort('runs', this)">Most Runs</button>
-    </div>
 
     <div class="board">
       <div class="board-header">
@@ -1179,11 +1158,6 @@
 
   <div class="podium" id="podium"></div>
 
-  <div class="tabs">
-    <button class="tab active" onclick="setSort('distance', this)">Distance</button>
-    <button class="tab" onclick="setSort('pace', this)">Best Pace</button>
-    <button class="tab" onclick="setSort('runs', this)">Most Runs</button>
-  </div>
 
   <div class="board">
     <div class="board-header">
@@ -1243,7 +1217,10 @@ function runBars(bodyId) {
 
 function runFigures(bodyId) {
   const figs = document.querySelectorAll('#' + bodyId + ' .rr-fig');
-  figs.forEach(f => { f.style.left = '0'; f.classList.remove('arrived'); });
+  if (!figs.length) return;
+  figs.forEach(f => { f.style.left = '4px'; f.classList.remove('arrived','pos-1','pos-last'); });
+  figs[0].classList.add('pos-1');
+  figs[figs.length - 1].classList.add('pos-last');
   requestAnimationFrame(() => requestAnimationFrame(() => {
     figs.forEach(f => { f.style.left = f.dataset.stop; });
   }));

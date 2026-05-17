@@ -218,11 +218,6 @@ def make_hist_html_card(wid, badge, athletes):
         <span class="hist-chevron">▼</span>
       </div>
       <div class="hist-week-body">
-        <div class="hist-tabs">
-          <button class="tab active" onclick="setHistSort('hist-week-{wid}','distance',this)">Distance</button>
-          <button class="tab" onclick="setHistSort('hist-week-{wid}','pace',this)">Best Pace</button>
-          <button class="tab" onclick="setHistSort('hist-week-{wid}','runs',this)">Most Runs</button>
-        </div>
         <div class="board" style="border:none;border-radius:0">
           <div class="board-header">
             <span></span><span>Athlete</span><span>Distance</span>
