@@ -1,0 +1,41 @@
+name: Update KFS Leaderboard
+
+on:
+  schedule:
+    # Every Monday at 02:00 UTC (all Sunday runs logged by then across timezones)
+    - cron: '0 2 * * 1'
+  workflow_dispatch:   # allow manual trigger from GitHub UI
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run leaderboard update
+        env:
+          STRAVA_CLIENT_ID:     ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+          STRAVA_CLUB_ID:       ${{ secrets.STRAVA_CLUB_ID }}
+        run: python scripts/update_leaderboard.py
+
+      - name: Commit and push changes
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html scripts/seen_activities.json
+          git diff --cached --quiet || git commit -m "auto: update leaderboard $(date +'%Y-%m-%d')"
+          git push
