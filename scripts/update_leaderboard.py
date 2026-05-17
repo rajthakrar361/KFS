@@ -138,7 +138,9 @@ def week_html_id(monday):
     return f"{months[monday.month]}{monday.day}"
 
 def is_monday():
-    return datetime.now(timezone.utc).weekday() == 0
+    # Use IST (UTC+5:30) — the club's home timezone
+    ist = timezone(timedelta(hours=5, minutes=30))
+    return datetime.now(ist).weekday() == 0
 
 # ── HTML helpers ──────────────────────────────────────────────────────────────
 
@@ -297,16 +299,15 @@ def main():
     week_acts = load_json(WEEK_FILE, [])
 
     if monday:
-        print("It's Monday — archiving last week and starting fresh.")
-        # Read HTML now to capture last week before reset
+        print("It's Monday IST — archiving last week and starting fresh.")
         with open(HTML_FILE) as f:
             html = f.read()
         prev_badge    = parse_current_badge(html)
         prev_athletes = parse_current_athletes(html)
         prev_wid      = badge_to_week_id(prev_badge)
         print(f"  Archiving: {prev_badge} ({len(prev_athletes)} athletes)")
-        # Reset week accumulator to only this Monday's new activities
-        week_acts = new_acts
+        # Always start the new week empty — don't carry over old API backlog
+        week_acts = []
     else:
         # Mid-week: append new activities to this week's accumulator
         week_acts = week_acts + new_acts

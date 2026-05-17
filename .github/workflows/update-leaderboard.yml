@@ -2,8 +2,8 @@ name: Update KFS Leaderboard
 
 on:
   schedule:
-    # Every night at 22:30 UTC (late enough to catch all timezones' evening runs)
-    - cron: '30 22 * * *'
+    # Every night at 23:00 UTC = 04:30 IST (catches all evening runs, Mon check uses IST)
+    - cron: '0 23 * * *'
   workflow_dispatch:   # manual trigger from GitHub UI
 
 permissions:
