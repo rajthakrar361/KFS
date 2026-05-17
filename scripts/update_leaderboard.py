@@ -59,7 +59,7 @@ def fingerprint(a):
 
 def load_json(path, default):
     if os.path.exists(path):
-        return json.load(open(path))
+        return json.loads(open(path, encoding='utf-8-sig').read())
     return default
 
 def save_json(path, data):
