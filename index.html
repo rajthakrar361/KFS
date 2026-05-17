@@ -221,26 +221,11 @@
     overflow: hidden;
   }
 
-  .board-header {
-    display: grid;
-    grid-template-columns: 56px 1fr 88px 72px 72px;
-    padding: 10px 16px 10px 19px;
-    border-bottom: 1px solid var(--border);
-    border-left: 3px solid transparent;
-  }
-
-  .board-header span {
-    font-size: 10px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-  }
+  .board-header { display: none; }
 
   .runner-row {
-    display: grid;
-    grid-template-columns: 56px 1fr 88px 72px 72px;
-    align-items: center;
-    padding: 13px 16px 13px 13px;
+    display: block;
+    padding: 12px 16px 10px 13px;
     border-bottom: 1px solid var(--border);
     border-left: 3px solid transparent;
     transition: background 0.15s;
@@ -256,6 +241,33 @@
   .runner-row.rank1:hover { background: rgba(255,215,0,0.07); }
   .runner-row.rank2:hover { background: rgba(192,192,192,0.06); }
   .runner-row.rank3:hover { background: rgba(205,127,50,0.06); }
+
+  /* Race timing row */
+  .rr-top { display: flex; align-items: center; gap: 12px; }
+  .rr-dist {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem; line-height: 1; color: var(--text);
+    margin-left: auto; flex-shrink: 0;
+  }
+  .runner-row.rank1 .rr-dist { color: var(--gold); }
+  .runner-row.rank2 .rr-dist { color: var(--silver); }
+  .runner-row.rank3 .rr-dist { color: var(--orange); }
+  .rr-dist-unit { font-family: 'DM Sans', sans-serif; font-size: 11px; color: var(--muted); margin-left: 2px; }
+
+  /* Stick figure track */
+  .rr-track { position: relative; height: 28px; margin: 3px 8px 0 48px; }
+  .rr-track-line { position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: rgba(252,76,2,0.12); }
+  .rr-fig { position: absolute; bottom: 0; left: 0; width: 16px; transition: left 1.3s cubic-bezier(0.22,1,0.36,1); }
+  .rr-fig svg { width: 16px; height: 24px; display: block; }
+
+  @keyframes leg-run { from { transform: rotate(-30deg); } to { transform: rotate(30deg); } }
+  @keyframes arm-run { from { transform: rotate(-22deg); } to { transform: rotate(22deg); } }
+  .rr-fig .leg-l { transform-origin: 9px 15px; animation: leg-run 0.36s ease-in-out infinite alternate; }
+  .rr-fig .leg-r { transform-origin: 9px 15px; animation: leg-run 0.36s ease-in-out infinite alternate-reverse; }
+  .rr-fig .arm-l { transform-origin: 9px 9px; animation: arm-run 0.36s ease-in-out infinite alternate-reverse; }
+  .rr-fig .arm-r { transform-origin: 9px 9px; animation: arm-run 0.36s ease-in-out infinite alternate; }
+  .rr-fig.arrived .leg-l, .rr-fig.arrived .leg-r,
+  .rr-fig.arrived .arm-l, .rr-fig.arrived .arm-r { animation-play-state: paused; }
 
   @keyframes slideIn {
     from { opacity: 0; transform: translateX(-12px); }
@@ -555,14 +567,12 @@
   }
 
   @media (max-width: 500px) {
-    .board-header, .runner-row {
-      grid-template-columns: 46px 1fr 76px 62px;
-    }
-    .col-elev { display: none; }
     h1 { font-size: 3rem; }
     .hero-img-bg { height: 240px; }
     .hist-week-meta { gap: 8px; }
     .stat-num { font-size: 2.2rem; }
+    .rr-track { margin-left: 44px; }
+    .rr-dist { font-size: 1.3rem; }
   }
 
   /* ── Test / Design Preview ── */
@@ -1196,6 +1206,34 @@ function initials(name) {
   return name.split(" ").slice(0,2).map(w => w[0]).join("").toUpperCase();
 }
 
+const stickSVG = `<svg viewBox="0 0 18 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><circle cx="9" cy="3" r="2.4" fill="currentColor" stroke="none"/><line x1="9" y1="5.5" x2="9" y2="15"/><line class="arm-l" x1="9" y1="9" x2="4" y2="13"/><line class="arm-r" x1="9" y1="9" x2="14" y2="13"/><line class="leg-l" x1="9" y1="15" x2="4" y2="23"/><line class="leg-r" x1="9" y1="15" x2="14" y2="23"/></svg>`;
+
+function makeRunRow(name, dist, col, i, stopPct, sub) {
+  return `<div class="runner-row rank${i+1}" style="animation-delay:${i*0.04}s">
+    <div class="rr-top">
+      <div class="pos-wrap">${i < 3 ? `<span class="medal">${medals[i]}</span>` : `<span class="pos">${i+1}</span>`}</div>
+      <div class="runner-info">
+        <div class="avatar" style="background:${col}22;color:${col};border-color:${col}44">${initials(name)}</div>
+        <div><div class="runner-name">${name}</div><div class="runner-sub">${sub}</div></div>
+      </div>
+      <div class="rr-dist">${dist}<span class="rr-dist-unit">km</span></div>
+    </div>
+    <div class="rr-track">
+      <div class="rr-track-line"></div>
+      <div class="rr-fig" data-stop="${stopPct}%" style="color:${col}">${stickSVG}</div>
+    </div>
+  </div>`;
+}
+
+function runFigures(bodyId) {
+  const figs = document.querySelectorAll('#' + bodyId + ' .rr-fig');
+  figs.forEach(f => { f.style.left = '0'; f.classList.remove('arrived'); });
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    figs.forEach(f => { f.style.left = f.dataset.stop; });
+  }));
+  setTimeout(() => figs.forEach(f => f.classList.add('arrived')), 1400);
+}
+
 let sortKey = "distance";
 
 function setSort(key, btn) {
@@ -1233,25 +1271,14 @@ function render() {
   `).join("");
 
   const body = document.getElementById("board-body");
-  body.innerHTML = sorted.map((a,i) => `
-    <div class="runner-row rank${i+1}" style="animation-delay:${i*0.05}s">
-      <div class="pos-wrap">
-        ${i < 3 ? `<span class="medal">${medals[i]}</span>` : `<span class="pos">${i+1}</span>`}
-      </div>
-      <div class="runner-info">
-        <div class="avatar" style="background:${avatarColors[athletes.indexOf(a)]}22; color:${avatarColors[athletes.indexOf(a)]}; border-color:${avatarColors[athletes.indexOf(a)]}44">
-          ${initials(a.name)}
-        </div>
-        <div>
-          <div class="runner-name">${a.name}</div>
-          <div class="runner-sub">${a.runs} run${a.runs>1?"s":""} - longest ${a.longest}km</div>
-        </div>
-      </div>
-      <div class="val">${a.distance}<span class="val-unit">km</span></div>
-      <div class="val-secondary">${a.pace}/km</div>
-      <div class="val-secondary col-elev">${a.elev}</div>
-    </div>
-  `).join("");
+  const maxDist = sorted.length > 0 ? sorted.reduce((m,a) => Math.max(m, a.distance), 0) : 1;
+  body.innerHTML = sorted.map((a, i) => {
+    const col = avatarColors[athletes.indexOf(a) >= 0 ? athletes.indexOf(a) : i % avatarColors.length];
+    const stop = (a.distance / maxDist * 95).toFixed(1);
+    return makeRunRow(a.name, a.distance, col, i, stop,
+      `${a.runs} run${a.runs>1?"s":""} · longest ${a.longest}km · ${a.pace}/km`);
+  }).join("");
+  runFigures('board-body');
 }
 
 render();
@@ -1480,25 +1507,14 @@ function renderLastWeek() {
     </div>
   `).join("");
 
-  document.getElementById("lastweek-body").innerHTML = arr.map((a, i) => `
-    <div class="runner-row rank${i+1}" style="animation-delay:${i*0.05}s">
-      <div class="pos-wrap">
-        ${i < 3 ? `<span class="medal">${medals[i]}</span>` : `<span class="pos">${i+1}</span>`}
-      </div>
-      <div class="runner-info">
-        <div class="avatar" style="background:${avatarColors[i % avatarColors.length]}22; color:${avatarColors[i % avatarColors.length]}; border-color:${avatarColors[i % avatarColors.length]}44">
-          ${initials(a.name)}
-        </div>
-        <div>
-          <div class="runner-name">${a.name}</div>
-          <div class="runner-sub">${a.runs} run${a.runs>1?"s":""} · longest ${a.longest}km</div>
-        </div>
-      </div>
-      <div class="val">${a.distance}<span class="val-unit">km</span></div>
-      <div class="val-secondary">${a.pace}/km</div>
-      <div class="val-secondary col-elev">${a.elev}</div>
-    </div>
-  `).join("");
+  const lwMax = arr.length > 0 ? arr.reduce((m,a) => Math.max(m, a.distance), 0) : 1;
+  document.getElementById("lastweek-body").innerHTML = arr.map((a, i) => {
+    const col = avatarColors[i % avatarColors.length];
+    const stop = (a.distance / lwMax * 95).toFixed(1);
+    return makeRunRow(a.name, a.distance, col, i, stop,
+      `${a.runs} run${a.runs>1?"s":""} · longest ${a.longest}km · ${a.pace}/km`);
+  }).join("");
+  runFigures('lastweek-body');
 }
 
 // ── Page navigation ───────────────────────────────────────────────
@@ -1702,25 +1718,13 @@ function renderCumulative() {
   document.getElementById("cumul-week-count").textContent   = weekCount;
 
   const body = document.getElementById("cumul-body");
-  body.innerHTML = sorted.map((a,i) => `
-    <div class="runner-row rank${i+1}" style="animation-delay:${i*0.05}s">
-      <div class="pos-wrap">
-        ${i < 3 ? `<span class="medal">${medals[i]}</span>` : `<span class="pos">${i+1}</span>`}
-      </div>
-      <div class="runner-info">
-        <div class="avatar" style="background:${a.color}22; color:${a.color}; border-color:${a.color}44">
-          ${initials(a.name)}
-        </div>
-        <div>
-          <div class="runner-name">${a.name}</div>
-          <div class="runner-sub">${a.weeksParticipated} week${a.weeksParticipated>1?"s":""} · ${a.totalRuns} run${a.totalRuns>1?"s":""}</div>
-        </div>
-      </div>
-      <div class="val">${a.totalDistance}<span class="val-unit">km</span></div>
-      <div class="val-secondary">${a.bestPace}/km</div>
-      <div class="val-secondary col-elev">${a.weeksParticipated}w</div>
-    </div>
-  `).join("");
+  const cmMax = sorted.length > 0 ? sorted.reduce((m,a) => Math.max(m, a.totalDistance), 0) : 1;
+  body.innerHTML = sorted.map((a, i) => {
+    const stop = (a.totalDistance / cmMax * 95).toFixed(1);
+    return makeRunRow(a.name, a.totalDistance, a.color, i, stop,
+      `${a.weeksParticipated}w · ${a.totalRuns} run${a.totalRuns>1?"s":""} · best ${a.bestPace}/km`);
+  }).join("");
+  runFigures('cumul-body');
 }
 
 // ── Historical week accordion ─────────────────────────────────────
@@ -1751,25 +1755,14 @@ function renderHistWeek(weekId) {
   const sorted = getSortedHistAthletes(weekId);
   const bodyId = "hist-body-" + weekId.replace("hist-week-", "");
   const body   = document.getElementById(bodyId);
-  body.innerHTML = sorted.map((a, i) => `
-    <div class="runner-row rank${i+1}" style="animation-delay:${i*0.05}s">
-      <div class="pos-wrap">
-        ${i < 3 ? `<span class="medal">${medals[i]}</span>` : `<span class="pos">${i+1}</span>`}
-      </div>
-      <div class="runner-info">
-        <div class="avatar" style="background:${avatarColors[i % avatarColors.length]}22; color:${avatarColors[i % avatarColors.length]}; border-color:${avatarColors[i % avatarColors.length]}44">
-          ${initials(a.name)}
-        </div>
-        <div>
-          <div class="runner-name">${a.name}</div>
-          <div class="runner-sub">${a.runs} run${a.runs>1?"s":""} · longest ${a.longest}km</div>
-        </div>
-      </div>
-      <div class="val">${a.distance}<span class="val-unit">km</span></div>
-      <div class="val-secondary">${a.pace}/km</div>
-      <div class="val-secondary col-elev">${a.elev}</div>
-    </div>
-  `).join("");
+  const hwMax = sorted.length > 0 ? sorted.reduce((m,a) => Math.max(m, a.distance), 0) : 1;
+  body.innerHTML = sorted.map((a, i) => {
+    const col = avatarColors[i % avatarColors.length];
+    const stop = (a.distance / hwMax * 95).toFixed(1);
+    return makeRunRow(a.name, a.distance, col, i, stop,
+      `${a.runs} run${a.runs>1?"s":""} · longest ${a.longest}km · ${a.pace}/km`);
+  }).join("");
+  runFigures(bodyId);
 }
 
 showPage('lastweek');
