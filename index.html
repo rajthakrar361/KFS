@@ -866,7 +866,7 @@
           <div class="hist-week-meta">
             <span><strong>9</strong> runners</span>
             <span><strong>102.4</strong> km total</span>
-            <span><strong>19</strong> runs</span>
+            <span><strong>20</strong> runs</span>
           </div>
         </div>
         <span class="hist-chevron">▼</span>
@@ -990,6 +990,7 @@ const athletes = [
 
 ];
 
+const currentWeekBadge = document.querySelector('.week-badge span').textContent;
 const medals = ["🥇","🥈","🥉"];
 const avatarColors = ["#FC4C02","#e05c00","#d45a00","#c85500","#bc5000","#b04b00","#a44600","#984100","#8c3c00","#803700"];
 
@@ -1322,36 +1323,41 @@ function showPage(page) {
   navHist.classList.remove("active");
   navCumul.classList.remove("active");
 
+  const badgeEl = document.querySelector('.week-badge span');
   if (page === "lastweek") {
     lastweekView.classList.add("active");
     navLastWeek.classList.add("active");
     renderLastWeek();
+    const lastTitle = document.querySelector('.hist-week-card .hist-week-title');
+    if (badgeEl && lastTitle) badgeEl.textContent = lastTitle.textContent;
   } else if (page === "history") {
     histView.classList.add("active");
     navHist.classList.add("active");
+    if (badgeEl) badgeEl.textContent = "Historical";
   } else if (page === "cumulative") {
     cumulView.classList.add("active");
     navCumul.classList.add("active");
     renderCumulative();
+    if (badgeEl) badgeEl.textContent = "All-time";
   } else {
     currView.classList.add("active");
     navCurr.classList.add("active");
+    if (badgeEl) badgeEl.textContent = currentWeekBadge;
   }
 }
 
 // ── Cumulative leaderboard ───────────────────────────────────────
 const nameAliases = {
-  "Niranjan N.":    "Niranjan Neelakantan",
+  "Niranjan N.":     "Niranjan Neelakantan",
   "Ayaan K. Pathan": "Ayaan Khan Pathan",
+  "Srijan S":        "Srijan Shrey",
 };
 
 function normalizeName(name) { return nameAliases[name] || name; }
 
-const histOnlyColors = ["#4a1500","#3e1200","#2d0e00","#220a00","#170700","#0c0400"];
-
 function buildCumulativeData() {
   const map = {};
-  let histColorIdx = 0;
+  let colorIdx = 0;
 
   function addEntry(a) {
     const name = normalizeName(a.name);
@@ -1364,7 +1370,7 @@ function buildCumulativeData() {
         weeksParticipated: 0,
         bestPaceVal: Infinity,
         bestPace: "--",
-        color: main ? main.color : histOnlyColors[histColorIdx++ % histOnlyColors.length]
+        color: main ? main.color : avatarColors[colorIdx++ % avatarColors.length]
       };
     }
     map[name].totalDistance = Math.round((map[name].totalDistance + a.distance) * 10) / 10;
@@ -1403,7 +1409,7 @@ function renderCumulative() {
 
   const grandKm    = Math.round(sorted.reduce((s,a) => s + a.totalDistance, 0) * 10) / 10;
   const grandRuns  = sorted.reduce((s,a) => s + a.totalRuns, 0);
-  const weekCount  = Object.keys(historicalWeeks).length + 1; // historical + current
+  const weekCount  = Object.keys(historicalWeeks).length + (athletes.length > 0 ? 1 : 0);
   document.getElementById("cumul-stat-runners").textContent = sorted.length;
   document.getElementById("cumul-stat-km").textContent      = grandKm;
   document.getElementById("cumul-stat-runs").textContent    = grandRuns;
