@@ -308,14 +308,24 @@ def main():
 
     if monday:
         print("It's Monday IST — archiving last week and starting fresh.")
-        prev_badge    = parse_current_badge(html)
-        prev_athletes = parse_current_athletes(html)
-        prev_wid      = badge_to_week_id(prev_badge)
-        print(f"  Archiving: {prev_badge} ({len(prev_athletes)} athletes)")
-        # Always start the new week empty — don't carry over old API backlog
-        week_acts = []
-        save_json(WEEK_FILE, week_acts)
-        # Archive old week and set new badge even if no runs yet today
+        # Include any runs done since the last job (Sunday evening) in the archived week
+        full_week_acts = week_acts + new_acts
+
+        prev_badge = parse_current_badge(html)
+        prev_wid   = badge_to_week_id(prev_badge)
+
+        # Build prev_athletes from the JSON accumulator — more reliable than regex-parsing HTML
+        if full_week_acts:
+            prev_athletes = aggregate(full_week_acts, name_map)
+        else:
+            prev_athletes = parse_current_athletes(html)  # fallback: nothing in accumulator
+
+        print(f"  Archiving: {prev_badge} ({len(prev_athletes)} athletes, "
+              f"{len(new_acts)} late Sunday runs included)")
+
+        # Reset accumulator for the new week
+        save_json(WEEK_FILE, [])
+
         html = update_html(html, [], new_badge, prev_badge, prev_wid, prev_athletes)
         with open(HTML_FILE, 'w') as f:
             f.write(html)
