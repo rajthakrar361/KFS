@@ -247,10 +247,11 @@ def update_html(html, new_athletes, new_badge,
         f'<div class="week-badge"><span>{new_badge}</span></div>',
     )
 
-    # Replace athletes array
+    # Replace athletes array (may be empty on Monday reset)
+    athletes_js = athletes_to_js(new_athletes) if new_athletes else ''
     html = re.sub(
         r'const athletes = \[.*?\];',
-        f'const athletes = [\n{athletes_to_js(new_athletes)},\n];',
+        f'const athletes = [\n{athletes_js}\n];',
         html, flags=re.DOTALL
     )
 
@@ -298,20 +299,31 @@ def main():
     # Load this week's accumulated activities
     week_acts = load_json(WEEK_FILE, [])
 
+    with open(HTML_FILE) as f:
+        html = f.read()
+
+    mon, sun  = current_week_range()
+    new_badge = badge_text(mon, sun)
+
     if monday:
         print("It's Monday IST — archiving last week and starting fresh.")
-        with open(HTML_FILE) as f:
-            html = f.read()
         prev_badge    = parse_current_badge(html)
         prev_athletes = parse_current_athletes(html)
         prev_wid      = badge_to_week_id(prev_badge)
         print(f"  Archiving: {prev_badge} ({len(prev_athletes)} athletes)")
         # Always start the new week empty — don't carry over old API backlog
         week_acts = []
-    else:
-        # Mid-week: append new activities to this week's accumulator
-        week_acts = week_acts + new_acts
+        save_json(WEEK_FILE, week_acts)
+        # Archive old week and set new badge even if no runs yet today
+        html = update_html(html, [], new_badge, prev_badge, prev_wid, prev_athletes)
+        with open(HTML_FILE, 'w') as f:
+            f.write(html)
+        print(f"  Archived. New week badge: {new_badge}")
+        print("  Leaderboard starts empty — nightly runs will fill it in.")
+        return
 
+    # Mid-week: append new activities to this week's accumulator
+    week_acts = week_acts + new_acts
     save_json(WEEK_FILE, week_acts)
 
     if not week_acts:
@@ -321,21 +333,11 @@ def main():
     # Aggregate all of this week's activities
     new_athletes = aggregate(week_acts, name_map)
 
-    mon, sun   = current_week_range()
-    new_badge  = badge_text(mon, sun)
-
     print(f"\nWeek: {new_badge}  |  {len(new_athletes)} athletes")
     for a in new_athletes[:5]:
         print(f"  {a['name']:30s} {a['distance']} km")
 
-    with open(HTML_FILE) as f:
-        html = f.read()
-
-    if monday:
-        html = update_html(html, new_athletes, new_badge,
-                           prev_badge, prev_wid, prev_athletes)
-    else:
-        html = update_html(html, new_athletes, new_badge)
+    html = update_html(html, new_athletes, new_badge)
 
     with open(HTML_FILE, 'w') as f:
         f.write(html)
