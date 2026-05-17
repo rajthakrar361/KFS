@@ -63,34 +63,57 @@
   }
 
   header {
+    position: relative;
+    text-align: center;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+    min-height: 220px;
+    background: var(--card);
+  }
+
+  .hero-img-bg {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center 28%;
+    display: block;
+  }
+
+  .hero-overlay-content {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10,10,10,0.08) 0%, rgba(10,10,10,0.72) 42%, rgba(10,10,10,0.97) 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    padding: 2.5rem 0 2rem;
-    position: relative;
+    justify-content: flex-end;
+    padding: 1.5rem 1.25rem 1.5rem;
+    gap: 0;
   }
 
   .logo-wrap {
     display: flex;
     align-items: center;
     gap: 14px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
   }
 
   .logo-icon {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     background: var(--orange);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #fff;
     letter-spacing: 1px;
     flex-shrink: 0;
+    box-shadow: 0 0 16px rgba(252,76,2,0.5);
   }
 
   h1 {
@@ -99,23 +122,22 @@
     color: var(--orange);
     letter-spacing: 2px;
     line-height: 1;
-    text-shadow: 0 0 40px rgba(252,76,2,0.4);
+    text-shadow: 0 0 60px rgba(252,76,2,0.6), 0 2px 12px rgba(0,0,0,0.8);
   }
 
   .tagline {
-    font-size: 13px;
-    color: var(--muted);
-    letter-spacing: 3px;
+    font-size: 11px;
+    color: rgba(240,240,240,0.7);
+    letter-spacing: 3.5px;
     text-transform: uppercase;
     margin-top: 4px;
   }
 
   .week-badge {
-    margin-top: 1rem;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: var(--card);
+    background: rgba(20,20,20,0.85);
     border: 1px solid var(--border);
     border-radius: 20px;
     padding: 5px 16px;
@@ -125,42 +147,9 @@
 
   .week-badge span { color: var(--orange); font-weight: 600; }
 
-  .group-photo-wrap {
-    position: relative;
-    margin: 1.5rem 0;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-  }
-
-  .group-photo-wrap img {
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
-    object-position: center 30%;
-    display: block;
-    opacity: 0.9;
-  }
-
-  .photo-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 60%);
-    display: flex;
-    align-items: flex-end;
-    padding: 1.25rem;
-  }
-
-  .photo-label {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
-    color: white;
-    letter-spacing: 1px;
-  }
-
-  .photo-label em {
-    color: var(--orange);
-    font-style: normal;
+  .view-badge-row {
+    text-align: center;
+    margin-bottom: 1.25rem;
   }
 
   .stats-row {
@@ -183,7 +172,7 @@
 
   .stat-num {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
+    font-size: 2.8rem;
     color: var(--orange);
     line-height: 1;
   }
@@ -234,9 +223,10 @@
 
   .board-header {
     display: grid;
-    grid-template-columns: 48px 1fr 80px 72px 80px;
-    padding: 10px 16px;
+    grid-template-columns: 56px 1fr 88px 72px 72px;
+    padding: 10px 16px 10px 19px;
     border-bottom: 1px solid var(--border);
+    border-left: 3px solid transparent;
   }
 
   .board-header span {
@@ -248,10 +238,11 @@
 
   .runner-row {
     display: grid;
-    grid-template-columns: 48px 1fr 80px 72px 80px;
+    grid-template-columns: 56px 1fr 88px 72px 72px;
     align-items: center;
-    padding: 13px 16px;
+    padding: 13px 16px 13px 13px;
     border-bottom: 1px solid var(--border);
+    border-left: 3px solid transparent;
     transition: background 0.15s;
     animation: slideIn 0.4s ease both;
   }
@@ -259,9 +250,12 @@
   .runner-row:last-child { border-bottom: none; }
   .runner-row:hover { background: #1c1c1c; }
 
-  .runner-row.rank1 { background: rgba(255,215,0,0.05); }
-  .runner-row.rank2 { background: rgba(192,192,192,0.04); }
-  .runner-row.rank3 { background: rgba(205,127,50,0.04); }
+  .runner-row.rank1 { border-left-color: var(--gold); background: rgba(255,215,0,0.04); }
+  .runner-row.rank2 { border-left-color: var(--silver); background: rgba(192,192,192,0.03); }
+  .runner-row.rank3 { border-left-color: var(--bronze); background: rgba(205,127,50,0.03); }
+  .runner-row.rank1:hover { background: rgba(255,215,0,0.07); }
+  .runner-row.rank2:hover { background: rgba(192,192,192,0.06); }
+  .runner-row.rank3:hover { background: rgba(205,127,50,0.06); }
 
   @keyframes slideIn {
     from { opacity: 0; transform: translateX(-12px); }
@@ -276,11 +270,12 @@
 
   .pos {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.3rem;
-    color: var(--muted);
+    font-size: 1.8rem;
+    color: #444;
+    line-height: 1;
   }
 
-  .medal { font-size: 1.4rem; }
+  .medal { font-size: 1.55rem; }
 
   .runner-info { display: flex; align-items: center; gap: 10px; }
 
@@ -310,19 +305,27 @@
   }
 
   .val {
-    font-size: 14px;
-    font-weight: 600;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.35rem;
     color: var(--text);
+    letter-spacing: 0.5px;
+    line-height: 1;
   }
+
+  .runner-row.rank1 .val,
+  .runner-row.rank2 .val,
+  .runner-row.rank3 .val { color: var(--orange); font-size: 1.5rem; }
 
   .val-unit {
     font-size: 11px;
     color: var(--muted);
-    margin-left: 2px;
+    margin-left: 1px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
   }
 
   .val-secondary {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--muted);
   }
 
@@ -427,16 +430,17 @@
 
   .page-nav .tab {
     flex: 1;
-    padding: 9px;
+    padding: 10px 8px;
     border-radius: 7px;
     border: none;
     background: transparent;
     color: var(--muted);
     font-family: 'DM Sans', sans-serif;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
+    letter-spacing: 0.2px;
   }
 
   .page-nav .tab.active {
@@ -552,12 +556,13 @@
 
   @media (max-width: 500px) {
     .board-header, .runner-row {
-      grid-template-columns: 40px 1fr 70px 60px;
+      grid-template-columns: 46px 1fr 76px 62px;
     }
     .col-elev { display: none; }
     h1 { font-size: 3rem; }
-    .group-photo-wrap img { height: 240px; }
+    .hero-img-bg { height: 240px; }
     .hist-week-meta { gap: 8px; }
+    .stat-num { font-size: 2.2rem; }
   }
 </style>
 </head>
@@ -565,20 +570,21 @@
 <div class="container">
 
   <header>
-    <div class="logo-wrap">
-      <div class="logo-icon">KFS</div>
-    </div>
-    <h1>Knees For Speed</h1>
-    <p class="tagline">Run Club for Business Students</p>
-    <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;">
-      <img src="https://flagcdn.com/w40/in.png" width="28" height="20" style="border-radius:3px;object-fit:cover;" alt="India">
-      <img src="https://flagcdn.com/w40/de.png" width="28" height="20" style="border-radius:3px;object-fit:cover;" alt="Germany">
-      <img src="https://flagcdn.com/w40/fr.png" width="28" height="20" style="border-radius:3px;object-fit:cover;" alt="France">
-      <img src="https://flagcdn.com/w40/it.png" width="28" height="20" style="border-radius:3px;object-fit:cover;" alt="Italy">
-      <img src="https://flagcdn.com/w40/es.png" width="28" height="20" style="border-radius:3px;object-fit:cover;" alt="Spain">
-    </div>
-    <div class="week-badge"><span>May 18 – 24, 2026</span></div>
-    <div class="social-links">
+    <img class="hero-img-bg" src="https://github.com/user-attachments/assets/1ad6ab01-41c3-4ac3-8b93-d60dc85ade84" alt="Knees For Speed crew" onerror="this.style.display='none'">
+    <div class="hero-overlay-content">
+      <div class="logo-wrap">
+        <div class="logo-icon">KFS</div>
+      </div>
+      <h1>Knees For Speed</h1>
+      <p class="tagline">Run Club for Business Students</p>
+      <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;">
+        <img src="https://flagcdn.com/w40/in.png" width="26" height="18" style="border-radius:3px;object-fit:cover;opacity:0.9" alt="India">
+        <img src="https://flagcdn.com/w40/de.png" width="26" height="18" style="border-radius:3px;object-fit:cover;opacity:0.9" alt="Germany">
+        <img src="https://flagcdn.com/w40/fr.png" width="26" height="18" style="border-radius:3px;object-fit:cover;opacity:0.9" alt="France">
+        <img src="https://flagcdn.com/w40/it.png" width="26" height="18" style="border-radius:3px;object-fit:cover;opacity:0.9" alt="Italy">
+        <img src="https://flagcdn.com/w40/es.png" width="26" height="18" style="border-radius:3px;object-fit:cover;opacity:0.9" alt="Spain">
+      </div>
+      <div class="social-links" style="margin-top:0.9rem">
       <a class="social-btn" href="https://chat.whatsapp.com/DvPdRcacuMw9NPap6H95aM?mode=hqrt3" target="_blank" rel="noopener">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         WhatsApp
@@ -591,6 +597,7 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="#FC4C02"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169"/></svg>
         Strava
       </a>
+      </div>
     </div>
   </header>
 
@@ -604,7 +611,9 @@
 
   <!-- last week view -->
   <div class="lastweek-view" id="lastweek-view">
-    <div id="lastweek-week-label" style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--muted);letter-spacing:1px;margin-bottom:1rem;text-align:center"></div>
+    <div class="view-badge-row">
+      <div class="week-badge"><span id="lastweek-week-label"></span></div>
+    </div>
     <div class="stats-row">
       <div class="stat-card">
         <div class="stat-num" id="lastweek-stat-runners">--</div>
@@ -936,11 +945,8 @@
   <!-- current week view -->
   <div class="curr-view" id="curr-view">
 
-  <div class="group-photo-wrap">
-    <img src="https://github.com/user-attachments/assets/1ad6ab01-41c3-4ac3-8b93-d60dc85ade84" alt="Knees For Speed crew" onerror="this.parentElement.style.display='none'">
-    <div class="photo-overlay">
-      <div class="photo-label">The <em>Knees For Speed</em> crew</div>
-    </div>
+  <div class="view-badge-row">
+    <div class="week-badge"><span>May 18 – 24, 2026</span></div>
   </div>
 
   <div class="stats-row">
@@ -990,7 +996,6 @@ const athletes = [
 
 ];
 
-const currentWeekBadge = document.querySelector('.week-badge span').textContent;
 const medals = ["🥇","🥈","🥉"];
 const avatarColors = ["#FC4C02","#e05c00","#d45a00","#c85500","#bc5000","#b04b00","#a44600","#984100","#8c3c00","#803700"];
 
@@ -1323,26 +1328,20 @@ function showPage(page) {
   navHist.classList.remove("active");
   navCumul.classList.remove("active");
 
-  const badgeEl = document.querySelector('.week-badge span');
   if (page === "lastweek") {
     lastweekView.classList.add("active");
     navLastWeek.classList.add("active");
     renderLastWeek();
-    const lastTitle = document.querySelector('.hist-week-card .hist-week-title');
-    if (badgeEl && lastTitle) badgeEl.textContent = lastTitle.textContent;
   } else if (page === "history") {
     histView.classList.add("active");
     navHist.classList.add("active");
-    if (badgeEl) badgeEl.textContent = "Historical";
   } else if (page === "cumulative") {
     cumulView.classList.add("active");
     navCumul.classList.add("active");
     renderCumulative();
-    if (badgeEl) badgeEl.textContent = "All-time";
   } else {
     currView.classList.add("active");
     navCurr.classList.add("active");
-    if (badgeEl) badgeEl.textContent = currentWeekBadge;
   }
 }
 
