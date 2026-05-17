@@ -444,11 +444,13 @@
     color: white;
   }
 
-  /* ── historical leaderboard ── */
+  /* ── page views ── */
   .hist-view { display: none; }
   .hist-view.active { display: block; }
-  .curr-view { display: block; }
-  .curr-view.hidden { display: none; }
+  .curr-view { display: none; }
+  .curr-view.active { display: block; }
+  .lastweek-view { display: none; }
+  .lastweek-view.active { display: block; }
   .cumul-view { display: none; }
   .cumul-view.active { display: block; }
 
@@ -594,9 +596,42 @@
 
   <!-- page navigation -->
   <div class="page-nav">
-    <button class="tab active" id="nav-current" onclick="showPage('current')">🏃 This Week</button>
+    <button class="tab" id="nav-current" onclick="showPage('current')">🏃 This Week</button>
+    <button class="tab" id="nav-lastweek" onclick="showPage('lastweek')">⏮ Last Week</button>
     <button class="tab" id="nav-history" onclick="showPage('history')">📅 Historical</button>
     <button class="tab" id="nav-cumulative" onclick="showPage('cumulative')">📊 Cumulative</button>
+  </div>
+
+  <!-- last week view -->
+  <div class="lastweek-view" id="lastweek-view">
+    <div id="lastweek-week-label" style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--muted);letter-spacing:1px;margin-bottom:1rem;text-align:center"></div>
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num" id="lastweek-stat-runners">--</div>
+        <div class="stat-lbl">Runners</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="lastweek-stat-km">--</div>
+        <div class="stat-lbl">Total km</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="lastweek-stat-runs">--</div>
+        <div class="stat-lbl">Total runs</div>
+      </div>
+    </div>
+    <div class="podium" id="lastweek-podium"></div>
+    <div class="tabs">
+      <button class="tab active" onclick="setLastWeekSort('distance', this)">Distance</button>
+      <button class="tab" onclick="setLastWeekSort('pace', this)">Best Pace</button>
+      <button class="tab" onclick="setLastWeekSort('runs', this)">Most Runs</button>
+    </div>
+    <div class="board">
+      <div class="board-header">
+        <span></span><span>Athlete</span><span>Distance</span>
+        <span>Pace</span><span class="col-elev">Elev.</span>
+      </div>
+      <div id="lastweek-body"></div>
+    </div>
   </div>
 
   <!-- historical leaderboard view -->
@@ -1023,6 +1058,7 @@ function render() {
 render();
 
 // ── Historical data ───────────────────────────────────────────────
+
 const historicalWeeks = {
   "hist-week-may11": {
     sortKey: "distance",
@@ -1206,24 +1242,91 @@ const historicalWeeks = {
   }
 };
 
+// ── Last week leaderboard ─────────────────────────────────────────
+let lastWeekSortKey = "distance";
+
+function setLastWeekSort(key, btn) {
+  lastWeekSortKey = key;
+  document.querySelectorAll(".lastweek-view .tabs .tab").forEach(t => t.classList.remove("active"));
+  btn.classList.add("active");
+  renderLastWeek();
+}
+
+function renderLastWeek() {
+  const firstId = Object.keys(historicalWeeks)[0];
+  if (!firstId) return;
+  const week = historicalWeeks[firstId];
+
+  const firstCard = document.querySelector('.hist-week-card .hist-week-title');
+  const labelEl = document.getElementById("lastweek-week-label");
+  if (labelEl && firstCard) labelEl.textContent = firstCard.textContent;
+
+  let arr = [...week.athletes];
+  if (lastWeekSortKey === "distance") arr.sort((a,b) => b.distance - a.distance);
+  else if (lastWeekSortKey === "pace") arr.sort((a,b) => a.paceVal - b.paceVal);
+  else if (lastWeekSortKey === "runs") arr.sort((a,b) => b.runs - a.runs);
+
+  const totalKm   = Math.round(arr.reduce((s,a) => s + a.distance, 0) * 10) / 10;
+  const totalRuns = arr.reduce((s,a) => s + a.runs, 0);
+  document.getElementById("lastweek-stat-runners").textContent = arr.length;
+  document.getElementById("lastweek-stat-km").textContent      = totalKm;
+  document.getElementById("lastweek-stat-runs").textContent    = totalRuns;
+
+  document.getElementById("lastweek-podium").innerHTML = arr.slice(0,3).map((a,i) => `
+    <div class="podium-card p${i+1}">
+      <div class="podium-medal">${medals[i]}</div>
+      <div class="podium-name">${a.name.split(" ")[0]}</div>
+      <div class="podium-dist">${lastWeekSortKey === "pace" ? a.pace : lastWeekSortKey === "runs" ? a.runs : a.distance + "km"}</div>
+      <div class="podium-pace">${lastWeekSortKey === "pace" ? "per km" : lastWeekSortKey === "runs" ? "runs" : a.pace + "/km"}</div>
+    </div>
+  `).join("");
+
+  document.getElementById("lastweek-body").innerHTML = arr.map((a, i) => `
+    <div class="runner-row rank${i+1}" style="animation-delay:${i*0.05}s">
+      <div class="pos-wrap">
+        ${i < 3 ? `<span class="medal">${medals[i]}</span>` : `<span class="pos">${i+1}</span>`}
+      </div>
+      <div class="runner-info">
+        <div class="avatar" style="background:${avatarColors[i % avatarColors.length]}22; color:${avatarColors[i % avatarColors.length]}; border-color:${avatarColors[i % avatarColors.length]}44">
+          ${initials(a.name)}
+        </div>
+        <div>
+          <div class="runner-name">${a.name}</div>
+          <div class="runner-sub">${a.runs} run${a.runs>1?"s":""} · longest ${a.longest}km</div>
+        </div>
+      </div>
+      <div class="val">${a.distance}<span class="val-unit">km</span></div>
+      <div class="val-secondary">${a.pace}/km</div>
+      <div class="val-secondary col-elev">${a.elev}</div>
+    </div>
+  `).join("");
+}
+
 // ── Page navigation ───────────────────────────────────────────────
 function showPage(page) {
-  const currView  = document.getElementById("curr-view");
-  const histView  = document.getElementById("hist-view");
-  const cumulView = document.getElementById("cumul-view");
-  const navCurr   = document.getElementById("nav-current");
-  const navHist   = document.getElementById("nav-history");
-  const navCumul  = document.getElementById("nav-cumulative");
+  const currView     = document.getElementById("curr-view");
+  const lastweekView = document.getElementById("lastweek-view");
+  const histView     = document.getElementById("hist-view");
+  const cumulView    = document.getElementById("cumul-view");
+  const navCurr      = document.getElementById("nav-current");
+  const navLastWeek  = document.getElementById("nav-lastweek");
+  const navHist      = document.getElementById("nav-history");
+  const navCumul     = document.getElementById("nav-cumulative");
 
-  // hide everything
-  currView.classList.add("hidden");
+  currView.classList.remove("active");
+  lastweekView.classList.remove("active");
   histView.classList.remove("active");
   cumulView.classList.remove("active");
   navCurr.classList.remove("active");
+  navLastWeek.classList.remove("active");
   navHist.classList.remove("active");
   navCumul.classList.remove("active");
 
-  if (page === "history") {
+  if (page === "lastweek") {
+    lastweekView.classList.add("active");
+    navLastWeek.classList.add("active");
+    renderLastWeek();
+  } else if (page === "history") {
     histView.classList.add("active");
     navHist.classList.add("active");
   } else if (page === "cumulative") {
@@ -1231,7 +1334,7 @@ function showPage(page) {
     navCumul.classList.add("active");
     renderCumulative();
   } else {
-    currView.classList.remove("hidden");
+    currView.classList.add("active");
     navCurr.classList.add("active");
   }
 }
@@ -1376,6 +1479,8 @@ function renderHistWeek(weekId) {
     </div>
   `).join("");
 }
+
+showPage('lastweek');
 </script>
 </body>
 </html>
