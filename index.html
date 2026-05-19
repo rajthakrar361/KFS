@@ -574,13 +574,13 @@
 
   /* ── Cute / Morning Run mode ── */
   body.cute-mode {
-    --orange: #FF6F61;
+    --orange: #FFB400;
     --black: #b6dff5;
     --card: #ffffff;
     --border: #aed5ee;
     --text: #1a2f45;
     --muted: #6a96b8;
-    --gold: #FF6F61;
+    --gold: #FFB400;
     --silver: #7aafc8;
     --bronze: #c48060;
     background: linear-gradient(160deg, #8dcfed 0%, #b6dff5 35%, #d6eefb 65%, #edf7ff 100%);
@@ -592,8 +592,8 @@
       linear-gradient(90deg, rgba(80,160,220,0.07) 1px, transparent 1px);
   }
 
-  body.cute-mode h1 { color: #d94f3d; text-shadow: 0 0 40px rgba(255,111,97,0.3), 0 2px 8px rgba(0,0,0,0.1); }
-  body.cute-mode .logo-icon { background: #FF6F61; box-shadow: 0 0 16px rgba(240,180,41,0.45); }
+  body.cute-mode h1 { color: #cc8800; text-shadow: 0 0 40px rgba(255,180,0,0.3), 0 2px 8px rgba(0,0,0,0.1); }
+  body.cute-mode .logo-icon { background: #FFB400; box-shadow: 0 0 16px rgba(240,180,41,0.45); }
   body.cute-mode .tagline { color: rgba(26,47,69,0.65); }
 
   body.cute-mode header { border-color: #aed5ee; }
@@ -603,7 +603,7 @@
   }
   body.cute-mode .runner-row { border-bottom-color: #c8e8f8; }
   body.cute-mode .runner-row:hover { background: rgba(70,155,215,0.06); }
-  body.cute-mode .runner-row.rank1 { background: rgba(240,180,41,0.07); border-left-color: #FF6F61; }
+  body.cute-mode .runner-row.rank1 { background: rgba(240,180,41,0.07); border-left-color: #FFB400; }
   body.cute-mode .runner-row.rank2 { background: rgba(122,175,200,0.06); border-left-color: #7aafc8; }
   body.cute-mode .runner-row.rank3 { background: rgba(196,128,96,0.05); border-left-color: #c48060; }
   body.cute-mode .runner-row.rank1 .rr-dist,
@@ -616,17 +616,17 @@
   body.cute-mode .stat-card:hover { border-color: var(--orange); }
   body.cute-mode .stat-num { color: var(--orange); }
   body.cute-mode .week-badge { background: rgba(255,255,255,0.8); border-color: #aed5ee; }
-  body.cute-mode .week-badge span { color: #c44535; }
+  body.cute-mode .week-badge span { color: #b87a00; }
   body.cute-mode .social-btn { background: #f0f8ff; border-color: #aed5ee; }
   body.cute-mode .social-btn:hover { border-color: #7aafc8; color: var(--text); }
   body.cute-mode .hist-week-card { border-color: #aed5ee; }
   body.cute-mode .hist-week-header:hover { background: #f0f8ff; }
   body.cute-mode .hist-week-body { border-top-color: #c8e8f8; }
-  body.cute-mode .hist-week-meta strong { color: #c44535; }
+  body.cute-mode .hist-week-meta strong { color: #b87a00; }
   body.cute-mode .podium-card { border-color: #aed5ee; }
-  body.cute-mode .podium-card.p1 { border-color: #FF6F61; box-shadow: 0 0 20px rgba(240,180,41,0.18); }
+  body.cute-mode .podium-card.p1 { border-color: #FFB400; box-shadow: 0 0 20px rgba(240,180,41,0.18); }
   body.cute-mode .podium-dist { color: var(--orange); }
-  body.cute-mode footer strong { color: #c44535; }
+  body.cute-mode footer strong { color: #b87a00; }
   body.cute-mode .val { color: var(--text); }
   body.cute-mode .runner-row.rank1 .val,
   body.cute-mode .runner-row.rank2 .val,
@@ -636,17 +636,6 @@
 </head>
 <body>
 <button class="cute-toggle" id="cute-toggle" onclick="toggleCuteMode()" title="Morning Run mode">☀️</button>
-
-<!-- TEMP colour picker — remove once chosen -->
-<div id="colour-picker" style="position:fixed;top:0;left:0;right:0;z-index:9999;background:#111;padding:10px 16px;display:flex;align-items:center;gap:10px;font-family:'DM Sans',sans-serif;font-size:12px;color:#aaa;flex-wrap:wrap;">
-  <span style="letter-spacing:1px;text-transform:uppercase;font-size:10px;white-space:nowrap">Pick a yellow →</span>
-  <button onclick="setYellow('#FFE033','1')" style="background:#FFE033;color:#111;border:none;border-radius:6px;padding:7px 14px;font-weight:700;cursor:pointer;font-size:12px">#FFE033 — Bright sunshine</button>
-  <button onclick="setYellow('#FFD000','2')" style="background:#FFD000;color:#111;border:none;border-radius:6px;padding:7px 14px;font-weight:700;cursor:pointer;font-size:12px">#FFD000 — Golden yellow</button>
-  <button onclick="setYellow('#FFC300','3')" style="background:#FFC300;color:#111;border:none;border-radius:6px;padding:7px 14px;font-weight:700;cursor:pointer;font-size:12px">#FFC300 — Amber gold</button>
-  <button onclick="setYellow('#FFB400','4')" style="background:#FFB400;color:#111;border:none;border-radius:6px;padding:7px 14px;font-weight:700;cursor:pointer;font-size:12px">#FFB400 — Deep amber</button>
-  <button onclick="setYellow('#FFEA00','5')" style="background:#FFEA00;color:#111;border:none;border-radius:6px;padding:7px 14px;font-weight:700;cursor:pointer;font-size:12px">#FFEA00 — Lemon zap</button>
-</div>
-<div style="height:50px"></div><!-- spacer for picker bar -->
 
 <div class="container">
 
@@ -1563,17 +1552,6 @@ function renderHistWeek(weekId) {
 
 showPage('lastweek');
 
-function setYellow(hex, num) {
-  // Apply to cute-mode CSS variable live via a style tag
-  let tag = document.getElementById('yellow-override');
-  if (!tag) { tag = document.createElement('style'); tag.id = 'yellow-override'; document.head.appendChild(tag); }
-  tag.textContent = `body.cute-mode { --orange: ${hex} !important; } body.cute-mode h1 { color: ${hex} !important; } body.cute-mode .logo-icon { background: ${hex} !important; } body.cute-mode .stat-num { color: ${hex} !important; }`;
-  // Highlight chosen button
-  document.querySelectorAll('#colour-picker button').forEach((b,i) => b.style.outline = (i+1) == num ? '3px solid white' : 'none');
-  // Make sure cute mode is on so you can see it
-  if (!document.body.classList.contains('cute-mode')) toggleCuteMode();
-  localStorage.setItem('pickedYellow', hex);
-}
 
 function toggleCuteMode() {
   const on = document.body.classList.toggle('cute-mode');
