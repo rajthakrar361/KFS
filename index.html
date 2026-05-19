@@ -564,25 +564,26 @@
   }
   .cute-toggle:hover { transform: scale(1.15); }
 
-  /* owl — hidden in dark mode */
+  /* owl — hidden in dark mode, fixed background in cute mode */
   .hero-owl {
     display: none;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     right: 0;
     pointer-events: none;
-    z-index: 2;
+    z-index: 0;
+    opacity: 0.12;
   }
 
   /* ── Cute / Morning Run mode ── */
   body.cute-mode {
-    --orange: #F0B429;
+    --orange: #FFB703;
     --black: #b6dff5;
     --card: #ffffff;
     --border: #aed5ee;
     --text: #1a2f45;
     --muted: #6a96b8;
-    --gold: #F0B429;
+    --gold: #FFB703;
     --silver: #7aafc8;
     --bronze: #c48060;
     background: linear-gradient(160deg, #8dcfed 0%, #b6dff5 35%, #d6eefb 65%, #edf7ff 100%);
@@ -597,7 +598,7 @@
   body.cute-mode .hero-owl { display: block; }
 
   body.cute-mode h1 { color: #d4860a; text-shadow: 0 0 40px rgba(240,180,41,0.3), 0 2px 8px rgba(0,0,0,0.1); }
-  body.cute-mode .logo-icon { background: #F0B429; box-shadow: 0 0 16px rgba(240,180,41,0.45); }
+  body.cute-mode .logo-icon { background: #FFB703; box-shadow: 0 0 16px rgba(240,180,41,0.45); }
   body.cute-mode .tagline { color: rgba(26,47,69,0.65); }
 
   body.cute-mode header { border-color: #aed5ee; }
@@ -607,7 +608,7 @@
   }
   body.cute-mode .runner-row { border-bottom-color: #c8e8f8; }
   body.cute-mode .runner-row:hover { background: rgba(70,155,215,0.06); }
-  body.cute-mode .runner-row.rank1 { background: rgba(240,180,41,0.07); border-left-color: #F0B429; }
+  body.cute-mode .runner-row.rank1 { background: rgba(240,180,41,0.07); border-left-color: #FFB703; }
   body.cute-mode .runner-row.rank2 { background: rgba(122,175,200,0.06); border-left-color: #7aafc8; }
   body.cute-mode .runner-row.rank3 { background: rgba(196,128,96,0.05); border-left-color: #c48060; }
   body.cute-mode .runner-row.rank1 .rr-dist,
@@ -628,7 +629,7 @@
   body.cute-mode .hist-week-body { border-top-color: #c8e8f8; }
   body.cute-mode .hist-week-meta strong { color: #c87a00; }
   body.cute-mode .podium-card { border-color: #aed5ee; }
-  body.cute-mode .podium-card.p1 { border-color: #F0B429; box-shadow: 0 0 20px rgba(240,180,41,0.18); }
+  body.cute-mode .podium-card.p1 { border-color: #FFB703; box-shadow: 0 0 20px rgba(240,180,41,0.18); }
   body.cute-mode .podium-dist { color: var(--orange); }
   body.cute-mode footer strong { color: #c87a00; }
   body.cute-mode .val { color: var(--text); }
@@ -644,55 +645,52 @@
 
   <header>
     <img class="hero-img-bg" src="https://github.com/user-attachments/assets/1ad6ab01-41c3-4ac3-8b93-d60dc85ade84" alt="Knees For Speed crew" onerror="this.style.display='none'">
-    <!-- cute mode owl — hidden in dark mode -->
+    <!-- cute mode owl — hidden in dark mode, shown as background silhouette -->
     <div class="hero-owl">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 130" width="110" height="130">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200" width="260" height="325">
+        <!-- trunk -->
+        <rect x="18" y="120" width="22" height="80" rx="6" fill="#111"/>
         <!-- branch -->
-        <rect x="0" y="100" width="110" height="8" rx="4" fill="#8B6340"/>
-        <!-- leaves -->
-        <ellipse cx="18" cy="96" rx="8" ry="5" fill="#72c472" transform="rotate(-20,18,96)"/>
-        <ellipse cx="32" cy="94" rx="7" ry="4.5" fill="#5cb85c" transform="rotate(12,32,94)"/>
-        <ellipse cx="88" cy="95" rx="7" ry="4.5" fill="#72c472" transform="rotate(-8,88,95)"/>
+        <rect x="0" y="148" width="160" height="10" rx="5" fill="#111"/>
+        <!-- sub-branches -->
+        <rect x="100" y="130" width="8" height="28" rx="4" fill="#111" transform="rotate(20,100,140)"/>
+        <rect x="30" y="132" width="8" height="24" rx="4" fill="#111" transform="rotate(-18,30,140)"/>
+        <!-- leaves cluster right -->
+        <ellipse cx="128" cy="122" rx="20" ry="14" fill="#111"/>
+        <ellipse cx="144" cy="130" rx="14" ry="10" fill="#111"/>
+        <ellipse cx="118" cy="134" rx="12" ry="9" fill="#111"/>
+        <!-- leaves cluster left -->
+        <ellipse cx="28" cy="124" rx="18" ry="12" fill="#111"/>
+        <ellipse cx="14" cy="133" rx="13" ry="9" fill="#111"/>
         <!-- lantern string -->
-        <line x1="80" y1="100" x2="80" y2="82" stroke="#8B6340" stroke-width="1.5"/>
-        <!-- lantern body -->
-        <rect x="70" y="64" width="20" height="22" rx="6" fill="#FFE066" stroke="#F0B429" stroke-width="1.5"/>
-        <rect x="70" y="64" width="20" height="6" rx="4" fill="#F0B429"/>
-        <rect x="70" y="80" width="20" height="6" rx="4" fill="#F0B429"/>
-        <line x1="80" y1="64" x2="80" y2="59" stroke="#8B6340" stroke-width="1.5"/>
-        <!-- glow -->
-        <ellipse cx="80" cy="75" rx="14" ry="11" fill="rgba(255,224,80,0.2)"/>
+        <line x1="112" y1="148" x2="112" y2="122" stroke="#111" stroke-width="2"/>
+        <!-- lantern -->
+        <rect x="100" y="96" width="24" height="30" rx="7" fill="#111"/>
+        <rect x="99" y="94" width="26" height="8" rx="5" fill="#111"/>
+        <rect x="99" y="118" width="26" height="8" rx="5" fill="#111"/>
+        <line x1="112" y1="94" x2="112" y2="88" stroke="#111" stroke-width="2"/>
         <!-- owl body -->
-        <ellipse cx="36" cy="84" rx="20" ry="22" fill="#EFD89A"/>
-        <!-- belly -->
-        <ellipse cx="36" cy="89" rx="13" ry="15" fill="#FFF6E0"/>
+        <ellipse cx="60" cy="126" rx="28" ry="30" fill="#111"/>
         <!-- wings -->
-        <ellipse cx="19" cy="87" rx="9" ry="15" fill="#C8A055" transform="rotate(-8,19,87)"/>
-        <ellipse cx="53" cy="87" rx="9" ry="15" fill="#C8A055" transform="rotate(8,53,87)"/>
+        <ellipse cx="35" cy="130" rx="13" ry="20" fill="#111" transform="rotate(-10,35,130)"/>
+        <ellipse cx="85" cy="130" rx="13" ry="20" fill="#111" transform="rotate(10,85,130)"/>
         <!-- head -->
-        <circle cx="36" cy="65" r="18" fill="#C8A055"/>
+        <circle cx="60" cy="98" r="26" fill="#111"/>
         <!-- ear tufts -->
-        <polygon points="24,48 28,63 20,63" fill="#C8A055"/>
-        <polygon points="48,48 52,63 44,63" fill="#C8A055"/>
-        <!-- face disc -->
-        <ellipse cx="36" cy="67" rx="13" ry="11" fill="#EFD89A"/>
-        <!-- eyes -->
-        <circle cx="30" cy="64" r="6.5" fill="white" stroke="#c8922a" stroke-width="1"/>
-        <circle cx="42" cy="64" r="6.5" fill="white" stroke="#c8922a" stroke-width="1"/>
-        <circle cx="30" cy="64" r="4" fill="#1a1a1a"/>
-        <circle cx="42" cy="64" r="4" fill="#1a1a1a"/>
-        <!-- eye shine -->
-        <circle cx="32" cy="62" r="1.4" fill="white"/>
-        <circle cx="44" cy="62" r="1.4" fill="white"/>
+        <polygon points="46,68 52,92 40,92" fill="#111"/>
+        <polygon points="74,68 80,92 68,92" fill="#111"/>
+        <!-- big eyes (cut-out feel via lighter circles) -->
+        <circle cx="52" cy="96" r="9" fill="#1a2f45" opacity="0.25"/>
+        <circle cx="68" cy="96" r="9" fill="#1a2f45" opacity="0.25"/>
         <!-- beak -->
-        <polygon points="36,68 32,74 40,74" fill="#F0B429"/>
+        <polygon points="60,102 55,110 65,110" fill="#111"/>
         <!-- feet -->
-        <line x1="30" y1="105" x2="25" y2="110" stroke="#8B6340" stroke-width="2" stroke-linecap="round"/>
-        <line x1="30" y1="105" x2="30" y2="112" stroke="#8B6340" stroke-width="2" stroke-linecap="round"/>
-        <line x1="30" y1="105" x2="35" y2="110" stroke="#8B6340" stroke-width="2" stroke-linecap="round"/>
-        <line x1="42" y1="105" x2="37" y2="110" stroke="#8B6340" stroke-width="2" stroke-linecap="round"/>
-        <line x1="42" y1="105" x2="42" y2="112" stroke="#8B6340" stroke-width="2" stroke-linecap="round"/>
-        <line x1="42" y1="105" x2="47" y2="110" stroke="#8B6340" stroke-width="2" stroke-linecap="round"/>
+        <line x1="50" y1="155" x2="43" y2="163" stroke="#111" stroke-width="3" stroke-linecap="round"/>
+        <line x1="50" y1="155" x2="50" y2="165" stroke="#111" stroke-width="3" stroke-linecap="round"/>
+        <line x1="50" y1="155" x2="57" y2="163" stroke="#111" stroke-width="3" stroke-linecap="round"/>
+        <line x1="70" y1="155" x2="63" y2="163" stroke="#111" stroke-width="3" stroke-linecap="round"/>
+        <line x1="70" y1="155" x2="70" y2="165" stroke="#111" stroke-width="3" stroke-linecap="round"/>
+        <line x1="70" y1="155" x2="77" y2="163" stroke="#111" stroke-width="3" stroke-linecap="round"/>
       </svg>
     </div>
     <div class="hero-overlay-content">
