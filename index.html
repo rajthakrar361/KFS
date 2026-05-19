@@ -574,13 +574,13 @@
 
   /* ── Cute / Morning Run mode ── */
   body.cute-mode {
-    --orange: #FFB703;
+    --orange: #FF6F61;
     --black: #b6dff5;
     --card: #ffffff;
     --border: #aed5ee;
     --text: #1a2f45;
     --muted: #6a96b8;
-    --gold: #FFB703;
+    --gold: #FF6F61;
     --silver: #7aafc8;
     --bronze: #c48060;
     background: linear-gradient(160deg, #8dcfed 0%, #b6dff5 35%, #d6eefb 65%, #edf7ff 100%);
@@ -592,8 +592,8 @@
       linear-gradient(90deg, rgba(80,160,220,0.07) 1px, transparent 1px);
   }
 
-  body.cute-mode h1 { color: #d4860a; text-shadow: 0 0 40px rgba(240,180,41,0.3), 0 2px 8px rgba(0,0,0,0.1); }
-  body.cute-mode .logo-icon { background: #FFB703; box-shadow: 0 0 16px rgba(240,180,41,0.45); }
+  body.cute-mode h1 { color: #d94f3d; text-shadow: 0 0 40px rgba(255,111,97,0.3), 0 2px 8px rgba(0,0,0,0.1); }
+  body.cute-mode .logo-icon { background: #FF6F61; box-shadow: 0 0 16px rgba(240,180,41,0.45); }
   body.cute-mode .tagline { color: rgba(26,47,69,0.65); }
 
   body.cute-mode header { border-color: #aed5ee; }
@@ -603,7 +603,7 @@
   }
   body.cute-mode .runner-row { border-bottom-color: #c8e8f8; }
   body.cute-mode .runner-row:hover { background: rgba(70,155,215,0.06); }
-  body.cute-mode .runner-row.rank1 { background: rgba(240,180,41,0.07); border-left-color: #FFB703; }
+  body.cute-mode .runner-row.rank1 { background: rgba(240,180,41,0.07); border-left-color: #FF6F61; }
   body.cute-mode .runner-row.rank2 { background: rgba(122,175,200,0.06); border-left-color: #7aafc8; }
   body.cute-mode .runner-row.rank3 { background: rgba(196,128,96,0.05); border-left-color: #c48060; }
   body.cute-mode .runner-row.rank1 .rr-dist,
@@ -616,17 +616,17 @@
   body.cute-mode .stat-card:hover { border-color: var(--orange); }
   body.cute-mode .stat-num { color: var(--orange); }
   body.cute-mode .week-badge { background: rgba(255,255,255,0.8); border-color: #aed5ee; }
-  body.cute-mode .week-badge span { color: #c87a00; }
+  body.cute-mode .week-badge span { color: #c44535; }
   body.cute-mode .social-btn { background: #f0f8ff; border-color: #aed5ee; }
   body.cute-mode .social-btn:hover { border-color: #7aafc8; color: var(--text); }
   body.cute-mode .hist-week-card { border-color: #aed5ee; }
   body.cute-mode .hist-week-header:hover { background: #f0f8ff; }
   body.cute-mode .hist-week-body { border-top-color: #c8e8f8; }
-  body.cute-mode .hist-week-meta strong { color: #c87a00; }
+  body.cute-mode .hist-week-meta strong { color: #c44535; }
   body.cute-mode .podium-card { border-color: #aed5ee; }
-  body.cute-mode .podium-card.p1 { border-color: #FFB703; box-shadow: 0 0 20px rgba(240,180,41,0.18); }
+  body.cute-mode .podium-card.p1 { border-color: #FF6F61; box-shadow: 0 0 20px rgba(240,180,41,0.18); }
   body.cute-mode .podium-dist { color: var(--orange); }
-  body.cute-mode footer strong { color: #c87a00; }
+  body.cute-mode footer strong { color: #c44535; }
   body.cute-mode .val { color: var(--text); }
   body.cute-mode .runner-row.rank1 .val,
   body.cute-mode .runner-row.rank2 .val,
@@ -963,7 +963,7 @@
     <div class="week-badge"><span>May 18 – 24, 2026</span></div>
   </div>
   <div style="text-align:center;margin:-0.5rem 0 1rem;font-size:11px;color:var(--muted);letter-spacing:0.5px;">
-    ⏱ Updates every night after midnight IST &nbsp;·&nbsp; Data from Strava
+    ⏱ Updates nightly &nbsp;·&nbsp; <span id="reset-countdown"></span>
   </div>
 
   <div class="stats-row">
@@ -1029,20 +1029,61 @@ function initials(name) {
   return name.split(" ").slice(0,2).map(w => w[0]).join("").toUpperCase();
 }
 
-function makeRunRow(name, dist, col, i, stopPct, sub) {
+function makeRunRow(name, dist, col, i, stopPct, sub, spark = '', rankBadge = '') {
   const borderStyle = i >= 3 ? `border-left-color:${col}55;` : '';
+  const posHtml = i < 3
+    ? `<span class="medal">${medals[i]}</span>`
+    : `<span class="pos">${i+1}</span>${rankBadge}`;
   return `<div class="runner-row rank${i+1}" style="animation-delay:${i*0.04}s;${borderStyle}">
     <div class="rr-bar" data-w="${stopPct}%"></div>
     <div class="rr-top">
-      <div class="pos-wrap">${i < 3 ? `<span class="medal">${medals[i]}</span>` : `<span class="pos">${i+1}</span>`}</div>
+      <div class="pos-wrap" style="flex-direction:column;gap:2px">${posHtml}</div>
       <div class="runner-info">
         <div class="avatar" style="background:${col}22;color:${col};border-color:${col}44">${initials(name)}</div>
-        <div><div class="runner-name">${name}</div><div class="runner-sub">${sub}</div></div>
+        <div><div class="runner-name">${name}</div><div class="runner-sub">${sub}${spark}</div></div>
       </div>
       <div class="rr-dist">${dist}<span class="rr-dist-unit">km</span></div>
     </div>
   </div>`;
 }
+
+// ── Sparklines ────────────────────────────────────────────────────
+function getSparkData(name) {
+  const norm = normalizeName(name);
+  return Object.values(historicalWeeks).slice(0, 4).reverse().map(w => {
+    const a = w.athletes.find(x => normalizeName(x.name) === norm);
+    return a ? a.distance : 0;
+  });
+}
+
+function sparkSVG(data, col) {
+  const max = Math.max(...data, 1);
+  const bw = 3, gap = 2, H = 11;
+  const bars = data.map((v, i) => {
+    const h = v > 0 ? Math.max(2, (v / max) * H) : 2;
+    const x = i * (bw + gap);
+    return `<rect x="${x}" y="${(H - h).toFixed(1)}" width="${bw}" height="${h.toFixed(1)}" rx="1" fill="${col}" opacity="${v > 0 ? 0.75 : 0.18}"/>`;
+  }).join('');
+  return `<svg viewBox="0 0 ${data.length*(bw+gap)-gap} ${H}" width="${data.length*(bw+gap)-gap}" height="${H}" style="display:inline-block;vertical-align:middle;margin-left:6px;flex-shrink:0">${bars}</svg>`;
+}
+
+// ── Countdown to Monday reset ─────────────────────────────────────
+function updateCountdown() {
+  const el = document.getElementById('reset-countdown');
+  if (!el) return;
+  const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+  const next = new Date(now);
+  const daysLeft = (7 - now.getDay()) % 7 || 7;
+  next.setDate(now.getDate() + daysLeft);
+  next.setHours(0, 0, 0, 0);
+  const diff = next - now;
+  const d = Math.floor(diff / 864e5);
+  const h = Math.floor((diff % 864e5) / 36e5);
+  const m = Math.floor((diff % 36e5) / 6e4);
+  el.textContent = d > 0 ? `Resets in ${d}d ${h}h` : h > 0 ? `Resets in ${h}h ${m}m` : `Resets in ${m}m`;
+}
+updateCountdown();
+setInterval(updateCountdown, 60000);
 
 function countUp(el, target, dur = 900) {
   const isFloat = !Number.isInteger(target);
@@ -1105,7 +1146,8 @@ function render() {
     const col = avatarColors[athletes.indexOf(a) >= 0 ? athletes.indexOf(a) : i % avatarColors.length];
     const stop = (a.distance / maxDist * 95).toFixed(1);
     return makeRunRow(a.name, a.distance, col, i, stop,
-      `${a.runs} run${a.runs>1?"s":""} · longest ${a.longest}km · ${a.pace}/km`);
+      `${a.runs} run${a.runs>1?"s":""} · longest ${a.longest}km · ${a.pace}/km`,
+      sparkSVG(getSparkData(a.name), col));
   }).join("");
   runBars('board-body');
 }
@@ -1341,7 +1383,8 @@ function renderLastWeek() {
     const col = avatarColors[i % avatarColors.length];
     const stop = (a.distance / lwMax * 95).toFixed(1);
     return makeRunRow(a.name, a.distance, col, i, stop,
-      `${a.runs} run${a.runs>1?"s":""} · longest ${a.longest}km · ${a.pace}/km`);
+      `${a.runs} run${a.runs>1?"s":""} · longest ${a.longest}km · ${a.pace}/km`,
+      sparkSVG(getSparkData(a.name), col));
   }).join("");
   runBars('lastweek-body');
 }
@@ -1431,8 +1474,20 @@ function getSortedCumulAthletes() {
   return arr;
 }
 
+function buildPrevCumulRanks() {
+  const map = {};
+  Object.values(historicalWeeks).forEach(week => week.athletes.forEach(a => {
+    const name = normalizeName(a.name);
+    map[name] = (map[name] || 0) + a.distance;
+  }));
+  return Object.entries(map)
+    .sort((a, b) => b[1] - a[1])
+    .reduce((acc, [name], i) => { acc[name] = i + 1; return acc; }, {});
+}
+
 function renderCumulative() {
   const sorted = getSortedCumulAthletes();
+  const prevRanks = buildPrevCumulRanks();
 
   const grandKm    = Math.round(sorted.reduce((s,a) => s + a.totalDistance, 0) * 10) / 10;
   const grandRuns  = sorted.reduce((s,a) => s + a.totalRuns, 0);
@@ -1444,8 +1499,14 @@ function renderCumulative() {
   const cmMax = sorted.length > 0 ? sorted.reduce((m,a) => Math.max(m, a.totalDistance), 0) : 1;
   body.innerHTML = sorted.map((a, i) => {
     const stop = (a.totalDistance / cmMax * 95).toFixed(1);
+    const prev = prevRanks[normalizeName(a.name)];
+    const delta = prev ? prev - (i + 1) : null;
+    const rankBadge = (delta !== null && delta !== 0 && i >= 3)
+      ? `<span style="font-size:9px;font-family:'DM Sans',sans-serif;font-weight:700;color:${delta>0?'#4caf50':'#ef5350'};line-height:1">${delta>0?'↑':'↓'}${Math.abs(delta)}</span>`
+      : '';
     return makeRunRow(a.name, a.totalDistance, a.color, i, stop,
-      `${a.weeksParticipated}w · ${a.totalRuns} run${a.totalRuns>1?"s":""} · best ${a.bestPace}/km`);
+      `${a.weeksParticipated}w · ${a.totalRuns} run${a.totalRuns>1?"s":""} · best ${a.bestPace}/km`,
+      sparkSVG(getSparkData(a.name), a.color), rankBadge);
   }).join("");
   runBars('cumul-body');
 }
