@@ -63,6 +63,7 @@
   }
 
   header {
+    position: relative;
     text-align: center;
     border-radius: 16px;
     overflow: hidden;
@@ -540,13 +541,160 @@
     .rr-dist { font-size: 1.3rem; }
   }
 
+  /* ── Morning Run toggle button ── */
+  .cute-toggle {
+    position: fixed;
+    top: 0.85rem;
+    right: 0.85rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--card);
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+    line-height: 1;
+    padding: 0;
+  }
+  .cute-toggle:hover { transform: scale(1.15); }
+
+  /* owl — hidden in dark mode */
+  .hero-owl {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* ── Cute / Morning Run mode ── */
+  body.cute-mode {
+    --orange: #F0B429;
+    --black: #b6dff5;
+    --card: #ffffff;
+    --border: #aed5ee;
+    --text: #1a2f45;
+    --muted: #6a96b8;
+    --gold: #F0B429;
+    --silver: #7aafc8;
+    --bronze: #c48060;
+    background: linear-gradient(160deg, #8dcfed 0%, #b6dff5 35%, #d6eefb 65%, #edf7ff 100%);
+  }
+
+  body.cute-mode::before {
+    background-image:
+      linear-gradient(rgba(80,160,220,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(80,160,220,0.07) 1px, transparent 1px);
+  }
+
+  body.cute-mode .hero-owl { display: block; }
+
+  body.cute-mode h1 { color: #d4860a; text-shadow: 0 0 40px rgba(240,180,41,0.3), 0 2px 8px rgba(0,0,0,0.1); }
+  body.cute-mode .logo-icon { background: #F0B429; box-shadow: 0 0 16px rgba(240,180,41,0.45); }
+  body.cute-mode .tagline { color: rgba(26,47,69,0.65); }
+
+  body.cute-mode header { border-color: #aed5ee; }
+
+  body.cute-mode .rr-bar {
+    background: linear-gradient(90deg, rgba(240,180,41,0.25) 0%, rgba(240,180,41,0.03) 100%);
+  }
+  body.cute-mode .runner-row { border-bottom-color: #c8e8f8; }
+  body.cute-mode .runner-row:hover { background: rgba(70,155,215,0.06); }
+  body.cute-mode .runner-row.rank1 { background: rgba(240,180,41,0.07); border-left-color: #F0B429; }
+  body.cute-mode .runner-row.rank2 { background: rgba(122,175,200,0.06); border-left-color: #7aafc8; }
+  body.cute-mode .runner-row.rank3 { background: rgba(196,128,96,0.05); border-left-color: #c48060; }
+  body.cute-mode .runner-row.rank1 .rr-dist,
+  body.cute-mode .runner-row.rank2 .rr-dist,
+  body.cute-mode .runner-row.rank3 .rr-dist { color: var(--orange); }
+
+  body.cute-mode .page-nav { background: #fff; border-color: #aed5ee; }
+  body.cute-mode .board { border-color: #aed5ee; }
+  body.cute-mode .stat-card { border-color: #aed5ee; }
+  body.cute-mode .stat-card:hover { border-color: var(--orange); }
+  body.cute-mode .stat-num { color: var(--orange); }
+  body.cute-mode .week-badge { background: rgba(255,255,255,0.8); border-color: #aed5ee; }
+  body.cute-mode .week-badge span { color: #c87a00; }
+  body.cute-mode .social-btn { background: #f0f8ff; border-color: #aed5ee; }
+  body.cute-mode .social-btn:hover { border-color: #7aafc8; color: var(--text); }
+  body.cute-mode .hist-week-card { border-color: #aed5ee; }
+  body.cute-mode .hist-week-header:hover { background: #f0f8ff; }
+  body.cute-mode .hist-week-body { border-top-color: #c8e8f8; }
+  body.cute-mode .hist-week-meta strong { color: #c87a00; }
+  body.cute-mode .podium-card { border-color: #aed5ee; }
+  body.cute-mode .podium-card.p1 { border-color: #F0B429; box-shadow: 0 0 20px rgba(240,180,41,0.18); }
+  body.cute-mode .podium-dist { color: var(--orange); }
+  body.cute-mode footer strong { color: #c87a00; }
+  body.cute-mode .val { color: var(--text); }
+  body.cute-mode .runner-row.rank1 .val,
+  body.cute-mode .runner-row.rank2 .val,
+  body.cute-mode .runner-row.rank3 .val { color: var(--orange); }
+
 </style>
 </head>
 <body>
+<button class="cute-toggle" id="cute-toggle" onclick="toggleCuteMode()" title="Morning Run mode">☀️</button>
 <div class="container">
 
   <header>
     <img class="hero-img-bg" src="https://github.com/user-attachments/assets/1ad6ab01-41c3-4ac3-8b93-d60dc85ade84" alt="Knees For Speed crew" onerror="this.style.display='none'">
+    <!-- cute mode owl — hidden in dark mode -->
+    <div class="hero-owl">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 130" width="110" height="130">
+        <!-- branch -->
+        <rect x="0" y="100" width="110" height="8" rx="4" fill="#8B6340"/>
+        <!-- leaves -->
+        <ellipse cx="18" cy="96" rx="8" ry="5" fill="#72c472" transform="rotate(-20,18,96)"/>
+        <ellipse cx="32" cy="94" rx="7" ry="4.5" fill="#5cb85c" transform="rotate(12,32,94)"/>
+        <ellipse cx="88" cy="95" rx="7" ry="4.5" fill="#72c472" transform="rotate(-8,88,95)"/>
+        <!-- lantern string -->
+        <line x1="80" y1="100" x2="80" y2="82" stroke="#8B6340" stroke-width="1.5"/>
+        <!-- lantern body -->
+        <rect x="70" y="64" width="20" height="22" rx="6" fill="#FFE066" stroke="#F0B429" stroke-width="1.5"/>
+        <rect x="70" y="64" width="20" height="6" rx="4" fill="#F0B429"/>
+        <rect x="70" y="80" width="20" height="6" rx="4" fill="#F0B429"/>
+        <line x1="80" y1="64" x2="80" y2="59" stroke="#8B6340" stroke-width="1.5"/>
+        <!-- glow -->
+        <ellipse cx="80" cy="75" rx="14" ry="11" fill="rgba(255,224,80,0.2)"/>
+        <!-- owl body -->
+        <ellipse cx="36" cy="84" rx="20" ry="22" fill="#EFD89A"/>
+        <!-- belly -->
+        <ellipse cx="36" cy="89" rx="13" ry="15" fill="#FFF6E0"/>
+        <!-- wings -->
+        <ellipse cx="19" cy="87" rx="9" ry="15" fill="#C8A055" transform="rotate(-8,19,87)"/>
+        <ellipse cx="53" cy="87" rx="9" ry="15" fill="#C8A055" transform="rotate(8,53,87)"/>
+        <!-- head -->
+        <circle cx="36" cy="65" r="18" fill="#C8A055"/>
+        <!-- ear tufts -->
+        <polygon points="24,48 28,63 20,63" fill="#C8A055"/>
+        <polygon points="48,48 52,63 44,63" fill="#C8A055"/>
+        <!-- face disc -->
+        <ellipse cx="36" cy="67" rx="13" ry="11" fill="#EFD89A"/>
+        <!-- eyes -->
+        <circle cx="30" cy="64" r="6.5" fill="white" stroke="#c8922a" stroke-width="1"/>
+        <circle cx="42" cy="64" r="6.5" fill="white" stroke="#c8922a" stroke-width="1"/>
+        <circle cx="30" cy="64" r="4" fill="#1a1a1a"/>
+        <circle cx="42" cy="64" r="4" fill="#1a1a1a"/>
+        <!-- eye shine -->
+        <circle cx="32" cy="62" r="1.4" fill="white"/>
+        <circle cx="44" cy="62" r="1.4" fill="white"/>
+        <!-- beak -->
+        <polygon points="36,68 32,74 40,74" fill="#F0B429"/>
+        <!-- feet -->
+        <line x1="30" y1="105" x2="25" y2="110" stroke="#8B6340" stroke-width="2" stroke-linecap="round"/>
+        <line x1="30" y1="105" x2="30" y2="112" stroke="#8B6340" stroke-width="2" stroke-linecap="round"/>
+        <line x1="30" y1="105" x2="35" y2="110" stroke="#8B6340" stroke-width="2" stroke-linecap="round"/>
+        <line x1="42" y1="105" x2="37" y2="110" stroke="#8B6340" stroke-width="2" stroke-linecap="round"/>
+        <line x1="42" y1="105" x2="42" y2="112" stroke="#8B6340" stroke-width="2" stroke-linecap="round"/>
+        <line x1="42" y1="105" x2="47" y2="110" stroke="#8B6340" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
     <div class="hero-overlay-content">
       <div class="logo-wrap">
         <div class="logo-icon">KFS</div>
@@ -1384,6 +1532,16 @@ function renderHistWeek(weekId) {
 }
 
 showPage('lastweek');
+
+function toggleCuteMode() {
+  const on = document.body.classList.toggle('cute-mode');
+  document.getElementById('cute-toggle').textContent = on ? '🦉' : '☀️';
+  localStorage.setItem('cuteMode', on ? '1' : '0');
+}
+if (localStorage.getItem('cuteMode') === '1') {
+  document.body.classList.add('cute-mode');
+  document.getElementById('cute-toggle').textContent = '🦉';
+}
 </script>
 </body>
 </html>
