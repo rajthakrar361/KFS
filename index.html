@@ -636,6 +636,18 @@
 </head>
 <body>
 <button class="cute-toggle" id="cute-toggle" onclick="toggleCuteMode()" title="Morning Run mode">☀️</button>
+
+<!-- TEMP colour picker — remove once chosen -->
+<div id="colour-picker" style="position:fixed;top:0;left:0;right:0;z-index:9999;background:#111;padding:10px 16px;display:flex;align-items:center;gap:10px;font-family:'DM Sans',sans-serif;font-size:12px;color:#aaa;flex-wrap:wrap;">
+  <span style="letter-spacing:1px;text-transform:uppercase;font-size:10px;white-space:nowrap">Pick a yellow →</span>
+  <button onclick="setYellow('#FFE033','1')" style="background:#FFE033;color:#111;border:none;border-radius:6px;padding:7px 14px;font-weight:700;cursor:pointer;font-size:12px">#FFE033 — Bright sunshine</button>
+  <button onclick="setYellow('#FFD000','2')" style="background:#FFD000;color:#111;border:none;border-radius:6px;padding:7px 14px;font-weight:700;cursor:pointer;font-size:12px">#FFD000 — Golden yellow</button>
+  <button onclick="setYellow('#FFC300','3')" style="background:#FFC300;color:#111;border:none;border-radius:6px;padding:7px 14px;font-weight:700;cursor:pointer;font-size:12px">#FFC300 — Amber gold</button>
+  <button onclick="setYellow('#FFB400','4')" style="background:#FFB400;color:#111;border:none;border-radius:6px;padding:7px 14px;font-weight:700;cursor:pointer;font-size:12px">#FFB400 — Deep amber</button>
+  <button onclick="setYellow('#FFEA00','5')" style="background:#FFEA00;color:#111;border:none;border-radius:6px;padding:7px 14px;font-weight:700;cursor:pointer;font-size:12px">#FFEA00 — Lemon zap</button>
+</div>
+<div style="height:50px"></div><!-- spacer for picker bar -->
+
 <div class="container">
 
   <header>
@@ -1550,6 +1562,18 @@ function renderHistWeek(weekId) {
 }
 
 showPage('lastweek');
+
+function setYellow(hex, num) {
+  // Apply to cute-mode CSS variable live via a style tag
+  let tag = document.getElementById('yellow-override');
+  if (!tag) { tag = document.createElement('style'); tag.id = 'yellow-override'; document.head.appendChild(tag); }
+  tag.textContent = `body.cute-mode { --orange: ${hex} !important; } body.cute-mode h1 { color: ${hex} !important; } body.cute-mode .logo-icon { background: ${hex} !important; } body.cute-mode .stat-num { color: ${hex} !important; }`;
+  // Highlight chosen button
+  document.querySelectorAll('#colour-picker button').forEach((b,i) => b.style.outline = (i+1) == num ? '3px solid white' : 'none');
+  // Make sure cute mode is on so you can see it
+  if (!document.body.classList.contains('cute-mode')) toggleCuteMode();
+  localStorage.setItem('pickedYellow', hex);
+}
 
 function toggleCuteMode() {
   const on = document.body.classList.toggle('cute-mode');
