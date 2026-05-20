@@ -1200,7 +1200,7 @@ function makeRunRow(name, dist, col, i, stopPct, sub, spark = '', rankBadge = ''
       <div class="pos-wrap" style="flex-direction:column;gap:2px">${posHtml}</div>
       <div class="runner-info">
         <div class="avatar" style="background:${col}22;color:${col};border-color:${col}44">${initials(name)}</div>
-        <div><div class="runner-name">${name}</div><div class="runner-sub">${sub}${spark}</div></div>
+        <div><div class="runner-name" style="display:flex;align-items:center;gap:6px">${name}${spark}</div><div class="runner-sub">${sub}</div></div>
       </div>
       <div class="rr-dist">${dist}<span class="rr-dist-unit">km</span></div>
     </div>
