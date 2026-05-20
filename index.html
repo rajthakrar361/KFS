@@ -150,7 +150,7 @@
 
   .stats-row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
     gap: 10px;
     margin-bottom: 1.5rem;
   }
@@ -943,6 +943,10 @@
         <div class="stat-num" id="cumul-stat-runs">--</div>
         <div class="stat-lbl">Total runs</div>
       </div>
+      <div class="stat-card">
+        <div class="stat-num" id="cumul-stat-weeks">--</div>
+        <div class="stat-lbl">Weeks</div>
+      </div>
     </div>
 
 
@@ -1456,9 +1460,11 @@ function renderCumulative() {
 
   const grandKm    = Math.round(sorted.reduce((s,a) => s + a.totalDistance, 0) * 10) / 10;
   const grandRuns  = sorted.reduce((s,a) => s + a.totalRuns, 0);
+  const weekCount  = Object.keys(historicalWeeks).length + 1;
   countUp(document.getElementById("cumul-stat-runners"), sorted.length);
   countUp(document.getElementById("cumul-stat-km"),      grandKm);
   countUp(document.getElementById("cumul-stat-runs"),    grandRuns);
+  countUp(document.getElementById("cumul-stat-weeks"),   weekCount);
 
   const body = document.getElementById("cumul-body");
   const cmMax = sorted.length > 0 ? sorted.reduce((m,a) => Math.max(m, a.totalDistance), 0) : 1;
