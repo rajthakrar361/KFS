@@ -286,9 +286,23 @@ def main():
     new_acts = [a for a in activities if fingerprint(a) not in seen]
     print(f"  {len(new_acts)} new since last run")
 
-    # Update seen set
+    # Identify runners we have NEVER seen before (no prior fingerprint for their name)
+    known_names = set('|'.join(fp.split('|')[:2]) for fp in seen)
+    def is_new_runner(a):
+        return f"{a['athlete']['firstname']}|{a['athlete']['lastname']}" not in known_names
+
+    # Update seen set (all activities, including new runners' history)
     seen.update(fingerprint(a) for a in activities)
     save_json(SEEN_FILE, sorted(seen))
+
+    # For brand-new runners, skip their activities this week — their history predates
+    # the current week but Strava club API returns no dates to filter by.
+    # They'll be tracked correctly from the next nightly run onward.
+    first_timers = [a for a in new_acts if is_new_runner(a)]
+    new_acts     = [a for a in new_acts if not is_new_runner(a)]
+    if first_timers:
+        names = sorted({f"{a['athlete']['firstname']} {a['athlete']['lastname']}" for a in first_timers})
+        print(f"  New runners detected (skipping history this week): {', '.join(names)}")
 
     monday = is_monday()
 
