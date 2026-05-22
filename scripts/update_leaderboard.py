@@ -291,18 +291,32 @@ def main():
     def is_new_runner(a):
         return f"{a['athlete']['firstname']}|{a['athlete']['lastname']}" not in known_names
 
+    # Count new activities per new runner
+    from collections import Counter
+    new_runner_counts = Counter(
+        f"{a['athlete']['firstname']}|{a['athlete']['lastname']}"
+        for a in new_acts if is_new_runner(a)
+    )
+
     # Update seen set (all activities, including new runners' history)
     seen.update(fingerprint(a) for a in activities)
     save_json(SEEN_FILE, sorted(seen))
 
-    # For brand-new runners, skip their activities this week — their history predates
-    # the current week but Strava club API returns no dates to filter by.
-    # They'll be tracked correctly from the next nightly run onward.
-    first_timers = [a for a in new_acts if is_new_runner(a)]
-    new_acts     = [a for a in new_acts if not is_new_runner(a)]
-    if first_timers:
-        names = sorted({f"{a['athlete']['firstname']} {a['athlete']['lastname']}" for a in first_timers})
-        print(f"  New runners detected (skipping history this week): {', '.join(names)}")
+    # For brand-new runners with many new activities (> 3), skip them —
+    # they likely have multi-week history that predates the current week.
+    # Strava club API returns no dates so we can't filter by week.
+    # Runners with 1-3 new activities are genuinely starting this week → include them.
+    skipped, included = [], []
+    for a in new_acts:
+        name_key = f"{a['athlete']['firstname']}|{a['athlete']['lastname']}"
+        if is_new_runner(a) and new_runner_counts[name_key] > 3:
+            skipped.append(a)
+        else:
+            included.append(a)
+    new_acts = included
+    if skipped:
+        names = sorted({f"{a['athlete']['firstname']} {a['athlete']['lastname']}" for a in skipped})
+        print(f"  New runners with history skipped (will track from next run): {', '.join(names)}")
 
     monday = is_monday()
 
