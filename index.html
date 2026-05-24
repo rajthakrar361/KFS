@@ -1243,10 +1243,12 @@ function updateCountdown() {
   const el = document.getElementById('reset-countdown');
   if (!el) return;
   const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+  const day = now.getDay(); // 0=Sun, 1=Mon, ..., 6=Sat
+  const daysUntilMonday = (8 - day) % 7; // 0 if Mon, 1 if Sun, 6 if Tue, etc.
   const next = new Date(now);
-  const daysLeft = (7 - now.getDay()) % 7 || 7;
-  next.setDate(now.getDate() + daysLeft);
-  next.setHours(0, 0, 0, 0);
+  next.setDate(now.getDate() + daysUntilMonday);
+  next.setHours(23, 45, 0, 0);
+  if (next <= now) next.setDate(next.getDate() + 7); // past Monday's reset, target next week
   const diff = next - now;
   const d = Math.floor(diff / 864e5);
   const h = Math.floor((diff % 864e5) / 36e5);
