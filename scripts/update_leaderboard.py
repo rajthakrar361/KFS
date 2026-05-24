@@ -138,10 +138,20 @@ def week_html_id(monday):
               7:'jul',8:'aug',9:'sep',10:'oct',11:'nov',12:'dec'}
     return f"{months[monday.month]}{monday.day}"
 
-def is_monday():
+def next_week_range():
+    """Mon → Sun for next week in IST."""
+    ist    = timezone(timedelta(hours=5, minutes=30))
+    today  = datetime.now(ist)
+    monday = (today - timedelta(days=today.weekday())).replace(
+                 hour=0, minute=0, second=0, microsecond=0)
+    monday += timedelta(days=7)
+    sunday = monday + timedelta(days=6)
+    return monday, sunday
+
+def is_sunday():
     # Use IST (UTC+5:30) — the club's home timezone
     ist = timezone(timedelta(hours=5, minutes=30))
-    return datetime.now(ist).weekday() == 0
+    return datetime.now(ist).weekday() == 6
 
 # ── HTML helpers ──────────────────────────────────────────────────────────────
 
@@ -318,7 +328,7 @@ def main():
         names = sorted({f"{a['athlete']['firstname']} {a['athlete']['lastname']}" for a in skipped})
         print(f"  New runners with history skipped (will track from next run): {', '.join(names)}")
 
-    monday = is_monday()
+    sunday = is_sunday()
 
     # Load this week's accumulated activities
     week_acts = load_json(WEEK_FILE, [])
@@ -327,11 +337,11 @@ def main():
         html = f.read()
 
     mon, sun  = current_week_range()
-    new_badge = badge_text(mon, sun)
+    cur_badge = badge_text(mon, sun)
 
-    if monday:
-        print("It's Monday IST — archiving last week and starting fresh.")
-        # Include any runs done since the last job (Sunday evening) in the archived week
+    if sunday:
+        print("It's Sunday IST — archiving this week and starting fresh.")
+        # Include any runs done today (Sunday) in the archived week
         full_week_acts = week_acts + new_acts
 
         prev_badge = parse_current_badge(html)
@@ -344,16 +354,20 @@ def main():
             prev_athletes = parse_current_athletes(html)  # fallback: nothing in accumulator
 
         print(f"  Archiving: {prev_badge} ({len(prev_athletes)} athletes, "
-              f"{len(new_acts)} late Sunday runs included)")
+              f"{len(new_acts)} Sunday runs included)")
 
         # Reset accumulator for the new week
         save_json(WEEK_FILE, [])
+
+        # Badge for the incoming week (next Mon–Sun)
+        nmon, nsun = next_week_range()
+        new_badge  = badge_text(nmon, nsun)
 
         html = update_html(html, [], new_badge, prev_badge, prev_wid, prev_athletes)
         with open(HTML_FILE, 'w') as f:
             f.write(html)
         print(f"  Archived. New week badge: {new_badge}")
-        print("  Leaderboard starts empty — nightly runs will fill it in.")
+        print("  Leaderboard starts empty — Monday's run will be first.")
         return
 
     # Mid-week: append new activities to this week's accumulator
@@ -367,11 +381,11 @@ def main():
     # Aggregate all of this week's activities
     new_athletes = aggregate(week_acts, name_map)
 
-    print(f"\nWeek: {new_badge}  |  {len(new_athletes)} athletes")
+    print(f"\nWeek: {cur_badge}  |  {len(new_athletes)} athletes")
     for a in new_athletes[:5]:
         print(f"  {a['name']:30s} {a['distance']} km")
 
-    html = update_html(html, new_athletes, new_badge)
+    html = update_html(html, new_athletes, cur_badge)
 
     with open(HTML_FILE, 'w') as f:
         f.write(html)
