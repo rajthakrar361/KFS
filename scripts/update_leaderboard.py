@@ -247,7 +247,8 @@ def make_hist_js_entry(wid, athletes):
     return f'  "hist-week-{wid}": {{\n    sortKey: "distance",\n    athletes: [\n{ath_js},\n    ]\n  }},\n'
 
 def update_html(html, new_athletes, new_badge,
-                prev_badge=None, prev_wid=None, prev_athletes=None):
+                prev_badge=None, prev_wid=None, prev_athletes=None,
+                prev_rank_names=None):
     # Update week badge
     old_badge = parse_current_badge(html)
     html = html.replace(
@@ -255,7 +256,15 @@ def update_html(html, new_athletes, new_badge,
         f'<div class="week-badge"><span>{new_badge}</span></div>',
     )
 
-    # Replace athletes array (may be empty on Monday reset)
+    # Save current ranking as prevAthletes before overwriting
+    prev_names_js = ', '.join(f'"{n}"' for n in (prev_rank_names or []))
+    html = re.sub(
+        r'const prevAthletes = \[.*?\];',
+        f'const prevAthletes = [{prev_names_js}];',
+        html, flags=re.DOTALL
+    )
+
+    # Replace athletes array (may be empty on Sunday reset)
     athletes_js = athletes_to_js(new_athletes) if new_athletes else ''
     html = re.sub(
         r'const athletes = \[.*?\];',
@@ -365,7 +374,7 @@ def main():
         nmon, nsun = next_week_range()
         new_badge  = badge_text(nmon, nsun)
 
-        html = update_html(html, [], new_badge, prev_badge, prev_wid, prev_athletes)
+        html = update_html(html, [], new_badge, prev_badge, prev_wid, prev_athletes, prev_rank_names=[])
         with open(HTML_FILE, 'w') as f:
             f.write(html)
         print(f"  Archived. New week badge: {new_badge}")
@@ -380,6 +389,9 @@ def main():
         print("No activities this week yet — skipping HTML update.")
         return
 
+    # Capture current ranking before overwriting (for daily rank-change arrows)
+    prev_rank_names = [a['name'] for a in parse_current_athletes(html)]
+
     # Aggregate all of this week's activities
     new_athletes = aggregate(week_acts, name_map)
 
@@ -387,7 +399,7 @@ def main():
     for a in new_athletes[:5]:
         print(f"  {a['name']:30s} {a['distance']} km")
 
-    html = update_html(html, new_athletes, cur_badge)
+    html = update_html(html, new_athletes, cur_badge, prev_rank_names=prev_rank_names)
 
     with open(HTML_FILE, 'w') as f:
         f.write(html)

@@ -1192,6 +1192,8 @@ const athletes = [
 
 ];
 
+const prevAthletes = [];
+
 const medals = ["🥇","🥈","🥉"];
 const avatarColors = ["#FC4C02","#e05c00","#d45a00","#c85500","#bc5000","#b04b00","#a44600","#984100","#8c3c00","#803700"];
 
@@ -1299,14 +1301,20 @@ function render() {
     </div>
   `).join("");
 
+  const prevRankMap = {};
+  prevAthletes.forEach((name, i) => { prevRankMap[name] = i + 1; });
+
   const body = document.getElementById("board-body");
   const maxDist = sorted.length > 0 ? sorted.reduce((m,a) => Math.max(m, a.distance), 0) : 1;
   body.innerHTML = sorted.map((a, i) => {
     const col = avatarColors[athletes.indexOf(a) >= 0 ? athletes.indexOf(a) : i % avatarColors.length];
     const stop = (a.distance / maxDist * 95).toFixed(1);
+    const prev = prevRankMap[a.name];
+    const delta = (prev !== undefined && prev !== i + 1) ? prev - (i + 1) : null;
+    const rankBadge = delta ? `<span style="font-size:9px;font-family:'DM Sans',sans-serif;font-weight:700;color:${delta>0?'#4caf50':'#ef5350'};line-height:1">${delta>0?'↑':'↓'}${Math.abs(delta)}</span>` : '';
     return makeRunRow(a.name, a.distance, col, i, stop,
       `${a.runs} run${a.runs>1?"s":""} · longest ${a.longest}km · ${a.pace}/km`,
-      sparkSVG(getSparkData(a.name), col));
+      sparkSVG(getSparkData(a.name), col), rankBadge);
   }).join("");
   runBars('board-body');
 }
