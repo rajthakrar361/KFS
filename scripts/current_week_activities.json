@@ -1,1 +1,121 @@
-[]
+[
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Sujal",
+      "lastname": "P."
+    },
+    "name": "Exploring RCP Campus",
+    "distance": 5003.8,
+    "moving_time": 2291,
+    "elapsed_time": 2442,
+    "total_elevation_gain": 32.3,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Ankit",
+      "lastname": "S."
+    },
+    "name": "Day 91 \u2705",
+    "distance": 5005.6,
+    "moving_time": 1980,
+    "elapsed_time": 2120,
+    "total_elevation_gain": 97.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Devansh",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 2030.7,
+    "moving_time": 840,
+    "elapsed_time": 852,
+    "total_elevation_gain": 8.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Nachiket",
+      "lastname": "P."
+    },
+    "name": "Short",
+    "distance": 5012.6,
+    "moving_time": 2182,
+    "elapsed_time": 2186,
+    "total_elevation_gain": 4.8,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Swati",
+      "lastname": "N."
+    },
+    "name": "Short run",
+    "distance": 1282.7,
+    "moving_time": 513,
+    "elapsed_time": 532,
+    "total_elevation_gain": 11.6,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Amol",
+      "lastname": "J."
+    },
+    "name": "Start of the week",
+    "distance": 5409.9,
+    "moving_time": 1728,
+    "elapsed_time": 1928,
+    "total_elevation_gain": 8.2,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "ABHISHEK",
+      "lastname": "S."
+    },
+    "name": "Morning Run",
+    "distance": 5152.6,
+    "moving_time": 1584,
+    "elapsed_time": 1591,
+    "total_elevation_gain": 19.3,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  }
+]
