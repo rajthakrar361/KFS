@@ -150,8 +150,10 @@ def next_week_range():
 
 def is_sunday():
     # Use IST (UTC+5:30) — the club's home timezone
+    # Also catches Monday before 10am IST in case Sunday night run failed/was old code
     ist = timezone(timedelta(hours=5, minutes=30))
-    return datetime.now(ist).weekday() == 6
+    now = datetime.now(ist)
+    return now.weekday() == 6 or (now.weekday() == 0 and now.hour < 10)
 
 # ── HTML helpers ──────────────────────────────────────────────────────────────
 
