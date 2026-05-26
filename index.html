@@ -1633,18 +1633,14 @@ function buildCumulativeData() {
         totalDistance: 0,
         totalRuns: 0,
         weeksParticipated: 0,
-        bestPaceVal: Infinity,
-        bestPace: "--",
+        longestRun: 0,
         color: main ? main.color : avatarColors[colorIdx++ % avatarColors.length]
       };
     }
     map[name].totalDistance = Math.round((map[name].totalDistance + a.distance) * 10) / 10;
     map[name].totalRuns      += a.runs;
     map[name].weeksParticipated += 1;
-    if (a.paceVal < map[name].bestPaceVal) {
-      map[name].bestPaceVal = a.paceVal;
-      map[name].bestPace    = a.pace;
-    }
+    if ((a.longest || 0) > map[name].longestRun) map[name].longestRun = a.longest;
   }
 
   athletes.forEach(a => addEntry(a));
@@ -1689,7 +1685,7 @@ function renderCumulative() {
       ? `<span style="font-size:9px;font-family:'DM Sans',sans-serif;font-weight:700;color:${delta>0?'#4caf50':'#ef5350'};line-height:1">${delta>0?'↑':'↓'}${Math.abs(delta)}</span>`
       : '';
     return makeRunRow(a.name, a.totalDistance, a.color, i, stop,
-      `${a.weeksParticipated}w · ${a.totalRuns} run${a.totalRuns>1?"s":""} · best ${a.bestPace}/km`,
+      `${a.weeksParticipated}w · ${a.totalRuns} run${a.totalRuns>1?"s":""} · longest ${a.longestRun}km`,
       sparkSVG(getSparkData(a.name), a.color), rankBadge);
   }).join("");
   runBars('cumul-body');
