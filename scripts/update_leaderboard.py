@@ -81,10 +81,17 @@ def pace_str_val(moving_secs, dist_m):
     spk = moving_secs / (dist_m / 1000)
     return f"{int(spk//60)}:{int(spk%60):02d}", int(spk)
 
+def avg_pace_str_val(elapsed_secs, dist_m):
+    if dist_m < 10:
+        return '--', 9999
+    spk = elapsed_secs / (dist_m / 1000)
+    return f"{int(spk//60)}:{int(spk%60):02d}", int(spk)
+
 def aggregate(activities, name_map):
     data = defaultdict(lambda: dict(
         distance=0.0, runs=0, longest=0.0,
-        best_pv=9999, best_pace='--', elev=0.0
+        best_pv=9999, best_pace='--', elev=0.0,
+        moving_total=0, elapsed_total=0, distance_raw=0.0
     ))
     for a in activities:
         if a.get('type') not in RUN_TYPES:
@@ -93,8 +100,11 @@ def aggregate(activities, name_map):
         dk   = round(a['distance'] / 1000, 1)
         ps, pv = pace_str_val(a['moving_time'], a['distance'])
         d = data[name]
-        d['distance'] = round(d['distance'] + dk, 1)
-        d['runs']    += 1
+        d['distance']      = round(d['distance'] + dk, 1)
+        d['runs']         += 1
+        d['distance_raw'] += a['distance']
+        d['moving_total']  += a['moving_time']
+        d['elapsed_total'] += a.get('elapsed_time', a['moving_time'])
         if dk > d['longest']: d['longest'] = dk
         if pv < d['best_pv']:
             d['best_pv']   = pv
@@ -102,19 +112,23 @@ def aggregate(activities, name_map):
         d['elev'] += a.get('total_elevation_gain', 0)
 
     rows = sorted(data.items(), key=lambda x: -x[1]['distance'])
-    return [
-        {
-            'name':     name,
-            'distance': d['distance'],
-            'runs':     d['runs'],
-            'longest':  d['longest'],
-            'pace':     d['best_pace'],
-            'paceVal':  d['best_pv'],
-            'elev':     f"{int(d['elev'])}m" if d['elev'] else '--',
-            'color':    COLORS[i % len(COLORS)],
-        }
-        for i, (name, d) in enumerate(rows)
-    ]
+    result = []
+    for i, (name, d) in enumerate(rows):
+        # avgPace uses moving_time (matches Strava display)
+        ap, apv = avg_pace_str_val(d['moving_total'], d['distance_raw'])
+        result.append({
+            'name':        name,
+            'distance':    d['distance'],
+            'runs':        d['runs'],
+            'longest':     d['longest'],
+            'pace':        d['best_pace'],
+            'paceVal':     d['best_pv'],
+            'avgPace':     ap,
+            'avgPaceVal':  apv,
+            'elev':        f"{int(d['elev'])}m" if d['elev'] else '--',
+            'color':       COLORS[i % len(COLORS)],
+        })
+    return result
 
 # ── Date helpers ──────────────────────────────────────────────────────────────
 
@@ -160,16 +174,20 @@ def is_sunday():
 def athletes_to_js(athletes, with_color=True):
     lines = []
     for a in athletes:
+        ap  = a.get('avgPace', '--')
+        apv = a.get('avgPaceVal', 9999)
         if with_color:
             lines.append(
                 f'  {{ name: "{a["name"]}", distance: {a["distance"]}, runs: {a["runs"]}, '
                 f'longest: {a["longest"]}, pace: "{a["pace"]}", paceVal: {a["paceVal"]}, '
+                f'avgPace: "{ap}", avgPaceVal: {apv}, '
                 f'elev: "{a["elev"]}", color: "{a["color"]}" }}'
             )
         else:
             lines.append(
                 f'      {{ name: "{a["name"]}", distance: {a["distance"]}, runs: {a["runs"]}, '
                 f'longest: {a["longest"]}, pace: "{a["pace"]}", paceVal: {a["paceVal"]}, '
+                f'avgPace: "{ap}", avgPaceVal: {apv}, '
                 f'elev: "{a["elev"]}" }}'
             )
     return ',\n'.join(lines)
@@ -186,13 +204,15 @@ def parse_current_athletes(html):
             return fm.group(2) if fm.group(2) is not None else fm.group(3)
         try:
             result.append({
-                'name':     get('name'),
-                'distance': float(get('distance') or 0),
-                'runs':     int(get('runs') or 0),
-                'longest':  float(get('longest') or 0),
-                'pace':     get('pace'),
-                'paceVal':  int(get('paceVal') or 999),
-                'elev':     get('elev'),
+                'name':        get('name'),
+                'distance':    float(get('distance') or 0),
+                'runs':        int(get('runs') or 0),
+                'longest':     float(get('longest') or 0),
+                'pace':        get('pace'),
+                'paceVal':     int(get('paceVal') or 999),
+                'avgPace':     get('avgPace') or '--',
+                'avgPaceVal':  int(get('avgPaceVal') or 9999),
+                'elev':        get('elev'),
             })
         except (ValueError, TypeError):
             pass
