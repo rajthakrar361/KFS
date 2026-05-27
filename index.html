@@ -2006,7 +2006,7 @@ function renderLastWeek() {
     const col = avatarColors[i % avatarColors.length];
     const stop = (a.distance / lwMax * 95).toFixed(1);
     return makeRunRow(a.name, a.distance, col, i, stop,
-      `${a.runs} run${a.runs>1?"s":""} · longest ${a.longest}km · avg ${a.avgPace||'--'}/km`,
+      `${a.runs} run${a.runs>1?"s":""} · longest ${a.longest}km`,
       sparkSVG(getSparkData(a.name), col));
   }).join("");
   runBars('lastweek-body');
@@ -2140,7 +2140,7 @@ function renderHistWeek(weekId) {
     const col = avatarColors[i % avatarColors.length];
     const stop = (a.distance / hwMax * 95).toFixed(1);
     return makeRunRow(a.name, a.distance, col, i, stop,
-      `${a.runs} run${a.runs>1?"s":""} · longest ${a.longest}km · ${a.pace}/km`);
+      `${a.runs} run${a.runs>1?"s":""} · longest ${a.longest}km`);
   }).join("");
   runBars(bodyId);
 }
