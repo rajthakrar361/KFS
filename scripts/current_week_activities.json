@@ -155,22 +155,6 @@
     "resource_state": 2,
     "athlete": {
       "resource_state": 2,
-      "firstname": "Raj",
-      "lastname": "T."
-    },
-    "name": "Quickie",
-    "distance": 1000.0,
-    "moving_time": 18120,
-    "elapsed_time": 18120,
-    "total_elevation_gain": 0,
-    "type": "Run",
-    "sport_type": "Run",
-    "workout_type": null
-  },
-  {
-    "resource_state": 2,
-    "athlete": {
-      "resource_state": 2,
       "firstname": "Srijan",
       "lastname": "S."
     },
