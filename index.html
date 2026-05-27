@@ -749,6 +749,284 @@
   body.cute-mode .runner-row.rank2 .val,
   body.cute-mode .runner-row.rank3 .val { color: var(--orange); }
 
+  /* ── Hall of Fame button ── */
+  .hof-btn-shimmer {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 14px 16px;
+    background: #111;
+    border: 1px solid #2a2a15;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+  .hof-btn-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; width: 60%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,215,0,0.12), transparent);
+    animation: hofShimmer 2.4s ease-in-out infinite;
+  }
+  @keyframes hofShimmer {
+    0%   { left: -60%; }
+    100% { left: 160%; }
+  }
+  .hof-btn-shimmer-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    letter-spacing: 3px;
+    line-height: 1;
+  }
+  .hof-btn-shimmer-sub { font-size: 11px; color: #666; margin-top: 4px; letter-spacing: 1px; }
+
+
+  /* ── Hall of Fame modal ── */
+  .hof-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 1000;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1.25rem;
+    overflow-y: auto;
+  }
+  .hof-overlay.open { display: flex; }
+
+  .hof-modal {
+    background: var(--card);
+    border: 1px solid #3a3a1a;
+    border-radius: 18px;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    position: relative;
+    animation: modalIn 0.22s ease;
+  }
+
+  .hof-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--gold);
+    letter-spacing: 2px;
+    line-height: 1;
+    margin-bottom: 0.2rem;
+  }
+  .hof-sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 1.4rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .hof-section-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 1.4rem 0 0.9rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* podium inside HoF */
+  .hof-podium {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 8px;
+    margin-bottom: 1.1rem;
+  }
+  .hof-dist-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.95rem;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .hof-pc {
+    background: #1a1a1a;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px 8px;
+    text-align: center;
+    flex: 1;
+    transition: transform 0.18s;
+  }
+  .hof-pc:hover { transform: translateY(-3px); }
+  .hof-pc.gold  { border-color: var(--gold); box-shadow: 0 0 16px rgba(255,215,0,0.1); order: 2; padding-bottom: 18px; }
+  .hof-pc.silver { order: 1; }
+  .hof-pc.bronze { order: 3; }
+  .hof-pc-medal  { font-size: 1.3rem; margin-bottom: 4px; }
+  .hof-pc-name {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .hof-pc.silver .hof-pc-name,
+  .hof-pc.bronze .hof-pc-name { color: #777; font-weight: 500; }
+  .hof-pc-time {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.25rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .hof-pc.silver .hof-pc-time,
+  .hof-pc.bronze .hof-pc-time { color: #555; font-size: 1.1rem; }
+  .hof-pc-pace { font-size: 10px; color: var(--muted); margin-top: 2px; }
+  .hof-pc.silver .hof-pc-pace,
+  .hof-pc.bronze .hof-pc-pace { color: #444; }
+
+  .hof-unclaimed-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 0.4rem;
+  }
+  .hof-unclaimed-card {
+    flex: 1;
+    background: #111;
+    border: 1px dashed #2a2a2a;
+    border-radius: 12px;
+    padding: 14px 10px;
+    text-align: center;
+  }
+  .hof-unclaimed-dist {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.9rem;
+    color: #444;
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+  }
+  .hof-unclaimed-text { font-size: 11px; color: #3a3a3a; }
+
+  /* individual records — 2×2 card grid */
+  .hof-ind-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .hof-ind-card {
+    background: #1a1a1a;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .hof-ind-icon { font-size: 1.1rem; margin-bottom: 4px; }
+  .hof-ind-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .hof-ind-unit { font-size: 12px; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+  .hof-ind-label {
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-top: 3px;
+  }
+  .hof-ind-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-top: 2px;
+  }
+  .hof-ind-sub { font-size: 10px; color: #555; margin-top: 1px; }
+
+  /* club record rows */
+  .hof-record-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #1e1e1e;
+  }
+  .hof-record-row:last-child { border-bottom: none; }
+  .hof-record-icon { font-size: 1.2rem; width: 26px; text-align: center; flex-shrink: 0; }
+  .hof-record-body { flex: 1; min-width: 0; }
+  .hof-record-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; }
+  .hof-record-holder { font-size: 13px; font-weight: 600; color: var(--text); margin-top: 1px; }
+  .hof-record-sub { font-size: 11px; color: #555; margin-top: 1px; }
+  .hof-record-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    flex-shrink: 0;
+    text-align: right;
+    white-space: nowrap;
+  }
+  .hof-record-unit { font-size: 11px; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+
+  body.cute-mode .hof-ind-card { background: #f8f4e8; border-color: #e8d080; }
+
+  .hof-rules-toggle {
+    font-size: 11px;
+    color: #555;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: 'DM Sans', sans-serif;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    float: right;
+    margin-top: 1px;
+  }
+  .hof-rules-toggle:hover { color: var(--muted); }
+  .hof-rules {
+    display: none;
+    background: #111;
+    border: 1px solid #1e1e1e;
+    border-radius: 10px;
+    padding: 11px 13px;
+    margin-top: 0.6rem;
+    font-size: 11px;
+    color: #555;
+    line-height: 1.8;
+    clear: both;
+  }
+  .hof-rules.open { display: block; }
+  .hof-rules strong { color: #777; }
+
+  .hof-close {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  body.cute-mode .hof-btn-shimmer { background: #fffbf0; border-color: #e8d080; }
+  body.cute-mode .hof-btn-shimmer-title { color: #b87a00; }
+  body.cute-mode .hof-btn-shimmer-sub { color: #a09060; }
+  body.cute-mode .hof-modal { border-color: #e8d080; }
+  body.cute-mode .hof-pc { background: #f8f4e8; }
+  body.cute-mode .hof-unclaimed-card { background: #f0f8ff; border-color: #aed5ee; }
+  body.cute-mode .hof-rules { background: #f0f8ff; border-color: #aed5ee; }
+
 </style>
 </head>
 <body>
@@ -837,6 +1115,11 @@
     <button class="tab" id="nav-history" onclick="showPage('history')">📅 Historical</button>
     <button class="tab" id="nav-cumulative" onclick="showPage('cumulative')">📊 Cumulative</button>
   </div>
+
+  <button class="hof-btn-shimmer" onclick="document.getElementById('hof-overlay').classList.add('open')">
+    <div class="hof-btn-shimmer-title">✦ Hall of Fame ✦</div>
+    <div class="hof-btn-shimmer-sub">Club Records &amp; Personal Bests</div>
+  </button>
 
   <!-- last week view -->
   <div class="lastweek-view" id="lastweek-view">
@@ -1187,6 +1470,151 @@
 
 </div>
 
+<!-- Hall of Fame modal -->
+<div class="hof-overlay" id="hof-overlay" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="hof-modal">
+    <button class="hof-close" onclick="document.getElementById('hof-overlay').classList.remove('open')">✕</button>
+    <div class="hof-title">Hall of Fame</div>
+    <div class="hof-sub">Knees For Speed · All-time club records</div>
+
+    <!-- Speed Records -->
+    <div class="hof-section-title">Speed Records
+      <button class="hof-rules-toggle" onclick="hofToggle('hof-rules-speed')">? rules</button>
+    </div>
+    <div class="hof-rules" id="hof-rules-speed">
+      Runs must fall within the exact distance band:<br>
+      <strong>5K</strong> 4,900–5,200m &nbsp;·&nbsp; <strong>10K</strong> 9,900–10,200m<br>
+      <strong>Half</strong> 20,900–21,300m &nbsp;·&nbsp; <strong>Full</strong> 41,900–42,400m<br>
+      A 10.3km run won't count for 10K — falls outside the band.<br>
+      Records use <strong>elapsed time</strong> (total clock time including pauses), not moving time.
+    </div>
+
+    <!-- 5K podium -->
+    <div class="hof-dist-label">5K</div>
+    <div class="hof-podium">
+      <div class="hof-pc silver">
+        <div class="hof-pc-medal">🥈</div>
+        <div class="hof-pc-name">Gururaj M</div>
+        <div class="hof-pc-time">27:53</div>
+        <div class="hof-pc-pace">5:33/km</div>
+      </div>
+      <div class="hof-pc gold">
+        <div class="hof-pc-medal">🥇</div>
+        <div class="hof-pc-name">Abhishek Singh</div>
+        <div class="hof-pc-time">26:24</div>
+        <div class="hof-pc-pace">5:07/km</div>
+      </div>
+      <div class="hof-pc bronze">
+        <div class="hof-pc-medal">🥉</div>
+        <div class="hof-pc-name">Ashok Kumar</div>
+        <div class="hof-pc-time">28:23</div>
+        <div class="hof-pc-pace">5:37/km</div>
+      </div>
+    </div>
+
+    <!-- 10K podium -->
+    <div class="hof-dist-label">10K</div>
+    <div class="hof-podium">
+      <div class="hof-pc silver">
+        <div class="hof-pc-medal">🥈</div>
+        <div class="hof-pc-name">Raj Thakrar</div>
+        <div class="hof-pc-time">56:56</div>
+        <div class="hof-pc-pace">5:41/km</div>
+      </div>
+      <div class="hof-pc gold">
+        <div class="hof-pc-medal">🥇</div>
+        <div class="hof-pc-name">Rishendra C.</div>
+        <div class="hof-pc-time">56:07</div>
+        <div class="hof-pc-pace">5:35/km</div>
+      </div>
+      <div class="hof-pc bronze">
+        <div class="hof-pc-medal">🥉</div>
+        <div class="hof-pc-name">Swadit Chandan</div>
+        <div class="hof-pc-time">58:08</div>
+        <div class="hof-pc-pace">5:48/km</div>
+      </div>
+    </div>
+
+    <!-- Half / Full unclaimed -->
+    <div class="hof-unclaimed-row">
+      <div class="hof-unclaimed-card">
+        <div class="hof-unclaimed-dist">Half Marathon</div>
+        <div class="hof-unclaimed-text">Unclaimed — be first</div>
+      </div>
+      <div class="hof-unclaimed-card">
+        <div class="hof-unclaimed-dist">Full Marathon</div>
+        <div class="hof-unclaimed-text">Unclaimed — be first</div>
+      </div>
+    </div>
+
+    <!-- Individual Records -->
+    <div class="hof-section-title">Individual Records
+      <button class="hof-rules-toggle" onclick="hofToggle('hof-rules-individual')">? rules</button>
+    </div>
+    <div class="hof-rules" id="hof-rules-individual">
+      <strong>Most runs/week</strong> only counts runs of <strong>2km or more</strong>.
+    </div>
+
+    <div class="hof-ind-grid">
+      <div class="hof-ind-card">
+        <div class="hof-ind-icon">🏃</div>
+        <div><span class="hof-ind-val">27.3</span><span class="hof-ind-unit"> km</span></div>
+        <div class="hof-ind-label">Longest single run</div>
+        <div class="hof-ind-name">Mihir Pandit</div>
+      </div>
+      <div class="hof-ind-card">
+        <div class="hof-ind-icon">📈</div>
+        <div><span class="hof-ind-val">50.3</span><span class="hof-ind-unit"> km</span></div>
+        <div class="hof-ind-label">Most km in a week</div>
+        <div class="hof-ind-name">Bhargav Kumare</div>
+      </div>
+      <div class="hof-ind-card">
+        <div class="hof-ind-icon">🔁</div>
+        <div><span class="hof-ind-val">8</span><span class="hof-ind-unit"> runs</span></div>
+        <div class="hof-ind-label">Most runs in a week</div>
+        <div class="hof-ind-name">Raj Thakrar</div>
+        <div class="hof-ind-sub">2nd: Amol · Utkarsh — 7</div>
+      </div>
+      <div class="hof-ind-card">
+        <div class="hof-ind-icon">📆</div>
+        <div><span class="hof-ind-val">8</span><span class="hof-ind-unit"> wks</span></div>
+        <div class="hof-ind-label">Most weeks participated</div>
+        <div class="hof-ind-name">Rishendra Chauhan</div>
+      </div>
+    </div>
+
+    <!-- Club Records -->
+    <div class="hof-section-title">Club Records
+      <button class="hof-rules-toggle" onclick="hofToggle('hof-rules-club')">? rules</button>
+    </div>
+    <div class="hof-rules" id="hof-rules-club">
+      <strong>Best week</strong> is the highest total km run by all members in a single Mon–Sun week.<br>
+      <strong>Most runners</strong> counts unique athletes who logged at least one run that week.
+    </div>
+
+    <div class="hof-record-row">
+      <div class="hof-record-icon">🏆</div>
+      <div class="hof-record-body">
+        <div class="hof-record-label">Best week — total distance</div>
+        <div class="hof-record-holder">Apr 13 week</div>
+        <div class="hof-record-sub">24 runners</div>
+      </div>
+      <div class="hof-record-val">401.8<span class="hof-record-unit"> km</span></div>
+    </div>
+
+    <div class="hof-record-row">
+      <div class="hof-record-icon">👟</div>
+      <div class="hof-record-body">
+        <div class="hof-record-label">Most runners in a week</div>
+        <div class="hof-record-holder">May 25 week</div>
+        <div class="hof-record-sub">316 km total</div>
+      </div>
+      <div class="hof-record-val">27<span class="hof-record-unit"> runners</span></div>
+    </div>
+
+  </div>
+</div>
+
 <script>
 const athletes = [
   { name: "Ankit Singh", distance: 10.1, runs: 2, longest: 5.1, pace: "6:35", paceVal: 395, elev: "200m", color: "#FC4C02" },
@@ -1324,7 +1752,7 @@ function render() {
     const delta = (prev !== undefined && prev !== i + 1) ? prev - (i + 1) : null;
     const rankBadge = delta ? `<span style="font-size:9px;font-family:'DM Sans',sans-serif;font-weight:700;color:${delta>0?'#4caf50':'#ef5350'};line-height:1">${delta>0?'↑':'↓'}${Math.abs(delta)}</span>` : '';
     return makeRunRow(a.name, a.distance, col, i, stop,
-      `${a.runs} run${a.runs>1?"s":""} · longest ${a.longest}km · ${a.pace}/km`,
+      `${a.runs} run${a.runs>1?"s":""} · longest ${a.longest}km`,
       sparkSVG(getSparkData(a.name), col), rankBadge);
   }).join("");
   runBars('board-body');
@@ -1578,7 +2006,7 @@ function renderLastWeek() {
     const col = avatarColors[i % avatarColors.length];
     const stop = (a.distance / lwMax * 95).toFixed(1);
     return makeRunRow(a.name, a.distance, col, i, stop,
-      `${a.runs} run${a.runs>1?"s":""} · longest ${a.longest}km · ${a.pace}/km`,
+      `${a.runs} run${a.runs>1?"s":""} · longest ${a.longest}km`,
       sparkSVG(getSparkData(a.name), col));
   }).join("");
   runBars('lastweek-body');
@@ -1720,6 +2148,10 @@ function renderHistWeek(weekId) {
 render();
 showPage('current');
 
+
+function hofToggle(id) {
+  document.getElementById(id).classList.toggle('open');
+}
 
 function toggleCuteMode() {
   const on = document.body.classList.toggle('cute-mode');
