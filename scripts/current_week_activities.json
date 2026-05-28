@@ -437,5 +437,55 @@
     "sport_type": "Run",
     "workout_type": null,
     "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Raj",
+      "lastname": "T."
+    },
+    "name": "New Boots and 5K PB!",
+    "distance": 5000.0,
+    "moving_time": 1497,
+    "elapsed_time": 1497,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Diksin",
+      "lastname": "G."
+    },
+    "name": "Evening Run",
+    "distance": 3678.9,
+    "moving_time": 1350,
+    "elapsed_time": 1376,
+    "total_elevation_gain": 30.5,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Niranjan",
+      "lastname": "N."
+    },
+    "name": "Evening Run",
+    "distance": 5645.5,
+    "moving_time": 2013,
+    "elapsed_time": 2013,
+    "total_elevation_gain": 0.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Amazfit Active 2 NFC (Round)"
   }
 ]
