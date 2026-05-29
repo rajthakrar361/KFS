@@ -2055,14 +2055,18 @@ function renderHoF() {
   const orders  = [2, 1, 3];
 
   function podiumHTML(entries, band, emptyText) {
+    let emptyTextUsed = false;
     const cards = [1, 0, 2].map(idx => {
       const e = (entries || [])[idx];
-      if (!e) return `<div class="hof-pc ${classes[idx]}" style="order:${orders[idx]}">
+      if (!e) {
+        const label = (!emptyTextUsed && emptyText) ? (emptyTextUsed = true, emptyText) : '';
+        return `<div class="hof-pc ${classes[idx]}" style="order:${orders[idx]}">
         <div class="hof-pc-medal">${medals[idx]}</div>
         <div class="hof-pc-name">👀</div>
-        <div class="hof-pc-time">${emptyText ? '' : '--:--'}</div>
-        <div class="hof-pc-pace">${emptyText || ''}</div>
+        <div class="hof-pc-time">${label ? '' : '--:--'}</div>
+        <div class="hof-pc-pace">${label}</div>
       </div>`;
+      }
       return `<div class="hof-pc ${classes[idx]}" style="order:${orders[idx]}">
         <div class="hof-pc-medal">${medals[idx]}</div>
         <div class="hof-pc-name">${e.name.split(' ')[0]}</div>
