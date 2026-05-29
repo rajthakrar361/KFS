@@ -23,7 +23,7 @@
       "firstname": "Ankit",
       "lastname": "S."
     },
-    "name": "Day 91 \u2705",
+    "name": "Day 91 ✅",
     "distance": 5005.6,
     "moving_time": 1980,
     "elapsed_time": 2120,
@@ -192,7 +192,7 @@
       "firstname": "Ankit",
       "lastname": "S."
     },
-    "name": "Day 92 \u2705",
+    "name": "Day 92 ✅",
     "distance": 5067.4,
     "moving_time": 2119,
     "elapsed_time": 2326,
@@ -538,56 +538,5 @@
     "sport_type": "Run",
     "workout_type": null,
     "device_name": "Strava App"
-  },
-  {
-    "resource_state": 2,
-    "athlete": {
-      "resource_state": 2,
-      "firstname": "Diplav",
-      "lastname": "S."
-    },
-    "name": "Evening Run",
-    "distance": 13443.1,
-    "moving_time": 5765,
-    "elapsed_time": 5834,
-    "total_elevation_gain": 15.3,
-    "type": "Run",
-    "sport_type": "Run",
-    "workout_type": null,
-    "device_name": "Apple Watch SE 3"
-  },
-  {
-    "resource_state": 2,
-    "athlete": {
-      "resource_state": 2,
-      "firstname": "Diplav",
-      "lastname": "S."
-    },
-    "name": "Evening Run",
-    "distance": 5018.9,
-    "moving_time": 1861,
-    "elapsed_time": 1879,
-    "total_elevation_gain": 0.0,
-    "type": "Run",
-    "sport_type": "Run",
-    "workout_type": null,
-    "device_name": "Apple Watch SE 3"
-  },
-  {
-    "resource_state": 2,
-    "athlete": {
-      "resource_state": 2,
-      "firstname": "Diplav",
-      "lastname": "S."
-    },
-    "name": "Evening Run",
-    "distance": 8058.2,
-    "moving_time": 2876,
-    "elapsed_time": 2887,
-    "total_elevation_gain": 0.0,
-    "type": "Run",
-    "sport_type": "Run",
-    "workout_type": null,
-    "device_name": "Apple Watch SE 3"
   }
 ]
