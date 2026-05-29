@@ -950,6 +950,10 @@
     margin-top: 2px;
   }
   .hof-ind-sub { font-size: 10px; color: #555; margin-top: 1px; }
+  .hof-ind-places { margin-top: 7px; padding-top: 6px; border-top: 1px solid #222; display: flex; flex-direction: column; gap: 4px; }
+  .hof-ind-place { font-size: 11px; color: #555; display: flex; align-items: center; gap: 5px; }
+  .hof-ind-place-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .hof-ind-place-val { font-family: 'Bebas Neue', sans-serif; font-size: 12px; color: #444; flex-shrink: 0; }
 
   /* club record rows */
   .hof-record-row {
@@ -1158,11 +1162,11 @@
     <div class="hist-week-card" id="hist-week-may25">
       <div class="hist-week-header" onclick="toggleHistWeek('hist-week-may25')">
         <div>
-          <div class="hist-week-title">May 25 – 31, 2026</div>
+          <div class="hist-week-title">May 18 – 24, 2026</div>
           <div class="hist-week-meta">
-            <span><strong>27</strong> runners</span>
-            <span><strong>321.2</strong> km total</span>
-            <span><strong>69</strong> runs</span>
+            <span><strong>28</strong> runners</span>
+            <span><strong>339.6</strong> km total</span>
+            <span><strong>71</strong> runs</span>
           </div>
         </div>
         <span class="hist-chevron">▼</span>
@@ -1561,25 +1565,40 @@
         <div><span class="hof-ind-val">27.3</span><span class="hof-ind-unit"> km</span></div>
         <div class="hof-ind-label">Longest single run</div>
         <div class="hof-ind-name">Mihir Pandit</div>
+        <div class="hof-ind-places">
+          <div class="hof-ind-place">🥈 <span class="hof-ind-place-name">Sakha Ghotekar</span><span class="hof-ind-place-val">23.0km</span></div>
+          <div class="hof-ind-place">🥉 <span class="hof-ind-place-name">Akash Jannu</span><span class="hof-ind-place-val">16.5km</span></div>
+        </div>
       </div>
       <div class="hof-ind-card">
         <div class="hof-ind-icon">📈</div>
         <div><span class="hof-ind-val">50.3</span><span class="hof-ind-unit"> km</span></div>
         <div class="hof-ind-label">Most km in a week</div>
         <div class="hof-ind-name">Bhargav Kumare</div>
+        <div class="hof-ind-places">
+          <div class="hof-ind-place">🥈 <span class="hof-ind-place-name">Sakha Ghotekar</span><span class="hof-ind-place-val">43.2km</span></div>
+          <div class="hof-ind-place">🥉 <span class="hof-ind-place-name">Swadit Chandan</span><span class="hof-ind-place-val">41.2km</span></div>
+        </div>
       </div>
       <div class="hof-ind-card">
         <div class="hof-ind-icon">🔁</div>
         <div><span class="hof-ind-val">8</span><span class="hof-ind-unit"> runs</span></div>
         <div class="hof-ind-label">Most runs in a week</div>
         <div class="hof-ind-name">Raj Thakrar</div>
-        <div class="hof-ind-sub">2nd: Amol · Utkarsh — 7</div>
+        <div class="hof-ind-places">
+          <div class="hof-ind-place">🥈 <span class="hof-ind-place-name">Amol Jain</span><span class="hof-ind-place-val">7 runs</span></div>
+          <div class="hof-ind-place">🥉 <span class="hof-ind-place-name">Utkarsh Pandey</span><span class="hof-ind-place-val">7 runs</span></div>
+        </div>
       </div>
       <div class="hof-ind-card">
         <div class="hof-ind-icon">📆</div>
         <div><span class="hof-ind-val">8</span><span class="hof-ind-unit"> wks</span></div>
         <div class="hof-ind-label">Most weeks participated</div>
         <div class="hof-ind-name">Rishendra Chauhan</div>
+        <div class="hof-ind-places">
+          <div class="hof-ind-place">🥈 <span class="hof-ind-place-name">Swadit Chandan</span><span class="hof-ind-place-val">7 wks</span></div>
+          <div class="hof-ind-place">🥉 <span class="hof-ind-place-name">Sourabh M</span><span class="hof-ind-place-val">7 wks</span></div>
+        </div>
       </div>
     </div>
 
@@ -1607,9 +1626,9 @@
       <div class="hof-record-body">
         <div class="hof-record-label">Most runners in a week</div>
         <div class="hof-record-holder">May 25 week</div>
-        <div class="hof-record-sub">316 km total</div>
+        <div class="hof-record-sub">339.6 km total</div>
       </div>
-      <div class="hof-record-val">27<span class="hof-record-unit"> runners</span></div>
+      <div class="hof-record-val">28<span class="hof-record-unit"> runners</span></div>
     </div>
 
   </div>
@@ -1617,7 +1636,7 @@
 
 <script>
 const athletes = [
-  { name: "Diplav S.", distance: 26.5, runs: 3, longest: 13.4, pace: "5:56", paceVal: 356, avgPace: "6:36", avgPaceVal: 396, elev: "15m", color: "#FC4C02" },
+  { name: "Diplav Singh", distance: 26.5, runs: 3, longest: 13.4, pace: "5:56", paceVal: 356, avgPace: "6:36", avgPaceVal: 396, elev: "15m", color: "#FC4C02" },
   { name: "Abhishek Singh", distance: 18.3, runs: 3, longest: 8.4, pace: "5:07", paceVal: 307, avgPace: "5:27", avgPaceVal: 327, elev: "80m", color: "#e05c00" },
   { name: "Ankit Singh", distance: 13.3, runs: 3, longest: 5.1, pace: "6:35", paceVal: 395, avgPace: "6:55", avgPaceVal: 415, elev: "263m", color: "#d45a00" },
   { name: "Niranjan Neelakantan", distance: 11.0, runs: 2, longest: 5.6, pace: "5:38", paceVal: 338, avgPace: "5:47", avgPaceVal: 347, elev: "1m", color: "#c85500" },
@@ -1775,6 +1794,7 @@ const historicalWeeks = {
       { name: "Rishendra Chauhan", distance: 28.0, runs: 4, longest: 7.0, pace: "6:04", paceVal: 364, elev: "71m" },
       { name: "Ankit Singh", distance: 21.0, runs: 5, longest: 5.1, pace: "6:33", paceVal: 393, elev: "427m" },
       { name: "Nachiket Pethe", distance: 19.5, runs: 3, longest: 10.0, pace: "6:39", paceVal: 399, elev: "12m" },
+      { name: "Diplav Singh", distance: 18.4, runs: 2, longest: 13.4, pace: "6:53", paceVal: 413, elev: "15m" },
       { name: "Samaksh Dhingra", distance: 18.1, runs: 4, longest: 5.0, pace: "6:33", paceVal: 393, elev: "--" },
       { name: "Utkarsh Pandey", distance: 17.1, runs: 3, longest: 6.0, pace: "5:48", paceVal: 348, elev: "83m" },
       { name: "Srijan Shrey", distance: 16.8, runs: 6, longest: 5.3, pace: "5:09", paceVal: 309, elev: "64m" },
