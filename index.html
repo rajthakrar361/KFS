@@ -2060,7 +2060,12 @@ function renderHoF() {
     }
     const cards = [1, 0, 2].map(idx => {
       const e = entries[idx];
-      if (!e) return `<div class="hof-pc ${classes[idx]}"><div class="hof-pc-medal">${medals[idx]}</div><div class="hof-pc-name">—</div><div class="hof-pc-time">--:--</div><div class="hof-pc-pace">--</div></div>`;
+      if (!e) return `<div class="hof-pc ${classes[idx]}" style="order:${orders[idx]}">
+        <div class="hof-pc-medal">${medals[idx]}</div>
+        <div class="hof-pc-name">👀</div>
+        <div class="hof-pc-time">--:--</div>
+        <div class="hof-pc-pace">daring enough?</div>
+      </div>`;
       return `<div class="hof-pc ${classes[idx]}" style="order:${orders[idx]}">
         <div class="hof-pc-medal">${medals[idx]}</div>
         <div class="hof-pc-name">${e.name.split(' ')[0]}</div>
@@ -2110,13 +2115,11 @@ function renderHoF() {
     <div class="hof-dist-label">10K</div>
     <div class="hof-podium">${podiumHTML(sp['10K'], '10K')}</div>
 
-    ${(!has21K || !has42K) ? `<div class="hof-unclaimed-row">
-      ${!has21K ? `<div class="hof-unclaimed-card"><div class="hof-unclaimed-dist">Half Marathon</div><div class="hof-unclaimed-text">Unclaimed — be first</div></div>` : ''}
-      ${!has42K ? `<div class="hof-unclaimed-card"><div class="hof-unclaimed-dist">Full Marathon</div><div class="hof-unclaimed-text">Unclaimed — be first</div></div>` : ''}
-    </div>` : ''}
+    <div class="hof-dist-label">Half Marathon</div>
+    <div class="hof-podium">${podiumHTML(sp['21K'], 'Half Marathon')}</div>
 
-    ${has21K ? `<div class="hof-dist-label">Half Marathon</div><div class="hof-podium">${podiumHTML(sp['21K'], '21K')}</div>` : ''}
-    ${has42K ? `<div class="hof-dist-label">Full Marathon</div><div class="hof-podium">${podiumHTML(sp['42K'], '42K')}</div>` : ''}
+    <div class="hof-dist-label">Full Marathon</div>
+    <div class="hof-podium">${podiumHTML(sp['42K'], 'Full Marathon')}</div>
 
     <div class="hof-section-title">Individual Records
       <button class="hof-rules-toggle" onclick="hofToggle('hof-rules-individual')">? rules</button>
