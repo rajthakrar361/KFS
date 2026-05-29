@@ -2,7 +2,7 @@
 """
 Nightly KFS leaderboard updater.
 - Every night: fetch new club activities, add to current week, update index.html
-- Monday night: also archive last week first, then start fresh
+- Sunday night: also archive last week first, then start fresh
 """
 import os, re, json, requests
 from datetime import datetime, timedelta, timezone
@@ -19,6 +19,7 @@ SCRIPTS   = os.path.dirname(os.path.abspath(__file__))
 NAME_MAP  = os.path.join(SCRIPTS, 'name_map.json')
 SEEN_FILE = os.path.join(SCRIPTS, 'seen_activities.json')
 WEEK_FILE = os.path.join(SCRIPTS, 'current_week_activities.json')
+HIST_FILE = os.path.join(SCRIPTS, 'historical_weeks.json')
 
 COLORS = [
     "#FC4C02","#e05c00","#d45a00","#c85500","#bc5000","#b04b00","#a44600","#984100",
@@ -63,7 +64,7 @@ def load_json(path, default):
     return default
 
 def save_json(path, data):
-    json.dump(data, open(path, 'w'), indent=2)
+    json.dump(data, open(path, 'w', encoding='utf-8'), indent=2, ensure_ascii=False)
 
 # ── Name resolution ───────────────────────────────────────────────────────────
 
@@ -114,7 +115,6 @@ def aggregate(activities, name_map):
     rows = sorted(data.items(), key=lambda x: -x[1]['distance'])
     result = []
     for i, (name, d) in enumerate(rows):
-        # avgPace uses moving_time (matches Strava display)
         ap, apv = avg_pace_str_val(d['moving_total'], d['distance_raw'])
         result.append({
             'name':        name,
@@ -133,7 +133,6 @@ def aggregate(activities, name_map):
 # ── Date helpers ──────────────────────────────────────────────────────────────
 
 def current_week_range():
-    """Mon → Sun for the current week in IST."""
     ist    = timezone(timedelta(hours=5, minutes=30))
     today  = datetime.now(ist)
     monday = (today - timedelta(days=today.weekday())).replace(
@@ -153,7 +152,6 @@ def week_html_id(monday):
     return f"{months[monday.month]}{monday.day}"
 
 def next_week_range():
-    """Mon → Sun for next week in IST."""
     ist    = timezone(timedelta(hours=5, minutes=30))
     today  = datetime.now(ist)
     monday = (today - timedelta(days=today.weekday())).replace(
@@ -163,11 +161,146 @@ def next_week_range():
     return monday, sunday
 
 def is_sunday():
-    # Use IST (UTC+5:30) — the club's home timezone
-    # Also catches Monday before 10am IST in case Sunday night run failed/was old code
     ist = timezone(timedelta(hours=5, minutes=30))
     now = datetime.now(ist)
     return now.weekday() == 6 or (now.weekday() == 0 and now.hour < 10)
+
+# ── HoF computation ───────────────────────────────────────────────────────────
+
+# Names excluded from ALL speed records
+SPEED_EXCLUDED_NAMES = {'Amol Jain'}
+
+# Fingerprints excluded from speed records (cheated/invalid runs)
+SPEED_EXCLUDED_FPS = set()
+
+SPEED_BANDS = {
+    '5K':   (4800,  5600),
+    '10K':  (9500,  10500),
+    '21K':  (20500, 22000),
+    '42K':  (41500, 43000),
+}
+
+def fmt_time(secs):
+    h = secs // 3600
+    m = (secs % 3600) // 60
+    s = secs % 60
+    if h:
+        return f"{h}:{m:02d}:{s:02d}"
+    return f"{m}:{s:02d}"
+
+def fmt_pace(elapsed_secs, dist_m):
+    if dist_m < 10:
+        return '--'
+    spk = elapsed_secs / (dist_m / 1000)
+    return f"{int(spk//60)}:{int(spk%60):02d}/km"
+
+def compute_hof(seen_fps, current_week_acts, name_map, hist_weeks):
+    # Build elapsed_time lookup from current week activities
+    elapsed_lookup = {}
+    for a in current_week_acts:
+        fp = fingerprint(a)
+        elapsed_lookup[fp] = a.get('elapsed_time', a['moving_time'])
+
+    # ── Speed records ─────────────────────────────────────────────────────────
+    speed = {}
+    for band, (lo, hi) in SPEED_BANDS.items():
+        runs = []
+        for fp in seen_fps:
+            if fp in SPEED_EXCLUDED_FPS:
+                continue
+            parts = fp.split('|')
+            if len(parts) < 4:
+                continue
+            try:
+                dist   = float(parts[2])
+                moving = int(parts[3])
+            except ValueError:
+                continue
+            if lo <= dist <= hi:
+                name    = resolve_name(parts[0], parts[1], name_map)
+                if name in SPEED_EXCLUDED_NAMES:
+                    continue
+                elapsed = elapsed_lookup.get(fp, moving)
+                runs.append((elapsed, name, dist))
+        runs.sort()
+        top3, seen_names = [], set()
+        for elapsed, name, dist in runs:
+            if name not in seen_names:
+                top3.append({
+                    'name':    name,
+                    'time':    elapsed,
+                    'timeStr': fmt_time(elapsed),
+                    'pace':    fmt_pace(elapsed, dist),
+                })
+                seen_names.add(name)
+            if len(top3) == 3:
+                break
+        speed[band] = top3
+
+    # ── Individual records ────────────────────────────────────────────────────
+    # Build all-weeks list: hist weeks + current week aggregated
+    all_weeks = list(hist_weeks)
+    if current_week_acts:
+        cur_ath = aggregate(current_week_acts, name_map)
+        all_weeks = [{'id': 'current', 'label': 'Current Week', 'athletes': cur_ath}] + all_weeks
+
+    longest_run   = {}   # name -> km
+    best_km_week  = {}   # name -> (km, label)
+    best_run_week = {}   # name -> (runs, label)
+    weeks_count   = {}   # name -> int
+
+    for week in all_weeks:
+        label = week['label']
+        for a in week['athletes']:
+            name = a['name']
+            km   = a['distance']
+            lng  = a['longest']
+            runs = a['runs']
+
+            if lng > longest_run.get(name, 0):
+                longest_run[name] = lng
+            if km > best_km_week.get(name, (0, ''))[0]:
+                best_km_week[name] = (km, label)
+            if runs > best_run_week.get(name, (0, ''))[0]:
+                best_run_week[name] = (runs, label)
+            weeks_count[name] = weeks_count.get(name, 0) + 1
+
+    def top3_simple(d):
+        return [{'name': n, 'val': v}
+                for n, v in sorted(d.items(), key=lambda x: -x[1])[:3]]
+
+    def top3_weekly(d):
+        return [{'name': n, 'val': v, 'week': w}
+                for n, (v, w) in sorted(d.items(), key=lambda x: -x[1][0])[:3]]
+
+    individual = {
+        'longestRun':   top3_simple(longest_run),
+        'mostKmWeek':   top3_weekly(best_km_week),
+        'mostRunsWeek': top3_weekly(best_run_week),
+        'mostWeeks':    top3_simple(weeks_count),
+    }
+
+    # ── Club records ──────────────────────────────────────────────────────────
+    week_stats = []
+    for week in all_weeks:
+        if week['id'] == 'current':
+            continue  # exclude live week from club records
+        total_km  = round(sum(a['distance'] for a in week['athletes']), 1)
+        n_runners = len(week['athletes'])
+        week_stats.append((total_km, n_runners, week['label']))
+
+    if week_stats:
+        best_km    = max(week_stats, key=lambda x: x[0])
+        best_runners = max(week_stats, key=lambda x: x[1])
+    else:
+        best_km = best_runners = (0, 0, '')
+
+    club = {
+        'bestWeekKm':   {'val': best_km[0],      'runners': best_km[1],      'week': best_km[2]},
+        'mostRunners':  {'val': best_runners[1],  'km':      best_runners[0], 'week': best_runners[2]},
+    }
+
+    return {'speed': speed, 'individual': individual, 'club': club}
 
 # ── HTML helpers ──────────────────────────────────────────────────────────────
 
@@ -191,6 +324,56 @@ def athletes_to_js(athletes, with_color=True):
                 f'elev: "{a["elev"]}" }}'
             )
     return ',\n'.join(lines)
+
+def hist_weeks_to_js(hist_weeks):
+    entries = []
+    for w in hist_weeks:
+        wid     = w['id']
+        ath_js  = athletes_to_js(w['athletes'], with_color=False)
+        entries.append(
+            f'  "hist-week-{wid}": {{\n    sortKey: "distance",\n    athletes: [\n{ath_js}\n    ]\n  }}'
+        )
+    return ',\n'.join(entries)
+
+def hof_to_js(hof):
+    def speed_entry(e):
+        return (f'{{name:"{e["name"]}",time:{e["time"]},'
+                f'timeStr:"{e["timeStr"]}",pace:"{e["pace"]}\"}}')
+
+    def ind_simple(e):
+        return f'{{name:"{e["name"]}",val:{e["val"]}}}'
+
+    def ind_weekly(e):
+        return f'{{name:"{e["name"]}",val:{e["val"]},week:"{e["week"]}"}}'
+
+    speed_js = {}
+    for band, entries in hof['speed'].items():
+        speed_js[band] = '[' + ','.join(speed_entry(e) for e in entries) + ']'
+
+    ind = hof['individual']
+    club = hof['club']
+
+    lines = [
+        '{',
+        '  speed: {',
+        f'    "5K":  {speed_js.get("5K",  "[]")},',
+        f'    "10K": {speed_js.get("10K", "[]")},',
+        f'    "21K": {speed_js.get("21K", "[]")},',
+        f'    "42K": {speed_js.get("42K", "[]")}',
+        '  },',
+        '  individual: {',
+        f'    longestRun:   [{",".join(ind_simple(e) for e in ind["longestRun"])}],',
+        f'    mostKmWeek:   [{",".join(ind_weekly(e) for e in ind["mostKmWeek"])}],',
+        f'    mostRunsWeek: [{",".join(ind_weekly(e) for e in ind["mostRunsWeek"])}],',
+        f'    mostWeeks:    [{",".join(ind_simple(e) for e in ind["mostWeeks"])}]',
+        '  },',
+        '  club: {',
+        f'    bestWeekKm:  {{val:{club["bestWeekKm"]["val"]},runners:{club["bestWeekKm"]["runners"]},week:"{club["bestWeekKm"]["week"]}"}},',
+        f'    mostRunners: {{val:{club["mostRunners"]["val"]},km:{club["mostRunners"]["km"]},week:"{club["mostRunners"]["week"]}\"}}',
+        '  }',
+        '}',
+    ]
+    return '\n'.join(lines)
 
 def parse_current_athletes(html):
     m = re.search(r'const athletes = \[(.*?)\];', html, re.DOTALL)
@@ -262,13 +445,9 @@ def make_hist_html_card(wid, badge, athletes):
 
 """
 
-def make_hist_js_entry(wid, athletes):
-    ath_js = athletes_to_js(athletes, with_color=False)
-    return f'  "hist-week-{wid}": {{\n    sortKey: "distance",\n    athletes: [\n{ath_js},\n    ]\n  }},\n'
-
 def update_html(html, new_athletes, new_badge,
                 prev_badge=None, prev_wid=None, prev_athletes=None,
-                prev_rank_names=None):
+                prev_rank_names=None, hist_weeks=None, hof=None):
     # Update week badge
     old_badge = parse_current_badge(html)
     html = html.replace(
@@ -276,7 +455,7 @@ def update_html(html, new_athletes, new_badge,
         f'<div class="week-badge"><span>{new_badge}</span></div>',
     )
 
-    # Save current ranking as prevAthletes before overwriting
+    # Save current ranking as prevAthletes
     prev_names_js = ', '.join(f'"{n}"' for n in (prev_rank_names or []))
     html = re.sub(
         r'const prevAthletes = \[.*?\];',
@@ -284,7 +463,7 @@ def update_html(html, new_athletes, new_badge,
         html, flags=re.DOTALL
     )
 
-    # Replace athletes array (may be empty on Sunday reset)
+    # Replace athletes array
     athletes_js = athletes_to_js(new_athletes) if new_athletes else ''
     html = re.sub(
         r'const athletes = \[.*?\];',
@@ -292,19 +471,30 @@ def update_html(html, new_athletes, new_badge,
         html, flags=re.DOTALL
     )
 
-    # On Monday: archive previous week into history
-    if prev_badge and prev_wid and prev_athletes:
-        hist_card  = make_hist_html_card(prev_wid, prev_badge, prev_athletes)
-        hist_entry = make_hist_js_entry(prev_wid, prev_athletes)
+    # Replace historicalWeeks from JSON file
+    if hist_weeks is not None:
+        hw_js = hist_weeks_to_js(hist_weeks)
+        html = re.sub(
+            r'const historicalWeeks = \{.*?\};',
+            f'const historicalWeeks = {{\n{hw_js}\n}};',
+            html, flags=re.DOTALL
+        )
 
+    # Replace hofData
+    if hof is not None:
+        hof_js = hof_to_js(hof)
+        html = re.sub(
+            r'const hofData = \{.*?\};',
+            f'const hofData = {hof_js};',
+            html, flags=re.DOTALL
+        )
+
+    # On Sunday: archive previous week into history HTML cards + JSON
+    if prev_badge and prev_wid and prev_athletes:
+        hist_card = make_hist_html_card(prev_wid, prev_badge, prev_athletes)
         html = html.replace(
             '    <div class="hist-week-card"',
             hist_card + '    <div class="hist-week-card"',
-            1
-        )
-        html = html.replace(
-            'const historicalWeeks = {\n',
-            f'const historicalWeeks = {{\n{hist_entry}',
             1
         )
 
@@ -323,30 +513,22 @@ def main():
     seen     = set(load_json(SEEN_FILE, []))
     name_map = load_json(NAME_MAP, {})
 
-    # Find activities we haven't seen before
     new_acts = [a for a in activities if fingerprint(a) not in seen]
     print(f"  {len(new_acts)} new since last run")
 
-    # Identify runners we have NEVER seen before (no prior fingerprint for their name)
     known_names = set('|'.join(fp.split('|')[:2]) for fp in seen)
     def is_new_runner(a):
         return f"{a['athlete']['firstname']}|{a['athlete']['lastname']}" not in known_names
 
-    # Count new activities per new runner
     from collections import Counter
     new_runner_counts = Counter(
         f"{a['athlete']['firstname']}|{a['athlete']['lastname']}"
         for a in new_acts if is_new_runner(a)
     )
 
-    # Update seen set (all activities, including new runners' history)
     seen.update(fingerprint(a) for a in activities)
     save_json(SEEN_FILE, sorted(seen))
 
-    # For brand-new runners with many new activities (> 3), skip them —
-    # they likely have multi-week history that predates the current week.
-    # Strava club API returns no dates so we can't filter by week.
-    # Runners with 1-3 new activities are genuinely starting this week → include them.
     skipped, included = [], []
     for a in new_acts:
         name_key = f"{a['athlete']['firstname']}|{a['athlete']['lastname']}"
@@ -357,14 +539,13 @@ def main():
     new_acts = included
     if skipped:
         names = sorted({f"{a['athlete']['firstname']} {a['athlete']['lastname']}" for a in skipped})
-        print(f"  New runners with history skipped (will track from next run): {', '.join(names)}")
+        print(f"  New runners with history skipped: {', '.join(names)}")
 
-    sunday = is_sunday()
-
-    # Load this week's accumulated activities
+    sunday    = is_sunday()
     week_acts = load_json(WEEK_FILE, [])
+    hist_weeks = load_json(HIST_FILE, [])
 
-    with open(HTML_FILE) as f:
+    with open(HTML_FILE, encoding='utf-8') as f:
         html = f.read()
 
     mon, sun  = current_week_range()
@@ -372,36 +553,46 @@ def main():
 
     if sunday:
         print("It's Sunday IST — archiving this week and starting fresh.")
-        # Include any runs done today (Sunday) in the archived week
         full_week_acts = week_acts + new_acts
 
         prev_badge = parse_current_badge(html)
         prev_wid   = badge_to_week_id(prev_badge)
 
-        # Build prev_athletes from the JSON accumulator — more reliable than regex-parsing HTML
         if full_week_acts:
             prev_athletes = aggregate(full_week_acts, name_map)
         else:
-            prev_athletes = parse_current_athletes(html)  # fallback: nothing in accumulator
+            prev_athletes = parse_current_athletes(html)
 
-        print(f"  Archiving: {prev_badge} ({len(prev_athletes)} athletes, "
-              f"{len(new_acts)} Sunday runs included)")
+        print(f"  Archiving: {prev_badge} ({len(prev_athletes)} athletes)")
 
-        # Reset accumulator for the new week
+        # Prepend new week to historical_weeks.json
+        new_hist_entry = {
+            'id':       prev_wid,
+            'label':    prev_badge,
+            'athletes': [{k: v for k, v in a.items() if k != 'color'}
+                         for a in prev_athletes],
+        }
+        hist_weeks = [new_hist_entry] + hist_weeks
+        save_json(HIST_FILE, hist_weeks)
+
         save_json(WEEK_FILE, [])
 
-        # Badge for the incoming week (next Mon–Sun)
         nmon, nsun = next_week_range()
         new_badge  = badge_text(nmon, nsun)
 
-        html = update_html(html, [], new_badge, prev_badge, prev_wid, prev_athletes, prev_rank_names=[])
-        with open(HTML_FILE, 'w') as f:
+        # Compute HoF with updated history (no current week on Sunday reset)
+        hof = compute_hof(list(seen), [], name_map, hist_weeks)
+
+        html = update_html(html, [], new_badge,
+                           prev_badge, prev_wid, prev_athletes,
+                           prev_rank_names=[],
+                           hist_weeks=hist_weeks, hof=hof)
+        with open(HTML_FILE, 'w', encoding='utf-8') as f:
             f.write(html)
-        print(f"  Archived. New week badge: {new_badge}")
-        print("  Leaderboard starts empty — Monday's run will be first.")
+        print(f"  Archived. New week: {new_badge}")
         return
 
-    # Mid-week: append new activities to this week's accumulator
+    # Mid-week: append new activities
     week_acts = week_acts + new_acts
     save_json(WEEK_FILE, week_acts)
 
@@ -409,19 +600,21 @@ def main():
         print("No activities this week yet — skipping HTML update.")
         return
 
-    # Capture current ranking before overwriting (for daily rank-change arrows)
     prev_rank_names = [a['name'] for a in parse_current_athletes(html)]
-
-    # Aggregate all of this week's activities
-    new_athletes = aggregate(week_acts, name_map)
+    new_athletes    = aggregate(week_acts, name_map)
 
     print(f"\nWeek: {cur_badge}  |  {len(new_athletes)} athletes")
     for a in new_athletes[:5]:
         print(f"  {a['name']:30s} {a['distance']} km")
 
-    html = update_html(html, new_athletes, cur_badge, prev_rank_names=prev_rank_names)
+    # Compute HoF including current week activities
+    hof = compute_hof(list(seen), week_acts, name_map, hist_weeks)
 
-    with open(HTML_FILE, 'w') as f:
+    html = update_html(html, new_athletes, cur_badge,
+                       prev_rank_names=prev_rank_names,
+                       hist_weeks=hist_weeks, hof=hof)
+
+    with open(HTML_FILE, 'w', encoding='utf-8') as f:
         f.write(html)
 
     print("\nindex.html updated.")

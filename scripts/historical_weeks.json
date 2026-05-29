@@ -1,0 +1,1559 @@
+[
+  {
+    "id": "may25",
+    "label": "May 18 – 24, 2026",
+    "athletes": [
+      {
+        "name": "Sujal Pruthi",
+        "distance": 35.7,
+        "runs": 5,
+        "longest": 9.0,
+        "pace": "6:38",
+        "paceVal": 398,
+        "elev": "--"
+      },
+      {
+        "name": "Swadit Chandan",
+        "distance": 29.2,
+        "runs": 3,
+        "longest": 15.3,
+        "pace": "5:48",
+        "paceVal": 348,
+        "elev": "94m"
+      },
+      {
+        "name": "Rishendra Chauhan",
+        "distance": 28.0,
+        "runs": 4,
+        "longest": 7.0,
+        "pace": "6:04",
+        "paceVal": 364,
+        "elev": "71m"
+      },
+      {
+        "name": "Ankit Singh",
+        "distance": 21.0,
+        "runs": 5,
+        "longest": 5.1,
+        "pace": "6:33",
+        "paceVal": 393,
+        "elev": "427m"
+      },
+      {
+        "name": "Nachiket Pethe",
+        "distance": 19.5,
+        "runs": 3,
+        "longest": 10.0,
+        "pace": "6:39",
+        "paceVal": 399,
+        "elev": "12m"
+      },
+      {
+        "name": "Diplav Singh",
+        "distance": 18.4,
+        "runs": 2,
+        "longest": 13.4,
+        "pace": "6:53",
+        "paceVal": 413,
+        "elev": "15m"
+      },
+      {
+        "name": "Samaksh Dhingra",
+        "distance": 18.1,
+        "runs": 4,
+        "longest": 5.0,
+        "pace": "6:33",
+        "paceVal": 393,
+        "elev": "--"
+      },
+      {
+        "name": "Utkarsh Pandey",
+        "distance": 17.1,
+        "runs": 3,
+        "longest": 6.0,
+        "pace": "5:48",
+        "paceVal": 348,
+        "elev": "83m"
+      },
+      {
+        "name": "Srijan Shrey",
+        "distance": 16.8,
+        "runs": 6,
+        "longest": 5.3,
+        "pace": "5:09",
+        "paceVal": 309,
+        "elev": "64m"
+      },
+      {
+        "name": "Sourabh M",
+        "distance": 13.1,
+        "runs": 2,
+        "longest": 7.1,
+        "pace": "7:41",
+        "paceVal": 461,
+        "elev": "23m"
+      },
+      {
+        "name": "Devansh Sukhani",
+        "distance": 12.6,
+        "runs": 4,
+        "longest": 3.3,
+        "pace": "6:18",
+        "paceVal": 378,
+        "elev": "83m"
+      },
+      {
+        "name": "Aniket Roy",
+        "distance": 12.0,
+        "runs": 4,
+        "longest": 5.0,
+        "pace": "4:48",
+        "paceVal": 288,
+        "elev": "13m"
+      },
+      {
+        "name": "Gururaj M",
+        "distance": 11.8,
+        "runs": 2,
+        "longest": 6.8,
+        "pace": "5:33",
+        "paceVal": 333,
+        "elev": "19m"
+      },
+      {
+        "name": "Anurup De",
+        "distance": 10.0,
+        "runs": 4,
+        "longest": 3.0,
+        "pace": "6:09",
+        "paceVal": 369,
+        "elev": "--"
+      },
+      {
+        "name": "Amol Jain",
+        "distance": 5.0,
+        "runs": 2,
+        "longest": 3.0,
+        "pace": "7:01",
+        "paceVal": 421,
+        "elev": "31m"
+      },
+      {
+        "name": "Raj Thakrar",
+        "distance": 10.0,
+        "runs": 1,
+        "longest": 10.0,
+        "pace": "5:41",
+        "paceVal": 341,
+        "elev": "61m"
+      },
+      {
+        "name": "Swati Negi",
+        "distance": 8.3,
+        "runs": 4,
+        "longest": 3.0,
+        "pace": "6:22",
+        "paceVal": 382,
+        "elev": "30m"
+      },
+      {
+        "name": "Awdhesh Gairola",
+        "distance": 6.9,
+        "runs": 2,
+        "longest": 3.7,
+        "pace": "6:21",
+        "paceVal": 381,
+        "elev": "310m"
+      },
+      {
+        "name": "Sidhartha Thakur",
+        "distance": 6.3,
+        "runs": 1,
+        "longest": 6.3,
+        "pace": "5:32",
+        "paceVal": 332,
+        "elev": "--"
+      },
+      {
+        "name": "Mihir Pandit",
+        "distance": 5.6,
+        "runs": 1,
+        "longest": 5.6,
+        "pace": "7:06",
+        "paceVal": 426,
+        "elev": "12m"
+      },
+      {
+        "name": "Ashok Kumar",
+        "distance": 5.0,
+        "runs": 1,
+        "longest": 5.0,
+        "pace": "5:37",
+        "paceVal": 337,
+        "elev": "13m"
+      },
+      {
+        "name": "Ayaan Khan Pathan",
+        "distance": 5.0,
+        "runs": 1,
+        "longest": 5.0,
+        "pace": "7:24",
+        "paceVal": 444,
+        "elev": "5m"
+      },
+      {
+        "name": "Diksin Gulati",
+        "distance": 4.7,
+        "runs": 1,
+        "longest": 4.7,
+        "pace": "6:35",
+        "paceVal": 395,
+        "elev": "16m"
+      },
+      {
+        "name": "Ayush Sharma",
+        "distance": 4.2,
+        "runs": 1,
+        "longest": 4.2,
+        "pace": "7:23",
+        "paceVal": 443,
+        "elev": "8m"
+      },
+      {
+        "name": "A J",
+        "distance": 3.4,
+        "runs": 1,
+        "longest": 3.4,
+        "pace": "6:14",
+        "paceVal": 374,
+        "elev": "21m"
+      },
+      {
+        "name": "Parv Vijayvargiya",
+        "distance": 3.2,
+        "runs": 1,
+        "longest": 3.2,
+        "pace": "9:35",
+        "paceVal": 575,
+        "elev": "31m"
+      },
+      {
+        "name": "Pulkesh Parwani",
+        "distance": 1.9,
+        "runs": 1,
+        "longest": 1.9,
+        "pace": "7:38",
+        "paceVal": 458,
+        "elev": "12m"
+      },
+      {
+        "name": "Amoghvarsh",
+        "distance": 1.8,
+        "runs": 1,
+        "longest": 1.8,
+        "pace": "6:26",
+        "paceVal": 386,
+        "elev": "17m"
+      }
+    ]
+  },
+  {
+    "id": "may11",
+    "label": "May 11 – 17, 2026",
+    "athletes": [
+      {
+        "name": "Swadit Chandan",
+        "distance": 36.9,
+        "runs": 5,
+        "longest": 10.1,
+        "pace": "6:18",
+        "paceVal": 378,
+        "elev": "116m"
+      },
+      {
+        "name": "Mihir Pandit",
+        "distance": 30.8,
+        "runs": 2,
+        "longest": 27.3,
+        "pace": "6:49",
+        "paceVal": 409,
+        "elev": "95m"
+      },
+      {
+        "name": "Amol Jain",
+        "distance": 29.3,
+        "runs": 7,
+        "longest": 6.5,
+        "pace": "5:38",
+        "paceVal": 338,
+        "elev": "70m"
+      },
+      {
+        "name": "Rishendra Chauhan",
+        "distance": 24.0,
+        "runs": 3,
+        "longest": 10.0,
+        "pace": "5:56",
+        "paceVal": 356,
+        "elev": "86m"
+      },
+      {
+        "name": "Ankit Singh",
+        "distance": 23.7,
+        "runs": 6,
+        "longest": 5.1,
+        "pace": "6:37",
+        "paceVal": 397,
+        "elev": "458m"
+      },
+      {
+        "name": "Akash Jannu",
+        "distance": 21.2,
+        "runs": 3,
+        "longest": 8.1,
+        "pace": "6:48",
+        "paceVal": 408,
+        "elev": "181m"
+      },
+      {
+        "name": "Utkarsh Pandey",
+        "distance": 16.9,
+        "runs": 2,
+        "longest": 10.9,
+        "pace": "6:11",
+        "paceVal": 371,
+        "elev": "78m"
+      },
+      {
+        "name": "Sujal Pruthi",
+        "distance": 15.2,
+        "runs": 2,
+        "longest": 10.1,
+        "pace": "8:18",
+        "paceVal": 498,
+        "elev": "4m"
+      },
+      {
+        "name": "Gururaj M",
+        "distance": 13.3,
+        "runs": 2,
+        "longest": 10.0,
+        "pace": "5:51",
+        "paceVal": 351,
+        "elev": "71m"
+      },
+      {
+        "name": "Sourabh M",
+        "distance": 13.0,
+        "runs": 2,
+        "longest": 7.0,
+        "pace": "8:04",
+        "paceVal": 484,
+        "elev": "17m"
+      },
+      {
+        "name": "Srijan Shrey",
+        "distance": 7.4,
+        "runs": 3,
+        "longest": 5.2,
+        "pace": "6:10",
+        "paceVal": 370,
+        "elev": "24m"
+      },
+      {
+        "name": "Anurup De",
+        "distance": 6.7,
+        "runs": 3,
+        "longest": 3.0,
+        "pace": "6:28",
+        "paceVal": 388,
+        "elev": "--"
+      },
+      {
+        "name": "Saksham G",
+        "distance": 6.2,
+        "runs": 3,
+        "longest": 3.7,
+        "pace": "9:27",
+        "paceVal": 567,
+        "elev": "15m"
+      },
+      {
+        "name": "Awdhesh Gairola",
+        "distance": 5.7,
+        "runs": 2,
+        "longest": 3.1,
+        "pace": "6:49",
+        "paceVal": 409,
+        "elev": "257m"
+      },
+      {
+        "name": "Parv Vijayvargiya",
+        "distance": 5.6,
+        "runs": 3,
+        "longest": 2.8,
+        "pace": "9:04",
+        "paceVal": 544,
+        "elev": "69m"
+      },
+      {
+        "name": "Ayaan Khan Pathan",
+        "distance": 5.0,
+        "runs": 1,
+        "longest": 5.0,
+        "pace": "7:58",
+        "paceVal": 478,
+        "elev": "11m"
+      },
+      {
+        "name": "Niranjan Neelakantan",
+        "distance": 3.7,
+        "runs": 1,
+        "longest": 3.7,
+        "pace": "5:03",
+        "paceVal": 303,
+        "elev": "54m"
+      },
+      {
+        "name": "Utsav Wadhwa",
+        "distance": 3.5,
+        "runs": 1,
+        "longest": 3.5,
+        "pace": "6:26",
+        "paceVal": 386,
+        "elev": "2m"
+      },
+      {
+        "name": "A J",
+        "distance": 3.0,
+        "runs": 1,
+        "longest": 3.0,
+        "pace": "6:07",
+        "paceVal": 367,
+        "elev": "--"
+      },
+      {
+        "name": "Ashok Kumar",
+        "distance": 2.0,
+        "runs": 1,
+        "longest": 2.0,
+        "pace": "6:16",
+        "paceVal": 376,
+        "elev": "9m"
+      }
+    ]
+  },
+  {
+    "id": "may4",
+    "label": "May 4 – 10, 2026",
+    "athletes": [
+      {
+        "name": "Ankit Singh",
+        "distance": 28.9,
+        "runs": 6,
+        "longest": 5.2,
+        "pace": "7:01",
+        "paceVal": 421,
+        "elev": "540m"
+      },
+      {
+        "name": "Niranjan Neelakantan",
+        "distance": 26.3,
+        "runs": 6,
+        "longest": 5.7,
+        "pace": "5:41",
+        "paceVal": 341,
+        "elev": "179m"
+      },
+      {
+        "name": "Rishendra Chauhan",
+        "distance": 24.9,
+        "runs": 4,
+        "longest": 10.0,
+        "pace": "6:19",
+        "paceVal": 379,
+        "elev": "90m"
+      },
+      {
+        "name": "Amol Jain",
+        "distance": 17.0,
+        "runs": 6,
+        "longest": 4.3,
+        "pace": "7:30",
+        "paceVal": 450,
+        "elev": "82m"
+      },
+      {
+        "name": "Sourabh M",
+        "distance": 13.0,
+        "runs": 3,
+        "longest": 6.5,
+        "pace": "8:04",
+        "paceVal": 484,
+        "elev": "13m"
+      },
+      {
+        "name": "Swadit Chandan",
+        "distance": 12.9,
+        "runs": 4,
+        "longest": 5.0,
+        "pace": "6:02",
+        "paceVal": 362,
+        "elev": "39m"
+      },
+      {
+        "name": "Mihir Pandit",
+        "distance": 10.0,
+        "runs": 1,
+        "longest": 10.0,
+        "pace": "5:56",
+        "paceVal": 356,
+        "elev": "61m"
+      },
+      {
+        "name": "Samaksh Dhingra",
+        "distance": 10.0,
+        "runs": 2,
+        "longest": 5.0,
+        "pace": "6:45",
+        "paceVal": 405,
+        "elev": "--"
+      },
+      {
+        "name": "Parv Vijayvargiya",
+        "distance": 8.5,
+        "runs": 4,
+        "longest": 3.4,
+        "pace": "9:56",
+        "paceVal": 596,
+        "elev": "107m"
+      },
+      {
+        "name": "Akash Jannu",
+        "distance": 7.1,
+        "runs": 2,
+        "longest": 5.0,
+        "pace": "6:51",
+        "paceVal": 411,
+        "elev": "49m"
+      },
+      {
+        "name": "Gururaj M",
+        "distance": 6.0,
+        "runs": 2,
+        "longest": 3.4,
+        "pace": "5:32",
+        "paceVal": 332,
+        "elev": "42m"
+      },
+      {
+        "name": "Utkarsh Pandey",
+        "distance": 6.0,
+        "runs": 1,
+        "longest": 6.0,
+        "pace": "6:14",
+        "paceVal": 374,
+        "elev": "42m"
+      },
+      {
+        "name": "Ashok Kumar",
+        "distance": 5.0,
+        "runs": 1,
+        "longest": 5.0,
+        "pace": "6:08",
+        "paceVal": 368,
+        "elev": "4m"
+      },
+      {
+        "name": "Aniket Roy",
+        "distance": 5.0,
+        "runs": 1,
+        "longest": 5.0,
+        "pace": "5:39",
+        "paceVal": 339,
+        "elev": "2m"
+      },
+      {
+        "name": "Akshat Bansal",
+        "distance": 4.9,
+        "runs": 5,
+        "longest": 1.4,
+        "pace": "6:52",
+        "paceVal": 412,
+        "elev": "72m"
+      },
+      {
+        "name": "Saksham G",
+        "distance": 3.1,
+        "runs": 2,
+        "longest": 1.6,
+        "pace": "8:30",
+        "paceVal": 510,
+        "elev": "24m"
+      },
+      {
+        "name": "Awdhesh Gairola",
+        "distance": 2.9,
+        "runs": 1,
+        "longest": 2.9,
+        "pace": "7:41",
+        "paceVal": 461,
+        "elev": "137m"
+      },
+      {
+        "name": "Swati Negi",
+        "distance": 2.1,
+        "runs": 1,
+        "longest": 2.1,
+        "pace": "5:55",
+        "paceVal": 355,
+        "elev": "2m"
+      },
+      {
+        "name": "Anurup De",
+        "distance": 2.0,
+        "runs": 1,
+        "longest": 2.0,
+        "pace": "6:09",
+        "paceVal": 369,
+        "elev": "--"
+      }
+    ]
+  },
+  {
+    "id": "apr27",
+    "label": "Apr 27 – May 3, 2026",
+    "athletes": [
+      {
+        "name": "Swadit Chandan",
+        "distance": 35.5,
+        "runs": 5,
+        "longest": 10.0,
+        "pace": "6:09",
+        "paceVal": 369,
+        "elev": "113m"
+      },
+      {
+        "name": "Utkarsh Pandey",
+        "distance": 32.8,
+        "runs": 6,
+        "longest": 7.5,
+        "pace": "6:24",
+        "paceVal": 384,
+        "elev": "181m"
+      },
+      {
+        "name": "Sourabh M",
+        "distance": 15.1,
+        "runs": 3,
+        "longest": 6.0,
+        "pace": "7:41",
+        "paceVal": 461,
+        "elev": "17m"
+      },
+      {
+        "name": "Sujal Pruthi",
+        "distance": 15.0,
+        "runs": 2,
+        "longest": 10.0,
+        "pace": "6:58",
+        "paceVal": 418,
+        "elev": "70m"
+      },
+      {
+        "name": "Samaksh Dhingra",
+        "distance": 14.2,
+        "runs": 4,
+        "longest": 5.0,
+        "pace": "7:16",
+        "paceVal": 436,
+        "elev": "--"
+      },
+      {
+        "name": "Niranjan Neelakantan",
+        "distance": 14.0,
+        "runs": 3,
+        "longest": 7.3,
+        "pace": "5:59",
+        "paceVal": 359,
+        "elev": "150m"
+      },
+      {
+        "name": "Rishendra Chauhan",
+        "distance": 14.0,
+        "runs": 2,
+        "longest": 7.0,
+        "pace": "6:11",
+        "paceVal": 371,
+        "elev": "53m"
+      },
+      {
+        "name": "Raj Thakrar",
+        "distance": 12.8,
+        "runs": 3,
+        "longest": 10.0,
+        "pace": "5:57",
+        "paceVal": 357,
+        "elev": "50m"
+      },
+      {
+        "name": "Mihir Pandit",
+        "distance": 11.0,
+        "runs": 2,
+        "longest": 10.0,
+        "pace": "7:10",
+        "paceVal": 430,
+        "elev": "16m"
+      },
+      {
+        "name": "Sakha Ghotekar",
+        "distance": 10.7,
+        "runs": 2,
+        "longest": 7.2,
+        "pace": "8:25",
+        "paceVal": 505,
+        "elev": "81m"
+      },
+      {
+        "name": "Aniket Roy",
+        "distance": 10.0,
+        "runs": 2,
+        "longest": 5.0,
+        "pace": "6:42",
+        "paceVal": 402,
+        "elev": "2m"
+      },
+      {
+        "name": "Anurup De",
+        "distance": 8.3,
+        "runs": 3,
+        "longest": 3.5,
+        "pace": "7:08",
+        "paceVal": 428,
+        "elev": "6m"
+      },
+      {
+        "name": "Swati Negi",
+        "distance": 7.1,
+        "runs": 4,
+        "longest": 3.0,
+        "pace": "17:52",
+        "paceVal": 1072,
+        "elev": "53m"
+      },
+      {
+        "name": "Akshat Bansal",
+        "distance": 6.7,
+        "runs": 6,
+        "longest": 1.2,
+        "pace": "6:43",
+        "paceVal": 403,
+        "elev": "100m"
+      },
+      {
+        "name": "Ankit Singh",
+        "distance": 5.0,
+        "runs": 1,
+        "longest": 5.0,
+        "pace": "7:12",
+        "paceVal": 432,
+        "elev": "100m"
+      },
+      {
+        "name": "Ayaan Khan Pathan",
+        "distance": 5.0,
+        "runs": 1,
+        "longest": 5.0,
+        "pace": "7:25",
+        "paceVal": 445,
+        "elev": "15m"
+      },
+      {
+        "name": "Ashok Kumar",
+        "distance": 4.8,
+        "runs": 1,
+        "longest": 4.8,
+        "pace": "7:36",
+        "paceVal": 456,
+        "elev": "8m"
+      },
+      {
+        "name": "Diksin Gulati",
+        "distance": 3.4,
+        "runs": 1,
+        "longest": 3.4,
+        "pace": "6:45",
+        "paceVal": 405,
+        "elev": "10m"
+      },
+      {
+        "name": "death queen",
+        "distance": 3.0,
+        "runs": 1,
+        "longest": 3.0,
+        "pace": "8:46",
+        "paceVal": 526,
+        "elev": "12m"
+      },
+      {
+        "name": "Sidharth Nair",
+        "distance": 3.0,
+        "runs": 1,
+        "longest": 3.0,
+        "pace": "4:22",
+        "paceVal": 262,
+        "elev": "10m"
+      },
+      {
+        "name": "Vajra Bhagwat",
+        "distance": 3.0,
+        "runs": 1,
+        "longest": 3.0,
+        "pace": "4:46",
+        "paceVal": 286,
+        "elev": "41m"
+      },
+      {
+        "name": "Saksham G",
+        "distance": 0.6,
+        "runs": 2,
+        "longest": 0.3,
+        "pace": "8:52",
+        "paceVal": 532,
+        "elev": "8m"
+      }
+    ]
+  },
+  {
+    "id": "apr20",
+    "label": "Apr 20 – 26, 2026",
+    "athletes": [
+      {
+        "name": "Swadit Chandan",
+        "distance": 40.0,
+        "runs": 6,
+        "longest": 15.0,
+        "pace": "6:28",
+        "paceVal": 388,
+        "elev": "129m"
+      },
+      {
+        "name": "Utkarsh Pandey",
+        "distance": 37.2,
+        "runs": 7,
+        "longest": 5.8,
+        "pace": "6:11",
+        "paceVal": 371,
+        "elev": "239m"
+      },
+      {
+        "name": "Ankit Singh",
+        "distance": 33.7,
+        "runs": 7,
+        "longest": 5.5,
+        "pace": "6:55",
+        "paceVal": 415,
+        "elev": "666m"
+      },
+      {
+        "name": "Ashok Kumar",
+        "distance": 21.2,
+        "runs": 3,
+        "longest": 10.1,
+        "pace": "5:50",
+        "paceVal": 350,
+        "elev": "56m"
+      },
+      {
+        "name": "Rishendra Chauhan",
+        "distance": 20.0,
+        "runs": 2,
+        "longest": 10.0,
+        "pace": "6:06",
+        "paceVal": 366,
+        "elev": "71m"
+      },
+      {
+        "name": "Ayaan Khan Pathan",
+        "distance": 11.7,
+        "runs": 2,
+        "longest": 6.7,
+        "pace": "7:07",
+        "paceVal": 427,
+        "elev": "27m"
+      },
+      {
+        "name": "Sidharth Nair",
+        "distance": 11.0,
+        "runs": 1,
+        "longest": 11.0,
+        "pace": "5:08",
+        "paceVal": 308,
+        "elev": "41m"
+      },
+      {
+        "name": "Parv Vijayvargiya",
+        "distance": 10.6,
+        "runs": 6,
+        "longest": 2.3,
+        "pace": "9:21",
+        "paceVal": 561,
+        "elev": "102m"
+      },
+      {
+        "name": "Aniket Roy",
+        "distance": 10.1,
+        "runs": 2,
+        "longest": 5.1,
+        "pace": "6:34",
+        "paceVal": 394,
+        "elev": "17m"
+      },
+      {
+        "name": "Niranjan Neelakantan",
+        "distance": 8.8,
+        "runs": 2,
+        "longest": 5.2,
+        "pace": "5:52",
+        "paceVal": 352,
+        "elev": "96m"
+      },
+      {
+        "name": "Angad Singh Pental",
+        "distance": 6.1,
+        "runs": 2,
+        "longest": 3.1,
+        "pace": "7:21",
+        "paceVal": 441,
+        "elev": "6m"
+      },
+      {
+        "name": "Raj Thakrar",
+        "distance": 5.1,
+        "runs": 1,
+        "longest": 5.1,
+        "pace": "6:42",
+        "paceVal": 402,
+        "elev": "41m"
+      },
+      {
+        "name": "Gururaj M",
+        "distance": 4.5,
+        "runs": 1,
+        "longest": 4.5,
+        "pace": "5:28",
+        "paceVal": 328,
+        "elev": "30m"
+      },
+      {
+        "name": "death queen",
+        "distance": 3.8,
+        "runs": 1,
+        "longest": 3.8,
+        "pace": "8:27",
+        "paceVal": 507,
+        "elev": "10m"
+      },
+      {
+        "name": "Saksham G",
+        "distance": 3.4,
+        "runs": 4,
+        "longest": 1.2,
+        "pace": "8:44",
+        "paceVal": 524,
+        "elev": "8m"
+      },
+      {
+        "name": "Samaksh Dhingra",
+        "distance": 3.0,
+        "runs": 1,
+        "longest": 3.0,
+        "pace": "6:45",
+        "paceVal": 405,
+        "elev": "--"
+      },
+      {
+        "name": "Akshat Bansal",
+        "distance": 2.5,
+        "runs": 2,
+        "longest": 1.7,
+        "pace": "7:14",
+        "paceVal": 434,
+        "elev": "38m"
+      },
+      {
+        "name": "A J",
+        "distance": 2.4,
+        "runs": 1,
+        "longest": 2.4,
+        "pace": "5:49",
+        "paceVal": 349,
+        "elev": "18m"
+      },
+      {
+        "name": "Rahul Sarma",
+        "distance": 1.3,
+        "runs": 1,
+        "longest": 1.3,
+        "pace": "6:34",
+        "paceVal": 394,
+        "elev": "7m"
+      }
+    ]
+  },
+  {
+    "id": "apr13",
+    "label": "Apr 13 – 19, 2026",
+    "athletes": [
+      {
+        "name": "Sakha Ghotekar",
+        "distance": 43.2,
+        "runs": 4,
+        "longest": 23.0,
+        "pace": "7:51",
+        "paceVal": 471,
+        "elev": "262m"
+      },
+      {
+        "name": "Swadit Chandan",
+        "distance": 41.2,
+        "runs": 6,
+        "longest": 10.1,
+        "pace": "6:11",
+        "paceVal": 371,
+        "elev": "140m"
+      },
+      {
+        "name": "Raj Thakrar",
+        "distance": 40.7,
+        "runs": 8,
+        "longest": 10.2,
+        "pace": "7:48",
+        "paceVal": 468,
+        "elev": "417m"
+      },
+      {
+        "name": "Ankit Singh",
+        "distance": 31.7,
+        "runs": 7,
+        "longest": 5.3,
+        "pace": "6:47",
+        "paceVal": 407,
+        "elev": "632m"
+      },
+      {
+        "name": "Ashok Kumar",
+        "distance": 29.7,
+        "runs": 4,
+        "longest": 10.0,
+        "pace": "5:32",
+        "paceVal": 332,
+        "elev": "38m"
+      },
+      {
+        "name": "Rakshit Singh",
+        "distance": 29.4,
+        "runs": 5,
+        "longest": 8.3,
+        "pace": "12:00",
+        "paceVal": 720,
+        "elev": "117m"
+      },
+      {
+        "name": "Gururaj M",
+        "distance": 23.0,
+        "runs": 3,
+        "longest": 15.4,
+        "pace": "6:26",
+        "paceVal": 386,
+        "elev": "118m"
+      },
+      {
+        "name": "Mihir Pandit",
+        "distance": 21.5,
+        "runs": 2,
+        "longest": 16.4,
+        "pace": "7:19",
+        "paceVal": 439,
+        "elev": "70m"
+      },
+      {
+        "name": "Bhargav Kumare",
+        "distance": 20.0,
+        "runs": 2,
+        "longest": 10.0,
+        "pace": "6:36",
+        "paceVal": 396,
+        "elev": "22m"
+      },
+      {
+        "name": "Rishendra Chauhan",
+        "distance": 19.1,
+        "runs": 2,
+        "longest": 10.0,
+        "pace": "5:40",
+        "paceVal": 340,
+        "elev": "69m"
+      },
+      {
+        "name": "Utkarsh Pandey",
+        "distance": 15.3,
+        "runs": 3,
+        "longest": 5.1,
+        "pace": "6:15",
+        "paceVal": 375,
+        "elev": "89m"
+      },
+      {
+        "name": "Diksin Gulati",
+        "distance": 15.2,
+        "runs": 1,
+        "longest": 15.2,
+        "pace": "8:29",
+        "paceVal": 509,
+        "elev": "79m"
+      },
+      {
+        "name": "Niranjan Neelakantan",
+        "distance": 11.4,
+        "runs": 4,
+        "longest": 4.1,
+        "pace": "5:53",
+        "paceVal": 353,
+        "elev": "210m"
+      },
+      {
+        "name": "death queen",
+        "distance": 10.2,
+        "runs": 1,
+        "longest": 10.2,
+        "pace": "13:27",
+        "paceVal": 807,
+        "elev": "214m"
+      },
+      {
+        "name": "Nachiket Pethe",
+        "distance": 10.2,
+        "runs": 2,
+        "longest": 5.2,
+        "pace": "6:05",
+        "paceVal": 365,
+        "elev": "79m"
+      },
+      {
+        "name": "Anurup De",
+        "distance": 9.0,
+        "runs": 4,
+        "longest": 2.7,
+        "pace": "6:22",
+        "paceVal": 382,
+        "elev": "11m"
+      },
+      {
+        "name": "Kaushik Karmarkar",
+        "distance": 8.6,
+        "runs": 2,
+        "longest": 4.5,
+        "pace": "6:47",
+        "paceVal": 407,
+        "elev": "28m"
+      },
+      {
+        "name": "Burger Bacha",
+        "distance": 6.0,
+        "runs": 2,
+        "longest": 3.0,
+        "pace": "8:58",
+        "paceVal": 538,
+        "elev": "13m"
+      },
+      {
+        "name": "Sujal Pruthi",
+        "distance": 3.4,
+        "runs": 1,
+        "longest": 3.4,
+        "pace": "7:39",
+        "paceVal": 459,
+        "elev": "26m"
+      },
+      {
+        "name": "A J",
+        "distance": 3.2,
+        "runs": 1,
+        "longest": 3.2,
+        "pace": "5:52",
+        "paceVal": 352,
+        "elev": "6m"
+      },
+      {
+        "name": "Vibhor Gupta",
+        "distance": 3.1,
+        "runs": 2,
+        "longest": 2.0,
+        "pace": "7:21",
+        "paceVal": 441,
+        "elev": "6m"
+      },
+      {
+        "name": "Nischay Vij",
+        "distance": 2.6,
+        "runs": 2,
+        "longest": 2.3,
+        "pace": "7:20",
+        "paceVal": 440,
+        "elev": "--"
+      },
+      {
+        "name": "Sourabh M",
+        "distance": 2.1,
+        "runs": 1,
+        "longest": 2.1,
+        "pace": "7:21",
+        "paceVal": 441,
+        "elev": "2m"
+      },
+      {
+        "name": "Swati Negi",
+        "distance": 2.0,
+        "runs": 1,
+        "longest": 2.0,
+        "pace": "5:33",
+        "paceVal": 333,
+        "elev": "2m"
+      }
+    ]
+  },
+  {
+    "id": "apr6",
+    "label": "Apr 6 – 12, 2026",
+    "athletes": [
+      {
+        "name": "Bhargav Kumare",
+        "distance": 50.3,
+        "runs": 5,
+        "longest": 10.2,
+        "pace": "5:43",
+        "paceVal": 343,
+        "elev": "249m"
+      },
+      {
+        "name": "Rishendra Chauhan",
+        "distance": 18.5,
+        "runs": 2,
+        "longest": 10.0,
+        "pace": "6:16",
+        "paceVal": 376,
+        "elev": "101m"
+      },
+      {
+        "name": "Niranjan Neelakantan",
+        "distance": 17.1,
+        "runs": 3,
+        "longest": 7.5,
+        "pace": "6:25",
+        "paceVal": 385,
+        "elev": "291m"
+      },
+      {
+        "name": "Sakha Ghotekar",
+        "distance": 17.0,
+        "runs": 2,
+        "longest": 11.1,
+        "pace": "7:22",
+        "paceVal": 442,
+        "elev": "133m"
+      },
+      {
+        "name": "Raj Thakrar",
+        "distance": 14.4,
+        "runs": 3,
+        "longest": 8.1,
+        "pace": "6:52",
+        "paceVal": 412,
+        "elev": "83m"
+      },
+      {
+        "name": "death queen",
+        "distance": 14.0,
+        "runs": 5,
+        "longest": 5.0,
+        "pace": "8:23",
+        "paceVal": 503,
+        "elev": "62m"
+      },
+      {
+        "name": "Nachiket Pethe",
+        "distance": 12.9,
+        "runs": 2,
+        "longest": 10.0,
+        "pace": "7:10",
+        "paceVal": 430,
+        "elev": "38m"
+      },
+      {
+        "name": "Mihir Pandit",
+        "distance": 10.7,
+        "runs": 1,
+        "longest": 10.7,
+        "pace": "6:40",
+        "paceVal": 400,
+        "elev": "69m"
+      },
+      {
+        "name": "Nischay Vij",
+        "distance": 7.9,
+        "runs": 4,
+        "longest": 3.1,
+        "pace": "7:37",
+        "paceVal": 457,
+        "elev": "--"
+      },
+      {
+        "name": "Swati Negi",
+        "distance": 7.1,
+        "runs": 4,
+        "longest": 2.0,
+        "pace": "6:39",
+        "paceVal": 399,
+        "elev": "23m"
+      },
+      {
+        "name": "Angad Singh Pental",
+        "distance": 6.1,
+        "runs": 2,
+        "longest": 3.0,
+        "pace": "6:45",
+        "paceVal": 405,
+        "elev": "--"
+      },
+      {
+        "name": "Gururaj M",
+        "distance": 6.0,
+        "runs": 3,
+        "longest": 2.3,
+        "pace": "5:16",
+        "paceVal": 316,
+        "elev": "36m"
+      },
+      {
+        "name": "Akash Jannu",
+        "distance": 5.1,
+        "runs": 1,
+        "longest": 5.1,
+        "pace": "5:56",
+        "paceVal": 356,
+        "elev": "42m"
+      },
+      {
+        "name": "Ayaan Khan Pathan",
+        "distance": 5.0,
+        "runs": 1,
+        "longest": 5.0,
+        "pace": "7:46",
+        "paceVal": 466,
+        "elev": "21m"
+      },
+      {
+        "name": "Vibhor Gupta",
+        "distance": 4.4,
+        "runs": 3,
+        "longest": 1.9,
+        "pace": "6:36",
+        "paceVal": 396,
+        "elev": "47m"
+      },
+      {
+        "name": "Anurup De",
+        "distance": 3.3,
+        "runs": 1,
+        "longest": 3.3,
+        "pace": "5:54",
+        "paceVal": 354,
+        "elev": "--"
+      }
+    ]
+  },
+  {
+    "id": "mar30",
+    "label": "Mar 30 – Apr 5, 2026",
+    "athletes": [
+      {
+        "name": "Bhargav Kumare",
+        "distance": 10.0,
+        "runs": 1,
+        "longest": 10.0,
+        "pace": "5:59",
+        "paceVal": 359,
+        "elev": "22m"
+      },
+      {
+        "name": "Raj Thakrar",
+        "distance": 8.0,
+        "runs": 2,
+        "longest": 7.2,
+        "pace": "8:08",
+        "paceVal": 488,
+        "elev": "4m"
+      },
+      {
+        "name": "Swadit Chandan",
+        "distance": 7.8,
+        "runs": 2,
+        "longest": 5.0,
+        "pace": "6:35",
+        "paceVal": 395,
+        "elev": "65m"
+      },
+      {
+        "name": "Niranjan N.",
+        "distance": 7.6,
+        "runs": 2,
+        "longest": 4.5,
+        "pace": "6:00",
+        "paceVal": 360,
+        "elev": "33m"
+      },
+      {
+        "name": "Aryaman Agrawal",
+        "distance": 7.2,
+        "runs": 1,
+        "longest": 7.2,
+        "pace": "8:29",
+        "paceVal": 509,
+        "elev": "4m"
+      },
+      {
+        "name": "Gururaj M",
+        "distance": 6.2,
+        "runs": 3,
+        "longest": 2.1,
+        "pace": "5:14",
+        "paceVal": 314,
+        "elev": "39m"
+      },
+      {
+        "name": "Nachiket Pethe",
+        "distance": 5.0,
+        "runs": 1,
+        "longest": 5.0,
+        "pace": "6:23",
+        "paceVal": 383,
+        "elev": "--"
+      },
+      {
+        "name": "Ayaan K. Pathan",
+        "distance": 4.9,
+        "runs": 1,
+        "longest": 4.9,
+        "pace": "7:11",
+        "paceVal": 431,
+        "elev": "31m"
+      },
+      {
+        "name": "Sourabh M",
+        "distance": 2.8,
+        "runs": 1,
+        "longest": 2.8,
+        "pace": "7:10",
+        "paceVal": 430,
+        "elev": "--"
+      },
+      {
+        "name": "Swati Negi",
+        "distance": 1.0,
+        "runs": 1,
+        "longest": 1.0,
+        "pace": "9:50",
+        "paceVal": 590,
+        "elev": "6m"
+      }
+    ]
+  },
+  {
+    "id": "mar23",
+    "label": "Mar 23 – 29, 2026",
+    "athletes": [
+      {
+        "name": "Rishendra Chauhan",
+        "distance": 30.1,
+        "runs": 3,
+        "longest": 10.1,
+        "pace": "5:50",
+        "paceVal": 350,
+        "elev": "111m"
+      },
+      {
+        "name": "Akash Jannu",
+        "distance": 26.5,
+        "runs": 2,
+        "longest": 16.5,
+        "pace": "6:32",
+        "paceVal": 392,
+        "elev": "225m"
+      },
+      {
+        "name": "Sourabh M",
+        "distance": 19.6,
+        "runs": 6,
+        "longest": 5.0,
+        "pace": "12:26",
+        "paceVal": 746,
+        "elev": "132m"
+      },
+      {
+        "name": "Sujal Pruthi",
+        "distance": 13.0,
+        "runs": 2,
+        "longest": 7.0,
+        "pace": "5:40",
+        "paceVal": 340,
+        "elev": "39m"
+      },
+      {
+        "name": "Utsav Wadhwa",
+        "distance": 3.7,
+        "runs": 1,
+        "longest": 3.7,
+        "pace": "6:54",
+        "paceVal": 414,
+        "elev": "--"
+      },
+      {
+        "name": "Anurup De",
+        "distance": 3.1,
+        "runs": 2,
+        "longest": 2.0,
+        "pace": "6:30",
+        "paceVal": 390,
+        "elev": "--"
+      },
+      {
+        "name": "Angad Singh Pental",
+        "distance": 3.0,
+        "runs": 2,
+        "longest": 1.5,
+        "pace": "7:48",
+        "paceVal": 468,
+        "elev": "--"
+      },
+      {
+        "name": "Sidharth Nair",
+        "distance": 3.0,
+        "runs": 1,
+        "longest": 3.0,
+        "pace": "4:41",
+        "paceVal": 281,
+        "elev": "8m"
+      },
+      {
+        "name": "Nischay Vij",
+        "distance": 0.4,
+        "runs": 1,
+        "longest": 0.4,
+        "pace": "11:52",
+        "paceVal": 712,
+        "elev": "--"
+      }
+    ]
+  }
+]
