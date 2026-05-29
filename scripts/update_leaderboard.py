@@ -180,6 +180,15 @@ SPEED_BANDS = {
     '42K':  (41500, 43000),
 }
 
+# Manual seed entries for bands with no auto-detected runs yet
+# Format: (elapsed_secs, full_name, dist_m)
+MANUAL_SPEED_SEEDS = {
+    '21K': [
+        (10581, 'Mihir Pandit',   21097),
+        (11969, 'Sakha Ghotekar', 21097),
+    ],
+}
+
 def fmt_time(secs):
     h = secs // 3600
     m = (secs % 3600) // 60
@@ -222,6 +231,7 @@ def compute_hof(seen_fps, current_week_acts, name_map, hist_weeks):
                     continue
                 elapsed = elapsed_lookup.get(fp, moving)
                 runs.append((elapsed, name, dist))
+        runs.extend(MANUAL_SPEED_SEEDS.get(band, []))
         runs.sort()
         top3, seen_names = [], set()
         for elapsed, name, dist in runs:
