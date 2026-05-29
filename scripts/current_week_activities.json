@@ -538,5 +538,124 @@
     "sport_type": "Run",
     "workout_type": null,
     "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Diksin",
+      "lastname": "G."
+    },
+    "name": "Evening Run",
+    "distance": 3799.1,
+    "moving_time": 1358,
+    "elapsed_time": 1404,
+    "total_elevation_gain": 35.1,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Niranjan",
+      "lastname": "N."
+    },
+    "name": "That's a 5k PR!",
+    "distance": 6053.0,
+    "moving_time": 2034,
+    "elapsed_time": 2037,
+    "total_elevation_gain": 67.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Amazfit Active 2 NFC (Round)"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Akash",
+      "lastname": "J."
+    },
+    "name": "When the world feels collapsing on you…. You still run and have a smile :)",
+    "distance": 8060.3,
+    "moving_time": 3359,
+    "elapsed_time": 3388,
+    "total_elevation_gain": 71.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Sujal",
+      "lastname": "P."
+    },
+    "name": "The Marine Drive Run",
+    "distance": 5004.9,
+    "moving_time": 2287,
+    "elapsed_time": 2348,
+    "total_elevation_gain": 4.3,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Sidhartha",
+      "lastname": "T."
+    },
+    "name": "Evening Run",
+    "distance": 5810.1,
+    "moving_time": 2100,
+    "elapsed_time": 2101,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Garmin Forerunner 55"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Samaksh",
+      "lastname": "D."
+    },
+    "name": "Evening Run",
+    "distance": 5000.0,
+    "moving_time": 2022,
+    "elapsed_time": 2022,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Amazfit GTS 2 mini"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Nachiket",
+      "lastname": "P."
+    },
+    "name": "Recovery",
+    "distance": 3001.2,
+    "moving_time": 1292,
+    "elapsed_time": 1294,
+    "total_elevation_gain": 19.6,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
   }
 ]
