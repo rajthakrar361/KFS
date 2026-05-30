@@ -82,17 +82,17 @@ def pace_str_val(moving_secs, dist_m):
     spk = moving_secs / (dist_m / 1000)
     return f"{int(spk//60)}:{int(spk%60):02d}", int(spk)
 
-def avg_pace_str_val(elapsed_secs, dist_m):
+def avg_pace_str_val(moving_secs, dist_m):
     if dist_m < 10:
         return '--', 9999
-    spk = elapsed_secs / (dist_m / 1000)
+    spk = moving_secs / (dist_m / 1000)
     return f"{int(spk//60)}:{int(spk%60):02d}", int(spk)
 
 def aggregate(activities, name_map):
     data = defaultdict(lambda: dict(
-        distance=0.0, runs=0, longest=0.0,
+        distance=0.0, runs=0, runs_2k=0, longest=0.0,
         best_pv=9999, best_pace='--', elev=0.0,
-        moving_total=0, elapsed_total=0, distance_raw=0.0
+        moving_total=0, distance_raw=0.0
     ))
     for a in activities:
         if a.get('type') not in RUN_TYPES:
@@ -103,9 +103,9 @@ def aggregate(activities, name_map):
         d = data[name]
         d['distance']      = round(d['distance'] + dk, 1)
         d['runs']         += 1
+        d['runs_2k']      += 1 if a['distance'] >= 2000 else 0
         d['distance_raw'] += a['distance']
         d['moving_total']  += a['moving_time']
-        d['elapsed_total'] += a.get('elapsed_time', a['moving_time'])
         if dk > d['longest']: d['longest'] = dk
         if pv < d['best_pv']:
             d['best_pv']   = pv
@@ -120,6 +120,7 @@ def aggregate(activities, name_map):
             'name':        name,
             'distance':    d['distance'],
             'runs':        d['runs'],
+            'runs_2k':     d['runs_2k'],
             'longest':     d['longest'],
             'pace':        d['best_pace'],
             'paceVal':     d['best_pv'],
@@ -146,11 +147,6 @@ def badge_text(monday, sunday):
     return (f"{monday.strftime('%b')} {monday.day} – "
             f"{sunday.strftime('%b')} {sunday.day}, {sunday.year}")
 
-def week_html_id(monday):
-    months = {1:'jan',2:'feb',3:'mar',4:'apr',5:'may',6:'jun',
-              7:'jul',8:'aug',9:'sep',10:'oct',11:'nov',12:'dec'}
-    return f"{months[monday.month]}{monday.day}"
-
 def next_week_range():
     ist    = timezone(timedelta(hours=5, minutes=30))
     today  = datetime.now(ist)
@@ -169,9 +165,6 @@ def is_sunday():
 
 # Names excluded from ALL speed records
 SPEED_EXCLUDED_NAMES = {'Amol Jain'}
-
-# Fingerprints excluded from speed records (cheated/invalid runs)
-SPEED_EXCLUDED_FPS = set()
 
 SPEED_BANDS = {
     '5K':   (4800,  5600),
@@ -215,8 +208,6 @@ def compute_hof(seen_fps, current_week_acts, name_map, hist_weeks):
     for band, (lo, hi) in SPEED_BANDS.items():
         runs = []
         for fp in seen_fps:
-            if fp in SPEED_EXCLUDED_FPS:
-                continue
             parts = fp.split('|')
             if len(parts) < 4:
                 continue
@@ -265,7 +256,7 @@ def compute_hof(seen_fps, current_week_acts, name_map, hist_weeks):
             name = a['name']
             km   = a['distance']
             lng  = a['longest']
-            runs = a['runs']
+            runs = a.get('runs_2k', a['runs'])  # 2km+ filter; falls back for old historical data
 
             if lng > longest_run.get(name, 0):
                 longest_run[name] = lng
