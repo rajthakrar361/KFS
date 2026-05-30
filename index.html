@@ -1159,6 +1159,30 @@
     <!-- Week of May 4 -->
     <!-- Week of May 11 – 17, 2026 -->
     <!-- Week of May 25 – 31, 2026 -->
+    <!-- Week of May 25 – 31, 2026 -->
+    <div class="hist-week-card" id="hist-week-may25">
+      <div class="hist-week-header" onclick="toggleHistWeek('hist-week-may25')">
+        <div>
+          <div class="hist-week-title">May 25 – 31, 2026</div>
+          <div class="hist-week-meta">
+            <span><strong>18</strong> runners</span>
+            <span><strong>188.8</strong> km total</span>
+            <span><strong>47</strong> runs</span>
+          </div>
+        </div>
+        <span class="hist-chevron">▼</span>
+      </div>
+      <div class="hist-week-body">
+        <div class="board" style="border:none;border-radius:0">
+          <div class="board-header">
+            <span></span><span>Athlete</span><span>Distance</span>
+            <span>Pace</span><span class="col-elev">Elev.</span>
+          </div>
+          <div id="hist-body-may25"></div>
+        </div>
+      </div>
+    </div>
+
     <div class="hist-week-card" id="hist-week-may25">
       <div class="hist-week-header" onclick="toggleHistWeek('hist-week-may25')">
         <div>
@@ -1431,7 +1455,7 @@
   <div class="curr-view" id="curr-view">
 
   <div class="view-badge-row">
-    <div class="week-badge"><span>May 25 – 31, 2026</span></div>
+    <div class="week-badge"><span>Jun 1 – 7, 2026</span></div>
   </div>
   <div style="text-align:center;margin:-0.5rem 0 1rem;font-size:11px;color:var(--muted);letter-spacing:0.5px;">
     ⏱ Updates nightly &nbsp;·&nbsp; <span id="reset-countdown"></span>
@@ -1488,7 +1512,7 @@
 <script>
 const hofData = {
   speed: {
-    "5K":  [{name:"Raj Thakrar",time:1497,timeStr:"24:57",pace:"4:59/km"},{name:"Abhishek Singh",time:1591,timeStr:"26:31",pace:"5:08/km"},{name:"Gururaj M",time:1673,timeStr:"27:53",pace:"5:33/km"}],
+    "5K":  [{name:"Raj Thakrar",time:1497,timeStr:"24:57",pace:"4:59/km"},{name:"Abhishek Singh",time:1584,timeStr:"26:24",pace:"5:07/km"},{name:"Gururaj M",time:1673,timeStr:"27:53",pace:"5:33/km"}],
     "10K": [{name:"Rishendra Chauhan",time:3367,timeStr:"56:07",pace:"5:35/km"},{name:"Raj Thakrar",time:3416,timeStr:"56:56",pace:"5:41/km"},{name:"Swadit Chandan",time:3488,timeStr:"58:08",pace:"5:48/km"}],
     "21K": [{name:"Mihir Pandit",time:10581,timeStr:"2:56:21",pace:"8:21/km"},{name:"Sakha Ghotekar",time:11969,timeStr:"3:19:29",pace:"9:27/km"}],
     "42K": []
@@ -1496,7 +1520,7 @@ const hofData = {
   individual: {
     longestRun:   [{name:"Mihir Pandit",val:27.3},{name:"Sakha Ghotekar",val:23.0},{name:"Akash Jannu",val:16.5}],
     mostKmWeek:   [{name:"Bhargav Kumare",val:50.3,week:"Apr 6 – 12, 2026"},{name:"Sakha Ghotekar",val:43.2,week:"Apr 13 – 19, 2026"},{name:"Swadit Chandan",val:41.2,week:"Apr 13 – 19, 2026"}],
-    mostRunsWeek: [{name:"Raj Thakrar",val:8,week:"Apr 13 – 19, 2026"},{name:"Ankit Singh",val:7,week:"Apr 20 – 26, 2026"},{name:"Amol Jain",val:7,week:"May 11 – 17, 2026"}],
+    mostRunsWeek: [{name:"Raj Thakrar",val:8,week:"Apr 13 – 19, 2026"},{name:"Devansh Sukhani",val:7,week:"May 25 – 31, 2026"},{name:"Ankit Singh",val:7,week:"Apr 20 – 26, 2026"}],
     mostWeeks:    [{name:"Rishendra Chauhan",val:9},{name:"Sourabh M",val:8},{name:"Niranjan Neelakantan",val:7}]
   },
   club: {
@@ -1505,27 +1529,10 @@ const hofData = {
   }
 };
 const athletes = [
-  { name: "Abhishek Singh", distance: 18.3, runs: 3, longest: 8.4, pace: "5:07", paceVal: 307, avgPace: "5:27", avgPaceVal: 327, elev: "80m", color: "#FC4C02" },
-  { name: "Niranjan Neelakantan", distance: 17.1, runs: 3, longest: 6.1, pace: "5:36", paceVal: 336, avgPace: "5:43", avgPaceVal: 343, elev: "68m", color: "#e05c00" },
-  { name: "Diksin Gulati", distance: 14.5, runs: 4, longest: 3.8, pace: "5:57", paceVal: 357, avgPace: "6:07", avgPaceVal: 367, elev: "126m", color: "#d45a00" },
-  { name: "Ankit Singh", distance: 13.3, runs: 3, longest: 5.1, pace: "6:35", paceVal: 395, avgPace: "6:55", avgPaceVal: 415, elev: "263m", color: "#c85500" },
-  { name: "Samaksh Dhingra", distance: 13.3, runs: 3, longest: 5.1, pace: "6:44", paceVal: 404, avgPace: "6:48", avgPaceVal: 408, elev: "--", color: "#bc5000" },
-  { name: "Nachiket Pethe", distance: 12.0, runs: 3, longest: 5.0, pace: "7:10", paceVal: 430, avgPace: "7:15", avgPaceVal: 435, elev: "26m", color: "#b04b00" },
-  { name: "Devansh Sukhani", distance: 10.7, runs: 4, longest: 3.6, pace: "6:42", paceVal: 402, avgPace: "6:47", avgPaceVal: 407, elev: "38m", color: "#a44600" },
-  { name: "Sujal Pruthi", distance: 10.0, runs: 2, longest: 5.0, pace: "7:36", paceVal: 456, avgPace: "7:37", avgPaceVal: 457, elev: "36m", color: "#984100" },
-  { name: "Rishendra Chauhan", distance: 10.0, runs: 1, longest: 10.0, pace: "6:32", paceVal: 392, avgPace: "6:32", avgPaceVal: 392, elev: "35m", color: "#8c3c00" },
-  { name: "Sidhartha Thakur", distance: 10.0, runs: 2, longest: 5.8, pace: "5:28", paceVal: 328, avgPace: "5:47", avgPaceVal: 347, elev: "--", color: "#803700" },
-  { name: "Raj Thakrar", distance: 9.0, runs: 3, longest: 5.0, pace: "4:59", paceVal: 299, avgPace: "5:23", avgPaceVal: 323, elev: "--", color: "#7a3200" },
-  { name: "Akash Jannu", distance: 8.1, runs: 1, longest: 8.1, pace: "6:56", paceVal: 416, avgPace: "6:56", avgPaceVal: 416, elev: "71m", color: "#742d00" },
-  { name: "Awdhesh Gairola", distance: 7.4, runs: 1, longest: 7.4, pace: "6:45", paceVal: 405, avgPace: "6:45", avgPaceVal: 405, elev: "323m", color: "#6e2800" },
-  { name: "Amol Jain", distance: 5.4, runs: 1, longest: 5.4, pace: "5:19", paceVal: 319, avgPace: "5:19", avgPaceVal: 319, elev: "8m", color: "#682300" },
-  { name: "Sourabh M", distance: 5.0, runs: 1, longest: 5.0, pace: "8:21", paceVal: 501, avgPace: "8:21", avgPaceVal: 501, elev: "12m", color: "#621e00" },
-  { name: "Srijan Shrey", distance: 3.3, runs: 1, longest: 3.3, pace: "6:38", paceVal: 398, avgPace: "6:38", avgPaceVal: 398, elev: "12m", color: "#5c1900" },
-  { name: "Saksham G", distance: 1.9, runs: 2, longest: 1.5, pace: "9:07", paceVal: 547, avgPace: "10:03", avgPaceVal: 603, elev: "4m", color: "#561500" },
-  { name: "Swati Negi", distance: 1.3, runs: 1, longest: 1.3, pace: "6:39", paceVal: 399, avgPace: "6:39", avgPaceVal: 399, elev: "11m", color: "#501100" }
+
 ];
 
-const prevAthletes = ["Abhishek Singh", "Ankit Singh", "Niranjan Neelakantan", "Devansh Sukhani", "Diksin Gulati", "Rishendra Chauhan", "Nachiket Pethe", "Raj Thakrar", "Samaksh Dhingra", "Awdhesh Gairola", "Amol Jain", "Sujal Pruthi", "Sourabh M", "Sidhartha Thakur", "Srijan Shrey", "Saksham G", "Swati Negi"];
+const prevAthletes = [];
 
 const medals = ["🥇","🥈","🥉"];
 const avatarColors = ["#FC4C02","#e05c00","#d45a00","#c85500","#bc5000","#b04b00","#a44600","#984100","#8c3c00","#803700"];
@@ -1655,6 +1662,29 @@ function render() {
 // ── Historical data ───────────────────────────────────────────────
 
 const historicalWeeks = {
+  "hist-week-may25": {
+    sortKey: "distance",
+    athletes: [
+      { name: "Diksin Gulati", distance: 19.2, runs: 6, longest: 3.8, pace: "5:34", paceVal: 334, avgPace: "6:06", avgPaceVal: 366, elev: "164m" },
+      { name: "Abhishek Singh", distance: 18.3, runs: 3, longest: 8.4, pace: "5:07", paceVal: 307, avgPace: "5:27", avgPaceVal: 327, elev: "80m" },
+      { name: "Niranjan Neelakantan", distance: 17.1, runs: 3, longest: 6.1, pace: "5:36", paceVal: 336, avgPace: "5:43", avgPaceVal: 343, elev: "68m" },
+      { name: "Devansh Sukhani", distance: 15.6, runs: 7, longest: 4.7, pace: "4:33", paceVal: 273, avgPace: "6:48", avgPaceVal: 408, elev: "54m" },
+      { name: "Ankit Singh", distance: 13.3, runs: 3, longest: 5.1, pace: "6:35", paceVal: 395, avgPace: "6:55", avgPaceVal: 415, elev: "263m" },
+      { name: "Samaksh Dhingra", distance: 13.3, runs: 3, longest: 5.1, pace: "6:44", paceVal: 404, avgPace: "6:48", avgPaceVal: 408, elev: "--" },
+      { name: "Nachiket Pethe", distance: 12.0, runs: 3, longest: 5.0, pace: "7:10", paceVal: 430, avgPace: "7:15", avgPaceVal: 435, elev: "26m" },
+      { name: "Sujal Pruthi", distance: 10.0, runs: 2, longest: 5.0, pace: "7:36", paceVal: 456, avgPace: "7:37", avgPaceVal: 457, elev: "36m" },
+      { name: "Rishendra Chauhan", distance: 10.0, runs: 1, longest: 10.0, pace: "6:32", paceVal: 392, avgPace: "6:32", avgPaceVal: 392, elev: "35m" },
+      { name: "Sidhartha Thakur", distance: 10.0, runs: 2, longest: 5.8, pace: "5:28", paceVal: 328, avgPace: "5:47", avgPaceVal: 347, elev: "--" },
+      { name: "Srijan Shrey", distance: 9.5, runs: 3, longest: 5.7, pace: "5:16", paceVal: 316, avgPace: "6:27", avgPaceVal: 387, elev: "35m" },
+      { name: "Raj Thakrar", distance: 9.0, runs: 3, longest: 5.0, pace: "4:59", paceVal: 299, avgPace: "5:23", avgPaceVal: 323, elev: "--" },
+      { name: "Akash Jannu", distance: 8.1, runs: 1, longest: 8.1, pace: "6:56", paceVal: 416, avgPace: "6:56", avgPaceVal: 416, elev: "71m" },
+      { name: "Awdhesh Gairola", distance: 7.4, runs: 1, longest: 7.4, pace: "6:45", paceVal: 405, avgPace: "6:45", avgPaceVal: 405, elev: "323m" },
+      { name: "Amol Jain", distance: 5.4, runs: 1, longest: 5.4, pace: "5:19", paceVal: 319, avgPace: "5:19", avgPaceVal: 319, elev: "8m" },
+      { name: "Sourabh M", distance: 5.0, runs: 1, longest: 5.0, pace: "8:21", paceVal: 501, avgPace: "8:21", avgPaceVal: 501, elev: "12m" },
+      { name: "Swati Negi", distance: 3.7, runs: 2, longest: 2.4, pace: "5:50", paceVal: 350, avgPace: "6:07", avgPaceVal: 367, elev: "24m" },
+      { name: "Saksham G", distance: 1.9, runs: 2, longest: 1.5, pace: "9:07", paceVal: 547, avgPace: "10:03", avgPaceVal: 603, elev: "4m" }
+    ]
+  },
   "hist-week-may25": {
     sortKey: "distance",
     athletes: [
