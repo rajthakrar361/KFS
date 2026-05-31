@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Nightly KFS leaderboard updater.
-- Every night: fetch new club activities, add to current week, update index.html
-- Sunday night: also archive last week first, then start fresh
+Nightly KFS leaderboard updater (cron: 21:00 IST).
+- Every night: fetch new activities, update current week board in index.html
+- Monday night: date-based check archives the past week and starts a fresh week
 """
 import os, re, json, requests
 from datetime import datetime, timedelta, timezone
@@ -574,29 +574,25 @@ def main():
     if do_archive:
         prev_badge = parse_current_badge(html)
         prev_wid   = badge_to_week_id(prev_badge)
-        full_week_acts = week_acts + new_acts
 
-        if full_week_acts:
-            new_from_strava = aggregate(full_week_acts, name_map)
-            html_athletes   = parse_current_athletes(html)
-            if html_athletes:
-                # Merge existing week data from HTML with today's new Strava runs
-                by_name = {a['name']: dict(a) for a in html_athletes}
-                for a in new_from_strava:
-                    if a['name'] in by_name:
-                        b = by_name[a['name']]
-                        b['distance'] = round(b['distance'] + a['distance'], 1)
-                        b['runs']    += a['runs']
-                        b['longest'] = max(b['longest'], a['longest'])
-                        if a.get('paceVal', 9999) < b.get('paceVal', 9999):
-                            b['pace'] = a['pace']; b['paceVal'] = a['paceVal']
-                    else:
-                        by_name[a['name']] = dict(a)
-                prev_athletes = list(by_name.values())
-            else:
-                prev_athletes = new_from_strava
-        else:
-            prev_athletes = parse_current_athletes(html)
+        # HTML board is the authoritative weekly aggregate (updated each night).
+        # Only add new_acts (activities truly new since the last run) on top.
+        # week_acts is already reflected in the HTML — using it here would double-count.
+        prev_athletes = parse_current_athletes(html)
+        if new_acts:
+            new_from_strava = aggregate(new_acts, name_map)
+            by_name = {a['name']: dict(a) for a in prev_athletes}
+            for a in new_from_strava:
+                if a['name'] in by_name:
+                    b = by_name[a['name']]
+                    b['distance'] = round(b['distance'] + a['distance'], 1)
+                    b['runs']    += a['runs']
+                    b['longest'] = max(b['longest'], a['longest'])
+                    if a.get('paceVal', 9999) < b.get('paceVal', 9999):
+                        b['pace'] = a['pace']; b['paceVal'] = a['paceVal']
+                else:
+                    by_name[a['name']] = dict(a)
+            prev_athletes = list(by_name.values())
 
         print(f"  Archiving: {prev_badge} ({len(prev_athletes)} athletes)")
 
