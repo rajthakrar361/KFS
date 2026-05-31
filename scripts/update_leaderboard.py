@@ -194,8 +194,10 @@ SPEED_BANDS = {
 # Format: (elapsed_secs, full_name, dist_m)
 MANUAL_SPEED_SEEDS = {
     '21K': [
-        (10581, 'Mihir Pandit',   21097),
-        (11969, 'Sakha Ghotekar', 21097),
+        ( 7226, 'Rishendra Chauhan', 21097),  # 2:00:26
+        ( 8095, 'Bhargav Kumare',    21097),  # 2:14:55
+        (10581, 'Mihir Pandit',      21097),  # 2:56:21
+        (11969, 'Sakha Ghotekar',    21097),  # 3:19:29
     ],
 }
 
