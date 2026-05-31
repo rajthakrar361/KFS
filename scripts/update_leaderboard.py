@@ -243,18 +243,14 @@ def compute_hof(seen_fps, current_week_acts, name_map, hist_weeks):
                 runs.append((elapsed, name, dist))
         runs.extend(MANUAL_SPEED_SEEDS.get(band, []))
         runs.sort()
-        top8, seen_names = [], set()
-        for elapsed, name, dist in runs:
-            if name not in seen_names:
-                top8.append({
-                    'name':    name,
-                    'time':    elapsed,
-                    'timeStr': fmt_time(elapsed),
-                    'pace':    fmt_pace(elapsed, dist),
-                })
-                seen_names.add(name)
-            if len(top8) == 8:
-                break
+        top8 = []
+        for elapsed, name, dist in runs[:8]:
+            top8.append({
+                'name':    name,
+                'time':    elapsed,
+                'timeStr': fmt_time(elapsed),
+                'pace':    fmt_pace(elapsed, dist),
+            })
         speed[band] = top8
 
     # ── Individual records ────────────────────────────────────────────────────
