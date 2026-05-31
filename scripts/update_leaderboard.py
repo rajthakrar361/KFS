@@ -159,7 +159,9 @@ def next_week_range():
 def is_sunday():
     ist = timezone(timedelta(hours=5, minutes=30))
     now = datetime.now(ist)
-    return now.weekday() == 6 or (now.weekday() == 0 and now.hour < 10)
+    # Only archive on Sunday night (23:00 IST+, cron fires at 23:45)
+    # or Monday before 10am IST as a safety net for delayed runs
+    return (now.weekday() == 6 and now.hour >= 23) or (now.weekday() == 0 and now.hour < 10)
 
 # ── HoF computation ───────────────────────────────────────────────────────────
 
@@ -493,11 +495,12 @@ def update_html(html, new_athletes, new_badge,
     # On Sunday: archive previous week into history HTML cards + JSON
     if prev_badge and prev_wid and prev_athletes:
         hist_card = make_hist_html_card(prev_wid, prev_badge, prev_athletes)
-        html = html.replace(
-            '    <div class="hist-week-card"',
-            hist_card + '    <div class="hist-week-card"',
-            1
-        )
+        if f'id="hist-week-{prev_wid}"' not in html:
+            html = html.replace(
+                '    <div class="hist-week-card"',
+                hist_card + '    <div class="hist-week-card"',
+                1
+            )
 
     return html
 
@@ -553,14 +556,40 @@ def main():
     cur_badge = badge_text(mon, sun)
 
     if sunday:
-        print("It's Sunday IST — archiving this week and starting fresh.")
+        prev_badge = parse_current_badge(html)
+        if prev_badge != cur_badge:
+            # Archive already ran today (badge already advanced to next week).
+            # Treat as a regular mid-week update for the new week.
+            print(f"Badge already at {prev_badge} — archive skipped, mid-week update for new week.")
+            cur_badge = prev_badge  # keep the advanced badge
+            sunday = False
+        else:
+            print("It's Sunday IST — archiving this week and starting fresh.")
+
+    if sunday:
         full_week_acts = week_acts + new_acts
 
-        prev_badge = parse_current_badge(html)
         prev_wid   = badge_to_week_id(prev_badge)
 
         if full_week_acts:
-            prev_athletes = aggregate(full_week_acts, name_map)
+            new_from_strava = aggregate(full_week_acts, name_map)
+            html_athletes   = parse_current_athletes(html)
+            if html_athletes:
+                # Merge existing week data from HTML with today's new Strava runs
+                by_name = {a['name']: dict(a) for a in html_athletes}
+                for a in new_from_strava:
+                    if a['name'] in by_name:
+                        b = by_name[a['name']]
+                        b['distance'] = round(b['distance'] + a['distance'], 1)
+                        b['runs']    += a['runs']
+                        b['longest'] = max(b['longest'], a['longest'])
+                        if a.get('paceVal', 9999) < b.get('paceVal', 9999):
+                            b['pace'] = a['pace']; b['paceVal'] = a['paceVal']
+                    else:
+                        by_name[a['name']] = dict(a)
+                prev_athletes = list(by_name.values())
+            else:
+                prev_athletes = new_from_strava
         else:
             prev_athletes = parse_current_athletes(html)
 
@@ -573,7 +602,10 @@ def main():
             'athletes': [{k: v for k, v in a.items() if k != 'color'}
                          for a in prev_athletes],
         }
-        hist_weeks = [new_hist_entry] + hist_weeks
+        if any(w['id'] == prev_wid for w in hist_weeks):
+            hist_weeks = [new_hist_entry if w['id'] == prev_wid else w for w in hist_weeks]
+        else:
+            hist_weeks = [new_hist_entry] + hist_weeks
         save_json(HIST_FILE, hist_weeks)
 
         save_json(WEEK_FILE, [])
