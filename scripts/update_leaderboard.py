@@ -147,21 +147,36 @@ def badge_text(monday, sunday):
     return (f"{monday.strftime('%b')} {monday.day} – "
             f"{sunday.strftime('%b')} {sunday.day}, {sunday.year}")
 
-def next_week_range():
-    ist    = timezone(timedelta(hours=5, minutes=30))
-    today  = datetime.now(ist)
-    monday = (today - timedelta(days=today.weekday())).replace(
-                 hour=0, minute=0, second=0, microsecond=0)
-    monday += timedelta(days=7)
-    sunday = monday + timedelta(days=6)
-    return monday, sunday
+MONTHS = {'Jan':1,'Feb':2,'Mar':3,'Apr':4,'May':5,'Jun':6,
+          'Jul':7,'Aug':8,'Sep':9,'Oct':10,'Nov':11,'Dec':12}
 
-def is_sunday():
+def badge_end_date(badge):
+    """Return the Sunday date from a badge string, e.g. 'May 25 – 31, 2026' → date(2026,5,31)."""
+    from datetime import date as date_
+    import re
+    # Cross-month: "Apr 27 – May 3, 2026"
+    m = re.match(r'\w+ \d+ \S+ (\w+) (\d+), (\d+)', badge)
+    if m:
+        return date_(int(m.group(3)), MONTHS[m.group(1)], int(m.group(2)))
+    # Same month: "May 25 – 31, 2026"
+    m = re.match(r'(\w+) \d+ \S+ (\d+), (\d+)', badge)
+    if m:
+        return date_(int(m.group(3)), MONTHS[m.group(1)], int(m.group(2)))
+    return None
+
+def should_archive(html):
+    """Archive when today (IST) is strictly after the badge week's Sunday."""
+    from datetime import date as date_
     ist = timezone(timedelta(hours=5, minutes=30))
-    now = datetime.now(ist)
-    # Only archive on Sunday night (23:00 IST+, cron fires at 23:45)
-    # or Monday before 10am IST as a safety net for delayed runs
-    return (now.weekday() == 6 and now.hour >= 23) or (now.weekday() == 0 and now.hour < 10)
+    today = datetime.now(ist).date()
+    badge = parse_current_badge(html)
+    end = badge_end_date(badge)
+    if end is None:
+        return False
+    result = today > end
+    if result:
+        print(f"  Badge week ended {end} — today is {today}, archiving.")
+    return result
 
 # ── HoF computation ───────────────────────────────────────────────────────────
 
@@ -545,8 +560,7 @@ def main():
         names = sorted({f"{a['athlete']['firstname']} {a['athlete']['lastname']}" for a in skipped})
         print(f"  New runners with history skipped: {', '.join(names)}")
 
-    sunday    = is_sunday()
-    week_acts = load_json(WEEK_FILE, [])
+    week_acts  = load_json(WEEK_FILE, [])
     hist_weeks = load_json(HIST_FILE, [])
 
     with open(HTML_FILE, encoding='utf-8') as f:
@@ -555,21 +569,12 @@ def main():
     mon, sun  = current_week_range()
     cur_badge = badge_text(mon, sun)
 
-    if sunday:
+    do_archive = should_archive(html)
+
+    if do_archive:
         prev_badge = parse_current_badge(html)
-        if prev_badge != cur_badge:
-            # Archive already ran today (badge already advanced to next week).
-            # Treat as a regular mid-week update for the new week.
-            print(f"Badge already at {prev_badge} — archive skipped, mid-week update for new week.")
-            cur_badge = prev_badge  # keep the advanced badge
-            sunday = False
-        else:
-            print("It's Sunday IST — archiving this week and starting fresh.")
-
-    if sunday:
-        full_week_acts = week_acts + new_acts
-
         prev_wid   = badge_to_week_id(prev_badge)
+        full_week_acts = week_acts + new_acts
 
         if full_week_acts:
             new_from_strava = aggregate(full_week_acts, name_map)
@@ -610,10 +615,10 @@ def main():
 
         save_json(WEEK_FILE, [])
 
-        nmon, nsun = next_week_range()
-        new_badge  = badge_text(nmon, nsun)
+        # new badge = current calendar week (works correctly on Monday)
+        new_badge = cur_badge
 
-        # Compute HoF with updated history (no current week on Sunday reset)
+        # Compute HoF with updated history (no current week on archive)
         hof = compute_hof(list(seen), [], name_map, hist_weeks)
 
         html = update_html(html, [], new_badge,

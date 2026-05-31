@@ -2,8 +2,9 @@ name: Update KFS Leaderboard
 
 on:
   schedule:
-    # Every night at 18:15 UTC = 23:45 IST (catches all evening runs, Mon check uses IST)
-    - cron: '15 18 * * *'
+    # Every night at 15:30 UTC = 21:00 IST
+    # Archive runs on Monday — date-based check, works even with 2-3hr GitHub delay
+    - cron: '30 15 * * *'
   workflow_dispatch:   # manual trigger from GitHub UI
 
 permissions:
