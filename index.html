@@ -1008,6 +1008,35 @@
     clear: both;
   }
   .hof-rules.open { display: block; }
+
+  /* rank rows 4-8 below podium */
+  .hof-rank-list { margin-bottom: 1rem; }
+  .hof-rank-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 2px;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .hof-rank-row:last-child { border-bottom: none; }
+  .hof-rank-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    color: #444;
+    width: 22px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .hof-rank-name { flex: 1; font-size: 12px; font-weight: 600; color: var(--text); }
+  .hof-rank-name.empty { color: #333; font-weight: 400; }
+  .hof-rank-time {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .hof-rank-time.empty { color: #2a2a2a; }
+  .hof-rank-pace { font-size: 10px; color: #444; margin-left: 6px; flex-shrink: 0; }
   .hof-rules strong { color: #777; }
 
   .hof-close {
@@ -1485,9 +1514,9 @@
 <script>
 const hofData = {
   speed: {
-    "5K":  [{name:"Raj Thakrar",time:1497,timeStr:"24:57",pace:"4:59/km"},{name:"Abhishek Singh",time:1584,timeStr:"26:24",pace:"5:07/km"},{name:"Niranjan Neelakantan",time:1658,timeStr:"27:38",pace:"5:30/km"}],
-    "10K": [{name:"Rishendra Chauhan",time:3367,timeStr:"56:07",pace:"5:35/km"},{name:"Raj Thakrar",time:3416,timeStr:"56:56",pace:"5:41/km"},{name:"Abhishek Singh",time:3476,timeStr:"57:56",pace:"5:42/km"}],
-    "21K": [{name:"Rishendra Chauhan",time:7226,timeStr:"2:00:26",pace:"5:42/km"},{name:"Bhargav Kumare",time:8095,timeStr:"2:14:55",pace:"6:23/km"},{name:"Mihir Pandit",time:10581,timeStr:"2:56:21",pace:"8:21/km"}],
+    "5K":  [{name:"Raj Thakrar",time:1497,timeStr:"24:57",pace:"4:59/km"},{name:"Abhishek Singh",time:1584,timeStr:"26:24",pace:"5:07/km"},{name:"Niranjan Neelakantan",time:1653,timeStr:"27:33",pace:"5:29/km"},{name:"Gururaj M",time:1673,timeStr:"27:53",pace:"5:33/km"},{name:"Aniket Roy",time:1699,timeStr:"28:19",pace:"5:39/km"},{name:"Ashok Kumar",time:1703,timeStr:"28:23",pace:"5:37/km"},{name:"Swadit Chandan",time:1706,timeStr:"28:26",pace:"5:41/km"},{name:"Ankit Singh",time:1755,timeStr:"29:15",pace:"5:49/km"}],
+    "10K": [{name:"Rishendra Chauhan",time:3367,timeStr:"56:07",pace:"5:35/km"},{name:"Raj Thakrar",time:3416,timeStr:"56:56",pace:"5:41/km"},{name:"Abhishek Singh",time:3461,timeStr:"57:41",pace:"5:41/km"},{name:"Swadit Chandan",time:3488,timeStr:"58:08",pace:"5:48/km"},{name:"Gururaj M",time:3540,timeStr:"59:00",pace:"5:53/km"},{name:"Mihir Pandit",time:3580,timeStr:"59:40",pace:"5:56/km"},{name:"Sujal Pruthi",time:4421,timeStr:"1:13:41",pace:"7:20/km"},{name:"Nachiket Pethe",time:4673,timeStr:"1:17:53",pace:"7:47/km"}],
+    "21K": [{name:"Rishendra Chauhan",time:7226,timeStr:"2:00:26",pace:"5:42/km"},{name:"Bhargav Kumare",time:8095,timeStr:"2:14:55",pace:"6:23/km"},{name:"Mihir Pandit",time:10581,timeStr:"2:56:21",pace:"8:21/km"},{name:"Sakha Ghotekar",time:11969,timeStr:"3:19:29",pace:"9:27/km"},{name:"Swadit Chandan",time:14128,timeStr:"3:55:28",pace:"11:09/km"}],
     "42K": []
   },
   individual: {
@@ -2054,6 +2083,31 @@ function renderHoF() {
   const classes = ['gold','silver','bronze'];
   const orders  = [2, 1, 3];
 
+  function rankRowsHTML(entries, startRank) {
+    let html = '<div class="hof-rank-list">';
+    for (let i = 0; i < 5; i++) {
+      const rank = startRank + i;
+      const e = (entries || [])[rank - 1];
+      if (e) {
+        html += `<div class="hof-rank-row">
+          <div class="hof-rank-num">${rank}</div>
+          <div class="hof-rank-name">${e.name}</div>
+          <div class="hof-rank-time">${e.timeStr}</div>
+          <div class="hof-rank-pace">${e.pace}</div>
+        </div>`;
+      } else {
+        html += `<div class="hof-rank-row">
+          <div class="hof-rank-num">${rank}</div>
+          <div class="hof-rank-name empty">👀 unclaimed</div>
+          <div class="hof-rank-time empty">--:--</div>
+          <div class="hof-rank-pace"></div>
+        </div>`;
+      }
+    }
+    html += '</div>';
+    return html;
+  }
+
   function podiumHTML(entries, band, emptyText) {
     const cards = [1, 0, 2].map(idx => {
       const e = (entries || [])[idx];
@@ -2111,15 +2165,19 @@ function renderHoF() {
 
     <div class="hof-dist-label">5K</div>
     <div class="hof-podium">${podiumHTML(sp['5K'], '5K')}</div>
+    ${rankRowsHTML(sp['5K'], 4)}
 
     <div class="hof-dist-label">10K</div>
     <div class="hof-podium">${podiumHTML(sp['10K'], '10K')}</div>
+    ${rankRowsHTML(sp['10K'], 4)}
 
     <div class="hof-dist-label">Half Marathon</div>
     <div class="hof-podium">${podiumHTML(sp['21K'], 'Half Marathon', '')}</div>
+    ${rankRowsHTML(sp['21K'], 4)}
 
     <div class="hof-dist-label">Full Marathon</div>
     <div class="hof-podium">${podiumHTML(sp['42K'], 'Full Marathon', 'daring enough?')}</div>
+    ${rankRowsHTML(sp['42K'], 4)}
 
     <div class="hof-section-title">Individual Records
       <button class="hof-rules-toggle" onclick="hofToggle('hof-rules-individual')">? rules</button>
