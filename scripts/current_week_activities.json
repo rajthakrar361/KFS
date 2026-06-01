@@ -1,1 +1,138 @@
-[]
+[
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Sujal",
+      "lastname": "P."
+    },
+    "name": "Speed focused 5k",
+    "distance": 5090.4,
+    "moving_time": 1972,
+    "elapsed_time": 1972,
+    "total_elevation_gain": 57.8,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Srijan",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 4054.6,
+    "moving_time": 1547,
+    "elapsed_time": 1717,
+    "total_elevation_gain": 16.4,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Devansh",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 2129.8,
+    "moving_time": 860,
+    "elapsed_time": 889,
+    "total_elevation_gain": 8.1,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Nachiket",
+      "lastname": "P."
+    },
+    "name": "Evening Run",
+    "distance": 5064.9,
+    "moving_time": 2305,
+    "elapsed_time": 2467,
+    "total_elevation_gain": 4.7,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Ankit",
+      "lastname": "S."
+    },
+    "name": "Day 94 ✅",
+    "distance": 4983.4,
+    "moving_time": 2174,
+    "elapsed_time": 2293,
+    "total_elevation_gain": 104.1,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Samaksh",
+      "lastname": "D."
+    },
+    "name": "Afternoon Run",
+    "distance": 3020.0,
+    "moving_time": 1207,
+    "elapsed_time": 1207,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Amazfit GTS 2 mini"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "ABHISHEK",
+      "lastname": "S."
+    },
+    "name": "Morning Run",
+    "distance": 2805.0,
+    "moving_time": 1005,
+    "elapsed_time": 1041,
+    "total_elevation_gain": 7.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Samaksh",
+      "lastname": "D."
+    },
+    "name": "Evening Run",
+    "distance": 3000.0,
+    "moving_time": 1202,
+    "elapsed_time": 1202,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Amazfit GTS 2 mini"
+  }
+]
