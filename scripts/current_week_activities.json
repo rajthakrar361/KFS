@@ -134,5 +134,72 @@
     "sport_type": "Run",
     "workout_type": null,
     "device_name": "Amazfit GTS 2 mini"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Niranjan",
+      "lastname": "N."
+    },
+    "name": "Evening Run",
+    "distance": 3442.3,
+    "moving_time": 1250,
+    "elapsed_time": 1250,
+    "total_elevation_gain": 1.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Amazfit Active 2 NFC (Round)"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Ashok",
+      "lastname": "K."
+    },
+    "name": "Night Run",
+    "distance": 5018.4,
+    "moving_time": 1833,
+    "elapsed_time": 1858,
+    "total_elevation_gain": 5.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "COROS PACE 3"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Ankit",
+      "lastname": "S."
+    },
+    "name": "Day 95 ✅",
+    "distance": 4258.1,
+    "moving_time": 1661,
+    "elapsed_time": 1783,
+    "total_elevation_gain": 72.7,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Bhargav",
+      "lastname": "K."
+    },
+    "name": "Evening Treadmill",
+    "distance": 8630.0,
+    "moving_time": 2820,
+    "elapsed_time": 2820,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
   }
 ]
