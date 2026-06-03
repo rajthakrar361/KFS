@@ -1096,9 +1096,14 @@
         Strava
       </a>
       </div>
-      <button class="join-cta" onclick="document.getElementById('join-overlay').classList.add('open')">
-        🏅 Run with us
-      </button>
+      <div style="display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:0;">
+        <button class="join-cta" onclick="document.getElementById('join-overlay').classList.add('open')">
+          🏅 Run with us
+        </button>
+        <a href="team.html" style="display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:24px;border:1px solid var(--border);background:var(--card);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;text-decoration:none;transition:border-color 0.2s,color 0.2s;" onmouseover="this.style.borderColor='#FC4C02'" onmouseout="this.style.borderColor='var(--border)'">
+          👥 The Team
+        </a>
+      </div>
     </div>
   </header>
 
