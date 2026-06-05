@@ -489,5 +489,173 @@
     "sport_type": "Run",
     "workout_type": null,
     "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Saksham",
+      "lastname": "G."
+    },
+    "name": "Night Run",
+    "distance": 242.2,
+    "moving_time": 86,
+    "elapsed_time": 103,
+    "total_elevation_gain": 0.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Saksham",
+      "lastname": "G."
+    },
+    "name": "Night Run",
+    "distance": 416.4,
+    "moving_time": 169,
+    "elapsed_time": 180,
+    "total_elevation_gain": 2.1,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Ankit",
+      "lastname": "S."
+    },
+    "name": "Day 98 ✅",
+    "distance": 4290.7,
+    "moving_time": 2088,
+    "elapsed_time": 2280,
+    "total_elevation_gain": 67.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Srijan",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 4857.5,
+    "moving_time": 1755,
+    "elapsed_time": 1933,
+    "total_elevation_gain": 18.5,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Devansh",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 4347.9,
+    "moving_time": 1885,
+    "elapsed_time": 1919,
+    "total_elevation_gain": 16.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Nachiket",
+      "lastname": "P."
+    },
+    "name": "Long run",
+    "distance": 12263.5,
+    "moving_time": 5449,
+    "elapsed_time": 5486,
+    "total_elevation_gain": 50.5,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Bhargav",
+      "lastname": "K."
+    },
+    "name": "Afternoon Run",
+    "distance": 4422.0,
+    "moving_time": 1265,
+    "elapsed_time": 1265,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Abhishek",
+      "lastname": "S."
+    },
+    "name": "Morning Run",
+    "distance": 5112.6,
+    "moving_time": 1642,
+    "elapsed_time": 1645,
+    "total_elevation_gain": 12.5,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Raj",
+      "lastname": "T."
+    },
+    "name": "Rain run, austria",
+    "distance": 374.4,
+    "moving_time": 95,
+    "elapsed_time": 95,
+    "total_elevation_gain": 0.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Bhargav",
+      "lastname": "K."
+    },
+    "name": "Morning Run",
+    "distance": 6195.2,
+    "moving_time": 2141,
+    "elapsed_time": 2141,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
   }
 ]
