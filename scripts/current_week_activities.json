@@ -657,5 +657,260 @@
     "type": "Run",
     "sport_type": "Run",
     "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Gururaj",
+      "lastname": "M."
+    },
+    "name": "Afternoon Run",
+    "distance": 2529.7,
+    "moving_time": 920,
+    "elapsed_time": 920,
+    "total_elevation_gain": 15.2,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Srijan",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 5012.9,
+    "moving_time": 1795,
+    "elapsed_time": 1842,
+    "total_elevation_gain": 16.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Devansh",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 4403.3,
+    "moving_time": 1810,
+    "elapsed_time": 1832,
+    "total_elevation_gain": 16.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Saksham",
+      "lastname": "G."
+    },
+    "name": "Evening Run",
+    "distance": 224.5,
+    "moving_time": 83,
+    "elapsed_time": 148,
+    "total_elevation_gain": 0.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Rachit",
+      "lastname": "M."
+    },
+    "name": "Evening Run",
+    "distance": 3918.2,
+    "moving_time": 1581,
+    "elapsed_time": 1617,
+    "total_elevation_gain": 17.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch Series 5"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Swamini",
+      "lastname": "G."
+    },
+    "name": "Morning Run",
+    "distance": 4017.7,
+    "moving_time": 1304,
+    "elapsed_time": 1496,
+    "total_elevation_gain": 16.2,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Sidhartha",
+      "lastname": "T."
+    },
+    "name": "Morning Run",
+    "distance": 3792.6,
+    "moving_time": 1961,
+    "elapsed_time": 1963,
+    "total_elevation_gain": 14.5,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Garmin Forerunner 55"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Abhishek",
+      "lastname": "S."
+    },
+    "name": "Morning Run",
+    "distance": 10169.9,
+    "moving_time": 3772,
+    "elapsed_time": 3783,
+    "total_elevation_gain": 37.7,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Mihir",
+      "lastname": "P."
+    },
+    "name": "Evening Run",
+    "distance": 5008.0,
+    "moving_time": 2338,
+    "elapsed_time": 2909,
+    "total_elevation_gain": 7.3,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Raj",
+      "lastname": "T."
+    },
+    "name": "Post hike tun",
+    "distance": 5008.0,
+    "moving_time": 2338,
+    "elapsed_time": 2909,
+    "total_elevation_gain": 7.3,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Diksin",
+      "lastname": "G."
+    },
+    "name": "Evening Run",
+    "distance": 4006.4,
+    "moving_time": 1441,
+    "elapsed_time": 1470,
+    "total_elevation_gain": 35.6,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Saksham",
+      "lastname": "G."
+    },
+    "name": "Evening Run",
+    "distance": 133.1,
+    "moving_time": 50,
+    "elapsed_time": 50,
+    "total_elevation_gain": 0.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Saksham",
+      "lastname": "G."
+    },
+    "name": "Evening Run",
+    "distance": 239.6,
+    "moving_time": 79,
+    "elapsed_time": 79,
+    "total_elevation_gain": 0.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Saksham",
+      "lastname": "G."
+    },
+    "name": "Evening Run",
+    "distance": 349.4,
+    "moving_time": 128,
+    "elapsed_time": 131,
+    "total_elevation_gain": 0.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Saksham",
+      "lastname": "G."
+    },
+    "name": "Evening Run",
+    "distance": 65.4,
+    "moving_time": 40,
+    "elapsed_time": 49,
+    "total_elevation_gain": 0.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
   }
 ]
