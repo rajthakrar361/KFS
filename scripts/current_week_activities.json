@@ -1,1 +1,171 @@
-[]
+[
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Diksin",
+      "lastname": "G."
+    },
+    "name": "Z2 - 2",
+    "distance": 5122.2,
+    "moving_time": 2080,
+    "elapsed_time": 2153,
+    "total_elevation_gain": 62.4,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Srijan",
+      "lastname": "S."
+    },
+    "name": "Night Run",
+    "distance": 1483.3,
+    "moving_time": 498,
+    "elapsed_time": 608,
+    "total_elevation_gain": 22.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Swamini",
+      "lastname": "G."
+    },
+    "name": "Period run \nGave up midway",
+    "distance": 1773.3,
+    "moving_time": 870,
+    "elapsed_time": 1024,
+    "total_elevation_gain": 6.8,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Ankit",
+      "lastname": "S."
+    },
+    "name": "Day 100 ✅ (100 days challenge completed ✅)",
+    "distance": 10106.6,
+    "moving_time": 4896,
+    "elapsed_time": 5069,
+    "total_elevation_gain": 163.8,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Diplav",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 5015.6,
+    "moving_time": 1855,
+    "elapsed_time": 1871,
+    "total_elevation_gain": 27.1,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch SE 3"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Gururaj",
+      "lastname": "M."
+    },
+    "name": "Afternoon Run",
+    "distance": 5044.6,
+    "moving_time": 1645,
+    "elapsed_time": 1663,
+    "total_elevation_gain": 8.2,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Bhargav",
+      "lastname": "K."
+    },
+    "name": "Morning Run",
+    "distance": 3570.0,
+    "moving_time": 1008,
+    "elapsed_time": 1008,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Sidhartha",
+      "lastname": "T."
+    },
+    "name": "Morning Run",
+    "distance": 2817.3,
+    "moving_time": 1597,
+    "elapsed_time": 1597,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Garmin Forerunner 55"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Abhishek",
+      "lastname": "S."
+    },
+    "name": "Morning Run",
+    "distance": 9164.4,
+    "moving_time": 3106,
+    "elapsed_time": 3176,
+    "total_elevation_gain": 30.5,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Diksin",
+      "lastname": "G."
+    },
+    "name": "Z2",
+    "distance": 4866.2,
+    "moving_time": 2041,
+    "elapsed_time": 2092,
+    "total_elevation_gain": 61.4,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  }
+]

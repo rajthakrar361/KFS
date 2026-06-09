@@ -1567,7 +1567,7 @@
 <script>
 const hofData = {
   speed: {
-    "5K":  [{name:"Sidharth Nair",time:1486,timeStr:"24:46",pace:"4:56/km"},{name:"Raj Thakrar",time:1497,timeStr:"24:57",pace:"4:59/km"},{name:"Abhishek S.",time:1584,timeStr:"26:24",pace:"5:07/km"},{name:"Abhishek Singh",time:1584,timeStr:"26:24",pace:"5:07/km"},{name:"Raj Thakrar",time:1617,timeStr:"26:57",pace:"5:22/km"},{name:"Abhishek S.",time:1642,timeStr:"27:22",pace:"5:21/km"},{name:"Niranjan Neelakantan",time:1653,timeStr:"27:33",pace:"5:29/km"},{name:"Abhishek S.",time:1665,timeStr:"27:45",pace:"5:23/km"}],
+    "5K":  [{name:"Sidharth Nair",time:1486,timeStr:"24:46",pace:"4:56/km"},{name:"Raj Thakrar",time:1497,timeStr:"24:57",pace:"4:59/km"},{name:"Abhishek S.",time:1584,timeStr:"26:24",pace:"5:07/km"},{name:"Abhishek Singh",time:1584,timeStr:"26:24",pace:"5:07/km"},{name:"Raj Thakrar",time:1617,timeStr:"26:57",pace:"5:22/km"},{name:"Abhishek S.",time:1642,timeStr:"27:22",pace:"5:21/km"},{name:"Niranjan Neelakantan",time:1653,timeStr:"27:33",pace:"5:29/km"},{name:"Gururaj M",time:1663,timeStr:"27:43",pace:"5:29/km"}],
     "10K": [{name:"Rishendra Chauhan",time:3338,timeStr:"55:38",pace:"5:33/km"},{name:"Rishendra Chauhan",time:3367,timeStr:"56:07",pace:"5:35/km"},{name:"Raj Thakrar",time:3416,timeStr:"56:56",pace:"5:41/km"},{name:"Abhishek S.",time:3461,timeStr:"57:41",pace:"5:41/km"},{name:"Abhishek Singh",time:3461,timeStr:"57:41",pace:"5:41/km"},{name:"Swadit Chandan",time:3488,timeStr:"58:08",pace:"5:48/km"},{name:"Gururaj M",time:3540,timeStr:"59:00",pace:"5:53/km"},{name:"Mihir Pandit",time:3580,timeStr:"59:40",pace:"5:56/km"}],
     "21K": [{name:"Rishendra Chauhan",time:7226,timeStr:"2:00:26",pace:"5:42/km"},{name:"Bhargav Kumare",time:8095,timeStr:"2:14:55",pace:"6:23/km"},{name:"Mihir Pandit",time:10581,timeStr:"2:56:21",pace:"8:21/km"},{name:"Sakha Ghotekar",time:11969,timeStr:"3:19:29",pace:"9:27/km"}],
     "42K": []
@@ -1576,7 +1576,7 @@ const hofData = {
     longestRun:   [{name:"Mihir Pandit",val:27.3},{name:"Sakha Ghotekar",val:23.0},{name:"Swadit Chandan",val:22.4}],
     mostKmWeek:   [{name:"Bhargav Kumare",val:50.3,week:"Apr 6 – 12, 2026"},{name:"Sakha Ghotekar",val:43.2,week:"Apr 13 – 19, 2026"},{name:"Swadit Chandan",val:41.2,week:"Apr 13 – 19, 2026"}],
     mostRunsWeek: [{name:"Saksham G",val:9,week:"Jun 1 – 7, 2026"},{name:"Diksin Gulati",val:8,week:"May 25 – 31, 2026"},{name:"Raj Thakrar",val:8,week:"Apr 13 – 19, 2026"}],
-    mostWeeks:    [{name:"Rishendra Chauhan",val:10},{name:"Swadit Chandan",val:9},{name:"Ankit Singh",val:8}]
+    mostWeeks:    [{name:"Rishendra Chauhan",val:10},{name:"Ankit Singh",val:9},{name:"Gururaj M",val:9}]
   },
   club: {
     bestWeekKm:  {val:401.8,runners:24,week:"Apr 13 – 19, 2026"},
@@ -1584,7 +1584,15 @@ const hofData = {
   }
 };
 const athletes = [
-
+  { name: "Ankit Singh", distance: 10.1, runs: 1, longest: 10.1, pace: "8:04", paceVal: 484, avgPace: "8:04", avgPaceVal: 484, elev: "163m", color: "#FC4C02" },
+  { name: "Diksin Gulati", distance: 10.0, runs: 2, longest: 5.1, pace: "6:46", paceVal: 406, avgPace: "6:52", avgPaceVal: 412, elev: "123m", color: "#e05c00" },
+  { name: "Abhishek S.", distance: 9.2, runs: 1, longest: 9.2, pace: "5:38", paceVal: 338, avgPace: "5:38", avgPaceVal: 338, elev: "30m", color: "#d45a00" },
+  { name: "Diplav Singh", distance: 5.0, runs: 1, longest: 5.0, pace: "6:09", paceVal: 369, avgPace: "6:09", avgPaceVal: 369, elev: "27m", color: "#c85500" },
+  { name: "Gururaj M", distance: 5.0, runs: 1, longest: 5.0, pace: "5:26", paceVal: 326, avgPace: "5:26", avgPaceVal: 326, elev: "8m", color: "#bc5000" },
+  { name: "Bhargav Kumare", distance: 3.6, runs: 1, longest: 3.6, pace: "4:42", paceVal: 282, avgPace: "4:42", avgPaceVal: 282, elev: "--", color: "#b04b00" },
+  { name: "Sidhartha Thakur", distance: 2.8, runs: 1, longest: 2.8, pace: "9:26", paceVal: 566, avgPace: "9:26", avgPaceVal: 566, elev: "--", color: "#a44600" },
+  { name: "Swamini G.", distance: 1.8, runs: 1, longest: 1.8, pace: "8:10", paceVal: 490, avgPace: "8:10", avgPaceVal: 490, elev: "6m", color: "#984100" },
+  { name: "Srijan Shrey", distance: 1.5, runs: 1, longest: 1.5, pace: "5:35", paceVal: 335, avgPace: "5:35", avgPaceVal: 335, elev: "22m", color: "#8c3c00" }
 ];
 
 const prevAthletes = [];
