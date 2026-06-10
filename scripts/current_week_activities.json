@@ -167,5 +167,158 @@
     "sport_type": "Run",
     "workout_type": null,
     "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Niranjan",
+      "lastname": "N."
+    },
+    "name": "Evening Run",
+    "distance": 3051.7,
+    "moving_time": 975,
+    "elapsed_time": 975,
+    "total_elevation_gain": 0.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Amazfit Active 2 NFC (Round)"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Diksin",
+      "lastname": "G."
+    },
+    "name": "Z2, 3",
+    "distance": 5033.3,
+    "moving_time": 2054,
+    "elapsed_time": 2080,
+    "total_elevation_gain": 61.2,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Diplav",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 8024.2,
+    "moving_time": 3430,
+    "elapsed_time": 3430,
+    "total_elevation_gain": 41.7,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch SE 3"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Ankit",
+      "lastname": "S."
+    },
+    "name": "Day 101 ( recovery)",
+    "distance": 2075.9,
+    "moving_time": 1012,
+    "elapsed_time": 1105,
+    "total_elevation_gain": 40.2,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Rachit",
+      "lastname": "M."
+    },
+    "name": "Evening Run",
+    "distance": 2741.1,
+    "moving_time": 1059,
+    "elapsed_time": 1268,
+    "total_elevation_gain": 22.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch Series 5"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Devansh",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 2860.6,
+    "moving_time": 1148,
+    "elapsed_time": 3004,
+    "total_elevation_gain": 28.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Aniket",
+      "lastname": "R."
+    },
+    "name": "PR off the latest skrillex album!!",
+    "distance": 5014.6,
+    "moving_time": 1668,
+    "elapsed_time": 1668,
+    "total_elevation_gain": 60.6,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 2,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Niranjan",
+      "lastname": "N."
+    },
+    "name": "Night Run",
+    "distance": 949.8,
+    "moving_time": 283,
+    "elapsed_time": 283,
+    "total_elevation_gain": 4.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Amazfit Active 2 NFC (Round)"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Samaksh",
+      "lastname": "D."
+    },
+    "name": "Evening Run",
+    "distance": 3010.0,
+    "moving_time": 1228,
+    "elapsed_time": 1228,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Amazfit GTS 2 mini"
   }
 ]
