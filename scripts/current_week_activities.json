@@ -320,5 +320,141 @@
     "sport_type": "Run",
     "workout_type": null,
     "device_name": "Amazfit GTS 2 mini"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Niranjan",
+      "lastname": "N."
+    },
+    "name": "Evening Run",
+    "distance": 3284.2,
+    "moving_time": 1157,
+    "elapsed_time": 1174,
+    "total_elevation_gain": 0.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Amazfit Active 2 NFC (Round)"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Ashok",
+      "lastname": "K."
+    },
+    "name": "Night Run",
+    "distance": 3108.6,
+    "moving_time": 1038,
+    "elapsed_time": 1038,
+    "total_elevation_gain": 0.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Diplav",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 5040.6,
+    "moving_time": 1700,
+    "elapsed_time": 1700,
+    "total_elevation_gain": 40.5,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch SE 3"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Nachiket",
+      "lastname": "P."
+    },
+    "name": "Evening Run",
+    "distance": 7328.9,
+    "moving_time": 3198,
+    "elapsed_time": 3248,
+    "total_elevation_gain": 68.5,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Sidhartha",
+      "lastname": "T."
+    },
+    "name": "Morning Run",
+    "distance": 2090.1,
+    "moving_time": 1289,
+    "elapsed_time": 1289,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Garmin Forerunner 55"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Abhishek",
+      "lastname": "S."
+    },
+    "name": "Morning Run",
+    "distance": 5115.4,
+    "moving_time": 1592,
+    "elapsed_time": 1609,
+    "total_elevation_gain": 14.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Aniket",
+      "lastname": "R."
+    },
+    "name": "10/10 Recovery Run Album!!\n(Movement: Petit Biscuit )",
+    "distance": 5002.6,
+    "moving_time": 1809,
+    "elapsed_time": 1809,
+    "total_elevation_gain": 103.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 2,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Samaksh",
+      "lastname": "D."
+    },
+    "name": "Morning Run",
+    "distance": 3020.0,
+    "moving_time": 1204,
+    "elapsed_time": 1204,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Amazfit GTS 2 mini"
   }
 ]
