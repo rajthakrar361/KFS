@@ -202,5 +202,107 @@
     "sport_type": "Run",
     "workout_type": null,
     "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Arman",
+      "lastname": "A."
+    },
+    "name": "Evening run!",
+    "distance": 5131.3,
+    "moving_time": 1653,
+    "elapsed_time": 1687,
+    "total_elevation_gain": 35.8,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Rachit",
+      "lastname": "M."
+    },
+    "name": "Evening Run",
+    "distance": 3074.3,
+    "moving_time": 1262,
+    "elapsed_time": 1378,
+    "total_elevation_gain": 6.8,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch Series 5"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Samaksh",
+      "lastname": "D."
+    },
+    "name": "Afternoon Run",
+    "distance": 2840.0,
+    "moving_time": 1204,
+    "elapsed_time": 1204,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Amazfit GTS 2 mini"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Diplav",
+      "lastname": "S."
+    },
+    "name": "Morning Run",
+    "distance": 5025.3,
+    "moving_time": 1549,
+    "elapsed_time": 1554,
+    "total_elevation_gain": 15.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch SE 3"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Abhishek",
+      "lastname": "S."
+    },
+    "name": "Morning Run",
+    "distance": 6123.1,
+    "moving_time": 2043,
+    "elapsed_time": 2074,
+    "total_elevation_gain": 4.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Swamini",
+      "lastname": "G."
+    },
+    "name": "Night walk",
+    "distance": 6150.3,
+    "moving_time": 2779,
+    "elapsed_time": 3420,
+    "total_elevation_gain": 25.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
   }
 ]
