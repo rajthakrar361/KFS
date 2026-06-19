@@ -474,5 +474,175 @@
     "sport_type": "Run",
     "workout_type": null,
     "device_name": "Amazfit GTS 2 mini"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Sidhartha",
+      "lastname": "T."
+    },
+    "name": "Night Run",
+    "distance": 4949.4,
+    "moving_time": 1812,
+    "elapsed_time": 1812,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Garmin Forerunner 55"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Aryan",
+      "lastname": "C."
+    },
+    "name": "Evening Run",
+    "distance": 3039.9,
+    "moving_time": 1455,
+    "elapsed_time": 1459,
+    "total_elevation_gain": 5.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch Series 10"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Sujal",
+      "lastname": "P."
+    },
+    "name": "MDI Run 1",
+    "distance": 5003.2,
+    "moving_time": 1916,
+    "elapsed_time": 1916,
+    "total_elevation_gain": 20.4,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Rishendra",
+      "lastname": "C."
+    },
+    "name": "Evening Run",
+    "distance": 5015.5,
+    "moving_time": 2086,
+    "elapsed_time": 2089,
+    "total_elevation_gain": 15.8,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch Series 3"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Devansh",
+      "lastname": "S."
+    },
+    "name": "Afternoon Run",
+    "distance": 3102.1,
+    "moving_time": 1281,
+    "elapsed_time": 1296,
+    "total_elevation_gain": 11.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Swadit",
+      "lastname": "C."
+    },
+    "name": "19/06/26 - ✅ Half Marathon",
+    "distance": 21100.4,
+    "moving_time": 8599,
+    "elapsed_time": 9315,
+    "total_elevation_gain": 70.1,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Samaksh",
+      "lastname": "D."
+    },
+    "name": "Afternoon Run",
+    "distance": 3010.0,
+    "moving_time": 1210,
+    "elapsed_time": 1210,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Amazfit GTS 2 mini"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Abhishek",
+      "lastname": "S."
+    },
+    "name": "Morning Run",
+    "distance": 6194.8,
+    "moving_time": 2110,
+    "elapsed_time": 2127,
+    "total_elevation_gain": 2.5,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Niranjan",
+      "lastname": "N."
+    },
+    "name": "Night Run",
+    "distance": 6039.6,
+    "moving_time": 2218,
+    "elapsed_time": 2316,
+    "total_elevation_gain": 126.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Amazfit Active 2 NFC (Round)"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Ayaan Khan",
+      "lastname": "P."
+    },
+    "name": "we are backkk",
+    "distance": 10001.4,
+    "moving_time": 4750,
+    "elapsed_time": 5795,
+    "total_elevation_gain": 24.2,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
   }
 ]
