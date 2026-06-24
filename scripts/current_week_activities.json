@@ -235,5 +235,191 @@
     "sport_type": "Run",
     "workout_type": null,
     "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Utkarsh",
+      "lastname": "P."
+    },
+    "name": "v",
+    "distance": 6387.3,
+    "moving_time": 1759,
+    "elapsed_time": 3055,
+    "total_elevation_gain": 12.3,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Ashok",
+      "lastname": "K."
+    },
+    "name": "Progressive Night Run",
+    "distance": 6016.0,
+    "moving_time": 2023,
+    "elapsed_time": 2350,
+    "total_elevation_gain": 7.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "COROS PACE 3"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Sidhartha",
+      "lastname": "T."
+    },
+    "name": "Night Run",
+    "distance": 6810.0,
+    "moving_time": 2400,
+    "elapsed_time": 2534,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Garmin Forerunner 55"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Swadit",
+      "lastname": "C."
+    },
+    "name": "24/06/26 - ✅ Cramped Up PR 🤕",
+    "distance": 4469.1,
+    "moving_time": 1417,
+    "elapsed_time": 1449,
+    "total_elevation_gain": 14.1,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Anurup",
+      "lastname": "D."
+    },
+    "name": "Evening Run",
+    "distance": 2098.1,
+    "moving_time": 757,
+    "elapsed_time": 757,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch SE"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Sidharth",
+      "lastname": "N."
+    },
+    "name": "MDI 5k PB",
+    "distance": 5007.7,
+    "moving_time": 1318,
+    "elapsed_time": 1318,
+    "total_elevation_gain": 16.7,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "A",
+      "lastname": "J."
+    },
+    "name": "1st 5k",
+    "distance": 5552.4,
+    "moving_time": 2142,
+    "elapsed_time": 2153,
+    "total_elevation_gain": 20.1,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Preet Kunwar",
+      "lastname": "S."
+    },
+    "name": "#1, 23-06-26",
+    "distance": 3313.5,
+    "moving_time": 1551,
+    "elapsed_time": 1566,
+    "total_elevation_gain": 4.2,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Niranjan",
+      "lastname": "N."
+    },
+    "name": "Night Run paced",
+    "distance": 5013.1,
+    "moving_time": 1930,
+    "elapsed_time": 1930,
+    "total_elevation_gain": 28.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Amazfit Active 2 NFC (Round)"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Rakshit",
+      "lastname": "S."
+    },
+    "name": "Night Walk",
+    "distance": 2120.8,
+    "moving_time": 904,
+    "elapsed_time": 1180,
+    "total_elevation_gain": 4.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Raj",
+      "lastname": "T."
+    },
+    "name": "Easy peasy getting back run",
+    "distance": 2000.0,
+    "moving_time": 935,
+    "elapsed_time": 935,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
   }
 ]
