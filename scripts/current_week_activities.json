@@ -1,1 +1,223 @@
-[]
+[
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Devansh",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 844.0,
+    "moving_time": 364,
+    "elapsed_time": 376,
+    "total_elevation_gain": 4.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Srijan",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 1692.6,
+    "moving_time": 532,
+    "elapsed_time": 587,
+    "total_elevation_gain": 8.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Devansh",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 2003.3,
+    "moving_time": 797,
+    "elapsed_time": 818,
+    "total_elevation_gain": 8.1,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Srijan",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 1558.6,
+    "moving_time": 562,
+    "elapsed_time": 562,
+    "total_elevation_gain": 4.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Swadit",
+      "lastname": "C."
+    },
+    "name": "30/06/26 - Small Finish to June",
+    "distance": 3005.1,
+    "moving_time": 984,
+    "elapsed_time": 996,
+    "total_elevation_gain": 8.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Anurup",
+      "lastname": "D."
+    },
+    "name": "Evening Run",
+    "distance": 1536.9,
+    "moving_time": 509,
+    "elapsed_time": 617,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch SE"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Ayaan Khan",
+      "lastname": "P."
+    },
+    "name": "Evening Run",
+    "distance": 5000.4,
+    "moving_time": 2969,
+    "elapsed_time": 3015,
+    "total_elevation_gain": 225.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Rishendra",
+      "lastname": "C."
+    },
+    "name": "Evening Run",
+    "distance": 7007.6,
+    "moving_time": 2734,
+    "elapsed_time": 2734,
+    "total_elevation_gain": 26.7,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch Series 3"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Shaun",
+      "lastname": "T."
+    },
+    "name": "Evening Run",
+    "distance": 4465.3,
+    "moving_time": 1446,
+    "elapsed_time": 1499,
+    "total_elevation_gain": 16.1,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Aryan",
+      "lastname": "C."
+    },
+    "name": "Lunch Run",
+    "distance": 291.7,
+    "moving_time": 106,
+    "elapsed_time": 106,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch Series 10"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Angad Singh",
+      "lastname": "P."
+    },
+    "name": "Nike Run Club: 8 Weeks to Go - Recovery Run",
+    "distance": 1057.6,
+    "moving_time": 539,
+    "elapsed_time": 551,
+    "total_elevation_gain": 0.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Nike"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Samaksh",
+      "lastname": "D."
+    },
+    "name": "Morning Run",
+    "distance": 5060.0,
+    "moving_time": 2028,
+    "elapsed_time": 2028,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Amazfit GTS 2 mini"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Preet Kunwar",
+      "lastname": "S."
+    },
+    "name": "#2, 29-06-26",
+    "distance": 3535.6,
+    "moving_time": 1414,
+    "elapsed_time": 1458,
+    "total_elevation_gain": 0.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  }
+]
