@@ -219,5 +219,241 @@
     "sport_type": "Run",
     "workout_type": null,
     "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "A",
+      "lastname": "J."
+    },
+    "name": "Evening Run",
+    "distance": 1135.8,
+    "moving_time": 340,
+    "elapsed_time": 340,
+    "total_elevation_gain": 4.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Anurup",
+      "lastname": "D."
+    },
+    "name": "Evening Run",
+    "distance": 1517.7,
+    "moving_time": 552,
+    "elapsed_time": 552,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch SE"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Devansh",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 955.5,
+    "moving_time": 382,
+    "elapsed_time": 423,
+    "total_elevation_gain": 4.6,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Aryan",
+      "lastname": "C."
+    },
+    "name": "Evening Run",
+    "distance": 4019.3,
+    "moving_time": 1825,
+    "elapsed_time": 1834,
+    "total_elevation_gain": 5.4,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch Series 10"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Sidharth",
+      "lastname": "N."
+    },
+    "name": "Tuffman HM Day 1",
+    "distance": 10006.2,
+    "moving_time": 3240,
+    "elapsed_time": 3240,
+    "total_elevation_gain": 34.1,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Srijan",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 4278.8,
+    "moving_time": 1500,
+    "elapsed_time": 1590,
+    "total_elevation_gain": 16.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Devansh",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 3137.3,
+    "moving_time": 1227,
+    "elapsed_time": 1248,
+    "total_elevation_gain": 12.1,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Rahul",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 1021.5,
+    "moving_time": 382,
+    "elapsed_time": 382,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch Series 10"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Rachit",
+      "lastname": "M."
+    },
+    "name": "Zone 2",
+    "distance": 2632.3,
+    "moving_time": 1339,
+    "elapsed_time": 1376,
+    "total_elevation_gain": 14.2,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch Series 5"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Akshita",
+      "lastname": "S."
+    },
+    "name": "Evening run",
+    "distance": 2300.0,
+    "moving_time": 1440,
+    "elapsed_time": 1440,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Aditya",
+      "lastname": "M."
+    },
+    "name": "Morning Run",
+    "distance": 1548.4,
+    "moving_time": 524,
+    "elapsed_time": 524,
+    "total_elevation_gain": 0.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Samaksh",
+      "lastname": "D."
+    },
+    "name": "Morning Run",
+    "distance": 3000.0,
+    "moving_time": 1214,
+    "elapsed_time": 1214,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Amazfit GTS 2 mini"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Niranjan",
+      "lastname": "N."
+    },
+    "name": "1hr 10k",
+    "distance": 10005.8,
+    "moving_time": 3637,
+    "elapsed_time": 3685,
+    "total_elevation_gain": 119.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Amazfit Active 2 NFC (Round)"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Bhargav",
+      "lastname": "K."
+    },
+    "name": "Morning Run",
+    "distance": 3880.0,
+    "moving_time": 1182,
+    "elapsed_time": 1182,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
   }
 ]
