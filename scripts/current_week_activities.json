@@ -134,5 +134,56 @@
     "sport_type": "Run",
     "workout_type": null,
     "device_name": "Garmin Forerunner 265"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Nachiket",
+      "lastname": "P."
+    },
+    "name": "Nike Run Club: Wednesday Evening Run",
+    "distance": 5093.6,
+    "moving_time": 1861,
+    "elapsed_time": 1867,
+    "total_elevation_gain": 23.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Nike"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Angad Singh",
+      "lastname": "P."
+    },
+    "name": "Nike Run Club: 5K Finish Lines",
+    "distance": 5008.3,
+    "moving_time": 2384,
+    "elapsed_time": 2384,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Nike"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Aditya",
+      "lastname": "M."
+    },
+    "name": "Morning Run",
+    "distance": 5033.9,
+    "moving_time": 2051,
+    "elapsed_time": 2060,
+    "total_elevation_gain": 18.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
   }
 ]
