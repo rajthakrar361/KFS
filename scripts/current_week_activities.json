@@ -3,86 +3,29 @@
     "resource_state": 2,
     "athlete": {
       "resource_state": 2,
+      "firstname": "ABHISHEK",
+      "lastname": "S."
+    },
+    "distance": 7700,
+    "moving_time": 2687,
+    "elapsed_time": 2687,
+    "total_elevation_gain": 29,
+    "type": "Run",
+    "sport_type": "Run"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
       "firstname": "Sidharth",
       "lastname": "N."
     },
-    "name": "Turfman HM Day 9",
-    "distance": 10009.7,
-    "moving_time": 3166,
-    "elapsed_time": 3173,
-    "total_elevation_gain": 32.1,
+    "distance": 7000,
+    "moving_time": 1911,
+    "elapsed_time": 1911,
+    "total_elevation_gain": 5,
     "type": "Run",
-    "sport_type": "Run",
-    "workout_type": null,
-    "device_name": "Strava App"
-  },
-  {
-    "resource_state": 2,
-    "athlete": {
-      "resource_state": 2,
-      "firstname": "Srijan",
-      "lastname": "S."
-    },
-    "name": "Evening Run",
-    "distance": 3168.8,
-    "moving_time": 1071,
-    "elapsed_time": 1476,
-    "total_elevation_gain": 10.4,
-    "type": "Run",
-    "sport_type": "Run",
-    "workout_type": null,
-    "device_name": "Strava App"
-  },
-  {
-    "resource_state": 2,
-    "athlete": {
-      "resource_state": 2,
-      "firstname": "Devansh",
-      "lastname": "S."
-    },
-    "name": "Evening Run",
-    "distance": 2158.0,
-    "moving_time": 799,
-    "elapsed_time": 828,
-    "total_elevation_gain": 8.0,
-    "type": "Run",
-    "sport_type": "Run",
-    "workout_type": 0,
-    "device_name": "Strava App"
-  },
-  {
-    "resource_state": 2,
-    "athlete": {
-      "resource_state": 2,
-      "firstname": "Ashok",
-      "lastname": "K."
-    },
-    "name": "Afternoon Run",
-    "distance": 3160.0,
-    "moving_time": 1165,
-    "elapsed_time": 1318,
-    "total_elevation_gain": 6.0,
-    "type": "Run",
-    "sport_type": "Run",
-    "workout_type": null,
-    "device_name": "COROS PACE 3"
-  },
-  {
-    "resource_state": 2,
-    "athlete": {
-      "resource_state": 2,
-      "firstname": "Ayushman",
-      "lastname": "K."
-    },
-    "name": "Evening Run",
-    "distance": 87066.7,
-    "moving_time": 1898171,
-    "elapsed_time": 1898173,
-    "total_elevation_gain": 358.9,
-    "type": "Run",
-    "sport_type": "Run",
-    "workout_type": null,
-    "device_name": "Strava App"
+    "sport_type": "Run"
   },
   {
     "resource_state": 2,
@@ -91,49 +34,26 @@
       "firstname": "Samaksh",
       "lastname": "D."
     },
-    "name": "Morning Run",
-    "distance": 3010.0,
-    "moving_time": 1207,
-    "elapsed_time": 1207,
+    "distance": 3000,
+    "moving_time": 1200,
+    "elapsed_time": 1200,
     "total_elevation_gain": 0,
     "type": "Run",
-    "sport_type": "Run",
-    "workout_type": null,
-    "device_name": "Amazfit GTS 2 mini"
+    "sport_type": "Run"
   },
   {
     "resource_state": 2,
     "athlete": {
       "resource_state": 2,
-      "firstname": "Abhishek",
-      "lastname": "S."
+      "firstname": "Samaksh",
+      "lastname": "D."
     },
-    "name": "Morning Run",
-    "distance": 7790.7,
-    "moving_time": 2720,
-    "elapsed_time": 2760,
-    "total_elevation_gain": 28.7,
-    "type": "Run",
-    "sport_type": "Run",
-    "workout_type": null,
-    "device_name": "Strava App"
-  },
-  {
-    "resource_state": 2,
-    "athlete": {
-      "resource_state": 2,
-      "firstname": "Sourabh",
-      "lastname": "M."
-    },
-    "name": "Night Run",
-    "distance": 1011.6,
-    "moving_time": 681,
-    "elapsed_time": 681,
+    "distance": 3000,
+    "moving_time": 1200,
+    "elapsed_time": 1200,
     "total_elevation_gain": 0,
     "type": "Run",
-    "sport_type": "Run",
-    "workout_type": null,
-    "device_name": "Garmin Forerunner 265"
+    "sport_type": "Run"
   },
   {
     "resource_state": 2,
@@ -142,32 +62,12 @@
       "firstname": "Nachiket",
       "lastname": "P."
     },
-    "name": "Nike Run Club: Wednesday Evening Run",
-    "distance": 5093.6,
-    "moving_time": 1861,
-    "elapsed_time": 1867,
-    "total_elevation_gain": 23.0,
+    "distance": 5000,
+    "moving_time": 1825,
+    "elapsed_time": 1825,
+    "total_elevation_gain": 23,
     "type": "Run",
-    "sport_type": "Run",
-    "workout_type": null,
-    "device_name": "Nike"
-  },
-  {
-    "resource_state": 2,
-    "athlete": {
-      "resource_state": 2,
-      "firstname": "Angad Singh",
-      "lastname": "P."
-    },
-    "name": "Nike Run Club: 5K Finish Lines",
-    "distance": 5008.3,
-    "moving_time": 2384,
-    "elapsed_time": 2384,
-    "total_elevation_gain": 0,
-    "type": "Run",
-    "sport_type": "Run",
-    "workout_type": null,
-    "device_name": "Nike"
+    "sport_type": "Run"
   },
   {
     "resource_state": 2,
@@ -176,32 +76,26 @@
       "firstname": "Aditya",
       "lastname": "M."
     },
-    "name": "Morning Run",
-    "distance": 5033.9,
-    "moving_time": 2051,
-    "elapsed_time": 2060,
-    "total_elevation_gain": 18.9,
+    "distance": 5000,
+    "moving_time": 2035,
+    "elapsed_time": 2035,
+    "total_elevation_gain": 19,
     "type": "Run",
-    "sport_type": "Run",
-    "workout_type": null,
-    "device_name": "Strava App"
+    "sport_type": "Run"
   },
   {
     "resource_state": 2,
     "athlete": {
       "resource_state": 2,
-      "firstname": "Sidharth",
-      "lastname": "N."
+      "firstname": "Angad",
+      "lastname": "S."
     },
-    "name": "Tuffman HM Day 10",
-    "distance": 7002.5,
-    "moving_time": 1914,
-    "elapsed_time": 2215,
-    "total_elevation_gain": 5.4,
+    "distance": 5000,
+    "moving_time": 2380,
+    "elapsed_time": 2380,
+    "total_elevation_gain": 0,
     "type": "Run",
-    "sport_type": "Run",
-    "workout_type": null,
-    "device_name": "Strava App"
+    "sport_type": "Run"
   },
   {
     "resource_state": 2,
@@ -210,15 +104,54 @@
       "firstname": "Aditi",
       "lastname": "A."
     },
-    "name": "Night Run",
-    "distance": 4080.9,
-    "moving_time": 2021,
-    "elapsed_time": 2858,
-    "total_elevation_gain": 9.4,
+    "distance": 4000,
+    "moving_time": 1980,
+    "elapsed_time": 1980,
+    "total_elevation_gain": 9,
     "type": "Run",
-    "sport_type": "Run",
-    "workout_type": null,
-    "device_name": "Strava App"
+    "sport_type": "Run"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Srijan",
+      "lastname": "S."
+    },
+    "distance": 3100,
+    "moving_time": 1048,
+    "elapsed_time": 1048,
+    "total_elevation_gain": 10,
+    "type": "Run",
+    "sport_type": "Run"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Devansh",
+      "lastname": "S."
+    },
+    "distance": 2100,
+    "moving_time": 777,
+    "elapsed_time": 777,
+    "total_elevation_gain": 8,
+    "type": "Run",
+    "sport_type": "Run"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Sourabh",
+      "lastname": "M."
+    },
+    "distance": 1000,
+    "moving_time": 673,
+    "elapsed_time": 673,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run"
   },
   {
     "resource_state": 2,
@@ -227,14 +160,11 @@
       "firstname": "Rachit",
       "lastname": "M."
     },
-    "name": "Night Run",
-    "distance": 1007.6,
-    "moving_time": 544,
-    "elapsed_time": 544,
+    "distance": 1000,
+    "moving_time": 540,
+    "elapsed_time": 540,
     "total_elevation_gain": 0,
     "type": "Run",
-    "sport_type": "Run",
-    "workout_type": null,
-    "device_name": "Apple Watch Series 5"
+    "sport_type": "Run"
   }
 ]
