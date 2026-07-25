@@ -183,5 +183,90 @@
     "sport_type": "Run",
     "workout_type": 0,
     "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Rachit",
+      "lastname": "M."
+    },
+    "name": "Evening Run",
+    "distance": 2080.3,
+    "moving_time": 756,
+    "elapsed_time": 767,
+    "total_elevation_gain": 15.6,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch Series 5"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Sidharth",
+      "lastname": "N."
+    },
+    "name": "Tuffman HM Day 11",
+    "distance": 5013.2,
+    "moving_time": 1479,
+    "elapsed_time": 1479,
+    "total_elevation_gain": 18.5,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Angad Singh",
+      "lastname": "P."
+    },
+    "name": "Nike Run Club: A New Run",
+    "distance": 2954.4,
+    "moving_time": 1500,
+    "elapsed_time": 1568,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Nike"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Swamini",
+      "lastname": "G."
+    },
+    "name": "Nike interval run \n6x100m\n4x200m\n3x400m",
+    "distance": 5496.6,
+    "moving_time": 2742,
+    "elapsed_time": 2747,
+    "total_elevation_gain": 67.8,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Raj",
+      "lastname": "T."
+    },
+    "name": "Back",
+    "distance": 4085.6,
+    "moving_time": 1590,
+    "elapsed_time": 1608,
+    "total_elevation_gain": 5.8,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
   }
 ]
