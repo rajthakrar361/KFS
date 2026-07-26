@@ -1713,14 +1713,14 @@ const hofData = {
   speed: {
     "5K":  [{name:"Sidharth Nair",time:1318,timeStr:"21:58",pace:"4:23/km"},{name:"Sidharth Nair",time:1419,timeStr:"23:39",pace:"4:43/km"},{name:"Sidharth Nair",time:1457,timeStr:"24:17",pace:"4:50/km"},{name:"Sidharth Nair",time:1479,timeStr:"24:39",pace:"4:55/km"},{name:"Sidharth Nair",time:1486,timeStr:"24:46",pace:"4:56/km"},{name:"Abhishek S.",time:1495,timeStr:"24:55",pace:"4:53/km"},{name:"Raj Thakrar",time:1497,timeStr:"24:57",pace:"4:59/km"},{name:"Sidharth Nair",time:1527,timeStr:"25:27",pace:"5:04/km"}],
     "10K": [{name:"Sidharth Nair",time:2963,timeStr:"49:23",pace:"4:55/km"},{name:"Sidharth Nair",time:2991,timeStr:"49:51",pace:"4:58/km"},{name:"Sidharth Nair",time:3130,timeStr:"52:10",pace:"5:12/km"},{name:"Sidharth Nair",time:3166,timeStr:"52:46",pace:"5:16/km"},{name:"Sidharth Nair",time:3240,timeStr:"54:00",pace:"5:23/km"},{name:"Rishendra Chauhan",time:3338,timeStr:"55:38",pace:"5:33/km"},{name:"Rishendra Chauhan",time:3367,timeStr:"56:07",pace:"5:35/km"},{name:"Raj Thakrar",time:3416,timeStr:"56:56",pace:"5:41/km"}],
-    "21K": [{name:"Rishendra Chauhan",time:7226,timeStr:"2:00:26",pace:"5:42/km"},{name:"Bhargav Kumare",time:8095,timeStr:"2:14:55",pace:"6:23/km"},{name:"Swadit Chandan",time:8481,timeStr:"2:21:21",pace:"6:41/km"},{name:"Swadit Chandan",time:8599,timeStr:"2:23:19",pace:"6:47/km"},{name:"Mihir Pandit",time:10581,timeStr:"2:56:21",pace:"8:21/km"},{name:"Sakha Ghotekar",time:11969,timeStr:"3:19:29",pace:"9:27/km"}],
+    "21K": [{name:"Rishendra Chauhan",time:7226,timeStr:"2:00:26",pace:"5:42/km"},{name:"Bhargav Kumare",time:8095,timeStr:"2:14:55",pace:"6:23/km"},{name:"Swadit Chandan",time:8481,timeStr:"2:21:21",pace:"6:41/km"},{name:"Swadit Chandan",time:8599,timeStr:"2:23:19",pace:"6:47/km"},{name:"Swadit Chandan",time:9575,timeStr:"2:39:35",pace:"7:33/km"},{name:"Mihir Pandit",time:10581,timeStr:"2:56:21",pace:"8:21/km"},{name:"Sakha Ghotekar",time:11969,timeStr:"3:19:29",pace:"9:27/km"}],
     "42K": []
   },
   individual: {
     longestRun:   [{name:"Mihir Pandit",val:27.3},{name:"Sakha Ghotekar",val:23.0},{name:"Swadit Chandan",val:22.4}],
     mostKmWeek:   [{name:"Bhargav Kumare",val:50.3,week:"Apr 6 – 12, 2026"},{name:"Sakha Ghotekar",val:43.2,week:"Apr 13 – 19, 2026"},{name:"Swadit Chandan",val:41.2,week:"Apr 13 – 19, 2026"}],
     mostRunsWeek: [{name:"Devansh Sukhani",val:9,week:"Jun 29 – Jul 5, 2026"},{name:"Saksham G",val:9,week:"Jun 1 – 7, 2026"},{name:"Raj Thakrar",val:8,week:"Apr 13 – 19, 2026"}],
-    mostWeeks:    [{name:"Rishendra Chauhan",val:16},{name:"Sourabh M",val:14},{name:"Swadit Chandan",val:14}]
+    mostWeeks:    [{name:"Rishendra Chauhan",val:16},{name:"Swadit Chandan",val:15},{name:"Sourabh M",val:14}]
   },
   club: {
     bestWeekKm:  {val:401.8,runners:24,week:"Apr 13 – 19, 2026"},
@@ -1728,23 +1728,26 @@ const hofData = {
   }
 };
 const athletes = [
-  { name: "Sidharth Nair", distance: 12.0, runs: 2, longest: 7.0, pace: "4:33", paceVal: 273, avgPace: "4:42", avgPaceVal: 282, elev: "23m", color: "#FC4C02" },
-  { name: "Abhishek Singh", distance: 7.7, runs: 1, longest: 7.7, pace: "5:48", paceVal: 348, avgPace: "5:48", avgPaceVal: 348, elev: "29m", color: "#e05c00" },
-  { name: "Samaksh Dhingra", distance: 6.0, runs: 2, longest: 3.0, pace: "6:40", paceVal: 400, avgPace: "6:40", avgPaceVal: 400, elev: "--", color: "#d45a00" },
-  { name: "Swamini G.", distance: 5.5, runs: 1, longest: 5.5, pace: "8:18", paceVal: 498, avgPace: "8:18", avgPaceVal: 498, elev: "67m", color: "#c85500" },
-  { name: "Nachiket Pethe", distance: 5.0, runs: 1, longest: 5.0, pace: "6:05", paceVal: 365, avgPace: "6:05", avgPaceVal: 365, elev: "23m", color: "#bc5000" },
-  { name: "Aditya Mudgal", distance: 5.0, runs: 1, longest: 5.0, pace: "6:47", paceVal: 407, avgPace: "6:47", avgPaceVal: 407, elev: "19m", color: "#b04b00" },
-  { name: "Angad Singh Pental", distance: 5.0, runs: 1, longest: 5.0, pace: "7:56", paceVal: 476, avgPace: "7:56", avgPaceVal: 476, elev: "--", color: "#a44600" },
-  { name: "Devansh Sukhani", distance: 4.1, runs: 2, longest: 2.1, pace: "6:10", paceVal: 370, avgPace: "6:52", avgPaceVal: 412, elev: "16m", color: "#984100" },
-  { name: "Raj Thakrar", distance: 4.1, runs: 1, longest: 4.1, pace: "6:29", paceVal: 389, avgPace: "6:29", avgPaceVal: 389, elev: "5m", color: "#8c3c00" },
-  { name: "Aditi Anand", distance: 4.0, runs: 1, longest: 4.0, pace: "8:15", paceVal: 495, avgPace: "8:15", avgPaceVal: 495, elev: "9m", color: "#803700" },
-  { name: "Srijan Shrey", distance: 3.1, runs: 1, longest: 3.1, pace: "5:38", paceVal: 338, avgPace: "5:38", avgPaceVal: 338, elev: "10m", color: "#7a3200" },
-  { name: "Rachit Mittal", distance: 3.1, runs: 2, longest: 2.1, pace: "6:03", paceVal: 363, avgPace: "7:00", avgPaceVal: 420, elev: "15m", color: "#742d00" },
-  { name: "Angad Singh P.", distance: 3.0, runs: 1, longest: 3.0, pace: "8:27", paceVal: 507, avgPace: "8:27", avgPaceVal: 507, elev: "--", color: "#6e2800" },
-  { name: "Sourabh M", distance: 1.0, runs: 1, longest: 1.0, pace: "11:13", paceVal: 673, avgPace: "11:13", avgPaceVal: 673, elev: "--", color: "#682300" }
+  { name: "Swadit Chandan", distance: 21.1, runs: 1, longest: 21.1, pace: "6:57", paceVal: 417, avgPace: "6:57", avgPaceVal: 417, elev: "68m", color: "#FC4C02" },
+  { name: "Sidharth Nair", distance: 12.0, runs: 2, longest: 7.0, pace: "4:33", paceVal: 273, avgPace: "4:42", avgPaceVal: 282, elev: "23m", color: "#e05c00" },
+  { name: "Samaksh Dhingra", distance: 11.0, runs: 3, longest: 5.0, pace: "6:40", paceVal: 400, avgPace: "6:41", avgPaceVal: 401, elev: "--", color: "#d45a00" },
+  { name: "Rachit Mittal", distance: 9.9, runs: 3, longest: 6.8, pace: "6:03", paceVal: 363, avgPace: "6:35", avgPaceVal: 395, elev: "56m", color: "#c85500" },
+  { name: "Abhishek Singh", distance: 7.7, runs: 1, longest: 7.7, pace: "5:48", paceVal: 348, avgPace: "5:48", avgPaceVal: 348, elev: "29m", color: "#bc5000" },
+  { name: "Swamini G.", distance: 5.5, runs: 1, longest: 5.5, pace: "8:18", paceVal: 498, avgPace: "8:18", avgPaceVal: 498, elev: "67m", color: "#b04b00" },
+  { name: "Utsav Wadhwa", distance: 5.1, runs: 2, longest: 3.1, pace: "6:35", paceVal: 395, avgPace: "6:35", avgPaceVal: 395, elev: "--", color: "#a44600" },
+  { name: "Nachiket Pethe", distance: 5.0, runs: 1, longest: 5.0, pace: "6:05", paceVal: 365, avgPace: "6:05", avgPaceVal: 365, elev: "23m", color: "#984100" },
+  { name: "Aditya Mudgal", distance: 5.0, runs: 1, longest: 5.0, pace: "6:47", paceVal: 407, avgPace: "6:47", avgPaceVal: 407, elev: "19m", color: "#8c3c00" },
+  { name: "Angad Singh Pental", distance: 5.0, runs: 1, longest: 5.0, pace: "7:56", paceVal: 476, avgPace: "7:56", avgPaceVal: 476, elev: "--", color: "#803700" },
+  { name: "Devansh Sukhani", distance: 4.1, runs: 2, longest: 2.1, pace: "6:10", paceVal: 370, avgPace: "6:52", avgPaceVal: 412, elev: "16m", color: "#7a3200" },
+  { name: "Raj Thakrar", distance: 4.1, runs: 1, longest: 4.1, pace: "6:29", paceVal: 389, avgPace: "6:29", avgPaceVal: 389, elev: "5m", color: "#742d00" },
+  { name: "Aditi Anand", distance: 4.0, runs: 1, longest: 4.0, pace: "8:15", paceVal: 495, avgPace: "8:15", avgPaceVal: 495, elev: "9m", color: "#6e2800" },
+  { name: "Bhargav Kumare", distance: 3.3, runs: 1, longest: 3.3, pace: "4:50", paceVal: 290, avgPace: "4:50", avgPaceVal: 290, elev: "--", color: "#682300" },
+  { name: "Srijan Shrey", distance: 3.1, runs: 1, longest: 3.1, pace: "5:38", paceVal: 338, avgPace: "5:38", avgPaceVal: 338, elev: "10m", color: "#621e00" },
+  { name: "Angad Singh P.", distance: 3.0, runs: 1, longest: 3.0, pace: "8:27", paceVal: 507, avgPace: "8:27", avgPaceVal: 507, elev: "--", color: "#5c1900" },
+  { name: "Sourabh M", distance: 1.0, runs: 1, longest: 1.0, pace: "11:13", paceVal: 673, avgPace: "11:13", avgPaceVal: 673, elev: "--", color: "#561500" }
 ];
 
-const prevAthletes = ["Abhishek Singh", "Sidharth Nair", "Samaksh Dhingra", "Nachiket Pethe", "Aditya Mudgal", "Angad Singh Pental", "Devansh Sukhani", "Aditi Anand", "Srijan Shrey", "Sourabh M", "Rachit Mittal"];
+const prevAthletes = ["Sidharth Nair", "Abhishek Singh", "Samaksh Dhingra", "Swamini G.", "Nachiket Pethe", "Aditya Mudgal", "Angad Singh Pental", "Devansh Sukhani", "Raj Thakrar", "Aditi Anand", "Srijan Shrey", "Rachit Mittal", "Angad Singh P.", "Sourabh M"];
 
 const medals = ["🥇","🥈","🥉"];
 const avatarColors = ["#FC4C02","#e05c00","#d45a00","#c85500","#bc5000","#b04b00","#a44600","#984100","#8c3c00","#803700"];
