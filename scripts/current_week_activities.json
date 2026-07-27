@@ -1,1 +1,69 @@
-[]
+[
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Raj",
+      "lastname": "T."
+    },
+    "name": "Gym warm up",
+    "distance": 2200.0,
+    "moving_time": 778,
+    "elapsed_time": 778,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Priyanshu",
+      "lastname": "B."
+    },
+    "name": "Morning Run",
+    "distance": 3750.4,
+    "moving_time": 1385,
+    "elapsed_time": 1497,
+    "total_elevation_gain": 4.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Priyanshu",
+      "lastname": "B."
+    },
+    "name": "Morning Run",
+    "distance": 1937.0,
+    "moving_time": 646,
+    "elapsed_time": 655,
+    "total_elevation_gain": 3.8,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Parth",
+      "lastname": "T."
+    },
+    "name": "Night Run",
+    "distance": 2019.3,
+    "moving_time": 815,
+    "elapsed_time": 825,
+    "total_elevation_gain": 3.8,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch SE"
+  }
+]
