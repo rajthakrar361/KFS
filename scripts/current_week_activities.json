@@ -1,7 +1,11 @@
 [
   {
     "resource_state": 2,
-    "athlete": { "resource_state": 2, "firstname": "Devansh", "lastname": "S." },
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Devansh",
+      "lastname": "S."
+    },
     "name": "Run",
     "distance": 3200.0,
     "moving_time": 1411,
@@ -13,7 +17,11 @@
   },
   {
     "resource_state": 2,
-    "athlete": { "resource_state": 2, "firstname": "Raj", "lastname": "T." },
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Raj",
+      "lastname": "T."
+    },
     "name": "Run",
     "distance": 2200.0,
     "moving_time": 778,
