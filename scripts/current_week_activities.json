@@ -30,5 +30,208 @@
     "type": "Run",
     "sport_type": "Run",
     "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Bhargav",
+      "lastname": "K."
+    },
+    "name": "Night Run",
+    "distance": 2700.0,
+    "moving_time": 780,
+    "elapsed_time": 780,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Sidharth",
+      "lastname": "N."
+    },
+    "name": "Tuffman HM Day 13",
+    "distance": 5009.4,
+    "moving_time": 1577,
+    "elapsed_time": 1577,
+    "total_elevation_gain": 18.2,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Devansh",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 869.8,
+    "moving_time": 365,
+    "elapsed_time": 409,
+    "total_elevation_gain": 4.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Srijan",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 1013.5,
+    "moving_time": 333,
+    "elapsed_time": 336,
+    "total_elevation_gain": 3.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Srijan",
+      "lastname": "S."
+    },
+    "name": "Evening Trail Run",
+    "distance": 1827.2,
+    "moving_time": 695,
+    "elapsed_time": 765,
+    "total_elevation_gain": 8.1,
+    "type": "Run",
+    "sport_type": "TrailRun",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Devansh",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 3154.3,
+    "moving_time": 1325,
+    "elapsed_time": 1372,
+    "total_elevation_gain": 12.2,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Swamini",
+      "lastname": "G."
+    },
+    "name": "Evening Run",
+    "distance": 5532.4,
+    "moving_time": 1997,
+    "elapsed_time": 2163,
+    "total_elevation_gain": 18.1,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Sujal",
+      "lastname": "P."
+    },
+    "name": "MDI Run 5",
+    "distance": 3880.2,
+    "moving_time": 1538,
+    "elapsed_time": 1547,
+    "total_elevation_gain": 12.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Abhishek",
+      "lastname": "S."
+    },
+    "name": "1st run at IIT TIRUPATI",
+    "distance": 5049.4,
+    "moving_time": 1676,
+    "elapsed_time": 2262,
+    "total_elevation_gain": 56.6,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Harshit",
+      "lastname": "G."
+    },
+    "name": "Night Run",
+    "distance": 5001.0,
+    "moving_time": 1827,
+    "elapsed_time": 1885,
+    "total_elevation_gain": 23.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Harshit",
+      "lastname": "G."
+    },
+    "name": "Night Run",
+    "distance": 5027.4,
+    "moving_time": 1922,
+    "elapsed_time": 2106,
+    "total_elevation_gain": 23.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Harshit",
+      "lastname": "G."
+    },
+    "name": "Night Run",
+    "distance": 5010.3,
+    "moving_time": 2107,
+    "elapsed_time": 2158,
+    "total_elevation_gain": 16.8,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
   }
 ]
