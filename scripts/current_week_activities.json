@@ -65,5 +65,39 @@
     "sport_type": "Run",
     "workout_type": null,
     "device_name": "Apple Watch SE"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Kshitij",
+      "lastname": "R."
+    },
+    "name": "MDI Run4",
+    "distance": 2559.2,
+    "moving_time": 1088,
+    "elapsed_time": 1104,
+    "total_elevation_gain": 10.3,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Kshitij",
+      "lastname": "R."
+    },
+    "name": "MDI Run 3",
+    "distance": 3444.2,
+    "moving_time": 1419,
+    "elapsed_time": 1472,
+    "total_elevation_gain": 11.8,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
   }
 ]
