@@ -2,100 +2,133 @@
   {
     "id": "jul20",
     "label": "Jul 20 – 26, 2026",
-    "athletes": [
-      {
-        "name": "Swadit Chandan",
-        "distance": 21.1,
-        "runs": 1,
-        "longest": 21.1,
-        "pace": "6:57",
-        "paceVal": 417,
-        "avgPace": "6:57",
-        "avgPaceVal": 417,
-        "elev": "68m"
-      },
+   "athletes": [
       {
         "name": "Sidharth Nair",
         "distance": 33.1,
         "runs": 3,
         "longest": 21.1,
-        "pace": "4:33",
-        "paceVal": 273,
-        "avgPace": "4:42",
-        "avgPaceVal": 282,
-        "elev": "23m"
+        "pace": "4:57",
+        "paceVal": 297,
+        "avgPace": "4:57",
+        "avgPaceVal": 297,
+        "elev": "98m"
+      },
+      {
+        "name": "Swadit Chandan",
+        "distance": 21.1,
+        "runs": 1,
+        "longest": 21.1,
+        "pace": "6:58",
+        "paceVal": 418,
+        "avgPace": "6:58",
+        "avgPaceVal": 418,
+        "elev": "68m"
       },
       {
         "name": "Samaksh Dhingra",
         "distance": 11.0,
         "runs": 3,
         "longest": 5.0,
-        "pace": "6:40",
-        "paceVal": 400,
+        "pace": "6:41",
+        "paceVal": 401,
         "avgPace": "6:41",
         "avgPaceVal": 401,
         "elev": "--"
       },
       {
+        "name": "Athul Narayanan",
+        "distance": 11.0,
+        "runs": 2,
+        "longest": 5.5,
+        "pace": "6:28",
+        "paceVal": 388,
+        "avgPace": "6:28",
+        "avgPaceVal": 388,
+        "elev": "49m"
+      },
+      {
         "name": "Rachit Mittal",
-        "distance": 9.9,
+        "distance": 9.8,
         "runs": 3,
-        "longest": 6.8,
-        "pace": "6:03",
-        "paceVal": 363,
+        "longest": 6.7,
+        "pace": "6:35",
+        "paceVal": 395,
         "avgPace": "6:35",
         "avgPaceVal": 395,
         "elev": "56m"
+      },
+      {
+        "name": "Rushika Singh",
+        "distance": 8.0,
+        "runs": 3,
+        "longest": 3.7,
+        "pace": "11:11",
+        "paceVal": 671,
+        "avgPace": "11:11",
+        "avgPaceVal": 671,
+        "elev": "20m"
+      },
+      {
+        "name": "Angad Singh Pental",
+        "distance": 7.9,
+        "runs": 2,
+        "longest": 5.0,
+        "pace": "8:08",
+        "paceVal": 488,
+        "avgPace": "8:08",
+        "avgPaceVal": 488,
+        "elev": "--"
       },
       {
         "name": "Abhishek Singh",
         "distance": 7.7,
         "runs": 1,
         "longest": 7.7,
-        "pace": "5:48",
-        "paceVal": 348,
-        "avgPace": "5:48",
-        "avgPaceVal": 348,
+        "pace": "5:49",
+        "paceVal": 349,
+        "avgPace": "5:49",
+        "avgPaceVal": 349,
         "elev": "29m"
       },
       {
         "name": "Devansh Sukhani",
-        "distance": 10.3,
-        "runs": 4,
-        "longest": 3.2,
-        "pace": "6:10",
-        "paceVal": 370,
+        "distance": 7.1,
+        "runs": 3,
+        "longest": 3.0,
+        "pace": "6:57",
+        "paceVal": 417,
         "avgPace": "6:57",
         "avgPaceVal": 417,
-        "elev": "27m"
+        "elev": "28m"
       },
       {
         "name": "Srijan Shrey",
         "distance": 7.0,
         "runs": 2,
         "longest": 3.9,
-        "pace": "5:38",
-        "paceVal": 338,
+        "pace": "5:54",
+        "paceVal": 354,
         "avgPace": "5:54",
         "avgPaceVal": 354,
-        "elev": "24m"
+        "elev": "25m"
       },
       {
-        "name": "Swamini G.",
-        "distance": 5.5,
+        "name": "Swamini G",
+        "distance": 5.4,
         "runs": 1,
-        "longest": 5.5,
-        "pace": "8:18",
-        "paceVal": 498,
-        "avgPace": "8:18",
-        "avgPaceVal": 498,
-        "elev": "67m"
+        "longest": 5.4,
+        "pace": "8:19",
+        "paceVal": 499,
+        "avgPace": "8:19",
+        "avgPaceVal": 499,
+        "elev": "68m"
       },
       {
         "name": "Utsav Wadhwa",
         "distance": 5.1,
         "runs": 2,
-        "longest": 3.1,
+        "longest": 3.0,
         "pace": "6:35",
         "paceVal": 395,
         "avgPace": "6:35",
@@ -125,26 +158,26 @@
         "elev": "19m"
       },
       {
-        "name": "Angad Singh Pental",
+        "name": "Mihir Pandit",
         "distance": 5.0,
         "runs": 1,
         "longest": 5.0,
-        "pace": "7:56",
-        "paceVal": 476,
-        "avgPace": "7:56",
-        "avgPaceVal": 476,
-        "elev": "--"
+        "pace": "5:51",
+        "paceVal": 351,
+        "avgPace": "5:51",
+        "avgPaceVal": 351,
+        "elev": "25m"
       },
       {
         "name": "Raj Thakrar",
-        "distance": 4.1,
+        "distance": 4.0,
         "runs": 1,
-        "longest": 4.1,
+        "longest": 4.0,
         "pace": "6:29",
         "paceVal": 389,
         "avgPace": "6:29",
         "avgPaceVal": 389,
-        "elev": "5m"
+        "elev": "6m"
       },
       {
         "name": "Aditi Anand",
@@ -158,26 +191,59 @@
         "elev": "9m"
       },
       {
+        "name": "Priyanshu Bhattacharya",
+        "distance": 3.7,
+        "runs": 1,
+        "longest": 3.7,
+        "pace": "6:09",
+        "paceVal": 369,
+        "avgPace": "6:09",
+        "avgPaceVal": 369,
+        "elev": "4m"
+      },
+      {
         "name": "Bhargav Kumare",
         "distance": 3.3,
         "runs": 1,
         "longest": 3.3,
-        "pace": "4:50",
-        "paceVal": 290,
-        "avgPace": "4:50",
-        "avgPaceVal": 290,
+        "pace": "4:51",
+        "paceVal": 291,
+        "avgPace": "4:51",
+        "avgPaceVal": 291,
         "elev": "--"
       },
       {
-        "name": "Angad Singh P.",
-        "distance": 3.0,
+        "name": "Pavithra Prasad",
+        "distance": 2.3,
         "runs": 1,
-        "longest": 3.0,
-        "pace": "8:27",
-        "paceVal": 507,
-        "avgPace": "8:27",
-        "avgPaceVal": 507,
-        "elev": "--"
+        "longest": 2.3,
+        "pace": "6:57",
+        "paceVal": 417,
+        "avgPace": "6:57",
+        "avgPaceVal": 417,
+        "elev": "18m"
+      },
+      {
+        "name": "Kunjan Malaviya",
+        "distance": 2.0,
+        "runs": 1,
+        "longest": 2.0,
+        "pace": "5:21",
+        "paceVal": 321,
+        "avgPace": "5:21",
+        "avgPaceVal": 321,
+        "elev": "8m"
+      },
+      {
+        "name": "Sonu Thakur",
+        "distance": 1.0,
+        "runs": 1,
+        "longest": 1.0,
+        "pace": "5:19",
+        "paceVal": 319,
+        "avgPace": "5:19",
+        "avgPaceVal": 319,
+        "elev": "3m"
       },
       {
         "name": "Sourabh M",
@@ -189,66 +255,6 @@
         "avgPace": "11:13",
         "avgPaceVal": 673,
         "elev": "--"
-      },
-      {
-        "name": "Mihir Pandit",
-        "distance": 5.0,
-        "runs": 1,
-        "runs_2k": 1,
-        "longest": 5.0,
-        "pace": "5:51",
-        "paceVal": 351,
-        "avgPace": "5:51",
-        "avgPaceVal": 351,
-        "elev": "25m"
-      },
-      {
-        "name": "Pradyun G.",
-        "distance": 3.1,
-        "runs": 1,
-        "runs_2k": 1,
-        "longest": 3.1,
-        "pace": "7:00",
-        "paceVal": 420,
-        "avgPace": "7:00",
-        "avgPaceVal": 420,
-        "elev": "4m"
-      },
-      {
-        "name": "Pavithra  P.",
-        "distance": 2.3,
-        "runs": 1,
-        "runs_2k": 1,
-        "longest": 2.3,
-        "pace": "6:56",
-        "paceVal": 416,
-        "avgPace": "6:56",
-        "avgPaceVal": 416,
-        "elev": "18m"
-      },
-      {
-        "name": "Kunjan M.",
-        "distance": 2.1,
-        "runs": 1,
-        "runs_2k": 1,
-        "longest": 2.1,
-        "pace": "5:21",
-        "paceVal": 321,
-        "avgPace": "5:21",
-        "avgPaceVal": 321,
-        "elev": "8m"
-      },
-      {
-        "name": "Sonu T.",
-        "distance": 1.0,
-        "runs": 1,
-        "runs_2k": 0,
-        "longest": 1.0,
-        "pace": "5:19",
-        "paceVal": 319,
-        "avgPace": "5:19",
-        "avgPaceVal": 319,
-        "elev": "3m"
       }
     ]
   },
