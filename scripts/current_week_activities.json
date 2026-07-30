@@ -352,5 +352,141 @@
     "sport_type": "Run",
     "workout_type": 0,
     "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Harshit",
+      "lastname": "G."
+    },
+    "name": "Night Run",
+    "distance": 5018.0,
+    "moving_time": 1954,
+    "elapsed_time": 1980,
+    "total_elevation_gain": 15.7,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Rushika",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 2543.9,
+    "moving_time": 1163,
+    "elapsed_time": 1255,
+    "total_elevation_gain": 7.4,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Devansh",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 3149.9,
+    "moving_time": 1299,
+    "elapsed_time": 1314,
+    "total_elevation_gain": 12.1,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Angad Singh",
+      "lastname": "P."
+    },
+    "name": "Nike Run Club: Grateful 5K Run",
+    "distance": 5007.2,
+    "moving_time": 2456,
+    "elapsed_time": 2456,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Nike"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Abhishek",
+      "lastname": "S."
+    },
+    "name": "Morning Run",
+    "distance": 5086.4,
+    "moving_time": 1578,
+    "elapsed_time": 1608,
+    "total_elevation_gain": 52.6,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Niranjan",
+      "lastname": "N."
+    },
+    "name": "Night Run",
+    "distance": 5021.6,
+    "moving_time": 1740,
+    "elapsed_time": 1749,
+    "total_elevation_gain": 26.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Amazfit Active 2 NFC (Round)"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Srijan",
+      "lastname": "S."
+    },
+    "name": "Night Run",
+    "distance": 2973.4,
+    "moving_time": 997,
+    "elapsed_time": 1281,
+    "total_elevation_gain": 12.2,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Ashok",
+      "lastname": "K."
+    },
+    "name": "Night Run",
+    "distance": 4003.0,
+    "moving_time": 1500,
+    "elapsed_time": 1585,
+    "total_elevation_gain": 6.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "COROS PACE 3"
   }
 ]
