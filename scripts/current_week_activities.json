@@ -709,5 +709,107 @@
     "sport_type": "Run",
     "workout_type": null,
     "device_name": "Garmin Forerunner 265"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Vaibhav",
+      "lastname": "D."
+    },
+    "name": "Evening Run",
+    "distance": 5613.0,
+    "moving_time": 2286,
+    "elapsed_time": 2289,
+    "total_elevation_gain": 228.7,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Swamini",
+      "lastname": "G."
+    },
+    "name": "Evening Run",
+    "distance": 3016.7,
+    "moving_time": 1242,
+    "elapsed_time": 2543,
+    "total_elevation_gain": 7.1,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Utsav",
+      "lastname": "W."
+    },
+    "name": "Morning Run",
+    "distance": 3013.7,
+    "moving_time": 1157,
+    "elapsed_time": 1372,
+    "total_elevation_gain": 0.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Samsung Galaxy Watch4 Classic"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Vibhor",
+      "lastname": "G."
+    },
+    "name": "Evening Run",
+    "distance": 4076.7,
+    "moving_time": 1975,
+    "elapsed_time": 5777,
+    "total_elevation_gain": 11.2,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Ayaan Khan",
+      "lastname": "P."
+    },
+    "name": "Rain rain pour again",
+    "distance": 5065.4,
+    "moving_time": 2242,
+    "elapsed_time": 2543,
+    "total_elevation_gain": 7.7,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Samaksh",
+      "lastname": "D."
+    },
+    "name": "Evening Run",
+    "distance": 2555.0,
+    "moving_time": 1029,
+    "elapsed_time": 1051,
+    "total_elevation_gain": 6.3,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Amazfit GTS 2 mini"
   }
 ]
