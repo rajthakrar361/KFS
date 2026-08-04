@@ -1,1 +1,104 @@
-[]
+[
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Devansh",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 2837.3,
+    "moving_time": 1231,
+    "elapsed_time": 1455,
+    "total_elevation_gain": 11.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Swamini",
+      "lastname": "G."
+    },
+    "name": "Evening Run",
+    "distance": 5009.0,
+    "moving_time": 1359,
+    "elapsed_time": 1457,
+    "total_elevation_gain": 4.3,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Anurup",
+      "lastname": "D."
+    },
+    "name": "Lunch Run",
+    "distance": 1932.5,
+    "moving_time": 745,
+    "elapsed_time": 745,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch SE"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Aditya",
+      "lastname": "M."
+    },
+    "name": "Morning Run",
+    "distance": 5074.6,
+    "moving_time": 2036,
+    "elapsed_time": 2044,
+    "total_elevation_gain": 4.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Garmin Venu 3"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Abhishek",
+      "lastname": "S."
+    },
+    "name": "Morning Run",
+    "distance": 5043.4,
+    "moving_time": 1667,
+    "elapsed_time": 1667,
+    "total_elevation_gain": 37.1,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Aryan",
+      "lastname": "C."
+    },
+    "name": "Night Run",
+    "distance": 4378.2,
+    "moving_time": 1945,
+    "elapsed_time": 1953,
+    "total_elevation_gain": 5.8,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch Series 10"
+  }
+]
