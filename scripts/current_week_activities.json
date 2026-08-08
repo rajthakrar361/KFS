@@ -437,5 +437,124 @@
     "type": "Run",
     "sport_type": "Run",
     "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Srijan",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 5421.9,
+    "moving_time": 1928,
+    "elapsed_time": 2250,
+    "total_elevation_gain": 20.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Anurup",
+      "lastname": "D."
+    },
+    "name": "Evening Run",
+    "distance": 2691.3,
+    "moving_time": 957,
+    "elapsed_time": 1020,
+    "total_elevation_gain": 7.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch SE"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Rishendra",
+      "lastname": "C."
+    },
+    "name": "Evening Run",
+    "distance": 11068.9,
+    "moving_time": 3776,
+    "elapsed_time": 3910,
+    "total_elevation_gain": 36.1,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Sidharth",
+      "lastname": "N."
+    },
+    "name": "Tuffman HM Day 17",
+    "distance": 5008.9,
+    "moving_time": 1239,
+    "elapsed_time": 1239,
+    "total_elevation_gain": 22.4,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Swamini",
+      "lastname": "G."
+    },
+    "name": "Evening Run",
+    "distance": 9104.2,
+    "moving_time": 3578,
+    "elapsed_time": 4701,
+    "total_elevation_gain": 12.5,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Angad Singh",
+      "lastname": "P."
+    },
+    "name": "Nike Run Club: Fear Less 5K",
+    "distance": 5008.0,
+    "moving_time": 2380,
+    "elapsed_time": 2380,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Nike"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Utsav",
+      "lastname": "W."
+    },
+    "name": "Morning Run",
+    "distance": 3007.0,
+    "moving_time": 1192,
+    "elapsed_time": 1206,
+    "total_elevation_gain": 0.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Samsung Galaxy Watch4 Classic"
   }
 ]
