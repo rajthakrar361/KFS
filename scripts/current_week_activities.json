@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "athlete": { "firstname": "Shaun", "lastname": "T." },
+    "distance": 5700.0,
+    "moving_time": 1876,
+    "total_elevation_gain": 20,
+    "type": "Run"
+  },
+  {
+    "athlete": { "firstname": "Diplav", "lastname": "S." },
+    "distance": 5400.0,
+    "moving_time": 1804,
+    "total_elevation_gain": 20,
+    "type": "Run"
+  },
+  {
+    "athlete": { "firstname": "Rushika", "lastname": "S." },
+    "distance": 3200.0,
+    "moving_time": 1591,
+    "total_elevation_gain": 12,
+    "type": "Run"
+  },
+  {
+    "athlete": { "firstname": "Devansh", "lastname": "S." },
+    "distance": 2200.0,
+    "moving_time": 856,
+    "total_elevation_gain": 8,
+    "type": "Run"
+  },
+  {
+    "athlete": { "firstname": "Sonu", "lastname": "T." },
+    "distance": 2000.0,
+    "moving_time": 702,
+    "total_elevation_gain": 7,
+    "type": "Run"
+  },
+  {
+    "athlete": { "firstname": "Chandan", "lastname": "B." },
+    "distance": 2000.0,
+    "moving_time": 656,
+    "total_elevation_gain": 8,
+    "type": "Run"
+  }
+]
