@@ -279,5 +279,90 @@
     "sport_type": "Run",
     "workout_type": null,
     "device_name": "Garmin Forerunner 265"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Rishendra",
+      "lastname": "C."
+    },
+    "name": "Evening Run",
+    "distance": 7474.6,
+    "moving_time": 2695,
+    "elapsed_time": 2704,
+    "total_elevation_gain": 26.3,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Swamini",
+      "lastname": "G."
+    },
+    "name": "Evening Run",
+    "distance": 8120.9,
+    "moving_time": 3231,
+    "elapsed_time": 3656,
+    "total_elevation_gain": 21.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Devansh",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 3184.8,
+    "moving_time": 1660,
+    "elapsed_time": 1772,
+    "total_elevation_gain": 11.7,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Aryan",
+      "lastname": "C."
+    },
+    "name": "Night Run",
+    "distance": 5009.8,
+    "moving_time": 2283,
+    "elapsed_time": 2289,
+    "total_elevation_gain": 12.2,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch Series 10"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Aryan",
+      "lastname": "C."
+    },
+    "name": "Evening Run",
+    "distance": 289.7,
+    "moving_time": 101,
+    "elapsed_time": 101,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch Series 10"
   }
 ]
