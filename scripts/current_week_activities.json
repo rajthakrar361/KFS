@@ -364,5 +364,124 @@
     "sport_type": "Run",
     "workout_type": null,
     "device_name": "Apple Watch Series 10"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Sonu",
+      "lastname": "T."
+    },
+    "name": "Morning Run",
+    "distance": 3036.6,
+    "moving_time": 1133,
+    "elapsed_time": 1139,
+    "total_elevation_gain": 10.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Niranjan",
+      "lastname": "N."
+    },
+    "name": "Night Run",
+    "distance": 7481.9,
+    "moving_time": 2736,
+    "elapsed_time": 2768,
+    "total_elevation_gain": 85.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Amazfit Active 2 NFC (Round)"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Diplav",
+      "lastname": "S."
+    },
+    "name": "Night Run",
+    "distance": 3019.9,
+    "moving_time": 939,
+    "elapsed_time": 939,
+    "total_elevation_gain": 7.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch SE 3"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Ayaan Khan",
+      "lastname": "P."
+    },
+    "name": "Night Run",
+    "distance": 5023.0,
+    "moving_time": 2306,
+    "elapsed_time": 2612,
+    "total_elevation_gain": 4.1,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Ashok",
+      "lastname": "K."
+    },
+    "name": "9Km @Alternating Pace + 15 Burpees",
+    "distance": 9001.8,
+    "moving_time": 3198,
+    "elapsed_time": 3994,
+    "total_elevation_gain": 11.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "COROS PACE 3"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Aryan",
+      "lastname": "C."
+    },
+    "name": "Afternoon Run",
+    "distance": 278.8,
+    "moving_time": 108,
+    "elapsed_time": 108,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch Series 10"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Aryan",
+      "lastname": "C."
+    },
+    "name": "Afternoon Run",
+    "distance": 80.6,
+    "moving_time": 61,
+    "elapsed_time": 61,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch Series 10"
   }
 ]
