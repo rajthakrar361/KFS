@@ -483,5 +483,124 @@
     "sport_type": "Run",
     "workout_type": null,
     "device_name": "Apple Watch Series 10"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Srijan",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 3908.3,
+    "moving_time": 1406,
+    "elapsed_time": 1711,
+    "total_elevation_gain": 16.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Rachit",
+      "lastname": "M."
+    },
+    "name": "Evening Run",
+    "distance": 1569.0,
+    "moving_time": 755,
+    "elapsed_time": 755,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch Series 5"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "A",
+      "lastname": "J."
+    },
+    "name": "Afternoon Run",
+    "distance": 2249.0,
+    "moving_time": 787,
+    "elapsed_time": 802,
+    "total_elevation_gain": 8.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Angad Singh",
+      "lastname": "P."
+    },
+    "name": "Nike Run Club: 30 Minute Finish Lines",
+    "distance": 3620.7,
+    "moving_time": 1800,
+    "elapsed_time": 1800,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Nike"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Aditya",
+      "lastname": "M."
+    },
+    "name": "Morning Run",
+    "distance": 7012.2,
+    "moving_time": 2569,
+    "elapsed_time": 2592,
+    "total_elevation_gain": 7.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Garmin Venu 3"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Rishendra",
+      "lastname": "C."
+    },
+    "name": "Night Run",
+    "distance": 10858.7,
+    "moving_time": 3789,
+    "elapsed_time": 3789,
+    "total_elevation_gain": 36.2,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Devansh",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 4661.7,
+    "moving_time": 2578,
+    "elapsed_time": 9783,
+    "total_elevation_gain": 17.2,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0,
+    "device_name": "Strava App"
   }
 ]
