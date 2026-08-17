@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Kshitij",
+      "lastname": "R."
+    },
+    "name": "Sleep deprived light fever run",
+    "distance": 3019.5,
+    "moving_time": 1436,
+    "elapsed_time": 1498,
+    "total_elevation_gain": 11.6,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Anshul",
+      "lastname": "M."
+    },
+    "name": "Morning Run",
+    "distance": 10083.9,
+    "moving_time": 4426,
+    "elapsed_time": 4472,
+    "total_elevation_gain": 75.1,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  }
+]
