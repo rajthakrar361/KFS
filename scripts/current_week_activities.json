@@ -134,5 +134,141 @@
     "sport_type": "Run",
     "workout_type": null,
     "device_name": "Amazfit Active 2 NFC (Round)"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Ayaan Khan",
+      "lastname": "P."
+    },
+    "name": "Small rum",
+    "distance": 3008.0,
+    "moving_time": 1301,
+    "elapsed_time": 1348,
+    "total_elevation_gain": 0.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Utsav",
+      "lastname": "W."
+    },
+    "name": "Evening Run",
+    "distance": 1336.4,
+    "moving_time": 547,
+    "elapsed_time": 713,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Samsung Galaxy Watch4 Classic"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Angad Singh",
+      "lastname": "P."
+    },
+    "name": "Nike Run Club: 9K Run",
+    "distance": 8006.7,
+    "moving_time": 4024,
+    "elapsed_time": 4030,
+    "total_elevation_gain": 21.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Nike"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Rushika",
+      "lastname": "S."
+    },
+    "name": "Morning Run",
+    "distance": 3032.8,
+    "moving_time": 1554,
+    "elapsed_time": 1675,
+    "total_elevation_gain": 7.7,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Srijan",
+      "lastname": "S."
+    },
+    "name": "Night Run",
+    "distance": 1863.5,
+    "moving_time": 606,
+    "elapsed_time": 729,
+    "total_elevation_gain": 8.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Aryan",
+      "lastname": "C."
+    },
+    "name": "Night Run",
+    "distance": 5022.2,
+    "moving_time": 2146,
+    "elapsed_time": 2149,
+    "total_elevation_gain": 11.8,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch Series 10"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Aryan",
+      "lastname": "C."
+    },
+    "name": "Lunch Run",
+    "distance": 283.3,
+    "moving_time": 98,
+    "elapsed_time": 98,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch Series 10"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Aryan",
+      "lastname": "C."
+    },
+    "name": "Afternoon Run",
+    "distance": 293.0,
+    "moving_time": 107,
+    "elapsed_time": 107,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch Series 10"
   }
 ]
