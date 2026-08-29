@@ -406,5 +406,90 @@
     "sport_type": "Run",
     "workout_type": null,
     "device_name": "Apple Watch Series 5"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Anurup",
+      "lastname": "D."
+    },
+    "name": "Evening Run",
+    "distance": 311.7,
+    "moving_time": 122,
+    "elapsed_time": 122,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch SE"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Anurup",
+      "lastname": "D."
+    },
+    "name": "Evening Run",
+    "distance": 513.3,
+    "moving_time": 173,
+    "elapsed_time": 173,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch SE"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Sidharth",
+      "lastname": "N."
+    },
+    "name": "Evening Run",
+    "distance": 5009.6,
+    "moving_time": 1590,
+    "elapsed_time": 1590,
+    "total_elevation_gain": 14.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Rishendra",
+      "lastname": "C."
+    },
+    "name": "Evening Run",
+    "distance": 16040.2,
+    "moving_time": 5912,
+    "elapsed_time": 6029,
+    "total_elevation_gain": 55.2,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Sidhartha",
+      "lastname": "T."
+    },
+    "name": "Morning Run",
+    "distance": 15006.5,
+    "moving_time": 8565,
+    "elapsed_time": 9888,
+    "total_elevation_gain": 255.3,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Garmin Forerunner 55"
   }
 ]
