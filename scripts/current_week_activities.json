@@ -372,5 +372,39 @@
     "sport_type": "Run",
     "workout_type": null,
     "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Aditya",
+      "lastname": "M."
+    },
+    "name": "Night Run",
+    "distance": 1009.3,
+    "moving_time": 385,
+    "elapsed_time": 405,
+    "total_elevation_gain": 3.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Garmin Venu 3"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Rachit",
+      "lastname": "M."
+    },
+    "name": "Evening Run",
+    "distance": 2027.6,
+    "moving_time": 894,
+    "elapsed_time": 1039,
+    "total_elevation_gain": 0.0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Apple Watch Series 5"
   }
 ]
