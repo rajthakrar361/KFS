@@ -1,1 +1,53 @@
-[]
+[
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Rushika",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 4388.0,
+    "moving_time": 2278,
+    "elapsed_time": 2494,
+    "total_elevation_gain": 18.8,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Ayush",
+      "lastname": "S."
+    },
+    "name": "Swiss Alps Trek",
+    "distance": 12527.4,
+    "moving_time": 15002,
+    "elapsed_time": 16465,
+    "total_elevation_gain": 864.5,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Abhishek",
+      "lastname": "S."
+    },
+    "name": "Morning Run",
+    "distance": 5013.0,
+    "moving_time": 1457,
+    "elapsed_time": 1497,
+    "total_elevation_gain": 52.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null,
+    "device_name": "Strava App"
+  }
+]
