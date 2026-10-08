@@ -1930,6 +1930,7 @@
     </div>
     <div id="board-body"></div>
   </div>
+  <div id="last-updated" style="text-align:center;margin-top:0.6rem;font-size:10px;color:var(--muted);letter-spacing:0.4px;opacity:0.8;"></div>
 
   </div><!-- /curr-view -->
 
@@ -2072,6 +2073,12 @@ function updateCountdown() {
   el.textContent = d > 0 ? `Resets in ${d}d ${h}h` : h > 0 ? `Resets in ${h}h ${m}m` : `Resets in ${m}m`;
 }
 updateCountdown();
+(function () {
+  const el = document.getElementById('last-updated');
+  const t = new Date(document.lastModified);
+  if (!el || isNaN(t)) return;
+  el.textContent = 'Last updated ' + t.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit', hour12: true }) + ' IST';
+})();
 setInterval(updateCountdown, 60000);
 
 function countUp(el, target, dur = 900) {
