@@ -517,6 +517,43 @@ def make_hist_html_card(wid, badge, athletes):
 
 """
 
+def merge_runs(athletes, runs, name_map):
+    """Add runs to an already-aggregated week (a hand-entered board or an archived week)."""
+    by_name = {a['name']: dict(a) for a in athletes}
+    for a in aggregate(runs, name_map):
+        b = by_name.get(a['name'])
+        if b is None:
+            by_name[a['name']] = dict(a)
+            continue
+        d_old, d_new = b['distance'], a['distance']
+        b['distance'] = round(d_old + d_new, 1)
+        b['runs']    += a['runs']
+        if 'runs_2k' in b:
+            b['runs_2k'] += a['runs_2k']
+        b['longest'] = max(b['longest'], a['longest'])
+        if a.get('paceVal', 9999) < b.get('paceVal', 9999):
+            b['pace'] = a['pace']; b['paceVal'] = a['paceVal']
+        # Average pace weighted by distance (the raw times of archived runs aren't kept)
+        if b.get('avgPaceVal', 9999) < 9999 and a['avgPaceVal'] < 9999 and d_old + d_new:
+            spk = (b['avgPaceVal'] * d_old + a['avgPaceVal'] * d_new) / (d_old + d_new)
+            b['avgPace'], b['avgPaceVal'] = f"{int(spk // 60)}:{int(spk % 60):02d}", int(spk)
+        elev = int((b.get('elev') or '0m').rstrip('m').replace('--', '0') or 0) + \
+               int((a['elev'] or '0m').rstrip('m').replace('--', '0') or 0)
+        b['elev'] = f"{elev}m" if elev else '--'
+    return sorted(by_name.values(), key=lambda a: -a['distance'])
+
+def update_hist_card_meta(html, wid, athletes):
+    """Refresh the runners / km / runs totals in a history card's header."""
+    total_km   = round(sum(a['distance'] for a in athletes), 1)
+    total_runs = sum(a['runs'] for a in athletes)
+    meta = (f'<div class="hist-week-meta">\n'
+            f'            <span><strong>{len(athletes)}</strong> runners</span>\n'
+            f'            <span><strong>{total_km}</strong> km total</span>\n'
+            f'            <span><strong>{total_runs}</strong> runs</span>\n'
+            f'          </div>')
+    return re.sub(rf'(id="hist-week-{wid}".*?)<div class="hist-week-meta">.*?</div>',
+                  lambda m: m.group(1) + meta, html, count=1, flags=re.DOTALL)
+
 def update_html(html, new_athletes, new_badge,
                 prev_badge=None, prev_wid=None, prev_athletes=None,
                 prev_rank_names=None, hist_weeks=None, hof=None):
@@ -666,20 +703,7 @@ def main():
             prev_athletes = aggregate(week_acts + late, name_map)
         else:
             # Week was entered by hand: the HTML board is the only record of it
-            prev_athletes = parse_current_athletes(html)
-            if late:
-                by_name = {a['name']: dict(a) for a in prev_athletes}
-                for a in aggregate(late, name_map):
-                    if a['name'] in by_name:
-                        b = by_name[a['name']]
-                        b['distance'] = round(b['distance'] + a['distance'], 1)
-                        b['runs']    += a['runs']
-                        b['longest'] = max(b['longest'], a['longest'])
-                        if a.get('paceVal', 9999) < b.get('paceVal', 9999):
-                            b['pace'] = a['pace']; b['paceVal'] = a['paceVal']
-                    else:
-                        by_name[a['name']] = dict(a)
-                prev_athletes = sorted(by_name.values(), key=lambda a: -a['distance'])
+            prev_athletes = merge_runs(parse_current_athletes(html), late, name_map)
 
         print(f"  Archiving: {prev_badge} ({len(prev_athletes)} athletes)")
         new_hist_entry = {
@@ -699,11 +723,24 @@ def main():
         week_acts, prev_rank_names = [], [a['name'] for a in prev_athletes]
         print(f"  Archived. New week: {cur_badge}")
     else:
-        if not cur_new and not synced:
+        # Runs uploaded after their week was archived (e.g. a Sunday run uploaded after midnight IST)
+        # go into that week's history entry, which is also what Last Week shows
+        last_end = mon.date() - timedelta(days=1)
+        late = [a for a in prev_new if last_end - timedelta(days=6) <= ist_date(a) <= last_end]
+        if late and hist_weeks and badge_end_date(hist_weeks[0]['label']) == last_end:
+            last = hist_weeks[0]
+            last['athletes'] = [{k: v for k, v in a.items() if k != 'color'}
+                                for a in merge_runs(last['athletes'], late, name_map)]
+            save_json(HIST_FILE, hist_weeks)
+            html = update_hist_card_meta(html, last['id'], last['athletes'])
+            print(f"  Added {len(late)} late runs to last week ({last['label']})")
+        else:
+            late = []
+        if not cur_new and not synced and not late:
             print("No new runs this week — index.html unchanged.")
             return
-        if prev_new:
-            print(f"  Ignoring {len(prev_new)} runs from before this week")
+        if len(prev_new) > len(late):
+            print(f"  Ignoring {len(prev_new) - len(late)} runs from before this week")
         prev_rank_names = [a['name'] for a in parse_current_athletes(html)]
 
     week_acts = week_acts + cur_new
