@@ -340,7 +340,7 @@
         <div class="card tile spot reveal" style="--d:.2s"><div class="tile-lbl" data-short="Best pace">Fastest pace</div><div><div class="tile-val num">${fast ? esc(fast.pace) : '--'}<small>/km</small></div><div class="tile-sub">${fast ? esc(pretty(fast.name)) : 'Runs of 3 km+'}</div></div></div>
       </div>
       <div data-podium></div>
-      ${(flat ? x => `<div class="flat-sec">${x}</div>` : x => band('Board', x))(secHead('Full leaderboard', plural(list.length, 'runner')) + '<div class="card board reveal" data-board></div>' + (flat ? '' : `
+      ${(flat ? x => `<div class="flat-sec">${x}</div>` : x => band('Board', x))(secHead('Full leaderboard', plural(list.length, 'runner')) + '<div class="card board reveal" data-board></div>' + (flat || week.live ? '' : `
         <div class="flex-strip reveal">
           <div><div class="flex-title">Flex your week</div><div class="flex-sub">Show off the week, or the top 10, in the group chat.</div></div>
           <div class="flex-btns"><button class="btn btn-primary" data-share-open="week">${ICON.share}Share the week</button><button class="btn btn-ghost" data-share-open="board">${ICON.share}Share the leaderboard</button></div>
@@ -473,9 +473,8 @@
   }
 
   function renderWeek(el) {
-    el.innerHTML = head('<span class="pulse"></span> Live · This week', esc(current.label), '', '', 'h2-date', current.athletes.length > 0) + '<div data-league></div>';
+    el.innerHTML = head('<span class="pulse"></span> Live · This week', esc(current.label), '', '', 'h2-date') + '<div data-league></div>';
     renderLeague($('[data-league]', el), current);
-    const sb = $('[data-share]', el); if (sb) sb.onclick = () => shareWeek(current);
   }
 
   function renderLast(el) {
