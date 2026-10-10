@@ -1195,7 +1195,7 @@ body:has(.team-wrap) .footer-word { margin-top: 0; }
 .team-hero { padding-bottom: 0; }
 .team-wrap { padding-top: 0; padding-bottom: 0; }
 .team-wrap > .team-label:first-child { margin-top: 32px; }
-.crew-grid .join-band { margin: 0; grid-column: span 3; align-self: stretch; align-items: center; }
+.crew-grid .join-band { margin: 0; grid-column: 1 / -1; align-items: center; }   /* full row, under the last member */
 @media (max-width: 980px) {
   .crew-grid .join-band { grid-column: span 1; flex-direction: column; align-items: flex-start; justify-content: space-between; flex-wrap: nowrap; padding: 26px 24px; }
   .crew-grid .join-band h2 { font-size: clamp(26px, 5.4vw, 44px); }
