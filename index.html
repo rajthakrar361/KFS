@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/kfs2.css">
+<link rel="stylesheet" href="assets/kfs2.css?v=20261010c">
 </head>
 <body>
 <!-- intro: logo reveal that flies into the nav (assets/intro.js); shown once per visit -->
@@ -66,40 +66,24 @@
 
 <section class="hero" aria-label="Knees For Speed">
   <div class="hero-inner">
-    <div class="live-chip fade-up" style="--d:.1s"><span class="pulse"></span>Live · Week of <span data-badge></span></div>
-    <h1 class="hero-title" data-split data-fit-title="196" aria-label="Knees For Speed">
-      <span class="line" aria-hidden="true">Knees</span>
-      <span class="line" aria-hidden="true">For <span class="accent">Speed</span></span>
-    </h1>
+    <div class="hero-copy">
+      <div class="live-chip fade-up" style="--d:.1s"><span class="pulse"></span>Live · Week of <span data-badge></span></div>
+      <div class="hero-head">
+        <h1 class="hero-title" data-split data-fit-title="196" aria-label="Knees For Speed">
+          <span class="line" aria-hidden="true">Knees</span>
+          <span class="line" aria-hidden="true">For <span class="accent">Speed</span></span>
+        </h1>
+        <p class="hero-sub fade-up" style="--d:.7s">The run club for business students. Eight cities, one leaderboard, and every kilometre counts.</p>
+      </div>
+      <div class="hero-ctas fade-up" style="--d:.85s">
+        <a class="btn btn-primary magnetic" href="./" data-route="home">View the leaderboard <span class="arrow">↓</span></a>
+      </div>
+    </div>
     <figure class="hero-frame">
       <img src="images/hero-group.jpg" alt="Runners from a KFS group run" width="1079" height="841" fetchpriority="high" onerror="this.closest('figure').remove()">
       <figcaption><span>After the run</span><a class="frame-link" href="team.html">Meet the team →</a></figcaption>
       <span class="frame-sticker" data-hero-stat></span>
     </figure>
-    <div class="hero-bottom">
-      <div>
-        <p class="hero-sub fade-up" style="--d:.7s">The run club for business students. Eight cities, one leaderboard, and every kilometre counts.</p>
-        <div class="flags fade-up" style="--d:.8s" aria-label="Cities in India, Germany, France, Italy and Spain">
-          <img src="https://flagcdn.com/w40/in.png" alt="India" title="India">
-          <img src="https://flagcdn.com/w40/de.png" alt="Germany" title="Germany">
-          <img src="https://flagcdn.com/w40/fr.png" alt="France" title="France">
-          <img src="https://flagcdn.com/w40/it.png" alt="Italy" title="Italy">
-          <img src="https://flagcdn.com/w40/es.png" alt="Spain" title="Spain">
-        </div>
-        <div class="hero-ctas fade-up" style="--d:.9s">
-          <a class="btn btn-primary magnetic" href="./" data-route="home">View the leaderboard <span class="arrow">↓</span></a>
-        </div>
-      </div>
-      <div class="countdown fade-up" style="--d:1s" aria-label="Time until the weekly leaderboard resets">
-        <div class="countdown-label">Leaderboard resets in</div>
-        <div class="cd">
-          <div class="cd-unit"><span class="cd-val" data-cd="d">00</span><span class="cd-lbl">Days</span></div><span class="cd-sep">:</span>
-          <div class="cd-unit"><span class="cd-val" data-cd="h">00</span><span class="cd-lbl">Hrs</span></div><span class="cd-sep">:</span>
-          <div class="cd-unit"><span class="cd-val" data-cd="m">00</span><span class="cd-lbl">Min</span></div><span class="cd-sep">:</span>
-          <div class="cd-unit"><span class="cd-val" data-cd="s">00</span><span class="cd-lbl">Sec</span></div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1076,9 +1060,9 @@ const nameAliases = {
   "Srijan S":        "Srijan Shrey",
 };
 </script>
-<script src="assets/core.js"></script>
-<script src="assets/share.js"></script>
-<script src="assets/app.js"></script>
-<script src="assets/intro.js"></script>
+<script src="assets/core.js?v=20261010c"></script>
+<script src="assets/share.js?v=20261010c"></script>
+<script src="assets/app.js?v=20261010c"></script>
+<script src="assets/intro.js?v=20261010c"></script>
 </body>
 </html>

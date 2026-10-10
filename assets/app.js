@@ -421,23 +421,6 @@
     area.addEventListener('blur', reset);
   }
 
-  // ── countdown to Monday 00:00 IST ─────────────────────────────
-  function msToReset() {
-    const now = Date.now(), IST = 5.5 * 3600e3;
-    const t = new Date(now + IST);
-    const add = (8 - t.getUTCDay()) % 7 || 7;
-    return Date.UTC(t.getUTCFullYear(), t.getUTCMonth(), t.getUTCDate() + add) - IST - now;
-  }
-  function tick() {
-    const ms = Math.max(0, msToReset());
-    const d = Math.floor(ms / 864e5), h = Math.floor(ms % 864e5 / 36e5), m = Math.floor(ms % 36e5 / 6e4), s = Math.floor(ms % 6e4 / 1e3);
-    const pad = n => String(n).padStart(2, '0');
-    $$('[data-cd]').forEach(el => { el.textContent = pad({ d, h, m, s }[el.dataset.cd]); });
-    $$('[data-cd-compact]').forEach(el => { el.textContent = d ? `${d}d ${h}h ${pad(m)}m` : `${h}h ${pad(m)}m ${pad(s)}s`; });
-  }
-  tick();
-  setInterval(tick, 1000);
-
   // ── views ────────────────────────────────────────────────────
   // Section break inside a view: title, hairline, optional meta on the right.
   function secHead(title, meta = '', cls = '') {
@@ -490,11 +473,9 @@
   }
 
   function renderWeek(el) {
-    el.innerHTML = head('<span class="pulse"></span> Live · This week', esc(current.label),
-      `Resets Monday 00:00 IST <br>in <strong data-cd-compact>–</strong>`, '', 'h2-date', current.athletes.length > 0) + '<div data-league></div>';
+    el.innerHTML = head('<span class="pulse"></span> Live · This week', esc(current.label), '', '', 'h2-date', current.athletes.length > 0) + '<div data-league></div>';
     renderLeague($('[data-league]', el), current);
     const sb = $('[data-share]', el); if (sb) sb.onclick = () => shareWeek(current);
-    tick();
   }
 
   function renderLast(el) {
@@ -762,7 +743,6 @@
     if (!inner || K.reduce) return;
     K.onScroll.push(y => {
       if (y > innerHeight * 1.2) return;
-      inner.style.transform = `translate3d(0, ${(y * .12).toFixed(1)}px, 0)`;
       inner.style.opacity = Math.max(0, 1 - y / (innerHeight * .85)).toFixed(3);
     });
   }
