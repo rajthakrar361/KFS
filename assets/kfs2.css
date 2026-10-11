@@ -539,6 +539,7 @@ html.theme-switching .theme-sun, html.theme-switching .theme-moon { animation: t
   font: 600 11px var(--font-body); font-style: normal; white-space: nowrap; pointer-events: none; z-index: 5;
 }
 .mini-foot { display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); margin-top: 6px; }
+.board-updated { text-align: center; font-size: 11px; color: var(--muted); opacity: .8; margin: 10px 0 0; letter-spacing: .02em; }
 .board-empty { padding: 40px 20px; text-align: center; color: var(--muted); }
 .board-more {
   display: flex; width: 100%; align-items: center; justify-content: center; gap: 8px; padding: 16px;

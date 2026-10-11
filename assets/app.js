@@ -158,6 +158,12 @@
       </div></div></div>`;
   }
 
+  function lastUpdated() {
+    const t = new Date(document.lastModified);
+    if (isNaN(t)) return '';
+    return `<p class="board-updated">Last updated ${t.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit', hour12: true })} IST</p>`;
+  }
+
   function mountBoard(host, rows, mode, hiIdx) {
     const sorts = SORTS[mode];
     host.innerHTML = `
@@ -340,7 +346,7 @@
         <div class="card tile spot reveal" style="--d:.2s"><div class="tile-lbl" data-short="Best pace">Fastest pace</div><div><div class="tile-val num">${fast ? esc(fast.pace) : '--'}<small>/km</small></div><div class="tile-sub">${fast ? esc(pretty(fast.name)) : 'Runs of 3 km+'}</div></div></div>
       </div>
       <div data-podium></div>
-      ${(flat ? x => `<div class="flat-sec">${x}</div>` : x => band('Board', x))(secHead('Full leaderboard', plural(list.length, 'runner')) + '<div class="card board reveal" data-board></div>' + (flat || week.live ? '' : `
+      ${(flat ? x => `<div class="flat-sec">${x}</div>` : x => band('Board', x))(secHead('Full leaderboard', plural(list.length, 'runner')) + '<div class="card board reveal" data-board></div>' + (week.live ? lastUpdated() : '') + (flat || week.live ? '' : `
         <div class="flex-strip reveal">
           <div><div class="flex-title">Flex your week</div><div class="flex-sub">Show off the week, or the top 10, in the group chat.</div></div>
           <div class="flex-btns"><button class="btn btn-primary" data-share-open="week">${ICON.share}Share the week</button><button class="btn btn-ghost" data-share-open="board">${ICON.share}Share the leaderboard</button></div>
