@@ -100,6 +100,7 @@ def resolve_name(firstname, lastname, name_map):
 # ── Aggregation ───────────────────────────────────────────────────────────────
 
 RUN_TYPES = {'Run', 'TrailRun', 'VirtualRun'}
+EXCLUDED_RUNNERS = {'Burger Bacha'}   # never counted anywhere
 
 def pace_str_val(moving_secs, dist_m):
     if dist_m < 10:
@@ -123,6 +124,8 @@ def aggregate(activities, name_map):
         if a.get('type') not in RUN_TYPES:
             continue
         name = resolve_name(a['athlete']['firstname'], a['athlete']['lastname'], name_map)
+        if name in EXCLUDED_RUNNERS:
+            continue
         dk   = round(a['distance'] / 1000, 1)
         ps, pv = pace_str_val(a['moving_time'], a['distance'])
         d = data[name]
@@ -670,7 +673,8 @@ def main():
     # (old API-era runs have no id/date, only an approximate week_of)
     all_runs = {r.get('id') or fingerprint(r): r for r in load_json(RUNS_FILE, [])}
     all_runs.update((a['id'], a) for a in new_acts
-                    if a.get('id') and a.get('start_date') and a.get('type') in RUN_TYPES)
+                    if a.get('id') and a.get('start_date') and a.get('type') in RUN_TYPES
+                    and resolve_name(a['athlete']['firstname'], a['athlete']['lastname'], name_map) not in EXCLUDED_RUNNERS)
     save_json(RUNS_FILE, sorted(all_runs.values(), key=lambda r: r['start_date'] or r['week_of']))
 
     week_acts  = load_json(WEEK_FILE, [])
