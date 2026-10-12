@@ -700,19 +700,33 @@
         K.reveal(host);
         return;
       }
-      host.appendChild(podium(list.slice(0, 3).map(e => ({ name: e.name, big: e.timeStr, unit: '', meta: e.pace }))));
-      host.lastElementChild.classList.add('rec-podium');
-      if (list.length > 3) {
-        const b = document.createElement('div');
-        b.className = 'card board rec-list reveal';
-        b.innerHTML = list.slice(3).map((e, i) => `<div class="row"><div class="row-main">
-          <span class="rank">${String(i + 4).padStart(2, '0')}</span>
+      const b = document.createElement('div');
+      b.className = 'card board rec-list reveal';
+      b.innerHTML = list.map((e, i) => {
+        const tries = e.attempts || [{ timeStr: e.timeStr, pace: e.pace }];
+        return `<div class="row" data-name="${esc(e.name)}"><button class="row-main" aria-expanded="false">
+          <span class="rank">${String(i + 1).padStart(2, '0')}</span>
           <span class="av" style="--c:${colorFor(e.name)}">${esc(initials(e.name))}</span>
           <span class="who"><span class="nm"><span class="nm-txt">${esc(pretty(e.name))}</span></span></span>
           <span class="dist num">${esc(e.timeStr)}</span>
-          <span class="pace">${esc(e.pace)}</span></div></div>`).join('');
-        host.appendChild(b);
-      }
+          <span class="pace">${esc(e.pace)}</span>
+          ${ICON.chev}
+        </button>
+        <div class="row-detail"><div class="row-detail-inner"><div class="detail"><ol class="attempts">${tries.map((a, j) => `<li${j === 0 ? ' class="best"' : ''}><span>${j === 0 ? '★ Best' : `#${j + 1}`}</span><b class="num">${esc(a.timeStr)}</b><span>${esc(a.pace)}</span></li>`).join('')}</ol></div></div></div></div>`;
+      }).join('');
+      b.addEventListener('click', e => {
+        const btn = e.target.closest('.row-main');
+        if (!btn) return;
+        btn.setAttribute('aria-expanded', btn.parentElement.classList.toggle('open'));
+      });
+      host.appendChild(podium(list.slice(0, 3).map(e => ({ name: e.name, big: e.timeStr, unit: '', meta: e.pace })), name => {
+        const row = [...b.children].find(r => r.dataset.name === name);
+        if (!row) return;
+        if (!row.classList.contains('open')) $('.row-main', row).click();
+        row.scrollIntoView({ behavior: K.reduce ? 'auto' : 'smooth', block: 'center' });
+      }));
+      host.lastElementChild.classList.add('rec-podium');
+      host.appendChild(b);
       K.reveal(host);
     }
     $$('[data-d]', el).forEach(b => b.addEventListener('click', () => draw(b.dataset.d)));

@@ -617,8 +617,12 @@ html.theme-switching .theme-sun, html.theme-switching .theme-moon { animation: t
 .rec-podium { margin-top: 16px; }
 .rec-podium .pod-km { font-size: clamp(26px, 3.2vw, 40px); }
 .rec-list { margin-top: 12px; }
-.rec-list .row-main { grid-template-columns: 34px 40px minmax(0, 1fr) 90px 72px; grid-template-areas: "rank av who dist pace"; cursor: default; }
-.rec-list .row-main:hover { background: transparent; }
+.rec-list .row-main { grid-template-columns: 34px 40px minmax(0, 1fr) 90px 72px 18px; grid-template-areas: "rank av who dist pace chev"; }
+.attempts { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px 16px; }
+.attempts li { display: flex; align-items: baseline; gap: 10px; font-size: 13px; color: var(--muted); }
+.attempts li span:first-child { min-width: 46px; font-size: 11px; font-weight: 600; }
+.attempts li b { color: var(--text); font-weight: 700; }
+.attempts li.best span:first-child { color: #FC4C02; }
 .ind-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
 .ind { padding: 22px; display: flex; flex-direction: column; min-height: 240px; }
 /* record micro-charts (replace the old emoji icons) */
@@ -1023,7 +1027,7 @@ html.intro:not(.intro-leaving) .hero-frame { animation-play-state: paused; }
   .club-week { font-size: 17px; }
   .earth { grid-template-columns: 1fr; padding: 20px; gap: 16px; }
   .earth-globe { width: 64px; height: 64px; }
-  .rec-list .row-main { grid-template-columns: 26px 36px minmax(0, 1fr) auto; grid-template-areas: "rank av who dist" "rank av who pace"; }
+  .rec-list .row-main { grid-template-columns: 26px 36px minmax(0, 1fr) auto 18px; grid-template-areas: "rank av who dist chev" "rank av who pace chev"; }
   .footer-word { margin-top: 40px; }
 
   /* join modal → bottom sheet */

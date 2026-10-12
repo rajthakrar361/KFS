@@ -19,6 +19,7 @@ NAME_MAP  = os.path.join(SCRIPTS, 'name_map.json')
 SEEN_FILE = os.path.join(SCRIPTS, 'seen_activities.json')
 WEEK_FILE = os.path.join(SCRIPTS, 'current_week_activities.json')
 HIST_FILE = os.path.join(SCRIPTS, 'historical_weeks.json')
+RUNS_FILE = os.path.join(SCRIPTS, 'all_runs.json')   # every run ever collected, never cleared
 
 COLORS = [
     "#FC4C02","#e05c00","#d45a00","#c85500","#bc5000","#b04b00","#a44600","#984100",
@@ -276,14 +277,18 @@ def compute_hof(seen_fps, current_week_acts, name_map, hist_weeks):
                 runs.append((elapsed, name, dist))
         runs.extend(MANUAL_SPEED_SEEDS.get(band, []))
         runs.sort()
-        top8 = []
-        for elapsed, name, dist in runs[:8]:
-            top8.append({
-                'name':    name,
+        # One entry per runner (their best), carrying every attempt in the band
+        by_name = {}
+        for elapsed, name, dist in runs:
+            by_name.setdefault(name, []).append({
                 'time':    elapsed,
                 'timeStr': fmt_time(elapsed),
                 'pace':    fmt_pace(elapsed, dist),
             })
+        top8 = []
+        for name, attempts in list(by_name.items())[:8]:
+            best = attempts[0]
+            top8.append({'name': name, **best, 'attempts': attempts[:5]})
         speed[band] = top8
 
     # ── Individual records ────────────────────────────────────────────────────
@@ -386,8 +391,9 @@ def hist_weeks_to_js(hist_weeks):
 
 def hof_to_js(hof):
     def speed_entry(e):
+        tries = ','.join(f'{{timeStr:"{a["timeStr"]}",pace:"{a["pace"]}"}}' for a in e['attempts'])
         return (f'{{name:"{e["name"]}",time:{e["time"]},'
-                f'timeStr:"{e["timeStr"]}",pace:"{e["pace"]}\"}}')
+                f'timeStr:"{e["timeStr"]}",pace:"{e["pace"]}",attempts:[{tries}]}}')
 
     def ind_simple(e):
         return f'{{name:"{e["name"]}",val:{e["val"]}}}'
@@ -659,6 +665,13 @@ def main():
 
     seen.update(fingerprint(a) for a in activities)
     save_json(SEEN_FILE, sorted(seen))
+
+    # Permanent per-run log (current_week_activities.json is cleared each week)
+    # (old API-era runs have no id/date, only an approximate week_of)
+    all_runs = {r.get('id') or fingerprint(r): r for r in load_json(RUNS_FILE, [])}
+    all_runs.update((a['id'], a) for a in new_acts
+                    if a.get('id') and a.get('start_date') and a.get('type') in RUN_TYPES)
+    save_json(RUNS_FILE, sorted(all_runs.values(), key=lambda r: r['start_date'] or r['week_of']))
 
     week_acts  = load_json(WEEK_FILE, [])
     hist_weeks = load_json(HIST_FILE, [])
