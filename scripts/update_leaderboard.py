@@ -221,7 +221,7 @@ SPEED_BANDS = {
     '5K':   (4800,  5600),
     '10K':  (9500,  10500),
     '21K':  (20500, 22000),
-    '42K':  (41500, 43000),
+    '42K':  (41500, 44000),
 }
 
 # Manual seed entries for bands with no auto-detected runs yet

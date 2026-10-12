@@ -684,7 +684,7 @@
         ${club.mostRunners ? `<div class="card club spot reveal" style="--d:.06s"><div><div class="club-lbl">Most runners</div><div class="club-week">${esc(club.mostRunners.week)}</div><div class="club-sub">${fmt(club.mostRunners.km, 1)} km total</div></div><div class="club-val num"><span data-count="${club.mostRunners.val}">0</span><small>runners</small></div></div>` : ''}
       </div>
       <details class="rules reveal"><summary>How records are counted</summary><div class="rules-body">
-        <div>Speed records only count runs inside the distance band: <strong>5K</strong> 4,800–5,600 m · <strong>10K</strong> 9,500–10,500 m · <strong>Half</strong> 20,500–22,000 m · <strong>Full</strong> 41,500–43,000 m.</div>
+        <div>Speed records only count runs inside the distance band: <strong>5K</strong> 4,800–5,600 m · <strong>10K</strong> 9,500–10,500 m · <strong>Half</strong> 20,500–22,000 m · <strong>Full</strong> 41,500–44,000 m.</div>
         <div>Times use <strong>elapsed time</strong> (total clock time, pauses included).</div>
         <div><strong>Most runs in a week</strong> only counts runs of 2 km or more.</div>
         <div><strong>Biggest week</strong> is the club's total km in one Mon–Sun week. <strong>Most runners</strong> counts athletes with at least one run that week.</div>
