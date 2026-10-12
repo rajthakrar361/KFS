@@ -252,37 +252,34 @@ def fmt_pace(elapsed_secs, dist_m):
     spk = elapsed_secs / (dist_m / 1000)
     return f"{int(spk//60)}:{int(spk%60):02d}/km"
 
-def compute_hof(seen_fps, current_week_acts, name_map, hist_weeks):
-    # Build elapsed_time lookup from current week activities
-    elapsed_lookup = {}
-    for a in current_week_acts:
-        fp = fingerprint(a)
-        elapsed_lookup[fp] = a.get('elapsed_time') or a['moving_time']
+def compute_hof(all_runs, current_week_acts, name_map, hist_weeks):
+    # Speed records and longest run come from every real run in all_runs.json;
+    # site_manual runs are estimates (a share of a hand-entered week), so they never count here
+    # Records use moving time (as the site always has); runs with an impossible pace are misreads and are skipped
+    def plausible(r):
+        km, mov, ela = r['distance'] / 1000, r.get('moving_time') or 0, r.get('elapsed_time')
+        return km > 0 and 170 <= mov / km <= 900 and (not ela or mov <= ela)
+    real = [dict(r) for r in all_runs if r.get('source') != 'site_manual' and r.get('type', 'Run') in RUN_TYPES
+            and plausible(r)]
 
     # ── Speed records ─────────────────────────────────────────────────────────
     speed = {}
     for band, (lo, hi) in SPEED_BANDS.items():
         runs = []
-        for fp in seen_fps:
-            parts = fp.split('|')
-            if len(parts) < 4:
-                continue
-            try:
-                dist   = float(parts[2])
-                moving = int(parts[3])
-            except ValueError:
-                continue
+        for r in real:
+            dist = r['distance']
             if lo <= dist <= hi:
-                name    = resolve_name(parts[0], parts[1], name_map)
-                if name in SPEED_EXCLUDED_NAMES:
+                name = resolve_name(r['athlete']['firstname'], r['athlete']['lastname'], name_map)
+                if name in SPEED_EXCLUDED_NAMES or name in EXCLUDED_RUNNERS:
                     continue
-                elapsed = elapsed_lookup.get(fp, moving)
-                runs.append((elapsed, name, dist))
+                runs.append((r['moving_time'], name, dist))
         runs.extend(MANUAL_SPEED_SEEDS.get(band, []))
         runs.sort()
         # One entry per runner (their best), carrying every attempt in the band
         by_name = {}
         for elapsed, name, dist in runs:
+            if any(x['time'] == elapsed for x in by_name.get(name, [])):
+                continue
             by_name.setdefault(name, []).append({
                 'time':    elapsed,
                 'timeStr': fmt_time(elapsed),
@@ -321,6 +318,13 @@ def compute_hof(seen_fps, current_week_acts, name_map, hist_weeks):
             if runs > best_run_week.get(name, (0, ''))[0]:
                 best_run_week[name] = (runs, label)
             weeks_count[name] = weeks_count.get(name, 0) + 1
+
+    longest_run = {}
+    for r in real:
+        name = resolve_name(r['athlete']['firstname'], r['athlete']['lastname'], name_map)
+        if name in EXCLUDED_RUNNERS:
+            continue
+        longest_run[name] = max(longest_run.get(name, 0), round(r['distance'] / 1000, 1))
 
     def top3_simple(d):
         return [{'name': n, 'val': v}
@@ -675,7 +679,7 @@ def main():
     all_runs.update((a['id'], a) for a in new_acts
                     if a.get('id') and a.get('start_date') and a.get('type') in RUN_TYPES
                     and resolve_name(a['athlete']['firstname'], a['athlete']['lastname'], name_map) not in EXCLUDED_RUNNERS)
-    save_json(RUNS_FILE, sorted(all_runs.values(), key=lambda r: r['start_date'] or r['week_of']))
+    save_json(RUNS_FILE, sorted(all_runs.values(), key=lambda r: r.get('start_date') or r.get('week_of') or ''))
 
     week_acts  = load_json(WEEK_FILE, [])
     hist_weeks = load_json(HIST_FILE, [])
@@ -768,7 +772,7 @@ def main():
     for a in new_athletes[:5]:
         print(f"  {a['name']:30s} {a['distance']} km")
 
-    hof = compute_hof(list(seen), week_acts, name_map, hist_weeks)
+    hof = compute_hof(list(all_runs.values()), week_acts, name_map, hist_weeks)
     html = update_html(html, new_athletes, cur_badge,
                        prev_rank_names=prev_rank_names or None,
                        hist_weeks=hist_weeks, hof=hof)
