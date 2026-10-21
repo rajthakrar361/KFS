@@ -280,6 +280,18 @@
         "elev": "25m"
       },
       {
+        "name": "Vansh Garg",
+        "distance": 7.0,
+        "runs": 2,
+        "runs_2k": 1,
+        "longest": 5.7,
+        "pace": "6:24",
+        "paceVal": 384,
+        "avgPace": "6:43",
+        "avgPaceVal": 403,
+        "elev": "24m"
+      },
+      {
         "name": "Aditya Mudgal",
         "distance": 6.4,
         "runs": 2,
