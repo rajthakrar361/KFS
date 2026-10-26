@@ -208,6 +208,18 @@
         "elev": "4m"
       },
       {
+        "name": "Ashok Kumar",
+        "distance": 6.0,
+        "runs": 2,
+        "runs_2k": 2,
+        "longest": 4.0,
+        "pace": "6:40",
+        "paceVal": 400,
+        "avgPace": "7:03",
+        "avgPaceVal": 423,
+        "elev": "27m"
+      },
+      {
         "name": "Ajay S H",
         "distance": 5.9,
         "runs": 1,
@@ -302,18 +314,6 @@
         "avgPace": "5:43",
         "avgPaceVal": 343,
         "elev": "47m"
-      },
-      {
-        "name": "Ashok Kumar",
-        "distance": 2.0,
-        "runs": 1,
-        "runs_2k": 1,
-        "longest": 2.0,
-        "pace": "7:49",
-        "paceVal": 469,
-        "avgPace": "7:49",
-        "avgPaceVal": 469,
-        "elev": "18m"
       },
       {
         "name": "Swamini G",
