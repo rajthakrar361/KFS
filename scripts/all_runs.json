@@ -29461,6 +29461,19 @@
     "total_elevation_gain": 4.0
   },
   {
+    "id": "20778028964",
+    "type": "Run",
+    "start_date": "2026-10-27T13:14:46Z",
+    "athlete": {
+      "firstname": "Aryan",
+      "lastname": "Chopra"
+    },
+    "distance": 3990.0,
+    "moving_time": 2015,
+    "elapsed_time": 2338,
+    "total_elevation_gain": 11.0
+  },
+  {
     "id": "20751323052",
     "type": "Run",
     "start_date": "2026-10-27T13:20:40Z",
@@ -29667,5 +29680,18 @@
     "moving_time": 1250,
     "elapsed_time": 1266,
     "total_elevation_gain": 27.0
+  },
+  {
+    "id": "20778520527",
+    "type": "Run",
+    "start_date": "2026-10-29T13:02:49Z",
+    "athlete": {
+      "firstname": "Harshita",
+      "lastname": "Singh"
+    },
+    "distance": 3360.0,
+    "moving_time": 1217,
+    "elapsed_time": 2067,
+    "total_elevation_gain": 19.0
   }
 ]
