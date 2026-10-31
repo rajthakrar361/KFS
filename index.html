@@ -294,7 +294,7 @@ const hofData = {
 };
 const athletes = [
   { name: "varoon girish", distance: 39.8, runs: 5, longest: 12.0, pace: "5:30", paceVal: 330, avgPace: "6:05", avgPaceVal: 365, elev: "151m", color: "#FC4C02" },
-  { name: "Sumit Yadav", distance: 18.0, runs: 2, longest: 10.0, pace: "7:16", paceVal: 436, avgPace: "7:37", avgPaceVal: 457, elev: "154m", color: "#e05c00" },
+  { name: "Sumit Yadav", distance: 26.0, runs: 3, longest: 10.0, pace: "7:16", paceVal: 436, avgPace: "7:38", avgPaceVal: 458, elev: "209m", color: "#e05c00" },
   { name: "Sidhartha Thakur", distance: 16.0, runs: 5, longest: 4.5, pace: "7:09", paceVal: 429, avgPace: "7:43", avgPaceVal: 463, elev: "93m", color: "#d45a00" },
   { name: "Diksin Gulati", distance: 14.1, runs: 3, longest: 6.0, pace: "5:57", paceVal: 357, avgPace: "6:11", avgPaceVal: 371, elev: "126m", color: "#c85500" },
   { name: "Vansh Garg", distance: 10.1, runs: 2, longest: 5.1, pace: "6:31", paceVal: 391, avgPace: "6:34", avgPaceVal: 394, elev: "32m", color: "#bc5000" },
@@ -307,16 +307,18 @@ const athletes = [
   { name: "Rachit Mittal", distance: 4.3, runs: 2, longest: 3.0, pace: "5:46", paceVal: 346, avgPace: "6:21", avgPaceVal: 381, elev: "29m", color: "#742d00" },
   { name: "Vashita Gupta", distance: 4.2, runs: 2, longest: 2.2, pace: "7:38", paceVal: 458, avgPace: "7:44", avgPaceVal: 464, elev: "16m", color: "#6e2800" },
   { name: "Aryan Chopra", distance: 4.0, runs: 1, longest: 4.0, pace: "8:25", paceVal: 505, avgPace: "8:25", avgPaceVal: 505, elev: "11m", color: "#682300" },
-  { name: "Jeevanesh Sawhney", distance: 3.0, runs: 2, longest: 2.0, pace: "5:34", paceVal: 334, avgPace: "5:37", avgPaceVal: 337, elev: "4m", color: "#621e00" },
-  { name: "Ananya S", distance: 2.8, runs: 1, longest: 2.8, pace: "7:49", paceVal: 469, avgPace: "7:49", avgPaceVal: 469, elev: "8m", color: "#5c1900" },
-  { name: "SIDDHARTH SINGH", distance: 2.4, runs: 1, longest: 2.4, pace: "6:30", paceVal: 390, avgPace: "6:30", avgPaceVal: 390, elev: "4m", color: "#561500" },
-  { name: "Prabhveer Singh Khurana", distance: 2.2, runs: 1, longest: 2.2, pace: "8:02", paceVal: 482, avgPace: "8:02", avgPaceVal: 482, elev: "8m", color: "#501100" },
-  { name: "A J", distance: 1.1, runs: 1, longest: 1.1, pace: "4:52", paceVal: 292, avgPace: "4:52", avgPaceVal: 292, elev: "4m", color: "#4a0e00" },
-  { name: "Sonu Thakur", distance: 1.0, runs: 1, longest: 1.0, pace: "4:42", paceVal: 282, avgPace: "4:42", avgPaceVal: 282, elev: "3m", color: "#440b00" },
-  { name: "Rushika Singh", distance: 0.8, runs: 1, longest: 0.8, pace: "44:20", paceVal: 2660, avgPace: "44:20", avgPaceVal: 2660, elev: "--", color: "#3e0800" }
+  { name: "Shaun Thomas", distance: 3.2, runs: 1, longest: 3.2, pace: "5:27", paceVal: 327, avgPace: "5:27", avgPaceVal: 327, elev: "12m", color: "#621e00" },
+  { name: "Jeevanesh Sawhney", distance: 3.0, runs: 2, longest: 2.0, pace: "5:34", paceVal: 334, avgPace: "5:37", avgPaceVal: 337, elev: "4m", color: "#5c1900" },
+  { name: "Ananya S", distance: 2.8, runs: 1, longest: 2.8, pace: "7:49", paceVal: 469, avgPace: "7:49", avgPaceVal: 469, elev: "8m", color: "#561500" },
+  { name: "SIDDHARTH SINGH", distance: 2.4, runs: 1, longest: 2.4, pace: "6:30", paceVal: 390, avgPace: "6:30", avgPaceVal: 390, elev: "4m", color: "#501100" },
+  { name: "Ajay S H", distance: 2.3, runs: 2, longest: 2.1, pace: "4:41", paceVal: 281, avgPace: "4:54", avgPaceVal: 294, elev: "7m", color: "#4a0e00" },
+  { name: "Prabhveer Singh Khurana", distance: 2.2, runs: 1, longest: 2.2, pace: "8:02", paceVal: 482, avgPace: "8:02", avgPaceVal: 482, elev: "8m", color: "#440b00" },
+  { name: "A J", distance: 1.1, runs: 1, longest: 1.1, pace: "4:52", paceVal: 292, avgPace: "4:52", avgPaceVal: 292, elev: "4m", color: "#3e0800" },
+  { name: "Sonu Thakur", distance: 1.0, runs: 1, longest: 1.0, pace: "4:42", paceVal: 282, avgPace: "4:42", avgPaceVal: 282, elev: "3m", color: "#380500" },
+  { name: "Rushika Singh", distance: 0.8, runs: 1, longest: 0.8, pace: "44:20", paceVal: 2660, avgPace: "44:20", avgPaceVal: 2660, elev: "--", color: "#320300" }
 ];
 
-const prevAthletes = ["varoon girish", "Sumit Yadav", "Sidhartha Thakur", "Diksin Gulati", "avaneesh d", "Harshita Singh", "Ashok Kumar", "Vansh Garg", "Aditya Mudgal", "Aryan Sumbly", "Yash Vardhan singh", "Rachit Mittal", "Vashita Gupta", "Aryan Chopra", "Jeevanesh Sawhney", "Ananya S", "SIDDHARTH SINGH", "Prabhveer Singh Khurana", "A J", "Sonu Thakur", "Rushika Singh"];
+const prevAthletes = ["varoon girish", "Sumit Yadav", "Sidhartha Thakur", "Diksin Gulati", "Vansh Garg", "avaneesh d", "Harshita Singh", "Ashok Kumar", "Aditya Mudgal", "Aryan Sumbly", "Yash Vardhan singh", "Rachit Mittal", "Vashita Gupta", "Aryan Chopra", "Jeevanesh Sawhney", "Ananya S", "SIDDHARTH SINGH", "Prabhveer Singh Khurana", "A J", "Sonu Thakur", "Rushika Singh"];
 
 const historicalWeeks = {
   "hist-week-oct19": {
