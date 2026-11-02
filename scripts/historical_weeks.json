@@ -280,6 +280,18 @@
         "elev": "4m"
       },
       {
+        "name": "Swamini G",
+        "distance": 1.1,
+        "runs": 1,
+        "runs_2k": 0,
+        "longest": 1.1,
+        "pace": "6:24",
+        "paceVal": 384,
+        "avgPace": "6:24",
+        "avgPaceVal": 384,
+        "elev": "--"
+      },
+      {
         "name": "Sonu Thakur",
         "distance": 1.0,
         "runs": 1,
