@@ -196,6 +196,18 @@
         "elev": "11m"
       },
       {
+        "name": "Abhishek Singh",
+        "distance": 3.7,
+        "runs": 1,
+        "runs_2k": 1,
+        "longest": 3.7,
+        "pace": "5:25",
+        "paceVal": 325,
+        "avgPace": "5:25",
+        "avgPaceVal": 325,
+        "elev": "19m"
+      },
+      {
         "name": "Shaun Thomas",
         "distance": 3.2,
         "runs": 1,
