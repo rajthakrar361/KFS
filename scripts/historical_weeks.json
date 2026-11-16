@@ -88,6 +88,18 @@
         "elev": "--"
       },
       {
+        "name": "Swamini G",
+        "distance": 9.7,
+        "runs": 3,
+        "runs_2k": 3,
+        "longest": 5.1,
+        "pace": "6:08",
+        "paceVal": 368,
+        "avgPace": "6:32",
+        "avgPaceVal": 392,
+        "elev": "12m"
+      },
+      {
         "name": "Rishendra Chauhan",
         "distance": 7.2,
         "runs": 1,
@@ -134,18 +146,6 @@
         "avgPace": "5:21",
         "avgPaceVal": 321,
         "elev": "58m"
-      },
-      {
-        "name": "Swamini G",
-        "distance": 4.6,
-        "runs": 2,
-        "runs_2k": 2,
-        "longest": 2.6,
-        "pace": "6:08",
-        "paceVal": 368,
-        "avgPace": "6:24",
-        "avgPaceVal": 384,
-        "elev": "10m"
       },
       {
         "name": "Diksin Gulati",
